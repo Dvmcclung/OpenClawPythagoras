@@ -1,0 +1,916 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>MATHEMATICS OF THE DISCRETE FOURIER TRANSFORM (DFT)
+WITH AUDIO APPLICATIONS
+SECOND EDITION</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="MATHEMATICS OF THE DISCRETE FOURIER TRANSFORM (DFT)
+WITH AUDIO APPLICATIONS
+SECOND EDITION">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="http://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="http://ccrma.stanford.edu/~jos/mdft/Preface.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html237"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Preface.html" 
+ onMouseover="return escape('Preface')">Next</A> &nbsp;|&nbsp;
+ <A NAME="tex2html235"
+   
+ HREF="http://ccrma.stanford.edu/~jos/mdft/Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="http://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<P>
+
+<P>
+
+
+<P>
+ 
+<P>
+<H1 ALIGN=CENTER>M<SMALL>ATHEMATICS OF THE 
+</SMALL>
+<BR>
+D<SMALL>ISCRETE </SMALL>F<SMALL>OURIER </SMALL>T<SMALL>RANSFORM </SMALL>(DFT)
+<BR><FONT SIZE="+2"><SMALL>WITH </SMALL>A<SMALL>UDIO </SMALL>A<SMALL>PPLICATIONS</SMALL></FONT>
+<BR>
+S<SMALL>ECOND </SMALL>E<SMALL>DITION</SMALL></H1>
+<P ALIGN=CENTER><STRONG><A NAME="tex2html2"
+  HREF="http://ccrma.stanford.edu/%7Ejos">J<SMALL>ULIUS </SMALL>O. S<SMALL>MITH </SMALL>III</A></STRONG>
+<BR><FONT SIZE=-1><A NAME="tex2html3"
+  HREF="http://ccrma.stanford.edu/"><I><FONT SIZE="-1">Center for Computer Research in Music
+and Acoustics (CCRMA)</FONT></I></A></FONT>
+</P>
+<HR>
+
+<P>
+
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"></A>
+
+<UL>
+<LI><A NAME="tex2html238"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Preface.html">Preface</A>
+<UL>
+<LI><A NAME="tex2html239"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Chapter_Outline.html">Chapter Outline</A>
+<LI><A NAME="tex2html240"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Acknowledgments.html">Acknowledgments</A>
+<LI><A NAME="tex2html241"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Errata.html">Errata</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html242"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Introduction_DFT.html">Introduction to the DFT</A>
+<UL>
+<LI><A NAME="tex2html243"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Definition.html">DFT Definition</A>
+<LI><A NAME="tex2html244"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Inverse_DFT.html">Inverse DFT</A>
+<LI><A NAME="tex2html245"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Mathematics_DFT.html">Mathematics of the DFT</A>
+<LI><A NAME="tex2html246"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Math_Outline.html">DFT Math Outline</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html247"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html">Complex Numbers</A>
+<UL>
+<LI><A NAME="tex2html248"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Factoring_Polynomial.html">Factoring a Polynomial</A>
+<LI><A NAME="tex2html249"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Quadratic_Formula.html">The Quadratic Formula</A>
+<LI><A NAME="tex2html250"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Complex_Roots.html">Complex Roots</A>
+<LI><A NAME="tex2html251"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fundamental_Theorem_Algebra.html">Fundamental Theorem of Algebra</A>
+<LI><A NAME="tex2html252"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Complex_Basics.html">Complex Basics</A>
+<LI><A NAME="tex2html253"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Complex_Plane.html">The Complex Plane</A>
+<LI><A NAME="tex2html254"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/More_Notation_Terminology.html">More Notation and Terminology</A>
+<LI><A NAME="tex2html255"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Elementary_Relationships.html">Elementary Relationships</A>
+<LI><A NAME="tex2html256"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Euler_s_Identity.html">Euler's Identity</A>
+<LI><A NAME="tex2html257"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/De_Moivre_s_Theorem.html">De Moivre's Theorem</A>
+<LI><A NAME="tex2html258"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Conclusion.html">Conclusion</A>
+<LI><A NAME="tex2html259"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Complex_Number_Problems.html">Complex_Number Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html260"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Proof_Euler_s_Identity.html">Proof of Euler's Identity</A>
+<UL>
+<LI><A NAME="tex2html261"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Euler_s_Identity_I.html">Euler's Identity</A>
+<LI><A NAME="tex2html262"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Positive_Integer_Exponents.html">Positive Integer Exponents</A>
+<LI><A NAME="tex2html263"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Properties_Exponents.html">Properties of Exponents</A>
+<LI><A NAME="tex2html264"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Exponent_Zero.html">The Exponent Zero</A>
+<LI><A NAME="tex2html265"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Negative_Exponents.html">Negative Exponents</A>
+<LI><A NAME="tex2html266"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Rational_Exponents.html">Rational Exponents</A>
+<LI><A NAME="tex2html267"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Real_Exponents.html">Real Exponents</A>
+<LI><A NAME="tex2html268"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html">A First Look at Taylor Series</A>
+<LI><A NAME="tex2html269"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Imaginary_Exponents.html">Imaginary Exponents</A>
+<LI><A NAME="tex2html270"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Derivatives_f_x_power.html">Derivatives of f(x) = a to the power x</A>
+<LI><A NAME="tex2html271"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Back_e.html">Back to <I>e</I></A>
+<LI><A NAME="tex2html272"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/e_j_theta.html">e^(j theta)</A>
+<LI><A NAME="tex2html273"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Back_Mth_Roots.html">Back to Mth Roots</A>
+<LI><A NAME="tex2html274"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Roots_Unity.html">Roots of Unity</A>
+<LI><A NAME="tex2html275"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Direct_Proof_De_Moivre_s.html">Direct Proof of De Moivre's Theorem</A>
+<LI><A NAME="tex2html276"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Euler_Identity_Problems.html">Euler_Identity Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html277"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html">Sinusoids and Exponentials</A>
+<UL>
+<LI><A NAME="tex2html278"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sinusoids.html">Sinusoids</A>
+<UL>
+<LI><A NAME="tex2html279"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Example_Sinusoids.html">Example Sinusoids</A>
+<LI><A NAME="tex2html280"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Why_Sinusoids_Important.html">Why Sinusoids are Important</A>
+<LI><A NAME="tex2html281"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/In_Phase_Quadrature_Sinusoidal.html">In-Phase &amp; Quadrature Sinusoidal Components</A>
+<LI><A NAME="tex2html282"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sinusoids_Same_Frequency.html">Sinusoids at the Same Frequency</A>
+<LI><A NAME="tex2html283"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Constructive_Destructive_Interference.html">Constructive and Destructive Interference</A>
+<LI><A NAME="tex2html284"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sinusoid_Magnitude_Spectra.html">Sinusoid Magnitude Spectra</A>
+</UL>
+<LI><A NAME="tex2html285"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Exponentials.html">Exponentials</A>
+<UL>
+<LI><A NAME="tex2html286"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Why_Exponentials_Important.html">Why Exponentials are Important</A>
+<LI><A NAME="tex2html287"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Audio_Decay_Time_T60.html">Audio Decay Time (T60)</A>
+</UL>
+<LI><A NAME="tex2html288"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html">Complex Sinusoids</A>
+<UL>
+<LI><A NAME="tex2html289"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Circular_Motion.html">Circular Motion</A>
+<LI><A NAME="tex2html290"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Projection_Circular_Motion.html">Projection of Circular Motion</A>
+<LI><A NAME="tex2html291"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Positive_Negative_Frequencies.html">Positive and Negative Frequencies</A>
+<LI><A NAME="tex2html292"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Plotting_Complex_Sinusoids_versus.html">Plotting Complex Sinusoids versus Frequency</A>
+<LI><A NAME="tex2html293"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sinusoidal_Amplitude_Modulation_AM.html">Sinusoidal Amplitude Modulation (AM)</A>
+<UL>
+<LI><A NAME="tex2html294"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Example_AM_Spectra.html">Example AM Spectra</A>
+</UL>
+<LI><A NAME="tex2html295"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sinusoidal_Frequency_Modulation_FM.html">Sinusoidal Frequency Modulation (FM)</A>
+<UL>
+<LI><A NAME="tex2html296"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Bessel_Functions.html">Bessel Functions</A>
+<LI><A NAME="tex2html297"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FM_Spectra.html">FM Spectra</A>
+</UL>
+<LI><A NAME="tex2html298"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Analytic_Signals_Hilbert_Transform.html">Analytic Signals and Hilbert Transform Filters</A>
+<LI><A NAME="tex2html299"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Generalized_Complex_Sinusoids.html">Generalized Complex Sinusoids</A>
+<LI><A NAME="tex2html300"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sampled_Sinusoids.html">Sampled Sinusoids</A>
+<LI><A NAME="tex2html301"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Powers_z.html">Powers of <I>z</I></A>
+<LI><A NAME="tex2html302"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Phasor_Carrier_Components_Sinusoids.html">Phasors and Carriers</A>
+<UL>
+<LI><A NAME="tex2html303"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Phasor.html">Phasor</A>
+<LI><A NAME="tex2html304"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Why_Phasors_Important.html">Why Phasors are Important</A>
+</UL>
+<LI><A NAME="tex2html305"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Importance_Generalized_Complex_Sinusoids.html">Importance of Generalized Complex Sinusoids</A>
+<LI><A NAME="tex2html306"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Comparing_Analog_Digital_Complex.html">Comparing Analog and Digital Complex Planes</A>
+</UL>
+<LI><A NAME="tex2html307"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sinusoid_Problems.html">Sinusoid Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html308"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Geometric_Signal_Theory.html">Geometric Signal Theory</A>
+<UL>
+<LI><A NAME="tex2html309"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT.html">The DFT</A>
+<LI><A NAME="tex2html310"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Signals_Vectors.html">Signals as Vectors</A>
+<UL>
+<LI><A NAME="tex2html311"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Example_Vector_View.html">An Example Vector View: <SPAN CLASS="MATH">\(N=2\)</SPAN></A>
+</UL>
+<LI><A NAME="tex2html312"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Vector_Addition.html">Vector Addition</A>
+<LI><A NAME="tex2html313"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Vector_Subtraction.html">Vector Subtraction</A>
+<LI><A NAME="tex2html314"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Scalar_Multiplication.html">Scalar Multiplication</A>
+<LI><A NAME="tex2html315"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Linear_Combination_Vectors.html">Linear Combination of Vectors</A>
+<LI><A NAME="tex2html316"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Linear_Vector_Space.html">Linear Vector Space</A>
+<LI><A NAME="tex2html317"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Signal_Metrics.html">Signal Metrics</A>
+<UL>
+<LI><A NAME="tex2html318"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Other_Lp_Norms.html">Other Lp Norms</A>
+<LI><A NAME="tex2html319"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Norm_Properties.html">Norm Properties</A>
+<LI><A NAME="tex2html320"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Summary_Related_Mathematical_Topics.html">Summary and Related Mathematical Topics</A>
+</UL>
+<LI><A NAME="tex2html321"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Inner_Product.html">The Inner Product</A>
+<UL>
+<LI><A NAME="tex2html322"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Linearity_Inner_Product.html">Linearity of the Inner Product</A>
+<LI><A NAME="tex2html323"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Norm_Induced_Inner_Product.html">Norm Induced by the Inner Product</A>
+<LI><A NAME="tex2html324"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Cauchy_Schwarz_Inequality.html">Cauchy-Schwarz Inequality</A>
+<LI><A NAME="tex2html325"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Triangle_Inequality.html">Triangle Inequality</A>
+<LI><A NAME="tex2html326"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Triangle_Difference_Inequality.html">Triangle Difference Inequality</A>
+<LI><A NAME="tex2html327"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Vector_Cosine.html">Vector Cosine</A>
+<LI><A NAME="tex2html328"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Orthogonality.html">Orthogonality</A>
+<LI><A NAME="tex2html329"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Pythagorean_Theorem_N_Space.html">The Pythagorean Theorem in N-Space</A>
+<LI><A NAME="tex2html330"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Projection.html">Projection</A>
+</UL>
+<LI><A NAME="tex2html331"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Signal_Reconstruction_Projections.html">Signal Reconstruction from Projections</A>
+<UL>
+<LI><A NAME="tex2html332"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Changing_Coordinates.html">Changing Coordinates</A>
+<UL>
+<LI><A NAME="tex2html333"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Example_Changing_Coordinates_2D.html">An Example of Changing Coordinates in 2D</A>
+</UL>
+<LI><A NAME="tex2html334"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Projection_onto_Linearly_Dependent.html">Projection onto Linearly Dependent Vectors</A>
+<LI><A NAME="tex2html335"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Projection_onto_Non_Orthogonal_Vectors.html">Projection onto Non-Orthogonal Vectors</A>
+<LI><A NAME="tex2html336"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/General_Conditions.html">General Conditions</A>
+<LI><A NAME="tex2html337"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Signal_Vector_Reconstruction_Projections.html">Signal/Vector Reconstruction from Projections</A>
+<LI><A NAME="tex2html338"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Gram_Schmidt_Orthogonalization.html">Gram-Schmidt Orthogonalization</A>
+</UL>
+<LI><A NAME="tex2html339"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Signal_Projection_Problems.html">Signal Projection Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html340"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Derived.html">The DFT
+ Derived</A>
+<UL>
+<LI><A NAME="tex2html341"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Geometric_Series.html">Geometric Series</A>
+<LI><A NAME="tex2html342"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Orthogonality_Sinusoids.html">Orthogonality of Sinusoids</A>
+<UL>
+<LI><A NAME="tex2html343"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Nth_Roots_Unity.html">Nth Roots of Unity</A>
+<LI><A NAME="tex2html344"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Sinusoids.html">DFT Sinusoids</A>
+</UL>
+<LI><A NAME="tex2html345"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Orthogonality_DFT_Sinusoids.html">Orthogonality of the DFT Sinusoids</A>
+<LI><A NAME="tex2html346"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Norm_DFT_Sinusoids.html">Norm of the DFT Sinusoids</A>
+<LI><A NAME="tex2html347"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Orthonormal_Sinusoidal_Set.html">An Orthonormal Sinusoidal Set</A>
+<LI><A NAME="tex2html348"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Discrete_Fourier_Transform_DFT.html">The Discrete Fourier Transform (DFT)</A>
+<LI><A NAME="tex2html349"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Frequencies_Cracks.html">Frequencies in the ``Cracks''</A>
+<LI><A NAME="tex2html350"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectral_Bin_Numbers.html">Spectral Bin Numbers</A>
+<LI><A NAME="tex2html351"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fourier_Series_Special_Case.html">Fourier Series Special Case</A>
+<LI><A NAME="tex2html352"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Normalized_DFT.html">Normalized DFT</A>
+<LI><A NAME="tex2html353"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Length_2_DFT.html">The Length 2 DFT</A>
+<LI><A NAME="tex2html354"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Matrix_Formulation_DFT.html">Matrix Formulation of the DFT</A>
+<LI><A NAME="tex2html355"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Problems.html">DFT Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html356"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems_DFT.html">Fourier Theorems for the DFT</A>
+<UL>
+<LI><A NAME="tex2html357"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Inverse_Restated.html">The DFT and its Inverse Restated</A>
+<UL>
+<LI><A NAME="tex2html358"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Notation_Terminology.html">Notation and Terminology</A>
+<LI><A NAME="tex2html359"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Modulo_Indexing_Periodic_Extension.html">Modulo Indexing, Periodic Extension</A>
+</UL>
+<LI><A NAME="tex2html360"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Signal_Operators.html">Signal Operators</A>
+<UL>
+<LI><A NAME="tex2html361"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Operator_Notation.html">Operator Notation</A>
+<LI><A NAME="tex2html362"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Flip_Operator.html">Flip Operator</A>
+<LI><A NAME="tex2html363"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Shift_Operator.html">Shift Operator</A>
+<UL>
+<LI><A NAME="tex2html364"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Examples.html">Examples</A>
+</UL>
+<LI><A NAME="tex2html365"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Convolution.html">Convolution</A>
+<UL>
+<LI><A NAME="tex2html366"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Commutativity_Convolution.html">Commutativity of Convolution</A>
+<LI><A NAME="tex2html367"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Convolution_Filtering_Operation.html">Convolution as a Filtering Operation</A>
+<LI><A NAME="tex2html368"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Convolution_Example_1_Smoothing.html">Convolution Example 1: Smoothing a Rectangular Pulse</A>
+<LI><A NAME="tex2html369"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Convolution_Example_2_ADSR.html">Convolution Example 2: ADSR Envelope</A>
+<LI><A NAME="tex2html370"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Convolution_Example_3_Matched.html">Convolution Example 3: Matched Filtering</A>
+<LI><A NAME="tex2html371"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Graphical_Convolution.html">Graphical Convolution</A>
+<LI><A NAME="tex2html372"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Polynomial_Multiplication.html">Polynomial Multiplication</A>
+<LI><A NAME="tex2html373"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Multiplication_Decimal_Numbers.html">Multiplication of Decimal Numbers</A>
+</UL>
+<LI><A NAME="tex2html374"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Correlation.html">Correlation</A>
+<LI><A NAME="tex2html375"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Stretch_Operator.html">Stretch Operator</A>
+<LI><A NAME="tex2html376"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html">Zero Padding</A>
+<LI><A NAME="tex2html377"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Causal_Periodic_Signals.html">Causal (Periodic) Signals</A>
+<LI><A NAME="tex2html378"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Causal_Zero_Padding.html">Causal Zero Padding</A>
+<LI><A NAME="tex2html379"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Zero_Padding_Applications.html">Zero Padding Applications</A>
+<LI><A NAME="tex2html380"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Ideal_Spectral_Interpolation.html">Ideal Spectral Interpolation</A>
+<LI><A NAME="tex2html381"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Interpolation_Operator.html">Interpolation Operator</A>
+<LI><A NAME="tex2html382"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Repeat_Operator.html">Repeat Operator</A>
+<LI><A NAME="tex2html383"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Downsampling_Operator.html">Downsampling Operator</A>
+<LI><A NAME="tex2html384"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Alias_Operator.html">Alias Operator</A>
+</UL>
+<LI><A NAME="tex2html385"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Even_Odd_Functions.html">Even and Odd Functions</A>
+<LI><A NAME="tex2html386"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html">Fourier Theorems</A>
+<UL>
+<LI><A NAME="tex2html387"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Linearity.html">Linearity</A>
+<LI><A NAME="tex2html388"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Conjugation_Reversal.html">Conjugation and Reversal</A>
+<LI><A NAME="tex2html389"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Symmetry.html">Symmetry</A>
+<LI><A NAME="tex2html390"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Shift_Theorem.html">Shift Theorem</A>
+<UL>
+<LI><A NAME="tex2html391"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Linear_Phase_Terms.html">Linear Phase Terms</A>
+<LI><A NAME="tex2html392"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Linear_Phase_Signals.html">Linear Phase Signals</A>
+<LI><A NAME="tex2html393"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Zero_Phase_Signals.html">Zero Phase Signals</A>
+<LI><A NAME="tex2html394"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Application_Shift_Theorem_FFT.html">Application of the Shift Theorem to FFT Windows</A>
+</UL>
+<LI><A NAME="tex2html395"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Convolution_Theorem.html">Convolution Theorem</A>
+<LI><A NAME="tex2html396"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Dual_Convolution_Theorem.html">Dual of the Convolution Theorem</A>
+<LI><A NAME="tex2html397"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Correlation_Theorem.html">Correlation Theorem</A>
+<LI><A NAME="tex2html398"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Power_Theorem.html">Power Theorem</A>
+<UL>
+<LI><A NAME="tex2html399"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Normalized_DFT_Power_Theorem.html">Normalized DFT Power Theorem</A>
+</UL>
+<LI><A NAME="tex2html400"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Rayleigh_Energy_Theorem_Parseval_s.html">Rayleigh Energy Theorem (Parseval's Theorem)</A>
+<LI><A NAME="tex2html401"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Stretch_Theorem_Repeat_Theorem.html">Stretch Theorem (Repeat Theorem)</A>
+<LI><A NAME="tex2html402"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Downsampling_Theorem_Aliasing_Theorem.html">Downsampling Theorem (Aliasing Theorem)</A>
+<UL>
+<LI><A NAME="tex2html403"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Illustration_Downsampling_Aliasing_Theorem_Matlab.html">Illustration of the Downsampling/Aliasing Theorem in Matlab</A>
+</UL>
+<LI><A NAME="tex2html404"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Zero_Padding_Theorem_Spectral.html">Zero Padding Theorem (Spectral Interpolation)</A>
+<LI><A NAME="tex2html405"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Periodic_Interpolation_Spectral_Zero.html">Interpolation Theorems</A>
+<UL>
+<LI><A NAME="tex2html406"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Relation_Stretch_Theorem.html">Relation to Stretch Theorem</A>
+<LI><A NAME="tex2html407"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Bandlimited_Interpolation_Time_Limited_Signals.html">Bandlimited Interpolation of Time-Limited Signals</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html408"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Theorems_Problems.html">DFT Theorems Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html409"
+  HREF="Example_Applications_DFT.html">DFT Applications</A>
+<UL>
+<LI><A NAME="tex2html410"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Why_DFT_usually_called.html">Why a DFT is usually called an FFT in practice</A>
+<LI><A NAME="tex2html411"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectrum_Analysis_Sinusoid_Windowing.html">Spectrum Analysis of a Sinusoid</A>
+<UL>
+<LI><A NAME="tex2html412"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FFT_Simple_Sinusoid.html">FFT of a Simple Sinusoid</A>
+<LI><A NAME="tex2html413"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FFT_Not_So_Simple_Sinusoid.html">FFT of a Not-So-Simple Sinusoid</A>
+<LI><A NAME="tex2html414"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FFT_Zero_Padded_Sinusoid.html">FFT of a Zero-Padded Sinusoid</A>
+<LI><A NAME="tex2html415"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Use_Blackman_Window.html">Use of a Blackman Window</A>
+<UL>
+<LI><A NAME="tex2html416"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Applying_Blackman_Window.html">Applying the Blackman Window</A>
+</UL>
+<LI><A NAME="tex2html417"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Hann_Windowed_Complex_Sinusoid.html">Hann-Windowed Complex Sinusoid</A>
+<UL>
+<LI><A NAME="tex2html418"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Hann_Window_Spectrum_Analysis.html">Hann Window Spectrum Analysis Results</A>
+<LI><A NAME="tex2html419"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectral_Phase.html">Spectral Phase</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html420"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectrograms.html">Spectrograms</A>
+<UL>
+<LI><A NAME="tex2html421"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectrogram_Speech.html">Spectrogram of Speech</A>
+</UL>
+<LI><A NAME="tex2html422"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Filters_Convolution.html">Filters and Convolution</A>
+<UL>
+<LI><A NAME="tex2html423"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Frequency_Response.html">Frequency Response</A>
+<LI><A NAME="tex2html424"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Amplitude_Response.html">Amplitude Response</A>
+<LI><A NAME="tex2html425"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Phase_Response.html">Phase Response</A>
+</UL>
+<LI><A NAME="tex2html426"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Correlation_Analysis.html">Correlation Analysis</A>
+<UL>
+<LI><A NAME="tex2html427"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html">Cross-Correlation</A>
+<LI><A NAME="tex2html428"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Unbiased_Cross_Correlation.html">Unbiased Cross-Correlation</A>
+<LI><A NAME="tex2html429"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Autocorrelation.html">Autocorrelation</A>
+<LI><A NAME="tex2html430"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Matched_Filtering.html">Matched Filtering</A>
+<LI><A NAME="tex2html431"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FIR_System_Identification.html">FIR System Identification</A>
+</UL>
+<LI><A NAME="tex2html432"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Power_Spectral_Density_Estimation.html">Power Spectral Density</A>
+<LI><A NAME="tex2html433"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Coherence_Function.html">Coherence Function</A>
+<UL>
+<LI><A NAME="tex2html434"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Coherence_Function_Matlab.html">Coherence Function in Matlab</A>
+</UL>
+<LI><A NAME="tex2html435"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Recommended_Further_Reading.html">Recommended Further Reading</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html436"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html">Fast Fourier Transforms (FFT)</A>
+<UL>
+<LI><A NAME="tex2html437"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Mixed_Radix_Cooley_Tukey_FFT.html">Mixed-Radix Cooley-Tukey FFT</A>
+<UL>
+<LI><A NAME="tex2html438"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Decimation_Time.html">Decimation in Time</A>
+<LI><A NAME="tex2html439"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Radix_2_FFT.html">Radix 2 FFT</A>
+<UL>
+<LI><A NAME="tex2html440"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Radix_2_FFT_Complexity.html">Radix 2 FFT Complexity is N Log N</A>
+</UL>
+<LI><A NAME="tex2html441"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fixed_Point_FFTs_NFFTs.html">Fixed-Point FFTs and NFFTs</A>
+</UL>
+<LI><A NAME="tex2html442"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Prime_Factor_Algorithm_PFA.html">Prime Factor Algorithm
+(PFA)</A>
+<LI><A NAME="tex2html443"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Rader_s_FFT_Algorithm_Prime.html">Rader's FFT Algorithm for Prime Lengths</A>
+<LI><A NAME="tex2html444"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Bluestein_s_FFT_Algorithm.html">Bluestein's FFT Algorithm</A>
+<LI><A NAME="tex2html445"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fast_Transforms_Audio_DSP.html">Fast Transforms in Audio DSP</A>
+<LI><A NAME="tex2html446"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Related_Transforms.html">Related Transforms</A>
+<UL>
+<LI><A NAME="tex2html447"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Discrete_Cosine_Transform_DCT.html">The Discrete
+Cosine Transform (DCT)</A>
+<LI><A NAME="tex2html448"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Number_Theoretic_Transform.html">Number Theoretic Transform</A>
+</UL>
+<LI><A NAME="tex2html449"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FFT_Software.html">FFT Software</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html450"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fourier_Transforms_Continuous_Discrete_Time_Frequency.html">Continuous/Discrete Transforms</A>
+<UL>
+<LI><A NAME="tex2html451"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html">Discrete Time Fourier Transform (DTFT)</A>
+<LI><A NAME="tex2html452"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html">Fourier Transform (FT) and Inverse</A>
+<UL>
+<LI><A NAME="tex2html453"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Existence_Fourier_Transform.html">Existence of the Fourier Transform</A>
+<LI><A NAME="tex2html454"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Continuous_Time_Impulse.html">The Continuous-Time Impulse</A>
+</UL>
+<LI><A NAME="tex2html455"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fourier_Series_FS_Relation.html">Fourier Series (FS)</A>
+<UL>
+<LI><A NAME="tex2html456"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Relation_DFT_Fourier_Series.html">Relation of the DFT to Fourier Series</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html457"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Selected_Continuous_Time_Fourier_Theorems.html">Continuous Fourier Theorems</A>
+<UL>
+<LI><A NAME="tex2html458"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Differentiation_Theorem.html">Differentiation Theorem</A>
+<LI><A NAME="tex2html459"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Scaling_Theorem.html">Scaling Theorem</A>
+<LI><A NAME="tex2html460"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Uncertainty_Principle.html">The Uncertainty Principle</A>
+<UL>
+<LI><A NAME="tex2html461"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Duration_Bandwidth_Second_Moments.html">Second Moments</A>
+<LI><A NAME="tex2html462"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Time_Limited_Signals.html">Time-Limited Signals</A>
+<LI><A NAME="tex2html463"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Time_Bandwidth_Products_Unbounded_Above.html">Time-Bandwidth Products
+are Unbounded Above</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html464"
+  HREF="Sampling_Theory.html">Sampling Theory</A>
+<UL>
+<LI><A NAME="tex2html465"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Introduction_Sampling.html">Introduction to Sampling</A>
+<UL>
+<LI><A NAME="tex2html466"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Reconstruction_Samples_Pictorial_Version.html">Reconstruction from Samples--Pictorial Version</A>
+<LI><A NAME="tex2html467"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sinc_Function.html">The Sinc Function</A>
+<LI><A NAME="tex2html468"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Reconstruction_Samples_The_Math.html">Reconstruction from Samples--The Math</A>
+</UL>
+<LI><A NAME="tex2html469"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Aliasing_Sampled_Signals.html">Aliasing of Sampled Signals</A>
+<UL>
+<LI><A NAME="tex2html470"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Continuous_Time_Aliasing_Theorem.html">Continuous-Time Aliasing Theorem</A>
+</UL>
+<LI><A NAME="tex2html471"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html">Sampling Theorem</A>
+<LI><A NAME="tex2html472"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Appendix_Frequencies_Representable_by.html">Geometric Sequence Frequencies</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html473"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Taylor_Series_Expansions.html">Taylor Series Expansions</A>
+<UL>
+<LI><A NAME="tex2html474"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Informal_Derivation_Taylor_Series.html">Informal Derivation of Taylor Series</A>
+<LI><A NAME="tex2html475"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Taylor_Series_Remainder.html">Taylor Series with Remainder</A>
+<LI><A NAME="tex2html476"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Formal_Statement_Taylor_s_Theorem.html">Formal Statement of Taylor's Theorem</A>
+<LI><A NAME="tex2html477"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Weierstrass_Approximation_Theorem.html">Weierstrass Approximation Theorem</A>
+<LI><A NAME="tex2html478"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Points_Infinite_Flatness.html">Points of Infinite Flatness</A>
+<LI><A NAME="tex2html479"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Differentiability_Audio_Signals.html">Differentiability of Audio Signals</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html480"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Logarithms_Decibels.html">Logarithms and Decibels</A>
+<UL>
+<LI><A NAME="tex2html481"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Logarithms.html">Logarithms</A>
+<UL>
+<LI><A NAME="tex2html482"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Changing_Base.html">Changing the Base</A>
+<LI><A NAME="tex2html483"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Logarithms_Negative_Imaginary_Numbers.html">Logarithms of
+Negative and Imaginary Numbers</A>
+</UL>
+<LI><A NAME="tex2html484"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Decibels.html">Decibels</A>
+<UL>
+<LI><A NAME="tex2html485"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Properties_DB_Scales.html">Properties of DB Scales</A>
+<LI><A NAME="tex2html486"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Specific_DB_Scales.html">Specific DB Scales</A>
+<UL>
+<LI><A NAME="tex2html487"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DBm_Scale.html">DBm Scale</A>
+<LI><A NAME="tex2html488"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/VU_Meters_DBu_ScaleF_3.html">VU Meters and the DBu
+  Scale<SUP>F.4</SUP></A>
+<LI><A NAME="tex2html489"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DBV_Scale.html">DBV Scale</A>
+<LI><A NAME="tex2html490"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DB_SPL.html">DB SPL</A>
+<LI><A NAME="tex2html491"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DBA_A_Weighted_DB.html">DBA (A-Weighted DB)</A>
+<LI><A NAME="tex2html492"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DB_Full_Scale_dBFS.html">DB Full Scale (dBFS) for Spectrum Display</A>
+</UL>
+<LI><A NAME="tex2html493"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Dynamic_Range.html">Dynamic Range</A>
+</UL>
+<LI><A NAME="tex2html494"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Voltage_Current_Resistance.html">Voltage, Current, and Resistance</A>
+<LI><A NAME="tex2html495"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Exercises.html">Exercises</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html496"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Number_Systems_Digital_Audio.html">Digital Audio Number Systems</A>
+<UL>
+<LI><A NAME="tex2html497"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Linear_Number_Systems.html">Linear Number Systems</A>
+<UL>
+<LI><A NAME="tex2html498"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Pulse_Code_Modulation_PCM.html">Pulse Code Modulation (PCM)</A>
+<LI><A NAME="tex2html499"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Binary_Integer_Fixed_Point_Numbers.html">Binary Integer Fixed-Point Numbers</A>
+<UL>
+<LI><A NAME="tex2html500"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/One_s_Complement_Fixed_Point_Format.html">One's Complement Fixed-Point Format</A>
+<LI><A NAME="tex2html501"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Two_s_Complement_Fixed_Point_Format.html">Two's Complement Fixed-Point Format</A>
+<LI><A NAME="tex2html502"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Two_s_Complement_Integer_Fixed_Point_Numbers.html">Two's-Complement, Integer Fixed-Point Numbers</A>
+</UL>
+<LI><A NAME="tex2html503"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Fractional_Binary_Fixed_Point_Numbers.html">Fractional Binary Fixed-Point Numbers</A>
+<LI><A NAME="tex2html504"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/How_Many_Bits_Enough.html">How Many Bits are Enough for Digital Audio?</A>
+<LI><A NAME="tex2html505"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/When_Do_We_Have.html">When Do We Have to Swap Bytes?<SUP>G.5</SUP></A>
+</UL>
+<LI><A NAME="tex2html506"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Logarithmic_Number_Systems_Audio.html">Logarithmic Number Systems for Audio</A>
+<UL>
+<LI><A NAME="tex2html507"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Floating_Point_Numbers.html">Floating-Point Numbers</A>
+<LI><A NAME="tex2html508"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Logarithmic_Fixed_Point_Numbers.html">Logarithmic Fixed-Point Numbers</A>
+<LI><A NAME="tex2html509"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Mu_Law_Coding.html">Mu-Law Coding</A>
+</UL>
+<LI><A NAME="tex2html510"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Round_Off_Error_Variance.html">Round-Off Error Variance</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html511"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Matrices.html">Matrices</A>
+<UL>
+<LI><A NAME="tex2html512"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Matrix_Multiplication.html">Matrix Multiplication</A>
+<LI><A NAME="tex2html513"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Solving_Linear_Equations_Using.html">Solving Linear Equations Using Matrices</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html514"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Matlab_Octave_Examples.html">Matlab/Octave Examples</A>
+<UL>
+<LI><A NAME="tex2html515"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Complex_Numbers_Matlab_Octave.html">Complex Numbers in Matlab and Octave</A>
+<UL>
+<LI><A NAME="tex2html516"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Complex_Number_Manipulation.html">Complex Number Manipulation</A>
+</UL>
+<LI><A NAME="tex2html517"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Factoring_Polynomials_Matlab.html">Factoring Polynomials in Matlab</A>
+<LI><A NAME="tex2html518"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Geometric_Signal_Theory_I.html">Geometric Signal Theory</A>
+<UL>
+<LI><A NAME="tex2html519"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Vector_Interpretation_Complex_Numbers.html">Vector Interpretation of Complex Numbers</A>
+<LI><A NAME="tex2html520"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Signal_Metrics_I.html">Signal Metrics</A>
+<UL>
+<LI><A NAME="tex2html521"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Signal_Energy_Power.html">Signal Energy and Power</A>
+</UL>
+<LI><A NAME="tex2html522"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Inner_Product_I.html">Inner Product</A>
+<LI><A NAME="tex2html523"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Vector_Cosine_I.html">Vector Cosine</A>
+<LI><A NAME="tex2html524"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Projection_I.html">Projection</A>
+<UL>
+<LI><A NAME="tex2html525"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Projection_Example_1.html">Projection Example 1</A>
+<LI><A NAME="tex2html526"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Projection_Example_2.html">Projection Example 2</A>
+</UL>
+<LI><A NAME="tex2html527"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Orthogonal_Basis_Computation.html">Orthogonal Basis Computation</A>
+</UL>
+<LI><A NAME="tex2html528"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_I.html">The DFT</A>
+<UL>
+<LI><A NAME="tex2html529"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Sinusoids_I.html">DFT Sinusoids for <SPAN CLASS="MATH">\(N=8\)</SPAN></A>
+<LI><A NAME="tex2html530"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Bin_Response.html">DFT Bin Response</A>
+<LI><A NAME="tex2html531"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Matrix.html">DFT Matrix</A>
+</UL>
+<LI><A NAME="tex2html532"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectrogram_Computation.html">Spectrogram Computation</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html533"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Bibliography.html">Bibliography</A>
+<LI><A NAME="tex2html534"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Index_this_Document.html">Index for this Document</A>
+<LI><A NAME="tex2html535"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/About_this_document.html">About this document ...</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html237"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Preface.html" 
+ onMouseover="return escape('Preface')">Next</A> &nbsp;|&nbsp;
+ <A NAME="tex2html235"
+   
+ HREF="http://ccrma.stanford.edu/~jos/mdft/Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="http://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="http://ccrma.stanford.edu/~jos/mdft/mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="http://ccrma.stanford.edu/~jos/mdft/mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="http://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="http://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

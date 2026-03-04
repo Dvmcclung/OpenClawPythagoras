@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Convolution as a Filtering Operation</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Convolution as a Filtering Operation">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Convolution_Example_1_Smoothing.html">
+<LINK REL="previous" HREF="Commutativity_Convolution.html">
+<LINK REL="up" HREF="Convolution.html">
+<LINK REL="next" HREF="Convolution_Example_1_Smoothing.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2357"
+  HREF="Convolution_Example_1_Smoothing.html" 
+ onMouseover="return escape('Convolution Example 1: Smoothing a Rectangular Pulse')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2347"
+  HREF="Commutativity_Convolution.html" 
+ onMouseover="return escape('Commutativity of Convolution')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2353"
+  HREF="Convolution.html" 
+ onMouseover="return escape('Convolution')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2355"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00824200000000000000"></A><A NAME="sec:convfilt"></A><A NAME="16351"></A>
+<A NAME="16352"></A>
+<BR>
+<A HREF="Convolution.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Convolution.html')">Convolution</A> as a <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">Filtering</A> Operation
+</H4>
+
+<P>
+In a convolution of two <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signals</A> <SPAN CLASS="MATH">\(x\circledast y\)</SPAN>, where both <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN>
+are signals of length <SPAN CLASS="MATH">\(N\)</SPAN> (real or complex), we may interpret either
+<SPAN CLASS="MATH">\(x\)</SPAN> or <SPAN CLASS="MATH">\(y\)</SPAN> as a <I>filter</I><A NAME="16354"></A> that operates on the other signal
+which is in turn interpreted as the filter's ``input signal''.<A NAME="tex2html81"
+  HREF="footnode.html#foot16241"><SUP>7.5</SUP></A> Let <SPAN CLASS="MATH">\(h\in\mathbb{C}^N\)</SPAN> denote a length <SPAN CLASS="MATH">\(N\)</SPAN> signal that is interpreted
+as a filter.  Then given any input signal <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN>, the filter output
+signal <SPAN CLASS="MATH">\(y\in\mathbb{C}^N\)</SPAN> may be defined as the <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Convolution_Short_Signals.html#21256" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Convolution_Short_Signals.html#21256')">cyclic convolution</A></I> of
+<SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(h\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[y = h\circledast x = x \circledast h\]</DIV><P></P>
+Because the convolution is cyclic, with <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(h\)</SPAN> chosen from the
+set of (periodically extended) vectors of length <SPAN CLASS="MATH">\(N\)</SPAN>, <SPAN CLASS="MATH">\(h(n)\)</SPAN> is most
+precisely viewed as the <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse</A>-train-response</I> of the
+associated filter at time <SPAN CLASS="MATH">\(n\)</SPAN>.  Specifically, the impulse-train
+response <SPAN CLASS="MATH">\(h\in\mathbb{C}^N\)</SPAN> is the response of the filter to the
+<I>impulse-train signal</I><A NAME="16360"></A> <SPAN CLASS="MATH">\(\delta\isdeftext [1,0,\ldots,0]\in\mathbb{R}^N\)</SPAN>,
+which, by <A HREF="Modulo_Indexing_Periodic_Extension.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Modulo_Indexing_Periodic_Extension.html')">periodic extension</A>, is equal to
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\delta(n) = \left{\begin{array}{ll}
+	1, & n=0\;\mbox{(mod $N$)} \\[5pt]
+	0, & n\ne 0\;\mbox{(mod $N$)}. \\
+	\end{array}
+	\right.\]</DIV><P></P>
+Thus, <SPAN CLASS="MATH">\(N\)</SPAN> is the <I><A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">period</A></I> of the impulse-train in samples--there
+is an ``impulse'' (a `<SPAN CLASS="MATH">\(1\)</SPAN>') every <SPAN CLASS="MATH">\(N\)</SPAN> samples.  Neglecting the assumed
+<A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic</A> extension of all signals in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>, we may refer to <SPAN CLASS="MATH">\(\delta\)</SPAN>
+more simply as the <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse signal</A></I><A NAME="16369"></A>, and <SPAN CLASS="MATH">\(h\)</SPAN> as the <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse response&lt;/i&gt; of a system is its output signal in response to the impulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse
+response</A></I><A NAME="16371"></A> (as opposed to impulse-<I>train</I> response).  In contrast,
+for the <A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">DTFT</A> (&#167;<A HREF="Discrete_Time_Fourier_Transform.html#sec:dtft">B.1</A>), in which the discrete-time axis is
+infinitely long, the impulse signal <SPAN CLASS="MATH">\(\delta(n)\)</SPAN> is defined as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\delta(n) \isdef \left{\begin{array}{ll}
+	1, & n=0 \\[5pt]
+	0, & n\ne 0 \\
+	\end{array}
+	\right.\]</DIV><P></P>
+and no periodic extension arises.
+
+<P>
+As discussed below (&#167;<A HREF="Zero_Padding.html#sec:zeropadding">7.2.7</A>), one may embed <I>acyclic</I>
+convolution within a larger <A HREF="https://ccrma.stanford.edu/~jos/sasp/Convolution_Short_Signals.html#21256" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Convolution_Short_Signals.html#21256')">cyclic convolution</A>.  In this way,
+real-world systems may be simulated using fast <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> convolutions (see
+Appendix <A HREF="Fast_Fourier_Transform_FFT.html#app:fft">A</A> for more on fast convolution algorithms).
+
+<P>
+Note that only linear, time-invariant (<A HREF="https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html" onMouseover="return escape('The topic of &lt;i&gt;linear systems theory&lt;/i&gt; is primarily about &lt;i&gt;linear, time-invariant (LTI) filters&lt;/i&gt;.   A &lt;i&gt;linear&lt;/i&gt; filter is characterized by the property that its output-signal amplitude is linearly proportional to its input-signal amplitude.  A &lt;i&gt;time-invariant&lt;/i&gt; filter, or \&#39;constant-coefficient\&#39; filter, performs the same filtering operation at all times.  Only LTI filters can be characeterized by their &lt;i&gt;impulse response&lt;/i&gt;, or their &lt;i&gt;frequency response&lt;/i&gt;, or their &lt;i&gt;poles and zeros&lt;/i&gt; plus a gain, or the like.  Also, only LTI filters have the &lt;i&gt;superposition property&lt;/i&gt; for audio signals, in which the filtering of an audio mix can be obtained alternatively by filtering each channel separately and adding the filtered channels together.  Equivalently, only LTI filters exhibit no &lt;i&gt;intermodulation distortion&lt;/i&gt; for audio signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html')">LTI</A>) filters can be completely
+represented by their impulse response (the filter output in response
+to an impulse at time <SPAN CLASS="MATH">\(0\)</SPAN>).  The <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('Every LTI filter can be implemented by convolving its impulse response with the input signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">convolution representation</A> of LTI
+<A HREF="https://ccrma.stanford.edu/~jos/filters/" onMouseover="return escape('A &lt;i&gt;digital filter&lt;/i&gt; can be visualized as a \&#39;black box\&#39; that accepts a sequence of numbers and emits a new sequence of numbers. In digital audio signal processing applications, such number sequences usually represent sounds. For example, digital filters are used to implement graphic equalizers and other digital audio effects. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/')">digital filters</A> is fully discussed in Book II [<A
+ HREF="Bibliography.html#JOSFP">71</A>] of the
+music signal processing book series (in which this is Book I).
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2357"
+  HREF="Convolution_Example_1_Smoothing.html" 
+ onMouseover="return escape('Convolution Example 1: Smoothing a Rectangular Pulse')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2347"
+  HREF="Commutativity_Convolution.html" 
+ onMouseover="return escape('Commutativity of Convolution')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2353"
+  HREF="Convolution.html" 
+ onMouseover="return escape('Convolution')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2355"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

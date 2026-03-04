@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Quadratic Formula</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="The Quadratic Formula">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Complex_Roots.html">
+<LINK REL="previous" HREF="Factoring_Polynomial.html">
+<LINK REL="up" HREF="Complex_Numbers.html">
+<LINK REL="next" HREF="Complex_Roots.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html694"
+  HREF="Complex_Roots.html" 
+ onMouseover="return escape('Complex Roots')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html684"
+  HREF="Factoring_Polynomial.html" 
+ onMouseover="return escape('Factoring a Polynomial')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html690"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html692"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00320000000000000000"></A><A NAME="sec:quadraticformula"></A><A NAME="5765"></A>
+<BR>
+The Quadratic Formula
+</H2>
+
+<P>
+The general second-order (real) polynomial is
+<A NAME="eq:gsp"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}p(x) \isdef a x^2 + b x + c
+\end{equation}</DIV><P></P>
+where the coefficients
+<SPAN CLASS="MATH">\(a,b,c\)</SPAN> are any <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real numbers</A>, and we assume <SPAN CLASS="MATH">\(a\neq 0\)</SPAN> since otherwise
+it would not be second order.  Some experiments plotting <SPAN CLASS="MATH">\(p(x)\)</SPAN> for different
+values of the coefficients leads one to guess that the curve is always a
+scaled and translated <I>parabola</I><A NAME="5770"></A>.  The canonical parabola centered
+at <SPAN CLASS="MATH">\(x=x_0\)</SPAN> is given by
+<A NAME="eq:fsp"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}y(x) = d\cdot (x-x_0)^2 + e
+\end{equation}</DIV><P></P>
+where the magnitude of <SPAN CLASS="MATH">\(d\)</SPAN> determines the width of the parabola, and
+<SPAN CLASS="MATH">\(e\)</SPAN> provides an arbitrary vertical offset.  If <SPAN CLASS="MATH">\(d&gt;0\)</SPAN>, the parabola has
+the minimum value <SPAN CLASS="MATH">\(e\)</SPAN> at <SPAN CLASS="MATH">\(x=x_0\)</SPAN>; when <SPAN CLASS="MATH">\(d&lt;0\)</SPAN>, the parabola reaches a
+maximum at <SPAN CLASS="MATH">\(x=x_0\)</SPAN> (also equal to <SPAN CLASS="MATH">\(e\)</SPAN>).  If we can find <SPAN CLASS="MATH">\(d,e,x_0\)</SPAN> in
+terms of <SPAN CLASS="MATH">\(a,b,c\)</SPAN> for any quadratic polynomial, then we can easily
+factor the polynomial.  This is called <I>completing the square</I><A NAME="5775"></A>.
+Multiplying out the right-hand side of Eq.(<A HREF="Quadratic_Formula.html#eq:fsp">2.2</A>) above, we get
+<A NAME="eq:efsp"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}y(x) = d(x-x_0)^2 + e = d x^2 -2 d x_0 x + d x_0^2 + e.
+\end{equation}</DIV><P></P>
+Equating coefficients of like powers of <SPAN CLASS="MATH">\(x\)</SPAN> to the general second-order
+polynomial in Eq.(<A HREF="Quadratic_Formula.html#eq:gsp">2.1</A>) gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}d &=& a\\
+-2 d x_0 &=& b \quad\Rightarrow\quad x_0 = -b/(2a) \\
+d x_0^2 + e &=& c \quad\Rightarrow\quad e = c - b^2/(4a).\end{eqnarray*}</DIV><P></P>
+Using these answers, any second-order polynomial <SPAN CLASS="MATH">\(p(x) = a x^2 + b x + c\)</SPAN>
+can be rewritten as a scaled, translated parabola
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[p(x) = a\left(x+\frac{b}{2a}\right)^2 + \left(c - \frac{b^2}{4a}\right).\]</DIV><P></P>
+In this form, the roots are easily found by solving <SPAN CLASS="MATH">\(p(x)=0\)</SPAN> to get
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.}\]</DIV><P></P>
+This is the general <I>quadratic formula</I><A NAME="5785"></A>.  It was obtained by simple
+algebraic manipulation of the original polynomial.  There is only one
+``catch.''  What happens when <SPAN CLASS="MATH">\(b^2 - 4ac\)</SPAN> is negative?  This introduces the
+square root of a negative number which we could insist ``does not exist.''
+Alternatively, we could invent <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A> to accommodate it.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html694"
+  HREF="Complex_Roots.html" 
+ onMouseover="return escape('Complex Roots')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html684"
+  HREF="Factoring_Polynomial.html" 
+ onMouseover="return escape('Factoring a Polynomial')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html690"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html692"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

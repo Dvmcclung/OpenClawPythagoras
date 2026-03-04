@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Vector Addition</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Vector Addition">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Vector_Subtraction.html">
+<LINK REL="previous" HREF="Signals_Vectors.html">
+<LINK REL="up" HREF="Geometric_Signal_Theory.html">
+<LINK REL="next" HREF="Vector_Subtraction.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1543"
+  HREF="Vector_Subtraction.html" 
+ onMouseover="return escape('Vector Subtraction')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1533"
+  HREF="Example_Vector_View.html" 
+ onMouseover="return escape('An Example Vector View:')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1539"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1541"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00630000000000000000"></A><A NAME="sec:vectoradd"></A><A NAME="10819"></A>
+<BR>
+Vector Addition
+</H2>
+
+<P>
+Given two vectors in <SPAN CLASS="MATH">\(\mathbb{R}^N\)</SPAN>, say 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\underline{x}&\isdef& (x_0,x_1,\ldots,x_{N-1})\\
+\underline{y}&\isdef& (y_0,y_1,\ldots,y_{N-1}),\end{eqnarray*}</DIV><P></P>
+the <I>vector sum</I> is defined by
+<I>elementwise</I> addition.  If we denote the sum by <SPAN CLASS="MATH">\(\underline{w}\isdef \underline{x}+\underline{y}\)</SPAN>,
+then we have <SPAN CLASS="MATH">\(\underline{w}_n = x_n+y_n\)</SPAN> for <SPAN CLASS="MATH">\(n=0,1,2,\ldots,N-1\)</SPAN>.  We could also
+write <SPAN CLASS="MATH">\(\underline{w}(n) = x(n)+y(n)\)</SPAN> for <SPAN CLASS="MATH">\(n=0,1,2,\ldots,N-1\)</SPAN> if preferred.
+
+<P>
+The vector diagram for the sum of two vectors can be found using the
+parallelogram rule, as shown in Fig.<A HREF="Vector_Addition.html#fig:vecsum">5.2</A> for <SPAN CLASS="MATH">\(N=2\)</SPAN>, <SPAN CLASS="MATH">\(\underline{x}=(2,3)\)</SPAN>, and
+<SPAN CLASS="MATH">\(\underline{y}=(4,1)\)</SPAN>.  
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:vecsum"></A></P><IMG
+ WIDTH="347" HEIGHT="184" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img47.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img47.png 1x,https://ccrma.stanford.edu/~jos/mdft/img47_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img47_3x.png 3x"
+ ALT="\includegraphics[scale=0.7]{eps/vecsum}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img46.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img46.png 1x,https://ccrma.stanford.edu/~jos/mdft/img46_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img46_3x.png 3x"
+ ALT="% latex2html id marker 35928
+$\textstyle \parbox{\twidth }{\caption{\protect\small Geometric interpretation of
+a length 2 vector sum.}}$">
+</DIV>
+
+<P>
+Also shown are the lighter construction lines which complete the
+parallelogram started by <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> and <SPAN CLASS="MATH">\(\underline{y}\)</SPAN>, indicating where the endpoint of the
+sum <SPAN CLASS="MATH">\(\underline{x}+\underline{y}\)</SPAN> lies.  Since it is a parallelogram, the two construction lines
+are congruent to the vectors <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> and <SPAN CLASS="MATH">\(\underline{y}\)</SPAN>.  As a result, the vector sum is
+often expressed as a <I>triangle</I> by translating the origin of one member
+of the sum to the tip of the other, as shown in Fig.<A HREF="Vector_Addition.html#fig:vecsumr">5.3</A>.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:vecsumr"></A></P><IMG
+ WIDTH="358" HEIGHT="184" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img49.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img49.png 1x,https://ccrma.stanford.edu/~jos/mdft/img49_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img49_3x.png 3x"
+ ALT="\includegraphics[scale=0.7]{eps/vecsumr}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img48.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img48.png 1x,https://ccrma.stanford.edu/~jos/mdft/img48_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img48_3x.png 3x"
+ ALT="% latex2html id marker 35930
+$\textstyle \parbox{\twidth }{\caption{\protect\small Vector sum, translating
+one vector to the tip of the other.}}$">
+</DIV>
+
+<P>
+In the figure, <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> was translated to the tip of <SPAN CLASS="MATH">\(\underline{y}\)</SPAN>.  
+This depicts <SPAN CLASS="MATH">\(y+x\)</SPAN>, since ``<SPAN CLASS="MATH">\(x\)</SPAN> picks up where <SPAN CLASS="MATH">\(y\)</SPAN> leaves off.''
+It is equally valid
+to translate <SPAN CLASS="MATH">\(\underline{y}\)</SPAN> to the tip of <SPAN CLASS="MATH">\(\underline{x}\)</SPAN>, because vector addition is <I>commutative</I>, <I>i.e.</I>, <SPAN CLASS="MATH">\(\underline{x}+\underline{y}\)</SPAN> = <SPAN CLASS="MATH">\(\underline{y}+\underline{x}\)</SPAN>.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1543"
+  HREF="Vector_Subtraction.html" 
+ onMouseover="return escape('Vector Subtraction')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1533"
+  HREF="Example_Vector_View.html" 
+ onMouseover="return escape('An Example Vector View:')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1539"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1541"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

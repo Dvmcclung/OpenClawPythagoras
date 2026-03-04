@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Symmetry</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Symmetry">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Shift_Theorem.html">
+<LINK REL="previous" HREF="Conjugation_Reversal.html">
+<LINK REL="up" HREF="Fourier_Theorems.html">
+<LINK REL="next" HREF="Shift_Theorem.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2638"
+  HREF="Shift_Theorem.html" 
+ onMouseover="return escape('Shift Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2628"
+  HREF="Conjugation_Reversal.html" 
+ onMouseover="return escape('Conjugation and Reversal')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2634"
+  HREF="Fourier_Theorems.html" 
+ onMouseover="return escape('Fourier Theorems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2636"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00843000000000000000"></A><A NAME="sec:symmetry"></A><A NAME="18390"></A>
+<BR>
+Symmetry
+</H3>
+
+<P>
+In the previous section, we found <SPAN CLASS="MATH">\(\oper{Flip}(X) = \overline{X}\)</SPAN> when <SPAN CLASS="MATH">\(x\)</SPAN> is
+real.  This fact is of high practical importance.  It says that the
+<A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> of every real <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> is <I>Hermitian</I><A NAME="18394"></A>.
+Due to this symmetry, we may discard all <A HREF="Positive_Negative_Frequencies.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Positive_Negative_Frequencies.html')">negative-frequency</A> spectral
+samples of a real signal and regenerate them later if needed from the
+positive-frequency samples.  Also, spectral plots of real signals are
+normally displayed only for positive frequencies; <I>e.g.</I>, <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectra</A> of
+sampled signals are normally plotted over the range <SPAN CLASS="MATH">\(0\)</SPAN> Hz to <SPAN CLASS="MATH">\(f_s/2\)</SPAN>
+Hz.  On the other hand, the <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> of a <I>complex</I> signal must
+be shown, in general, from <SPAN CLASS="MATH">\(-f_s/2\)</SPAN> to <SPAN CLASS="MATH">\(f_s/2\)</SPAN> (or from <SPAN CLASS="MATH">\(0\)</SPAN> to <SPAN CLASS="MATH">\(f_s\)</SPAN>),
+since the positive and negative frequency components of a complex
+signal are independent.
+
+<P>
+Recall from &#167;<A HREF="Even_Odd_Functions.html#sec:evenodd">7.3</A> that a signal <SPAN CLASS="MATH">\(x(n)\)</SPAN> is said to be
+<I>even</I> if <SPAN CLASS="MATH">\(x(-n)=x(n)\)</SPAN>, and <I>odd</I> if <SPAN CLASS="MATH">\(x(-n)=-x(n)\)</SPAN>.  Below
+are are <A HREF="Fourier_Theorems.html" onMouseover="return escape('The Fourier theorems establish important, elementary time-frequency relationships.  The theorems are largely the same whether stated for the case of the Fourier Transform (FT), Discrete Fourier Transform (DFT), Discrete Time Fourier Transform (DTFT), or Fourier Series (FS). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html')">Fourier theorems</A> pertaining to even and odd signals and/or
+spectra.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>If <SPAN CLASS="MATH">\(x\in\mathbb{R}^N\)</SPAN>, then <SPAN CLASS="MATH">\(\realPart{X}\)</SPAN> is <I>even</I> and <SPAN CLASS="MATH">\(\imagPart{X}\)</SPAN> is <I>odd</I>.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>This follows immediately from the conjugate symmetry of <SPAN CLASS="MATH">\(X\)</SPAN> for real signals
+<SPAN CLASS="MATH">\(x\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>If <SPAN CLASS="MATH">\(x\in\mathbb{R}^N\)</SPAN>, <SPAN CLASS="MATH">\(\left|X\right|\)</SPAN> is <I>even</I> and <SPAN CLASS="MATH">\(\angle{X}\)</SPAN> is <I>odd</I>.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>This follows immediately from the conjugate symmetry of <SPAN CLASS="MATH">\(X\)</SPAN> expressed
+in polar form <SPAN CLASS="MATH">\(X(k)= \left|X(k)\right|e^{j\angle{X(k)}}\)</SPAN>.
+
+<P>
+The conjugate symmetry of spectra of real signals is perhaps the most
+important symmetry theorem.  However, there are a couple more we can readily
+show:
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>An even signal has an even transform:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{x\;\mbox{even} \;\longleftrightarrow\;X\;\mbox{even}}\]</DIV><P></P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>
+Express <SPAN CLASS="MATH">\(x\)</SPAN> in terms of its real and imaginary parts by <SPAN CLASS="MATH">\(x\isdeftext x_r + j
+x_i\)</SPAN>.  Note that for a complex signal <SPAN CLASS="MATH">\(x\)</SPAN> to be even, both its real and
+imaginary parts must be even.  Then
+<A NAME="eq:evensymm"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray}X(k) &\isdef& \sum_{n=0}^{N-1}x(n) e^{-j\omega_k n} \nonumber \\
+&=&\sum_{n=0}^{N-1}[x_r(n)+jx_i(n)] \cos(\omega_k n) - j [x_r(n)+jx_i(n)] \sin(\omega_k n) \nonumber \\
+&=&\sum_{n=0}^{N-1}[x_r(n)\cos(\omega_k n) + x_i(n)\sin(\omega_k n)] \nonumber \\
+	&& \;\,\mathop{+} j [x_i(n)\cos(\omega_k n) - x_r(n)\sin(\omega_k n)].
+\end{eqnarray}</DIV><P></P>
+Let <SPAN CLASS="MATH">\(\mbox{even}_n\)</SPAN> denote a function that is even in <SPAN CLASS="MATH">\(n\)</SPAN>, such as
+<SPAN CLASS="MATH">\(f(n)=n^2\)</SPAN>, and let <SPAN CLASS="MATH">\(\mbox{odd}_n\)</SPAN> denote a function that is odd in
+<SPAN CLASS="MATH">\(n\)</SPAN>, such as <SPAN CLASS="MATH">\(f(n)=n^3\)</SPAN>, Similarly, let <SPAN CLASS="MATH">\(\mbox{even}_{nk}\)</SPAN> denote a
+function of <SPAN CLASS="MATH">\(n\)</SPAN> and <SPAN CLASS="MATH">\(k\)</SPAN> that is even in both <SPAN CLASS="MATH">\(n\)</SPAN> and <SPAN CLASS="MATH">\(k\)</SPAN>, such as
+<SPAN CLASS="MATH">\(f(n,k)=n^2k^2\)</SPAN>, and <SPAN CLASS="MATH">\(\mbox{odd}_{nk}\)</SPAN> mean odd in both <SPAN CLASS="MATH">\(n\)</SPAN> and <SPAN CLASS="MATH">\(k\)</SPAN>.
+Then appropriately labeling each term in the last formula above gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}X(k)&=&\sum_{n=0}^{N-1}\mbox{even}_n\cdot\mbox{even}_{nk} 
+	+ \underbrace{\sum_{n=0}^{N-1}\mbox{even}_n\cdot\mbox{odd}_{nk}}_{\mbox{sums to 0}}\\
+	&+& j \cdot \sum_{n=0}^{N-1}\mbox{even}_n\cdot\mbox{even}_{nk} 
+	- j \underbrace{\sum_{n=0}^{N-1}{\mbox{even}_n\cdot\mbox{odd}_{nk}}}_{\mbox{sums to 0}} \\
+&=&\sum_{n=0}^{N-1}\mbox{even}_n \cdot\mbox{even}_{nk} 
++ j \cdot \sum_{n=0}^{N-1}\mbox{even}_n \cdot\mbox{even}_{nk}\\[10pt]
+&=& \mbox{even}_k + j \cdot \mbox{even}_k = \mbox{even}_k.\end{eqnarray*}</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>A real even signal has a real even transform:
+<A NAME="thm:realeven"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\zbox{x\;\mbox{real and even} \;\longleftrightarrow\;X\;\mbox{real and even}}\end{equation}</DIV><P></P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>This follows immediately from setting <SPAN CLASS="MATH">\(x_i(n)=0\)</SPAN> in the preceding
+proof.  From Eq.(<A HREF="Symmetry.html#eq:evensymm">7.5</A>), we are left with
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[X(k) = \sum_{n=0}^{N-1}x_r(n)\cos(\omega_k n).\]</DIV><P></P>
+Thus, the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> of a real and <A HREF="http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html" onMouseover="return escape('Click for http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html')">even function</A> reduces to a type of
+<I>cosine transform</I>,<A NAME="tex2html91"
+  HREF="footnode.html#foot18226"><SUP>7.13</SUP></A>
+<P>
+Instead of adapting the previous proof, we can show it directly:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}X(k) &\isdef& \sum_{n=0}^{N-1}x(n) e^{-j\omega_k n} 
+= \sum_{n=0}^{N-1}x(n) \cos(\omega_k n) + j \sum_{n=0}^{N-1}x(n) \sin(\omega_k n) \\
+&=& \sum_{n=0}^{N-1}x(n) \cos(\omega_k n) \quad\qquad 
+    \mbox{$\left(\sum_n\mbox{even}_n\cdot\mbox{odd}_n
+		= \sum \mbox{odd}_n=0\right)$} \\
+&=& \sum_{n=0}^{N-1}\mbox{even}_n\cdot\mbox{even}_{nk} 
+= \sum_{n=0}^{N-1}\mbox{even}_{nk} 
+= \mbox{even}_k\end{eqnarray*}</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>A signal with a real <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The spectrum of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> (such as any real, even signal)
+is often called a <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html')">zero phase</A> signal</I><A NAME="18462"></A>.  However, note that when
+the spectrum goes <I>negative</I> (which it can), the phase is really
+<SPAN CLASS="MATH">\(\pm\pi\)</SPAN>, not <SPAN CLASS="MATH">\(0\)</SPAN>.  When a real spectrum is positive at <A HREF="https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html" onMouseover="return escape('&lt;i&gt;dc&lt;/i&gt; stands for &lt;i&gt;direct current&lt;i&gt; in electrical engineering and signal processing (as opposed to \&#39;alternating current\&#39;).  The mean (average value) of a signal may be called its dc component.  Similarly, frequency zero is called the dc frequency, because a sinusoid with zero frequency is a constant signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html')">dc</A> (<I>i.e.</I>,
+<SPAN CLASS="MATH">\(X(0)&gt;0\)</SPAN>), it is then truly zero-phase over at least some band
+containing dc (up to the first zero-crossing in frequency).  When the
+phase switches between <SPAN CLASS="MATH">\(0\)</SPAN> and <SPAN CLASS="MATH">\(\pi\)</SPAN> at the zero-crossings of the
+(real) spectrum, the spectrum oscillates between being zero phase and
+``constant phase''.  We can say that all real spectra are
+<I>piecewise constant-<A HREF="Discrete_Fourier_Transform_DFT.html" onMouseover="return escape('The &lt;i&gt;phase spectrum&lt;/i&gt; of a signal is given by the phase (complex angle) of its Fourier transform. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Fourier_Transform_DFT.html')">phase spectra</A></I><A NAME="18465"></A>, where the two constant values
+are <SPAN CLASS="MATH">\(0\)</SPAN> and <SPAN CLASS="MATH">\(\pi\)</SPAN> (or <SPAN CLASS="MATH">\(-\pi\)</SPAN>, which is the same phase as <SPAN CLASS="MATH">\(+\pi\)</SPAN>).  In
+practice, such zero-crossings typically occur at low magnitude, such
+as in the ``<A HREF="https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html" onMouseover="return escape('A &lt;i&gt;side lobe&lt;/i&gt; in the Fourier transform of a window function, such as the Chebyshev window, is any local maximum in the transform magnitude outside of the main lobe (response about dc). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html')">side-lobes</A>'' of the <A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">DTFT</A> of a ``zero-centered symmetric
+window'' used for <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A> (see Chapter <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html#chap:dftex">8</A> and Book IV
+[<A
+ HREF="Bibliography.html#SASP">73</A>]).
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2638"
+  HREF="Shift_Theorem.html" 
+ onMouseover="return escape('Shift Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2628"
+  HREF="Conjugation_Reversal.html" 
+ onMouseover="return escape('Conjugation and Reversal')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2634"
+  HREF="Fourier_Theorems.html" 
+ onMouseover="return escape('Fourier Theorems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2636"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

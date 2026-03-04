@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Two's-Complement, Integer Fixed-Point Numbers</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Two's-Complement, Integer Fixed-Point Numbers">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Two_s_Complement_Fixed_Point_Format.html">
+<LINK REL="up" HREF="Binary_Integer_Fixed_Point_Numbers.html">
+<LINK REL="next" HREF="Fractional_Binary_Fixed_Point_Numbers.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4096"
+  HREF="Fractional_Binary_Fixed_Point_Numbers.html" 
+ onMouseover="return escape('Fractional Binary Fixed-Point Numbers')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4088"
+  HREF="Two_s_Complement_Fixed_Point_Format.html" 
+ onMouseover="return escape('Two\'s Complement Fixed-Point Format')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4092"
+  HREF="Binary_Integer_Fixed_Point_Numbers.html" 
+ onMouseover="return escape('Binary Integer Fixed-Point Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4094"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION001612300000000000000">
+Two's-Complement, Integer Fixed-Point Numbers</A>
+</H4>
+
+<P>
+Let <SPAN CLASS="MATH">\(N\)</SPAN> denote the number of bits. Then the value of a <A HREF="Two_s_Complement_Fixed_Point_Format.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Two_s_Complement_Fixed_Point_Format.html')">two's
+complement</A> integer <A HREF="Binary_Integer_Fixed_Point_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Binary_Integer_Fixed_Point_Numbers.html')">fixed-point</A> number can be expressed in terms of its
+bits <SPAN CLASS="MATH">\({b_i}_{i=0}^{N-1}\)</SPAN> as
+<A NAME="eq:tc"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}x = - b_0 \cdot 2^{N-1} + \sum_{i=1}^{N - 1} b_i \cdot 2^{N - 1 - i},\quad b_i\in{0,1}
+\end{equation}</DIV><P></P>
+We visualize the <I>binary word</I> containing these bits as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x = [b_0\, b_1\, \cdots\, b_{N-1}]\]</DIV><P></P>
+Each bit <SPAN CLASS="MATH">\(b_i\)</SPAN> is of course either 0 or 1.  Check that the <SPAN CLASS="MATH">\(N=3\)</SPAN> case
+in Table <A HREF="Two_s_Complement_Fixed_Point_Format.html#table:twoscomp">G.3</A> is computed correctly using this formula.  As an
+example, the number 3 is expressed as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[3 =[ 0 1 1 ] = - 0\cdot 4 + 1\cdot 2 + 1 \cdot 1\]</DIV><P></P>
+while the number -3 is expressed as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[-3 =[ 1 0 1 ] = - 1\cdot 4 + 0\cdot 2 + 1 \cdot 1\]</DIV><P></P>
+and so on.  
+
+<P>
+The most-significant bit in the word, <SPAN CLASS="MATH">\(b_0\)</SPAN>, can be interpreted as the
+``sign bit''.  If <SPAN CLASS="MATH">\(b_0\)</SPAN> is ``on'', the number is negative. If it is
+``off'', the number is either zero or positive.
+
+<P>
+The least-significant bit is <SPAN CLASS="MATH">\(b_{N-1}\)</SPAN>. ``Turning on'' that bit adds 1 to
+the number, and there are no fractions allowed.
+
+<P>
+The largest positive number is when all bits are on except <SPAN CLASS="MATH">\(b_0\)</SPAN>, in
+which case <SPAN CLASS="MATH">\(x=2^{N-1}-1\)</SPAN>.  The largest (in magnitude) negative number is
+<SPAN CLASS="MATH">\(10\cdots0\)</SPAN>, <I>i.e.</I>, <SPAN CLASS="MATH">\(b_0=1\)</SPAN> and <SPAN CLASS="MATH">\(b_i=0\)</SPAN> for all <SPAN CLASS="MATH">\(i&gt;0\)</SPAN>.  Table <A HREF="Two_s_Complement_Integer_Fixed_Point_Numbers.html#table:limits">G.4</A> shows
+some of the most common cases.
+
+<P>
+
+	<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="26705"></A>
+<TABLE>
+<CAPTION><STRONG>Table:</STRONG>
+Numerical range limits in <SPAN CLASS="MATH">\(N\)</SPAN>-bit two's-complement.</CAPTION>
+<TR><TD>	<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="CENTER"><SPAN CLASS="MATH">\(N\)</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH">\(x_{\mbox{\small min}}\)</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH">\(x_{\mbox{\small max}}\)</SPAN></TD>
+</TR>
+<TR><TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">-128</TD>
+<TD ALIGN="CENTER">127</TD>
+</TR>
+<TR><TD ALIGN="CENTER">16</TD>
+<TD ALIGN="CENTER">-32768</TD>
+<TD ALIGN="CENTER">32767</TD>
+</TR>
+<TR><TD ALIGN="CENTER">24</TD>
+<TD ALIGN="CENTER">-8,388,608</TD>
+<TD ALIGN="CENTER">8,388,607</TD>
+</TR>
+<TR><TD ALIGN="CENTER">32</TD>
+<TD ALIGN="CENTER">-2,147,483,648</TD>
+<TD ALIGN="CENTER">2,147,483,647</TD>
+</TR>
+</TABLE>
+</DIV>
+	
+	<A NAME="table:limits"></A> </TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4096"
+  HREF="Fractional_Binary_Fixed_Point_Numbers.html" 
+ onMouseover="return escape('Fractional Binary Fixed-Point Numbers')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4088"
+  HREF="Two_s_Complement_Fixed_Point_Format.html" 
+ onMouseover="return escape('Two\'s Complement Fixed-Point Format')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4092"
+  HREF="Binary_Integer_Fixed_Point_Numbers.html" 
+ onMouseover="return escape('Binary Integer Fixed-Point Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4094"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

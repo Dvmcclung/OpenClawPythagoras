@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Specific DB Scales</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Specific DB Scales">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Dynamic_Range.html">
+<LINK REL="previous" HREF="Properties_DB_Scales.html">
+<LINK REL="up" HREF="Decibels.html">
+<LINK REL="next" HREF="DBm_Scale.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3881"
+  HREF="DBm_Scale.html" 
+ onMouseover="return escape('DBm Scale')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3871"
+  HREF="Properties_DB_Scales.html" 
+ onMouseover="return escape('Properties of DB Scales')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3877"
+  HREF="Decibels.html" 
+ onMouseover="return escape('Decibels')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3879"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001522000000000000000">
+Specific DB Scales</A>
+</H3>
+
+<P>
+Since we so often rescale our <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signals</A> to suit various needs (avoiding
+overflow, reducing quantization <A HREF="https://ccrma.stanford.edu/~jos/sasp/What_Noise.html" onMouseover="return escape('Noise (in signal processing) is a random signal.  In the language of statistical signal processing, a noise signal is typically modeled as \&#39;stochastic process\&#39;, which is in turn defined as a sequence of random variables. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/What_Noise.html')">noise</A>, making a nicer plot, etc.),
+there seems to be little point in worrying about what the <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">dB</A> reference
+is--we simply choose it implicitly when we rescale to obtain signal
+values in the range we want to see.  In particular, <I><A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A> relative
+  to full scale</I><A NAME="25802"></A> (<SPAN CLASS="MATH">\(20\log_{10}(A/A_{\mbox{\small max}})\)</SPAN>), abbreviated
+<I><A HREF="DB_Full_Scale_dBFS.html" onMouseover="return escape('DBFS (decibels relative to full scale) defines 0 dB as the maximum amplitude (usually 1 on a computer). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/DB_Full_Scale_dBFS.html')">dBFS</A></I><A NAME="25804"></A>, is perhaps the most commonly used case in the digital
+audio world.  Thus, <SPAN CLASS="MATH">\(0\)</SPAN> dBFS means maximum amplitude, and typical
+amplitude levels are negative in dBFS.  In addition, there are a few
+specific <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB scales</A> that are worth knowing about, mostly for historical
+reasons, such as to understand VU <A HREF="https://scienceworld.wolfram.com/physics/Meter.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Meter.html')">meters</A> in vintage audio gear and
+<A HREF="https://ccrma.stanford.edu/~stilti/papers" onMouseover="return escape('Click for https://ccrma.stanford.edu/~stilti/papers')">virtual analog</A> <A HREF="http://en.wikipedia.org/wiki/Category:Music_software_plugin_architectures" onMouseover="return escape('A &lt;i&gt;plugin&lt;/i&gt; is a software module that plugs into a larger program, usually to provide digital audio effects. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Category:Music_software_plugin_architectures')">plugins</A>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html3882"
+  HREF="DBm_Scale.html">DBm Scale</A>
+<LI><A NAME="tex2html3883"
+  HREF="VU_Meters_DBu_ScaleF_3.html">VU Meters and the DBu
+  Scale<SUP>F.4</SUP></A>
+<LI><A NAME="tex2html3884"
+  HREF="DBV_Scale.html">DBV Scale</A>
+<LI><A NAME="tex2html3885"
+  HREF="DB_SPL.html">DB SPL</A>
+<LI><A NAME="tex2html3886"
+  HREF="DBA_A_Weighted_DB.html">DBA (A-Weighted DB)</A>
+<LI><A NAME="tex2html3887"
+  HREF="DB_Full_Scale_dBFS.html">DB Full Scale (dBFS) for Spectrum Display</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3881"
+  HREF="DBm_Scale.html" 
+ onMouseover="return escape('DBm Scale')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3871"
+  HREF="Properties_DB_Scales.html" 
+ onMouseover="return escape('Properties of DB Scales')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3877"
+  HREF="Decibels.html" 
+ onMouseover="return escape('Decibels')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3879"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

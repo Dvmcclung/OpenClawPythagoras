@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Complex Number Manipulation</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Complex Number Manipulation">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Complex_Numbers_Matlab_Octave.html">
+<LINK REL="up" HREF="Complex_Numbers_Matlab_Octave.html">
+<LINK REL="next" HREF="Factoring_Polynomials_Matlab.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4289"
+  HREF="Factoring_Polynomials_Matlab.html" 
+ onMouseover="return escape('Factoring Polynomials in Matlab')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4281"
+  HREF="Complex_Numbers_Matlab_Octave.html" 
+ onMouseover="return escape('Complex Numbers in Matlab and Octave')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4285"
+  HREF="Complex_Numbers_Matlab_Octave.html" 
+ onMouseover="return escape('Complex Numbers in Matlab and Octave')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4287"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001811000000000000000">
+Complex Number Manipulation</A>
+</H3>
+
+<P>
+Let's run through a few elementary manipulations of <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex
+numbers</A> in <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A>:
+<PRE>
+&gt;&gt; x = 1; 
+&gt;&gt; y = 2;
+&gt;&gt; z = x + j * y
+
+z =
+   1 + 2i
+
+&gt;&gt; 1/z
+
+ans =
+   0.2 - 0.4i
+
+&gt;&gt; z^2
+
+ans =
+  -3 + 4i
+
+&gt;&gt; conj(z)
+
+ans =
+   1 - 2i
+
+&gt;&gt; z*conj(z)
+
+ans =
+     5
+
+&gt;&gt; abs(z)^2
+
+ans =
+    5
+
+&gt;&gt; <A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norm</A>(z)^2
+
+ans =
+    5
+
+&gt;&gt; angle(z)
+
+ans =
+    1.1071
+</PRE>
+
+<P>
+Now let's do polar form:
+
+<P>
+<PRE>
+&gt;&gt; r = abs(z)
+
+r =
+    2.2361
+
+&gt;&gt; theta = angle(z)
+
+theta =
+    1.1071
+</PRE>
+
+<P>
+
+<P>
+Curiously, <SPAN CLASS="MATH">\(e\)</SPAN> is not defined by default in Matlab (though it is in
+Octave).  It can easily be computed in Matlab as <code>e=exp(1)</code>.
+
+<P>
+Below are some examples involving imaginary <A HREF="Exponentials.html" onMouseover="return escape('An &lt;i&gt;exponential&lt;/i&gt; is any function of the form &lt;i&gt;Ae&lt;sup&gt;-t/&amp;#964;&lt;/sup&gt;&lt;/i&gt;, where &lt;i&gt;t&lt;/i&gt; is the independent variable (often denoting time in seconds), &lt;i&gt;A&lt;/i&gt; is an arbitrary scale factor, &lt;i&gt;&amp;#964;&lt;/i&gt; is called the &lt;i&gt;time constant&lt;/i&gt;, and &lt;i&gt;e&lt;/i&gt; is Euler\&#39;s number (2.718281828459...). Many systems in nature exhibit exponential decay over time, because an exponential decay is produced whenever the &lt;i&gt;rate&lt;/i&gt; of decay is proportional to how much is left. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponentials</A>:
+<PRE>
+&gt;&gt; r * exp(j * theta)
+
+ans =
+   1 + 2i
+
+&gt;&gt; z
+
+z =
+   1 + 2i
+
+&gt;&gt; z/abs(z)
+
+ans =
+   0.4472 + 0.8944i
+
+&gt;&gt; exp(j*theta)
+
+ans =
+   0.4472 + 0.8944i
+
+&gt;&gt; z/conj(z)
+
+ans =
+  -0.6 + 0.8i
+
+&gt;&gt; exp(2*j*theta)
+
+ans =
+  -0.6 + 0.8i
+
+&gt;&gt; imag(log(z/abs(z)))
+
+ans =
+    1.1071
+
+&gt;&gt; theta
+
+theta =
+    1.1071
+
+&gt;&gt;
+</PRE>
+
+Here are some manipulations involving two complex numbers:
+<PRE>
+&gt;&gt; x1 = 1;
+&gt;&gt; x2 = 2;
+&gt;&gt; y1 = 3;
+&gt;&gt; y2 = 4;
+&gt;&gt; z1 = x1 + j * y1;
+&gt;&gt; z2 = x2 + j * y2;
+&gt;&gt; z1
+
+z1 =
+   1 + 3i
+
+&gt;&gt; z2
+
+z2 =
+   2 + 4i
+
+&gt;&gt; z1*z2
+
+ans =
+ -10 +10i
+
+&gt;&gt; z1/z2
+
+ans =
+   0.7 + 0.1i
+</PRE>
+
+<P>
+Another thing to note about matlab syntax is that the transpose
+operator <TT>'</TT> (for vectors and <A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">matrices</A>) <I>conjugates</I> as
+well as transposes.  Use <TT>.'</TT>  to transpose without
+conjugation:
+
+<BLOCKQUOTE></BLOCKQUOTE><PRE>
+&gt;&gt;x = [1:4]*j
+
+x =
+        0 + 1i   0 + 2i   0 + 3i   0 + 4i
+
+&gt;&gt; x'
+
+ans =
+        0 - 1i
+        0 - 2i
+        0 - 3i
+        0 - 4i
+
+&gt;&gt; x.'
+
+ans =
+        0 + 1i
+        0 + 2i
+        0 + 3i
+        0 + 4i
+</PRE><BLOCKQUOTE></BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4289"
+  HREF="Factoring_Polynomials_Matlab.html" 
+ onMouseover="return escape('Factoring Polynomials in Matlab')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4281"
+  HREF="Complex_Numbers_Matlab_Octave.html" 
+ onMouseover="return escape('Complex Numbers in Matlab and Octave')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4285"
+  HREF="Complex_Numbers_Matlab_Octave.html" 
+ onMouseover="return escape('Complex Numbers in Matlab and Octave')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4287"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

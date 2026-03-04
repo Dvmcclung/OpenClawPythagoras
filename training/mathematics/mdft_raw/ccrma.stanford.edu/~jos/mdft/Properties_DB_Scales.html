@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Properties of DB Scales</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Properties of DB Scales">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Specific_DB_Scales.html">
+<LINK REL="previous" HREF="Decibels.html">
+<LINK REL="up" HREF="Decibels.html">
+<LINK REL="next" HREF="Specific_DB_Scales.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3869"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3859"
+  HREF="Decibels.html" 
+ onMouseover="return escape('Decibels')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3865"
+  HREF="Decibels.html" 
+ onMouseover="return escape('Decibels')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3867"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001521000000000000000"></A><A NAME="sec:dbprops"></A><A NAME="25792"></A>
+<BR>
+Properties of <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">DB</A> Scales
+</H3>
+
+<P>
+In every kind of <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A>, a <I>factor of 10</I> in amplitude increase corresponds
+to a <I>20 <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A> boost</I><A NAME="25794"></A> (increase by 20 dB):
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[20\log_{10}\left(\frac{10 \cdot A}{A_{\mbox{\small ref}}}\right)
+= \underbrace{20\log_{10}(10)}_{\mbox{$20$\  dB}} + 20\log_{10}\left(\frac{A}{A_{\mbox{\small ref}}}\right)\]</DIV><P></P>
+and <SPAN CLASS="MATH">\(20\log_{10}(10) = 20\)</SPAN>, of course.  A function <SPAN CLASS="MATH">\(f(x)\)</SPAN> which is
+proportional to <SPAN CLASS="MATH">\(1/x\)</SPAN> is said to ``fall off'' (or ``roll off'') at the
+rate of <SPAN CLASS="MATH">\(20\)</SPAN> <I>dB per decade</I><A NAME="25796"></A>.  That is, for every factor of <SPAN CLASS="MATH">\(10\)</SPAN>
+in <SPAN CLASS="MATH">\(x\)</SPAN> (every ``decade''), the amplitude drops <SPAN CLASS="MATH">\(20\)</SPAN> dB.
+
+<P>
+Similarly, a factor of 2 in amplitude gain corresponds
+to a 6 dB boost:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[20\log_{10}\left(\frac{2 \cdot A}{A_{\mbox{\small ref}}}\right)
+= \underbrace{20\log_{10}(2)}_{\mbox{$6$\  dB}}
++ 20\log_{10}\left(\frac{A}{A_{\mbox{\small ref}}}\right)\]</DIV><P></P>
+and 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[20\log_{10}(2) = 6.0205999\ldots \approx 6 \; \mbox{dB}.\]</DIV><P></P>
+A function <SPAN CLASS="MATH">\(f(x)\)</SPAN> which is proportional to <SPAN CLASS="MATH">\(1/x\)</SPAN> is said to fall off
+<SPAN CLASS="MATH">\(6\)</SPAN> <I>dB per octave</I><A NAME="25798"></A>.  That is, for every factor of <SPAN CLASS="MATH">\(2\)</SPAN> in <SPAN CLASS="MATH">\(x\)</SPAN>
+(every ``octave''), the amplitude drops close to <SPAN CLASS="MATH">\(6\)</SPAN> dB.  Thus, 6 dB
+per octave is the same thing as 20 dB per decade.
+
+<P>
+A <I>doubling of power</I> corresponds to a <I>3 dB boost</I><A NAME="25800"></A>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[10\log_{10}\left(\frac{2 \cdot A^2}{A^2_{\mbox{\small ref}}}\right)
+= \underbrace{10\log_{10}(2)}_{\mbox{$3$\  dB}}
++ 10\log_{10}\left(\frac{A^2}{A^2_{\mbox{\small ref}}}\right)\]</DIV><P></P>
+and 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[10\log_{10}(2) = 3.010\ldots \approx 3\;\mbox{dB}.\]</DIV><P></P>
+
+<P>
+Finally, note that the choice of <I>reference</I> merely determines a
+vertical offset in the <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB scale</A>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[20\log_{10}\left(\frac{A}{A_{\mbox{\small ref}}}\right)
+= 20\log_{10}(A) - \underbrace{20\log_{10}(A_{\mbox{\small ref}})}_{\mbox{constant offset}}\]</DIV><P></P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3869"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3859"
+  HREF="Decibels.html" 
+ onMouseover="return escape('Decibels')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3865"
+  HREF="Decibels.html" 
+ onMouseover="return escape('Decibels')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3867"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

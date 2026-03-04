@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Mathematics of the DFT</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Mathematics of the DFT">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="DFT_Math_Outline.html">
+<LINK REL="previous" HREF="Inverse_DFT.html">
+<LINK REL="up" HREF="Introduction_DFT.html">
+<LINK REL="next" HREF="DFT_Math_Outline.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html636"
+  HREF="DFT_Math_Outline.html" 
+ onMouseover="return escape('DFT Math Outline')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html626"
+  HREF="Inverse_DFT.html" 
+ onMouseover="return escape('Inverse DFT')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html632"
+  HREF="Introduction_DFT.html" 
+ onMouseover="return escape('Introduction to the DFT')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html634"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00230000000000000000"></A><A NAME="sec:dftmath"></A><A NAME="5242"></A>
+<BR>
+<A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/')">Mathematics of the DFT</A>
+</H2>
+
+<P>
+In the <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> processing literature, it is common to write the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> 
+and its inverse in the
+more pure form below, obtained by setting <SPAN CLASS="MATH">\(T=1\)</SPAN> in the previous definition:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}X(k) &\isdef& \sum_{n=0}^{N-1}x(n)e^{-j{2\pi n k/N}}, \qquad k=0,1,2,\ldots,N-1\\
+x(n) &=& \frac{1}{N}\sum_{k=0}^{N-1}X(k)e^{j{2\pi n k/N}}, \qquad n=0,1,2,\ldots,N-1\end{eqnarray*}</DIV><P></P>
+where <SPAN CLASS="MATH">\(x(n)\)</SPAN> denotes the input signal at time (sample) <SPAN CLASS="MATH">\(n\)</SPAN>, and <SPAN CLASS="MATH">\(X(k)\)</SPAN>
+denotes the <SPAN CLASS="MATH">\(k\)</SPAN>th spectral sample.  This form is the simplest
+mathematically, while the previous form is easier to interpret
+physically.  
+
+<P>
+There are two remaining symbols in the DFT we have not yet defined:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}j &\isdef& \sqrt{-1} \\
+e &\isdef& \lim_{n\to\infty} \left(1+\frac{1}{n}\right)^{n} 
+	= 2.718281828459045\ldots\end{eqnarray*}</DIV><P></P>
+The first, <SPAN CLASS="MATH">\(j=\sqrt{-1}\)</SPAN>, is the basis for <I><A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex
+numbers</A></I>.<A NAME="tex2html9"
+  HREF="footnode.html#foot5199"><SUP>1.1</SUP></A>  As a result, complex numbers will be the
+first topic we cover in this book (but only to the extent needed
+to understand the DFT).
+
+<P>
+The second, <SPAN CLASS="MATH">\(e = 2.718\ldots\,\)</SPAN>, is a (<A HREF="https://mathworld.wolfram.com/TranscendentalNumber.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/TranscendentalNumber.html')">transcendental</A>) <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real number</A>
+defined by the above limit.  We will derive <SPAN CLASS="MATH">\(e\)</SPAN> and talk about why it
+comes up in Chapter <A HREF="Proof_Euler_s_Identity.html#chap:euler">3</A>.
+
+<P>
+Note that not only do we have complex numbers to contend with, but we have
+them appearing in exponents, as in
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[s_k(n) \isdef e^{j{2\pi n k/N}}.\]</DIV><P></P>
+We will systematically develop what we mean by <A HREF="Imaginary_Exponents.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Imaginary_Exponents.html')">imaginary exponents</A> in order
+that such mathematical expressions are well defined.
+
+<P>
+With <SPAN CLASS="MATH">\(e\)</SPAN>, <SPAN CLASS="MATH">\(j\)</SPAN>, and imaginary exponents understood, we can go on to prove 
+<I><A HREF="Proof_Euler_s_Identity.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Proof_Euler_s_Identity.html')">Euler's Identity</A></I>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[e^{j\theta} = \cos(\theta) + j\sin(\theta)\]</DIV><P></P>
+Euler's Identity is the key to understanding the meaning of expressions like
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[s_k(t_n) \isdef e^{j\omega_k t_n}= \cos(\omega_k t_n) + j\sin(\omega_k t_n).\]</DIV><P></P>
+We'll see that such an expression defines a <I>sampled complex
+<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A></I>, and we'll talk about <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoids</A> in some detail, particularly
+from an audio perspective.
+
+<P>
+Finally, we need to understand what the summation over <SPAN CLASS="MATH">\(n\)</SPAN> is doing in
+the definition of the DFT.  We'll learn that it should be seen as the
+computation of the <I><A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner product</A></I> of the signals <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(s_k\)</SPAN>
+defined above, so that we may write the DFT, using inner-product
+notation, as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[X(k) \isdef \ip{x,s_k}\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(s_k(n) \isdef e^{j{2\pi n k/N}}\)</SPAN> is the sampled <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex sinusoid</A> at
+(normalized) radian frequency <SPAN CLASS="MATH">\(\omega_k T=2\pi k/N\)</SPAN>, and the inner product
+operation <SPAN CLASS="MATH">\(\ip{\,\cdot\,,\,\cdot\,}\)</SPAN> is defined by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{x,y} \isdef \sum_{n=0}^{N-1}x(n) \overline{y(n)}.\]</DIV><P></P>
+We will show that the inner product of <SPAN CLASS="MATH">\(x\)</SPAN> with the <SPAN CLASS="MATH">\(k\)</SPAN>th ``basis
+sinusoid'' <SPAN CLASS="MATH">\(s_k\)</SPAN> is a measure of ``how much'' of <SPAN CLASS="MATH">\(s_k\)</SPAN> is present in <SPAN CLASS="MATH">\(x\)</SPAN>
+and at ``what phase'' (since it is a complex number).
+
+<P>
+After the foregoing, the inverse DFT can be understood as the
+<I>sum of projections</I> of <SPAN CLASS="MATH">\(x\)</SPAN> onto <SPAN CLASS="MATH">\({s_k}_{k=0}^{N-1}\)</SPAN>; <I>i.e.</I>,
+we'll show 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x(n) = \sum_{k=0}^{N-1}\tilde{X}_k s_k(n), \qquad n=0,1,2,\ldots,N-1\]</DIV><P></P>
+where
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\tilde{X}_k \isdef \frac{X(k)}{N}\]</DIV><P></P>
+is the <I><A HREF="Projection.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Projection.html')">coefficient of projection</A></I> of
+<SPAN CLASS="MATH">\(x\)</SPAN> onto <SPAN CLASS="MATH">\(s_k\)</SPAN>. 
+Using the notation <SPAN CLASS="MATH">\(x\isdef x(\cdot)\)</SPAN> to mean the whole signal
+<SPAN CLASS="MATH">\(x(n)\)</SPAN> for all <SPAN CLASS="MATH">\(n\in[0,N-1]\)</SPAN>, the IDFT can be written more simply as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x = \sum_k \tilde{X}_k s_k.\]</DIV><P></P>
+Note that both the <I>basis sinusoids</I> <SPAN CLASS="MATH">\(s_k\)</SPAN> and their coefficients of
+projection <SPAN CLASS="MATH">\(\tilde{X}_k\)</SPAN> are <I>complex valued</I> in general.
+
+<P>
+Having completely understood the DFT and its inverse mathematically, we go
+on to proving various <I><A HREF="Fourier_Theorems.html" onMouseover="return escape('The Fourier theorems establish important, elementary time-frequency relationships.  The theorems are largely the same whether stated for the case of the Fourier Transform (FT), Discrete Fourier Transform (DFT), Discrete Time Fourier Transform (DTFT), or Fourier Series (FS). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html')">Fourier Theorems</A></I>, such as the ``<A HREF="Shift_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Shift_Theorem.html')">shift
+theorem</A>,'' the ``<A HREF="Convolution_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Convolution_Theorem.html')">convolution theorem</A>,'' and ``<A HREF="Rayleigh_Energy_Theorem_Parseval_s.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Rayleigh_Energy_Theorem_Parseval_s.html')">Parseval's theorem</A>.''  The
+Fourier theorems provide a basic thinking vocabulary for working with
+signals in the time and <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domains</A>.  They can be used to answer
+questions such as
+<BLOCKQUOTE>
+``What happens in the frequency domain if I do [operation x] in the time domain?''
+
+</BLOCKQUOTE>
+Usually a frequency-domain understanding comes closest to a <I>perceptual</I>
+understanding of audio processing.
+
+<P>
+Finally, we will study a variety of practical <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A>
+examples, using primarily the <A NAME="tex2html10"
+  HREF="http://ccrma.stanford.edu/~jos/matlab/"><TT>matlab</TT>
+programming language</A>
+[<A
+ HREF="Bibliography.html#MatlabAndOctave">70</A>] to analyze and display signals and their <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectra</A>.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html636"
+  HREF="DFT_Math_Outline.html" 
+ onMouseover="return escape('DFT Math Outline')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html626"
+  HREF="Inverse_DFT.html" 
+ onMouseover="return escape('Inverse DFT')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html632"
+  HREF="Introduction_DFT.html" 
+ onMouseover="return escape('Introduction to the DFT')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html634"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

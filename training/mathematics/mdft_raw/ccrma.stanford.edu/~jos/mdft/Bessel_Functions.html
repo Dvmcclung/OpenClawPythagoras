@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bessel Functions</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Bessel Functions">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="FM_Spectra.html">
+<LINK REL="previous" HREF="Sinusoidal_Frequency_Modulation_FM.html">
+<LINK REL="up" HREF="Sinusoidal_Frequency_Modulation_FM.html">
+<LINK REL="next" HREF="FM_Spectra.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1323"
+  HREF="FM_Spectra.html" 
+ onMouseover="return escape('FM Spectra')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1313"
+  HREF="Sinusoidal_Frequency_Modulation_FM.html" 
+ onMouseover="return escape('Sinusoidal Frequency Modulation (FM)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1319"
+  HREF="Sinusoidal_Frequency_Modulation_FM.html" 
+ onMouseover="return escape('Sinusoidal Frequency Modulation (FM)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1321"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00536100000000000000"></A><A NAME="sec:bessel"></A><A NAME="8968"></A>
+<BR>
+Bessel Functions
+</H4>
+
+<P>
+The <I>Bessel functions of the first kind</I> may be defined as the
+coefficients <SPAN CLASS="MATH">\(J_k(\beta)\)</SPAN> in the two-sided <I><A HREF="https://mathworld.wolfram.com/LaurentSeries.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LaurentSeries.html')">Laurent expansion</A></I>
+of the so-called 
+<I>generating function</I><A NAME="8971"></A><A NAME="8972"></A> 
+[<A
+ HREF="Bibliography.html#Watson44">87</A>, p.&nbsp;14],<A NAME="tex2html45"
+  HREF="footnode.html#foot8859"><SUP>4.11</SUP></A><A NAME="eq:bessgenfn"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}e^{\frac{1}{2}\beta\left(z-\frac{1}{z}\right)} = \sum_{k=-\infty}^\infty
+J_k(\beta) z^k
+\end{equation}</DIV><P></P>
+where <SPAN CLASS="MATH">\(k\)</SPAN> is the integer <I>order</I>
+of the Bessel function, and <SPAN CLASS="MATH">\(\beta\)</SPAN> is its argument (which
+can be complex, but we will only consider real <SPAN CLASS="MATH">\(\beta\)</SPAN>).
+Setting <SPAN CLASS="MATH">\(z=e^{j\omega_mt}\)</SPAN>, where <SPAN CLASS="MATH">\(\omega_m\)</SPAN> will interpreted as the
+<I>FM <A HREF="https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24349" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24349')">modulation</A> frequency</I><A NAME="8979"></A> and <SPAN CLASS="MATH">\(t\)</SPAN> as time in seconds, we obtain
+<A NAME="eq:besselgen"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}x_m(t)\isdef e^{j\beta\sin(\omega_m t)} = 
+\sum_{k=-\infty}^\infty J_k(\beta) e^{jk\omega_m t}.
+\end{equation}</DIV><P></P>
+The last expression can be interpreted as the Fourier superposition of the
+<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoidal</A> <A HREF="https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics" onMouseover="return escape('Every periodic signal has a &lt;i&gt;fundamental frequency&lt;/i&gt; given by the &lt;i&gt;inverse&lt;/i&gt; of the period.  If the period is in units of seconds, then the fundamental frequency is in units of Hertz (cycles per second).  According to Fourier theory, every periodic signal can be expressed as a sum of sinusoids at frequencies given by integer multiples of the fundamental frequency.  For integers greater than 1, these frequencies are called &lt;i&gt;harmonic frequencies&lt;/i&gt;, and the sinusoids at harmonic frequencies are typically called &lt;i&gt;harmonics&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics')">harmonics</A> of <SPAN CLASS="MATH">\(\exp[j\beta\sin(\omega_m t)]\)</SPAN>, <I>i.e.</I>, an
+<I>inverse <A HREF="Fourier_Series_FS_Relation.html" onMouseover="return escape('A Fourier Series (FS) expansion is the appropriate Fourier transform for &lt;i&gt;periodic&lt;/i&gt; signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Series_FS_Relation.html')">Fourier series</A></I> sum.  In other words, <SPAN CLASS="MATH">\(J_k(\beta)\)</SPAN> is
+the amplitude of the <SPAN CLASS="MATH">\(k\)</SPAN>th <A HREF="http://en.wikipedia.org/wiki/Harmonic" onMouseover="return escape('For a tone which posesses a perfectly harmonic overtone series, the nth harmonic is generally defined to oscillate at nf&lt;sub&gt;0&lt;/sub&gt;Hz, where f&lt;sub&gt;0&lt;/sub&gt; is the fundamental frequency. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Harmonic')">harmonic</A> in the <A HREF="Fourier_Series_FS_Relation.html" onMouseover="return escape('A Fourier Series (FS) expansion is the appropriate Fourier transform for &lt;i&gt;periodic&lt;/i&gt; signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Series_FS_Relation.html')">Fourier-series expansion</A> of
+the <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic signal</A> <SPAN CLASS="MATH">\(x_m(t)\)</SPAN>.  
+
+<P>
+Note that <SPAN CLASS="MATH">\(J_k(\beta)\)</SPAN> is real when <SPAN CLASS="MATH">\(\beta\)</SPAN> is real.  This can be seen
+by viewing Eq.(<A HREF="Bessel_Functions.html#eq:bessgenfn">4.6</A>) as the product of the <A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">series expansion</A> for
+<SPAN CLASS="MATH">\(\exp[(\beta/2) z]\)</SPAN> times that for <SPAN CLASS="MATH">\(\exp[-(\beta/2)/z]\)</SPAN> (see footnote
+pertaining to Eq.(<A HREF="Bessel_Functions.html#eq:bessgenfn">4.6</A>)).
+
+<P>
+Figure <A HREF="Bessel_Functions.html#fig:bessel">4.15</A> illustrates the first eleven Bessel functions of the first
+kind for arguments up to <SPAN CLASS="MATH">\(\beta=30\)</SPAN>.  It can be seen in the figure
+that when the FM index <SPAN CLASS="MATH">\(\beta\)</SPAN> is zero, <SPAN CLASS="MATH">\(J_0(0)=1\)</SPAN> and <SPAN CLASS="MATH">\(J_k(0)=0\)</SPAN> for
+all <SPAN CLASS="MATH">\(k&gt;0\)</SPAN>.  Since <SPAN CLASS="MATH">\(J_0(\beta)\)</SPAN> is the amplitude of the carrier
+frequency, there are no side bands when <SPAN CLASS="MATH">\(\beta=0\)</SPAN>.  As the FM index
+increases, the sidebands begin to grow while the carrier term
+diminishes.  This is how <A HREF="Sinusoidal_Frequency_Modulation_FM.html" onMouseover="return escape('&lt;i&gt;Frequency Modulation&lt;/i&gt; (FM) is said to occur when one signal modulations the frequency of another signal, usually a sinusoid.  The most typical case of FM is sinusoidal modulation of a sinusoid.  Originally, FM was invented for high quality radio signal broadcast.  More recently, FM synthesis was invented as the first widely used digital sound synthesis technique. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoidal_Frequency_Modulation_FM.html')">FM synthesis</A> produces an expanded, brighter
+<A HREF="http://en.wikipedia.org/wiki/Bandpass" onMouseover="return escape('The size of the passband, typically expressed in Hz. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Bandpass')">bandwidth</A> as the FM index is increased.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:bessel"></A></P><IMG
+ WIDTH="766" HEIGHT="587" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img35.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img35.png 1x,https://ccrma.stanford.edu/~jos/mdft/img35_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img35_3x.png 3x"
+ ALT="\includegraphics[width=\twidth]{eps/bessel}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img34.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img34.png 1x,https://ccrma.stanford.edu/~jos/mdft/img34_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img34_3x.png 3x"
+ ALT="% latex2html id marker 35835
+$\textstyle \parbox{\twidth }{\caption{\protect\small Bessel functions of the first kind
+for a range of orders $k$\ and argument $\beta$.}}$">
+</DIV>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1323"
+  HREF="FM_Spectra.html" 
+ onMouseover="return escape('FM Spectra')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1313"
+  HREF="Sinusoidal_Frequency_Modulation_FM.html" 
+ onMouseover="return escape('Sinusoidal Frequency Modulation (FM)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1319"
+  HREF="Sinusoidal_Frequency_Modulation_FM.html" 
+ onMouseover="return escape('Sinusoidal Frequency Modulation (FM)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1321"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

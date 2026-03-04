@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Operator Notation</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Operator Notation">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Flip_Operator.html">
+<LINK REL="previous" HREF="Signal_Operators.html">
+<LINK REL="up" HREF="Signal_Operators.html">
+<LINK REL="next" HREF="Flip_Operator.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2278"
+  HREF="Flip_Operator.html" 
+ onMouseover="return escape('Flip Operator')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2268"
+  HREF="Signal_Operators.html" 
+ onMouseover="return escape('Signal Operators')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2274"
+  HREF="Signal_Operators.html" 
+ onMouseover="return escape('Signal Operators')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2276"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00821000000000000000"></A><A NAME="sec:on"></A><A NAME="16261"></A>
+<BR>
+Operator Notation
+</H3>
+
+<P>
+In this book, an <I>operator</I> is defined as a 
+<I><A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A>-valued function of a signal</I>.  Thus, for the space
+of length <SPAN CLASS="MATH">\(N\)</SPAN> complex sequences, an operator <SPAN CLASS="MATH">\(\oper{Op}\)</SPAN> is a mapping
+from <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> to <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\oper{Op}(x) \in\mathbb{C}^N\, \forall x\in\mathbb{C}^N\]</DIV><P></P>
+An example is the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> operator:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\oper{DFT}(x) = X\]</DIV><P></P>
+The argument to an operator is always an entire signal.  However, its
+output may be subscripted to obtain a specific sample, <I>e.g.</I>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\oper{DFT}_k(x) = X(k).\]</DIV><P></P>
+Some operators require one or more <I>parameters</I> affecting their
+definition.  For example the <I><A HREF="Shift_Operator.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Shift_Operator.html')">shift operator</A></I> (defined in
+&#167;<A HREF="Shift_Operator.html#sec:shiftop">7.2.3</A> below) requires a <I>shift amount</I> <SPAN CLASS="MATH">\(\Delta\in\mathbb{Z}\)</SPAN>:<A NAME="tex2html79"
+  HREF="footnode.html#foot15807"><SUP>7.3</SUP></A><P></P>
+<DIV CLASS="MATHDISPLAY">\[\oper{Shift}_{\Delta,n}(x) \isdef x(n-\Delta)\]</DIV><P></P>
+A time or frequency index, if present, will always be the last
+subscript.  Thus, the signal <SPAN CLASS="MATH">\(\oper{Shift}_{\Delta}(x)\)</SPAN> is obtained from <SPAN CLASS="MATH">\(x\)</SPAN>
+by shifting it <SPAN CLASS="MATH">\(\Delta\)</SPAN> samples.
+
+<P>
+Note that operator notation is <I>not standard</I> in the field of
+<A HREF="https://ccrma.stanford.edu/~jos/filters/Book_Series_Overview.html" onMouseover="return escape('The subject of &lt;i&gt;Digital Signal Processing&lt;/i&gt; (DSP) is concerned with the computational processing of digital signals.  An example digital signal is music from a compact disk (CD).  An example DSP task is modifying the tone of a digital audio stream, such as boosting its bass or treble.  Another DSP example is compressing digital audio into MP3 format, or decoding an MP3 stream. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Book_Series_Overview.html')">digital signal processing</A>.  It can be regarded as being influenced by
+the field of computer science.  In the <A HREF="Fourier_Theorems.html" onMouseover="return escape('The Fourier theorems establish important, elementary time-frequency relationships.  The theorems are largely the same whether stated for the case of the Fourier Transform (FT), Discrete Fourier Transform (DFT), Discrete Time Fourier Transform (DTFT), or Fourier Series (FS). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html')">Fourier theorems</A> below, both
+operator and conventional signal-processing notations are provided.  In the
+author's opinion, operator notation is consistently clearer, allowing
+powerful expressions to be written naturally in one line (<I>e.g.</I>, see
+Eq.(<A HREF="Bandlimited_Interpolation_Time_Limited_Signals.html#eq:blinterpfd">7.8</A>)), and it is much closer to how things look in
+a readable computer program (such as in the <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">matlab</A> language).
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2278"
+  HREF="Flip_Operator.html" 
+ onMouseover="return escape('Flip Operator')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2268"
+  HREF="Signal_Operators.html" 
+ onMouseover="return escape('Signal Operators')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2274"
+  HREF="Signal_Operators.html" 
+ onMouseover="return escape('Signal Operators')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2276"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

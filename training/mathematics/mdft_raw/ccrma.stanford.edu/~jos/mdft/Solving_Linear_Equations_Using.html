@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Solving Linear Equations Using Matrices</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Solving Linear Equations Using Matrices">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Matrix_Multiplication.html">
+<LINK REL="up" HREF="Matrices.html">
+<LINK REL="next" HREF="Matlab_Octave_Examples.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4236"
+  HREF="Matlab_Octave_Examples.html" 
+ onMouseover="return escape('Matlab/Octave Examples')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4228"
+  HREF="Matrix_Multiplication.html" 
+ onMouseover="return escape('Matrix Multiplication')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4232"
+  HREF="Matrices.html" 
+ onMouseover="return escape('Matrices')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4234"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001720000000000000000">
+Solving Linear Equations Using Matrices</A>
+</H2>
+
+<P>
+Consider the <A HREF="https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html" onMouseover="return escape('The topic of &lt;i&gt;linear systems theory&lt;/i&gt; is primarily about &lt;i&gt;linear, time-invariant (LTI) filters&lt;/i&gt;.   A &lt;i&gt;linear&lt;/i&gt; filter is characterized by the property that its output-signal amplitude is linearly proportional to its input-signal amplitude.  A &lt;i&gt;time-invariant&lt;/i&gt; filter, or \&#39;constant-coefficient\&#39; filter, performs the same filtering operation at all times.  Only LTI filters can be characeterized by their &lt;i&gt;impulse response&lt;/i&gt;, or their &lt;i&gt;frequency response&lt;/i&gt;, or their &lt;i&gt;poles and zeros&lt;/i&gt; plus a gain, or the like.  Also, only LTI filters have the &lt;i&gt;superposition property&lt;/i&gt; for audio signals, in which the filtering of an audio mix can be obtained alternatively by filtering each channel separately and adding the filtered channels together.  Equivalently, only LTI filters exhibit no &lt;i&gt;intermodulation distortion&lt;/i&gt; for audio signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html')">linear system</A> of equations
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}a x_1 + b x_2 &=& c \\
+d x_1 + e x_2 &=& f\end{eqnarray*}</DIV><P></P>
+in <A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">matrix</A> form:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left[\begin{array}{cc} a & b \\[2pt] d & e \end{array}\right] \left[\begin{array}{c} x_1 \\[2pt] x_2 \end{array}\right] = \left[\begin{array}{c} c \\[2pt] f \end{array}\right]\]</DIV><P></P>
+This can be written in higher level form as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\mathbf{A}\underline{x}= \underline{b},\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(\mathbf{A}\)</SPAN> denotes the two-by-two matrix above, and <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> and <SPAN CLASS="MATH">\(\underline{b}\)</SPAN>
+denote the two-by-one vectors.  The solution to this equation
+is then
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\underline{x}= \mathbf{A}^{-1}\underline{b}= \left[\begin{array}{cc} a & b \\[2pt] d & e \end{array}\right]^{-1}\left[\begin{array}{c} c \\[2pt] f \end{array}\right].\]</DIV><P></P>
+The general two-by-two matrix inverse is given by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left[\begin{array}{cc} a & b \\[2pt] d & e \end{array}\right]^{-1} = \frac{1}{ae-bd}\left[\begin{array}{cc} e & -b \\[2pt] -d & a \end{array}\right]\]</DIV><P></P>
+and the inverse exists whenever <SPAN CLASS="MATH">\(ae-bd\)</SPAN> (which is called the <I><A HREF="https://mathworld.wolfram.com/Determinant.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Determinant.html')">determinant</A></I> of the matrix <SPAN CLASS="MATH">\(\mathbf{A}\)</SPAN>) is nonzero.  For larger <A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">matrices</A>,
+numerical algorithms are used to invert matrices, such as used by <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A>
+based on LINPACK [<A
+ HREF="Bibliography.html#Golub">26</A>]. An initial introduction to matrices
+and linear <A HREF="https://www.khanacademy.org/math/algebra2" onMouseover="return escape('Click for https://www.khanacademy.org/math/algebra2')">algebra</A> can be found in [<A
+ HREF="Bibliography.html#Noble">49</A>].
+
+<P>
+
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4236"
+  HREF="Matlab_Octave_Examples.html" 
+ onMouseover="return escape('Matlab/Octave Examples')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4228"
+  HREF="Matrix_Multiplication.html" 
+ onMouseover="return escape('Matrix Multiplication')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4232"
+  HREF="Matrices.html" 
+ onMouseover="return escape('Matrices')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4234"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

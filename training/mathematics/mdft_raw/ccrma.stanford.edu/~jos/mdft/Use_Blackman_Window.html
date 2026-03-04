@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Use of a Blackman Window</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Use of a Blackman Window">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Hann_Windowed_Complex_Sinusoid.html">
+<LINK REL="previous" HREF="FFT_Zero_Padded_Sinusoid.html">
+<LINK REL="up" HREF="Spectrum_Analysis_Sinusoid_Windowing.html">
+<LINK REL="next" HREF="Applying_Blackman_Window.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2978"
+  HREF="Applying_Blackman_Window.html" 
+ onMouseover="return escape('Applying the Blackman Window')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2968"
+  HREF="FFT_Zero_Padded_Sinusoid.html" 
+ onMouseover="return escape('FFT of a Zero-Padded Sinusoid')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2974"
+  HREF="Spectrum_Analysis_Sinusoid_Windowing.html" 
+ onMouseover="return escape('Spectrum Analysis of a Sinusoid')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2976"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00914000000000000000"></A><A NAME="sec:blackman"></A><A NAME="20447"></A>
+<A NAME="20448"></A>
+<BR>
+Use of a <A HREF="https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289')">Blackman Window</A>
+</H3>
+
+<P>
+As Fig.<A HREF="FFT_Zero_Padded_Sinusoid.html#fig:example3">8.4</A>a suggests, the previous example can be interpreted
+as using a <I>rectangular window</I> to select a finite segment (of
+length <SPAN CLASS="MATH">\(N\)</SPAN>) from a sampled <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> that continues for all time.
+In practical <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A>, such excerpts are normally
+analyzed using a window that is <I>tapered</I> more gracefully to
+zero on the left and right.  In this section, we will look at using a
+<I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289')">Blackman</A> window</I> [<A
+ HREF="Bibliography.html#SASP">73</A>]<A NAME="tex2html108"
+  HREF="footnode.html#foot20400"><SUP>8.3</SUP></A>on our example <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A>.  The Blackman window has good (though
+suboptimal) characteristics for audio work.
+
+<P>
+In Octave<A NAME="tex2html110"
+  HREF="footnode.html#foot20401"><SUP>8.4</SUP></A>or the <A HREF="http://www.mathworks.com/help/signal/index.html" onMouseover="return escape('Click for http://www.mathworks.com/help/signal/index.html')">Matlab Signal Processing Toolbox</A>,<A NAME="tex2html112"
+  HREF="footnode.html#foot20402"><SUP>8.5</SUP></A>a Blackman window of length <SPAN CLASS="MATH">\(M=64\)</SPAN> can be designed very easily:<PRE>
+M = 64;
+w = blackman(M);
+</PRE>
+Many other standard windows are defined as well, including
+<TT>hamming</TT>,
+<TT><A HREF="https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html')">hanning</A></TT>, and
+<TT>bartlett</TT> windows.
+
+<P>
+In <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> without the <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">Signal</A> Processing Toolbox, the Blackman window
+is readily computed from its mathematical definition:<PRE>
+w = .42 - .5*cos(2*pi*(0:M-1)/(M-1)) ...
+       + .08*cos(4*pi*(0:M-1)/(M-1));
+</PRE>
+
+<P>
+Figure <A HREF="Use_Blackman_Window.html#fig:blackman">8.5</A> shows the Blackman window and its <A HREF="Discrete_Fourier_Transform_DFT.html" onMouseover="return escape('The &lt;i&gt;magnitude spectrum&lt;/i&gt; of a signal is given by the magnitude (complex modulus) of its Fourier transform. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Fourier_Transform_DFT.html')">magnitude spectrum</A>
+on a <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">dB</A> scale. Fig.<A HREF="Use_Blackman_Window.html#fig:blackman">8.5</A>c uses the more ``physical'' frequency
+axis in which the upper half of the <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> <A HREF="Spectral_Bin_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Spectral_Bin_Numbers.html')">bin numbers</A> are interpreted as
+<A HREF="Positive_Negative_Frequencies.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Positive_Negative_Frequencies.html')">negative frequencies</A>.  Here is the complete Matlab script 
+for Fig.<A HREF="Use_Blackman_Window.html#fig:blackman">8.5</A>:
+
+<BLOCKQUOTE></BLOCKQUOTE><PRE>
+M = 64;  
+w = blackman(M);
+figure(1); 
+subplot(3,1,1); plot(w,'*'); title('Blackman Window');
+xlabel('Time (samples)'); ylabel('Amplitude'); text(-8,1,'a)'); 
+
+% Also show the window transform:
+zpf = 8;                      % <A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero-padding</A> factor
+xw = [w',zeros(1,(zpf-1)*M)]; % zero-padded window
+Xw = fft(xw);                 % Blackman window transform
+spec = 20*log10(abs(Xw));     % Spectral magnitude in <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A>
+spec = spec - max(spec);      % Normalize to 0 <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">db</A> max
+nfft = zpf*M;
+spec = max(spec,-100*ones(1,nfft)); % clip to -100 dB
+fni = [0:1.0/nfft:1-1.0/nfft];   % Normalized frequency axis
+subplot(3,1,2); plot(fni,spec,'-'); axis([0,1,-100,10]); 
+xlabel('Normalized Frequency (cycles per sample))'); 
+ylabel('Magnitude (dB)'); grid; text(-.12,20,'b)'); 
+
+% Replot interpreting upper bin numbers as frequencies&lt;0:
+nh = nfft/2;
+specnf = [spec(nh+1:nfft),spec(1:nh)];  % see fftshift()
+fninf = fni - 0.5;
+subplot(3,1,3);
+plot(fninf,specnf,'-'); axis([-0.5,0.5,-100,10]); grid;
+xlabel('Normalized Frequency (cycles per sample))'); 
+ylabel('Magnitude (dB)');
+text(-.62,20,'c)'); 
+cmd = ['print -deps ', '../eps/blackman.eps'];
+disp(cmd); eval(cmd);
+disp 'pausing for RETURN (check the plot). . .'; pause
+</PRE><BLOCKQUOTE></BLOCKQUOTE> 
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:blackman"></A></P><IMG
+ WIDTH="779" HEIGHT="618" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img105.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img105.png 1x,https://ccrma.stanford.edu/~jos/mdft/img105_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img105_3x.png 3x"
+ ALT="\includegraphics[width=\twidth]{eps/blackman}">
+	<IMG
+ WIDTH="785" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img104.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img104.png 1x,https://ccrma.stanford.edu/~jos/mdft/img104_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img104_3x.png 3x"
+ ALT="% latex2html id marker 36783
+$\textstyle \parbox{\twidth }{\caption{\protect\small The Blackman window: a)
+window itself in the time domain, b) dB magnitude spectrum plotted
+over normalized frequencies $[0,1)$, and c) same thing plotted
+over $[-0.5,0.5)$.}}$">
+</DIV>
+
+<P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html2979"
+  HREF="Applying_Blackman_Window.html">Applying the Blackman Window</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2978"
+  HREF="Applying_Blackman_Window.html" 
+ onMouseover="return escape('Applying the Blackman Window')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2968"
+  HREF="FFT_Zero_Padded_Sinusoid.html" 
+ onMouseover="return escape('FFT of a Zero-Padded Sinusoid')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2974"
+  HREF="Spectrum_Analysis_Sinusoid_Windowing.html" 
+ onMouseover="return escape('Spectrum Analysis of a Sinusoid')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2976"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

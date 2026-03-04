@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bandlimited Interpolation of Time-Limited Signals</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Bandlimited Interpolation of Time-Limited Signals">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Relation_Stretch_Theorem.html">
+<LINK REL="up" HREF="Periodic_Interpolation_Spectral_Zero.html">
+<LINK REL="next" HREF="DFT_Theorems_Problems.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2852"
+  HREF="DFT_Theorems_Problems.html" 
+ onMouseover="return escape('DFT Theorems Problems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2844"
+  HREF="Relation_Stretch_Theorem.html" 
+ onMouseover="return escape('Relation to Stretch Theorem')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2848"
+  HREF="Periodic_Interpolation_Spectral_Zero.html" 
+ onMouseover="return escape('Interpolation Theorems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2850"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION008413200000000000000">
+Bandlimited Interpolation of Time-Limited Signals</A>
+</H4>
+
+<P>
+The previous result can be extended toward <A HREF="https://ccrma.stanford.edu/~jos/resample/" onMouseover="return escape('Bandlimited interpolation is the ideal type of interpolation for properly sampled signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/resample/')">bandlimited interpolation</A>
+of <SPAN CLASS="MATH">\(x\in\mathbb{C}^{N_x}\)</SPAN> which includes all nonzero samples from an
+<I>arbitrary</I> time-limited <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> <SPAN CLASS="MATH">\(x^\prime\in\mathbb{C}^\infty\)</SPAN>
+(<I>i.e.</I>, going beyond the interpolation of only <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic</A> bandlimited
+signals given one or more <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periods</A> <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN>) by 
+
+<OL>
+<LI>replacing the rectangular window <SPAN CLASS="MATH">\(\oper{Chop}_N()\)</SPAN> with a 
+	<I>smoother spectral window</I> <SPAN CLASS="MATH">\(H(\omega)\)</SPAN>, and 
+</LI>
+<LI>using extra <A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero-padding</A> in the time domain to convert the
+<I>cyclic</I> <A HREF="Convolution.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Convolution.html')">convolution</A> between <SPAN CLASS="MATH">\(\oper{Stretch}_L(x)\)</SPAN> and <SPAN CLASS="MATH">\(h\)</SPAN> into an
+<I>acyclic</I> convolution between them (recall &#167;<A HREF="Convolution.html#sec:convolution">7.2.4</A>).  
+</LI>
+</OL>
+The smoother spectral window <SPAN CLASS="MATH">\(H\)</SPAN> can be thought of as the
+<I><A HREF="https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html" onMouseover="return escape('The &lt;i&gt;frequency response&lt;/i&gt; is defined for LTI filters as the Fourier transform of the filter output signal divided by the Fourier transform of the filter input signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html')">frequency response</A></I> of the FIR<A NAME="tex2html103"
+  HREF="footnode.html#foot19325"><SUP>7.23</SUP></A> <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filter</A> <SPAN CLASS="MATH">\(h\)</SPAN> used as the
+bandlimited interpolation kernel in the time domain.  The number of
+zeros needed in the zero-padding of <SPAN CLASS="MATH">\(x\)</SPAN> in the time domain is simply
+length of <SPAN CLASS="MATH">\(h\)</SPAN> minus 1, and the number of zeros to be appended to <SPAN CLASS="MATH">\(h\)</SPAN>
+is the length of <SPAN CLASS="MATH">\(\oper{Stretch}_L(x)\)</SPAN> minus 1.  With this much
+zero-padding, the <A HREF="https://ccrma.stanford.edu/~jos/sasp/Convolution_Short_Signals.html#21256" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Convolution_Short_Signals.html#21256')">cyclic convolution</A> of <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(h\)</SPAN> implemented using
+the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> becomes equivalent to <A HREF="https://ccrma.stanford.edu/~jos/sasp/Convolution_Theorem_DTFT.html#8614" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Convolution_Theorem_DTFT.html#8614')">acyclic convolution</A>, as desired for the
+time-limited signals <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(h\)</SPAN>. Thus, if <SPAN CLASS="MATH">\(N_x\)</SPAN> denotes the nonzero
+length of <SPAN CLASS="MATH">\(x\)</SPAN>, then the nonzero length of <SPAN CLASS="MATH">\(\oper{Stretch}_L(x)\)</SPAN> is
+<SPAN CLASS="MATH">\(L(N_x-1)+1\)</SPAN>, and we require the DFT length to be <SPAN CLASS="MATH">\(N\geq
+L(N_x-1)+N_h\)</SPAN>, where <SPAN CLASS="MATH">\(N_h\)</SPAN> is the filter length.  In operator
+notation, we can express bandlimited <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling-rate</A> up-conversion by
+the factor <SPAN CLASS="MATH">\(L\)</SPAN> for time-limited signals <SPAN CLASS="MATH">\(x\in\mathbb{C}^{N_x}\)</SPAN> by
+<A NAME="eq:blinterpfd"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\zbox{\oper{Interp}_L(x) \approx \oper{IDFT}(H\cdot(\oper{DFT}(\oper{ZeroPad}_{N}(\oper{Stretch}_L(x)))).}
+\end{equation}</DIV><P></P>
+The approximation symbol `<SPAN CLASS="MATH">\(\approx\)</SPAN>' approaches equality as the
+spectral window <SPAN CLASS="MATH">\(H\)</SPAN> approaches <SPAN CLASS="MATH">\(\oper{Chop}_{N_x}([1,\dots,1])\)</SPAN> (the
+frequency response of the ideal <A HREF="http://ccrma.stanford.edu/~jos/filters/Simplest_Lowpass_Filter_I.html" onMouseover="return escape('A lowpass filter rejects high frequencies and does not affect low frequencies. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Simplest_Lowpass_Filter_I.html')">lowpass filter</A> passing only the
+original <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> <SPAN CLASS="MATH">\(X\)</SPAN>), while at the same time allowing no time
+<A HREF="Alias_Operator.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Alias_Operator.html')">aliasing</A> (convolution remains acyclic in the time domain).
+
+<P>
+Equation (<A HREF="Bandlimited_Interpolation_Time_Limited_Signals.html#eq:blinterpfd">7.8</A>) can provide the basis for a high-quality
+<A HREF="https://ccrma.stanford.edu/~jos/resample/" onMouseover="return escape('Bandlimited interpolation is the ideal type of interpolation for properly sampled signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/resample/')">sampling-rate conversion</A> algorithm.  Arbitrarily long signals can be
+accommodated by breaking them into segments of length <SPAN CLASS="MATH">\(N_x\)</SPAN>, applying
+the above algorithm to each block, and summing the up-sampled blocks using
+<I>overlap-add</I><A NAME="19631"></A>.  That is, the lowpass filter <SPAN CLASS="MATH">\(h\)</SPAN> ``rings''
+into the next block and possibly beyond (or even into both adjacent
+time blocks when <SPAN CLASS="MATH">\(h\)</SPAN> is not <A HREF="https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html" onMouseover="return escape('A &lt;i&gt;causal filter&lt;/i&gt; is any filter whose impulse response is zero prior to time zero. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html')">causal</A>), and this ringing must be summed
+into all affected adjacent blocks.  Finally, the filter <SPAN CLASS="MATH">\(H\)</SPAN> can
+``window away'' more than the top <SPAN CLASS="MATH">\(L-1\)</SPAN> copies of <SPAN CLASS="MATH">\(X\)</SPAN> in <SPAN CLASS="MATH">\(Y\)</SPAN>, thereby
+preparing the time-domain signal for <I><A HREF="Downsampling_Operator.html" onMouseover="return escape('To &lt;i&gt;downsample&lt;/i&gt; a signal by the factor &lt;i&gt;N&lt;/i&gt; means to form a new signal consisting of every &lt;i&gt;N&lt;/i&gt;th sample of the original signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Downsampling_Operator.html')">downsampling</A></I>, say by
+<SPAN CLASS="MATH">\(M\in\mathbb{Z}\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[{\footnotesize
+\zbox{\oper{Interp}_{L/M}(x) \approx \oper{Downsample}_M(\oper{IDFT}(H\cdot(\oper{DFT}(\oper{ZeroPad}_{N}(\oper{Stretch}_L(x)))))}
+}\]</DIV><P></P>
+where now the lowpass filter frequency response <SPAN CLASS="MATH">\(H\)</SPAN> must be close to
+zero for all <SPAN CLASS="MATH">\(|\omega_k|\geq\pi/\max(L,M)\)</SPAN>.  While such a
+<A HREF="Sampling_Theory.html" onMouseover="return escape('Sampling is the process of converting a continuous-time signal into a discrete-time signal. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling</A>-rate conversion algorithm can be made more efficient by using
+an <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> in place of the DFT (see Appendix <A HREF="Fast_Fourier_Transform_FFT.html#app:fft">A</A>), it is not necessarily
+the most efficient algorithm possible.  This is because (1) <SPAN CLASS="MATH">\(M-1\)</SPAN> out
+of <SPAN CLASS="MATH">\(M\)</SPAN> output samples from the IDFT need not be computed at all, and
+(2) <SPAN CLASS="MATH">\(\oper{Stretch}_L(x)\)</SPAN> has many zeros in it which do not need explicit
+handling.  For an introduction to time-domain sampling-rate
+conversion (bandlimited interpolation) algorithms which take advantage
+of points (1) and (2) in this paragraph, see, <I>e.g.</I>, Appendix <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html#app:sampling">D</A> and
+[<A
+ HREF="Bibliography.html#SmithAndGossett84">75</A>].
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2852"
+  HREF="DFT_Theorems_Problems.html" 
+ onMouseover="return escape('DFT Theorems Problems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2844"
+  HREF="Relation_Stretch_Theorem.html" 
+ onMouseover="return escape('Relation to Stretch Theorem')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2848"
+  HREF="Periodic_Interpolation_Spectral_Zero.html" 
+ onMouseover="return escape('Interpolation Theorems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2850"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

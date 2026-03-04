@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Coherence Function in Matlab</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Coherence Function in Matlab">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Coherence_Function.html">
+<LINK REL="up" HREF="Coherence_Function.html">
+<LINK REL="next" HREF="Recommended_Further_Reading.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3205"
+  HREF="Recommended_Further_Reading.html" 
+ onMouseover="return escape('Recommended Further Reading')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3197"
+  HREF="Coherence_Function.html" 
+ onMouseover="return escape('Coherence Function')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3201"
+  HREF="Coherence_Function.html" 
+ onMouseover="return escape('Coherence Function')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3203"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00961000000000000000">
+Coherence Function in Matlab</A>
+</H3><A NAME="21533"></A>
+<A NAME="21535"></A>
+
+<P>
+In <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> and Octave, <TT>cohere(x,y,M)</TT> computes the <A HREF="Coherence_Function.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Coherence_Function.html')">coherence
+function</A> <SPAN CLASS="MATH">\(C_{xy}\)</SPAN> using successive <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFTs</A> of length <SPAN CLASS="MATH">\(M\)</SPAN> with a <A HREF="https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html')">Hanning
+window</A> and 50% overlap.  (The window and overlap can be controlled
+via additional optional arguments.)  The matlab listing in
+Fig.<A HREF="Coherence_Function_Matlab.html#code:coherex">8.14</A> illustrates <TT>cohere</TT> on a simple example.
+(A <A NAME="tex2html133"
+  HREF="mdft-python.html#Coherence-Function-in-Matlab">Python version</A><A NAME="tex2html130"
+
+HREF="footnode.html#foot21351"><SUP>8.15</SUP></A>is also available.)
+Figure <A HREF="Coherence_Function_Matlab.html#fig:coherex">8.15</A> shows a plot of <TT>cxyM</TT> for this example.
+We see a <A HREF="Coherence_Function.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Coherence_Function.html')">coherence</A> peak at frequency <SPAN CLASS="MATH">\(0.25\)</SPAN> cycles/sample, as
+expected, but there are also two rather large coherence samples on
+either side of the main peak.  These are expected as well, since the
+true <A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">cross-spectrum</A> for this case is a critically sampled <A HREF="https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html')">Hanning
+window</A> transform.  (A window transform is critically sampled whenever
+the window length equals the DFT length.)
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="code:coherex"></A><A NAME="21362"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 8.14:</STRONG>
+Coherence measurement example in matlab.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<HR></DIV>
+		&nbsp;
+<BR>
+
+<PRE>
+% Illustrate estimation of coherence function 'cohere' 
+% in the <A HREF="http://www.mathworks.com/help/signal/index.html" onMouseover="return escape('Click for http://www.mathworks.com/help/signal/index.html')">Matlab Signal Processing Toolbox</A>
+% or Octave with <A HREF="http://octave.sourceforge.net/" onMouseover="return escape('Click for http://octave.sourceforge.net/')">Octave Forge</A>:
+N = 1024;           % number of samples
+x=randn(1,N);       % <A HREF="http://en.wikipedia.org/wiki/Normal_distribution" onMouseover="return escape('The Gaussian probability density function is, in Matlab syntax, exp(-(x-mu)^2/(2*sigma^2))/sqrt(2*pi*sigma^2), where mu is the mean and sigma is the standard deviation. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Normal_distribution')">Gaussian</A> <A HREF="https://ccrma.stanford.edu/~jos/sasp/What_Noise.html" onMouseover="return escape('Noise (in signal processing) is a random signal.  In the language of statistical signal processing, a noise signal is typically modeled as \&#39;stochastic process\&#39;, which is in turn defined as a sequence of random variables. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/What_Noise.html')">noise</A>
+y=randn(1,N);       % Uncorrelated <A HREF="http://en.wikipedia.org/wiki/White_noise" onMouseover="return escape('In signal processing, noise is a random signal.  Broadband noise contains energy over a wide range of frequencies. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/White_noise')">noise</A>
+f0 = 1/4;           % Frequency of high coherence
+nT = [0:N-1];       % Time axis
+w0 = 2*pi*f0;
+x = x + cos(w0*nT); % Let something be correlated
+p = 2*pi*rand(1,1); % Phase is irrelevant
+y = y + cos(w0*nT+p); 
+M = round(sqrt(N)); % Typical window length
+[cxyM,w] = cohere(x,y,M); % Do the work
+figure(1); clf; 
+stem(w/2,cxyM,'*'); % w goes from 0 to 1 (odd convention)
+legend('');         % needed in Octave
+grid on;
+ylabel('Coherence');
+xlabel('Normalized Frequency (cycles/sample)');
+axis([0 1/2 0 1]);
+replot;  % Needed in Octave
+saveplot('../eps/coherex.eps'); % compatibility utility
+</PRE>
+<DIV ALIGN="CENTER">
+<HR></DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:coherex"></A></P><IMG
+ WIDTH="759" HEIGHT="535" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img120.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img120.png 1x,https://ccrma.stanford.edu/~jos/mdft/img120_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img120_3x.png 3x"
+ ALT="\includegraphics[width=\twidth]{eps/coherex}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img119.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img119.png 1x,https://ccrma.stanford.edu/~jos/mdft/img119_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img119_3x.png 3x"
+ ALT="% latex2html id marker 36978
+$\textstyle \parbox{\twidth }{\caption{\protect\small Sample coherence function.}}$">
+</DIV>
+
+<P>
+Note that more than one frame must be averaged to obtain a coherence
+less than one. For example, changing the <TT>cohere</TT> call in the
+above example to
+``<code>cxyN = cohere(x,y,N);</code>''
+produces all ones in <TT>cxyN</TT>, because no averaging is
+performed.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3205"
+  HREF="Recommended_Further_Reading.html" 
+ onMouseover="return escape('Recommended Further Reading')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3197"
+  HREF="Coherence_Function.html" 
+ onMouseover="return escape('Coherence Function')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3201"
+  HREF="Coherence_Function.html" 
+ onMouseover="return escape('Coherence Function')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3203"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

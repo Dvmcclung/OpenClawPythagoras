@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Coherence Function</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Coherence Function">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Recommended_Further_Reading.html">
+<LINK REL="previous" HREF="Power_Spectral_Density_Estimation.html">
+<LINK REL="up" HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html">
+<LINK REL="next" HREF="Coherence_Function_Matlab.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3194"
+  HREF="Coherence_Function_Matlab.html" 
+ onMouseover="return escape('Coherence Function in Matlab')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3184"
+  HREF="Power_Spectral_Density_Estimation.html" 
+ onMouseover="return escape('Power Spectral Density')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3190"
+  HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" 
+ onMouseover="return escape('DFT Applications')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3192"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00960000000000000000"></A><A NAME="sec:coherence"></A><A NAME="21511"></A>
+<BR>
+Coherence Function
+</H2>
+
+<P>
+A function related to <A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">cross-correlation</A> is the <I>coherence function</I><A NAME="21513"></A>,
+defined in terms of power spectral densities and
+the cross-spectral density by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[C_{xy}(\omega) \isdef \frac{|R_{xy}(\omega)|^2}{R_x(\omega)R_y(\omega)}.\]</DIV><P></P>
+In practice, these quantities can be estimated by
+<I>time-averaging</I> <SPAN CLASS="MATH">\(\overline{X(\omega_k)}Y(\omega_k)\)</SPAN>, 
+<SPAN CLASS="MATH">\(\left|X(\omega_k)\right|^2\)</SPAN>, and <SPAN CLASS="MATH">\(\left|Y(\omega_k)\right|^2\)</SPAN>
+over successive <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> blocks.  Let <SPAN CLASS="MATH">\({\cdot}_m\)</SPAN> denote time
+averaging across frames as in Eq.(<A HREF="Power_Spectral_Density_Estimation.html#eq:avgdef">8.3</A>) above.  Then an estimate
+of the coherence, the <I>sample coherence function</I><A NAME="21517"></A> <SPAN CLASS="MATH">\({\hat
+C}_{xy}(\omega_k)\)</SPAN>, may be defined by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[{\hat C}_{xy}(\omega_k) \isdef 
+\frac{\left|\left{\overline{X_m(\omega_k)}Y_m(\omega_k)\right}_m\right|^2}{\left{\left|X_m(\omega_k)\right|^2\right}_m\cdot\left{\left|Y_m(\omega_k)\right|^2\right}_m}.\]</DIV><P></P>
+Note that the averaging in the numerator occurs before the absolute
+value is taken.
+
+<P>
+The coherence <SPAN CLASS="MATH">\(C_{xy}(\omega)\)</SPAN> is a real function between zero and one
+which gives a <I>measure of <A HREF="Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Correlation.html')">correlation</A></I> between <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN> at
+each frequency <SPAN CLASS="MATH">\(\omega\)</SPAN>.  For example, imagine that <SPAN CLASS="MATH">\(y\)</SPAN> is produced
+from <SPAN CLASS="MATH">\(x\)</SPAN> via an <A HREF="https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html" onMouseover="return escape('The topic of &lt;i&gt;linear systems theory&lt;/i&gt; is primarily about &lt;i&gt;linear, time-invariant (LTI) filters&lt;/i&gt;.   A &lt;i&gt;linear&lt;/i&gt; filter is characterized by the property that its output-signal amplitude is linearly proportional to its input-signal amplitude.  A &lt;i&gt;time-invariant&lt;/i&gt; filter, or \&#39;constant-coefficient\&#39; filter, performs the same filtering operation at all times.  Only LTI filters can be characeterized by their &lt;i&gt;impulse response&lt;/i&gt;, or their &lt;i&gt;frequency response&lt;/i&gt;, or their &lt;i&gt;poles and zeros&lt;/i&gt; plus a gain, or the like.  Also, only LTI filters have the &lt;i&gt;superposition property&lt;/i&gt; for audio signals, in which the filtering of an audio mix can be obtained alternatively by filtering each channel separately and adding the filtered channels together.  Equivalently, only LTI filters exhibit no &lt;i&gt;intermodulation distortion&lt;/i&gt; for audio signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html')">LTI filtering operation</A>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[y = h\ast x \;\implies\; Y(\omega_k) = H(\omega_k)X(\omega_k)\]</DIV><P></P>
+Then the magnitude-normalized <A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">cross-spectrum</A> in each frame is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}{\hat  A}_{x_m y_m}(\omega_k) &\isdef&
+\frac{\overline{X_m(\omega_k)}Y_m(\omega_k)}{\left|X_m(\omega_k)\right|\cdot\left|Y_m(\omega_k)\right|}
+= \frac{\overline{X_m(\omega_k)}H(\omega_k)X_m(\omega_k)}{\left|X_m(\omega_k)\right|\cdot\left|H(\omega_k)X_m(\omega_k)\right|}\\[5pt]
+&=& \frac{\left|X_m(\omega_k)\right|^2 H(\omega_k)}{\left|X_m(\omega_k)\right|^2\left|H(\omega_k)\right|}
+= \frac{H(\omega_k)}{\left|H(\omega_k)\right|}\end{eqnarray*}</DIV><P></P>
+so that the coherence function becomes
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left|{\hat  C}_{xy}(\omega_k)\right|^2 = 
+\left|\frac{H(\omega_k)}{\left|H(\omega_k)\right|}\right|^2 = 1.\]</DIV><P></P>
+On the other hand, when <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN> are uncorrelated (<I>e.g.</I>, <SPAN CLASS="MATH">\(y\)</SPAN> is a
+<A HREF="https://ccrma.stanford.edu/~jos/sasp/What_Noise.html" onMouseover="return escape('Noise (in signal processing) is a random signal.  In the language of statistical signal processing, a noise signal is typically modeled as \&#39;stochastic process\&#39;, which is in turn defined as a sequence of random variables. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/What_Noise.html')">noise</A> process not derived from <SPAN CLASS="MATH">\(x\)</SPAN>), the sample coherence converges to 
+<I>zero</I> at all frequencies, as the number of blocks in the 
+average goes to infinity.
+
+<P>
+A common use for the coherence function is in the validation of
+input/output data collected in an <A HREF="https://en.wikipedia.org/wiki/Acoustics" onMouseover="return escape('From Wikipedia: Acoustics is the interdisciplinary science that deals with the study of all mechanical waves in gases, liquids, and solids including topics such as vibration, sound, ultrasound and infrasound &nbsp;&#8212;&nbsp; Click for https://en.wikipedia.org/wiki/Acoustics')">acoustics</A> experiment for purposes of
+<I><A HREF="FIR_System_Identification.html" onMouseover="return escape('Techniques for &lt;i&gt;system identification&lt;/i&gt; are concerned with estimating the coefficients of a filter given observations of its input and output signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/FIR_System_Identification.html')">system identification</A></I><A NAME="21531"></A>.  For example, <SPAN CLASS="MATH">\(x(n)\)</SPAN> might be a known
+signal which is input to an unknown system, such as a reverberant
+room, say, and <SPAN CLASS="MATH">\(y(n)\)</SPAN> is the recorded response of the room.  Ideally,
+the coherence should be <SPAN CLASS="MATH">\(1\)</SPAN> at all frequencies.  However, if the
+microphone is situated at a <I>null</I> in the room response for some
+frequency, it may record mostly <A HREF="http://en.wikipedia.org/wiki/White_noise" onMouseover="return escape('In signal processing, noise is a random signal.  Broadband noise contains energy over a wide range of frequencies. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/White_noise')">noise</A> at that frequency.  This is
+indicated in the measured coherence by a significant dip below 1.  An
+example is shown in Book III [<A
+ HREF="Bibliography.html#PASP">72</A>] for the case of a measured
+<A NAME="tex2html129"
+  HREF="http://ccrma.stanford.edu/~jos/pasp/Guitar_Bridge.html#fig:lguitarcoh">guitar-bridge admittance.</A>
+A more elementary example is given in the next section.
+
+<P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html3195"
+  HREF="Coherence_Function_Matlab.html">Coherence Function in Matlab</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3194"
+  HREF="Coherence_Function_Matlab.html" 
+ onMouseover="return escape('Coherence Function in Matlab')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3184"
+  HREF="Power_Spectral_Density_Estimation.html" 
+ onMouseover="return escape('Power Spectral Density')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3190"
+  HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" 
+ onMouseover="return escape('DFT Applications')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3192"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

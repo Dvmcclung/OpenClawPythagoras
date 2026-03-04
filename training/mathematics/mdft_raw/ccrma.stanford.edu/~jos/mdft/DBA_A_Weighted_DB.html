@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>DBA (A-Weighted DB)</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="DBA (A-Weighted DB)">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="DB_Full_Scale_dBFS.html">
+<LINK REL="previous" HREF="DB_SPL.html">
+<LINK REL="up" HREF="Specific_DB_Scales.html">
+<LINK REL="next" HREF="DB_Full_Scale_dBFS.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3947"
+  HREF="DB_Full_Scale_dBFS.html" 
+ onMouseover="return escape('DB Full Scale (dBFS) for Spectrum Display')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3937"
+  HREF="DB_SPL.html" 
+ onMouseover="return escape('DB SPL')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3943"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3945"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION001522500000000000000"></A><A NAME="sec:dba"></A><A NAME="25856"></A>
+<BR>
+<A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">DBA</A> (A-Weighted <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">DB</A>)
+</H4>
+
+<P>
+The so-called <I>A-weighted <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A> scale</I><A NAME="25858"></A> (abbreviated <I>dBA</I>) is
+based on the Fletcher-Munson <A HREF="http://en.wikipedia.org/wiki/Equal-loudness_contour" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Equal-loudness_contour')">equal-loudness</A> curve for an <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">SPL</A> of 40
+<A HREF="http://hyperphysics.phy-astr.gsu.edu/hbase/sound/phon.html#c1" onMouseover="return escape('Click for http://hyperphysics.phy-astr.gsu.edu/hbase/sound/phon.html#c1')">phons</A>.<A NAME="tex2html180"
+  HREF="footnode.html#foot25731"><SUP>F.8</SUP></A>  Thus, a dBA weighting
+assumes a fairly quiet <A HREF="http://en.wikipedia.org/wiki/Pure_tone" onMouseover="return escape('A musical sound whose waveform is comprised of a single sinusoid. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Pure_tone')">pure tone</A>.  Despite this assumption, the dBA
+weighting is often used as an approximate equal <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">loudness</A> adjustment
+for measured <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectra</A>.
+
+<P>
+An analog <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filter</A> <A HREF="https://ccrma.stanford.edu/~jos/filters/Transfer_Function_Analysis.html" onMouseover="return escape('The &lt;i&gt;transfer function&lt;/i&gt; is defined for LTI filters as the z transform of the filter output signal, divided by the z transform of the filter input signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Transfer_Function_Analysis.html')">transfer function</A> that can be used to implement an approximate
+A-weighting is given by<A NAME="tex2html182"
+  HREF="footnode.html#foot25623"><SUP>F.9</SUP></A><P></P>
+<DIV CLASS="MATHDISPLAY">\[H_A(s)
+    = \frac{k_A \cdot s^4}{(s+129.4)^2 (s+676.7) (s+4636) (s+76655)^2}\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(k_A \approx 7.39705\times 10^9\)</SPAN> normalizes the gain to unity at
+1 kHz.
+
+<P>
+The <I>ITU-R 468 <A HREF="https://ccrma.stanford.edu/~jos/sasp/What_Noise.html" onMouseover="return escape('Noise (in signal processing) is a random signal.  In the language of statistical signal processing, a noise signal is typically modeled as \&#39;stochastic process\&#39;, which is in turn defined as a sequence of random variables. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/What_Noise.html')">noise</A> weighting</I><A NAME="25860"></A><A NAME="tex2html183"
+  HREF="footnode.html#foot25732"><SUP>F.10</SUP></A>is said to perform better for measuring <A HREF="http://en.wikipedia.org/wiki/White_noise" onMouseover="return escape('In signal processing, noise is a random signal.  Broadband noise contains energy over a wide range of frequencies. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/White_noise')">noise</A> in audio systems.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3947"
+  HREF="DB_Full_Scale_dBFS.html" 
+ onMouseover="return escape('DB Full Scale (dBFS) for Spectrum Display')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3937"
+  HREF="DB_SPL.html" 
+ onMouseover="return escape('DB SPL')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3943"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3945"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

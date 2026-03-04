@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Cauchy-Schwarz Inequality</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Cauchy-Schwarz Inequality">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Triangle_Inequality.html">
+<LINK REL="previous" HREF="Norm_Induced_Inner_Product.html">
+<LINK REL="up" HREF="Inner_Product.html">
+<LINK REL="next" HREF="Triangle_Inequality.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1745"
+  HREF="Triangle_Inequality.html" 
+ onMouseover="return escape('Triangle Inequality')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1735"
+  HREF="Norm_Induced_Inner_Product.html" 
+ onMouseover="return escape('Norm Induced by the Inner Product')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1741"
+  HREF="Inner_Product.html" 
+ onMouseover="return escape('The Inner Product')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1743"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00693000000000000000"></A><A NAME="sec:schwarzneq"></A><A NAME="11210"></A>
+<A NAME="11211"></A>
+<BR>
+Cauchy-Schwarz Inequality
+</H3>
+
+<P>
+The <I>Cauchy-Schwarz Inequality</I> (or ``Schwarz Inequality'') 
+states that for all <SPAN CLASS="MATH">\(\underline{u}\in\mathbb{C}^N\)</SPAN> and <SPAN CLASS="MATH">\(\underline{v}\in\mathbb{C}^N\)</SPAN>, we have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{\left|\ip{\underline{u},\underline{v}}\right| \leq \|\underline{u}\|\cdot\|\underline{v}\|}\]</DIV><P></P>
+with equality if and only if <SPAN CLASS="MATH">\(\underline{u}=c\underline{v}\)</SPAN> for some <A HREF="http://en.wikipedia.org/wiki/Scalar" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Scalar')">scalar</A> <SPAN CLASS="MATH">\(c\)</SPAN>.
+
+<P>
+We can quickly show this for real vectors <SPAN CLASS="MATH">\(\underline{u}\in\mathbb{R}^N\)</SPAN>, <SPAN CLASS="MATH">\(\underline{v}\in\mathbb{R}^N\)</SPAN>, as
+follows: If either <SPAN CLASS="MATH">\(\underline{u}\)</SPAN> or <SPAN CLASS="MATH">\(\underline{v}\)</SPAN> is zero, the inequality holds (as
+equality).  Assuming both are nonzero, let's scale them to unit-length
+by defining the normalized vectors <SPAN CLASS="MATH">\(\underline{\tilde{u}}\isdeftext
+\underline{u}/\|\underline{u}\|\)</SPAN>, <SPAN CLASS="MATH">\(\underline{\tilde{v}}\isdeftext \underline{v}/\|\underline{v}\|\)</SPAN>, which are
+unit-length vectors lying on the ``unit ball'' in <SPAN CLASS="MATH">\(\mathbb{R}^N\)</SPAN> (a hypersphere
+of radius <SPAN CLASS="MATH">\(1\)</SPAN>).  We have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}0 \leq \|\underline{\tilde{u}}-\underline{\tilde{v}}\|^2 &=& \ip{\underline{\tilde{u}}-\underline{\tilde{v}},\underline{\tilde{u}}-\underline{\tilde{v}}} \\
+&=& \ip{\underline{\tilde{u}},\underline{\tilde{u}}-\underline{\tilde{v}}} - \ip{\underline{\tilde{v}},\underline{\tilde{u}}-\underline{\tilde{v}}} \\
+&=& \ip{\underline{\tilde{u}},\underline{\tilde{u}}} - \ip{\underline{\tilde{u}},\underline{\tilde{v}}} - \ip{\underline{\tilde{v}},\underline{\tilde{u}}} + \ip{\underline{\tilde{v}},\underline{\tilde{v}}} \\
+&=& \|\underline{\tilde{u}}\|^2 - \left[\ip{\underline{\tilde{u}},\underline{\tilde{v}}} + \overline{\ip{\underline{\tilde{u}},\underline{\tilde{v}}}}\right] 
+	+ \|\underline{\tilde{v}}\|^2 \\
+&=& 2 - 2\realPart{\ip{\underline{\tilde{u}},\underline{\tilde{v}}}} \\
+&=& 2 - 2\ip{\underline{\tilde{u}},\underline{\tilde{v}}}\end{eqnarray*}</DIV><P></P>
+which implies
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{\underline{\tilde{u}},\underline{\tilde{v}}} \leq 1\]</DIV><P></P>
+or, removing the normalization,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{\underline{u},\underline{v}} \leq \|\underline{u}\|\cdot\|\underline{v}\|.\]</DIV><P></P>
+The same derivation holds if <SPAN CLASS="MATH">\(\underline{u}\)</SPAN> is replaced by <SPAN CLASS="MATH">\(-\underline{u}\)</SPAN> yielding
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[-\ip{\underline{u},\underline{v}} \leq \|\underline{u}\|\cdot\|\underline{v}\|.\]</DIV><P></P>
+The last two equations imply
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left|\ip{\underline{u},\underline{v}}\right| \leq \|\underline{u}\|\cdot\|\underline{v}\|.\]</DIV><P></P>
+In the complex case, let <SPAN CLASS="MATH">\(\ip{\underline{u},\underline{v}}=R e^{j\theta}\)</SPAN>, and define
+<SPAN CLASS="MATH">\(\underline{\tilde{v}}=\underline{v}e^{j\theta}\)</SPAN>. Then <SPAN CLASS="MATH">\(\ip{\underline{u},\underline{\tilde{v}}}\)</SPAN> is real and equal to
+<SPAN CLASS="MATH">\(|\ip{\underline{u},\underline{\tilde{v}}}|=R&gt;0\)</SPAN>. By the same derivation as above,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{\underline{u},\underline{\tilde{v}}}\leq\|\underline{u}\|\cdot\|\underline{\tilde{v}}\| = \|\underline{u}\|\cdot\|\underline{v}\|.\]</DIV><P></P>
+Since <SPAN CLASS="MATH">\(\ip{\underline{u},\underline{\tilde{v}}}=R=\left|\ip{\underline{u},\underline{\tilde{v}}}\right|=\left|\ip{\underline{u},\underline{v}}\right|\)</SPAN>, the
+result is established also in the complex case.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1745"
+  HREF="Triangle_Inequality.html" 
+ onMouseover="return escape('Triangle Inequality')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1735"
+  HREF="Norm_Induced_Inner_Product.html" 
+ onMouseover="return escape('Norm Induced by the Inner Product')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1741"
+  HREF="Inner_Product.html" 
+ onMouseover="return escape('The Inner Product')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1743"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

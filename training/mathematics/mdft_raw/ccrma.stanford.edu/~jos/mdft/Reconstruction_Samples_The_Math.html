@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Reconstruction from Samples--The Math</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Reconstruction from Samples--The Math">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Sinc_Function.html">
+<LINK REL="up" HREF="Introduction_Sampling.html">
+<LINK REL="next" HREF="Aliasing_Sampled_Signals.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3640"
+  HREF="Aliasing_Sampled_Signals.html" 
+ onMouseover="return escape('Aliasing of Sampled Signals')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3632"
+  HREF="Sinc_Function.html" 
+ onMouseover="return escape('The Sinc Function')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3636"
+  HREF="Introduction_Sampling.html" 
+ onMouseover="return escape('Introduction to Sampling')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3638"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001313000000000000000">
+Reconstruction from Samples--The Math</A>
+</H3>
+
+<P>
+Let <SPAN CLASS="MATH">\(x_d(n) \isdef x(nT)\)</SPAN> denote the <SPAN CLASS="MATH">\(n\)</SPAN>th sample of the original
+sound <SPAN CLASS="MATH">\(x(t)\)</SPAN>, where <SPAN CLASS="MATH">\(t\)</SPAN> is time in seconds.  Thus, <SPAN CLASS="MATH">\(n\)</SPAN> ranges over the
+integers, and <SPAN CLASS="MATH">\(T\)</SPAN> is the <I><A HREF="Sampling_Theorem.html" onMouseover="return escape('The sampling interval (or sampling period) of a discrete-time signal is defined as the reciprocal of the sampling rate.  Since the sampling rate is normally in units of samples per second (Hz), the sampling interval is normally in units of seconds.  See also: sampling rate, sampling theorem &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling interval</A></I> in seconds.  The
+<I><A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling rate</A></I> in <A HREF="http://en.wikipedia.org/wiki/Hertz" onMouseover="return escape('&lt;i&gt;Hertz&lt;/i&gt; means \&#39;cycles per second\&#39;, and is abbreviated \&#39;Hz\&#39;.  It is the standard name for frequency units in cycles per second.  Another common frequency unit is \&#39;radians per second\&#39;, which is two-pi times frequency in Hertz. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Hertz')">Hertz</A> (Hz) is just the reciprocal of the
+<A HREF="Sampling_Theorem.html" onMouseover="return escape('The sampling interval (or sampling period) of a discrete-time signal is defined as the reciprocal of the sampling rate.  Since the sampling rate is normally in units of samples per second (Hz), the sampling interval is normally in units of seconds.  See also: sampling rate, sampling theorem &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling period</A>,
+<I>i.e.</I>, 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[f_s\isdef \frac{1}{T}.\]</DIV><P></P>
+
+<P>
+To avoid losing any information as a result of <A HREF="Sampling_Theory.html" onMouseover="return escape('Sampling is the process of converting a continuous-time signal into a discrete-time signal. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling</A>, we must
+assume <SPAN CLASS="MATH">\(x(t)\)</SPAN> is <I>bandlimited</I> to less than half the sampling
+rate.  This means there can be no energy in <SPAN CLASS="MATH">\(x(t)\)</SPAN> at frequency
+<SPAN CLASS="MATH">\(f_s/2\)</SPAN> or above. We will prove this mathematically when we prove
+the <I><A HREF="Sampling_Theorem.html" onMouseover="return escape('Derivation of the &lt;i&gt;sampling theorem&lt;/i&gt; which states that any signal can be perfectly reconstructed, in principle, from uniformly spaced samples of that signal, provided that the sampling rate is higher than twice the highest frequency present in the signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling theorem</A></I> in &#167;<A HREF="Sampling_Theorem.html#sec:samplingthm">D.3</A> below.
+
+<P>
+Let <SPAN CLASS="MATH">\(X(\omega)\)</SPAN> denote the <A HREF="Fourier_Transform_FT_Inverse.html" onMouseover="return escape('The Fourier Transform (FT) gives the (complex) spectrum of a continuous-time signal of any length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html')">Fourier transform</A> of <SPAN CLASS="MATH">\(x(t)\)</SPAN>, <I>i.e.</I>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[X(\omega)\isdef\int_{-\infty}^\infty x(t) e^{-j\omega t} dt .\]</DIV><P></P>
+Then we can say <SPAN CLASS="MATH">\(x\)</SPAN> is <I>bandlimited</I> to less than half the
+sampling rate if and only if <SPAN CLASS="MATH">\(X(\omega)=0\)</SPAN> for all
+<SPAN CLASS="MATH">\(|\omega|\geq\pi f_s\)</SPAN>.  In this case, the sampling theorem
+gives us that <SPAN CLASS="MATH">\(x(t)\)</SPAN> can be uniquely reconstructed from the samples
+<SPAN CLASS="MATH">\(x(nT)\)</SPAN> by summing up shifted, scaled, <A HREF="Sinc_Function.html" onMouseover="return escape('The \&#39;Cardinal sine function\&#39; is defined as sin(pi x)/(pi x) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinc_Function.html')">sinc functions</A>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[{\hat x}(t) \isdef \sum_{n=-\infty}^\infty x(nT) h_s(t-nT) \equiv x(t)\]</DIV><P></P>
+where
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[h_s(t) \isdef \mbox{sinc}(f_st) \isdef \frac{\sin(\pi f_st)}{\pi f_st}.\]</DIV><P></P>
+The <A HREF="Sinc_Function.html" onMouseover="return escape('The \&#39;Cardinal sine function\&#39; is defined as sin(pi x)/(pi x) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinc_Function.html')">sinc</A> function is the <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse response&lt;/i&gt; of a system is its output signal in response to the impulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse response</A> of the <I>ideal lowpass
+<A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filter</A></I>.  This means its Fourier transform is a rectangular window in
+the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domain</A>.  The particular sinc function used here
+corresponds to the ideal <A HREF="http://ccrma.stanford.edu/~jos/filters/Simplest_Lowpass_Filter_I.html" onMouseover="return escape('A lowpass filter rejects high frequencies and does not affect low frequencies. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Simplest_Lowpass_Filter_I.html')">lowpass filter</A> which cuts off at half the
+sampling rate.  In other words, it has a gain of 1 between frequencies
+0 and <SPAN CLASS="MATH">\(f_s/2\)</SPAN>, and a gain of zero at all higher frequencies.
+
+<P>
+The reconstruction of a sound from its samples can thus be interpreted
+as follows: convert the sample stream into a <I>weighted <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse</A>
+train</I>, and pass that <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> through an ideal lowpass filter which
+cuts off at half the sampling rate.  These are the fundamental steps
+of
+<I>digital to analog conversion</I> (DAC).  In practice,
+neither the impulses nor the lowpass filter are ideal, but they are
+usually close enough to ideal that one cannot hear any difference.
+Practical lowpass-<A HREF="http://www.circuitsage.com/filter.html" onMouseover="return escape('Click for http://www.circuitsage.com/filter.html')">filter design</A> is discussed in the context of
+<A NAME="tex2html166"
+  HREF="http://ccrma.stanford.edu/~jos/resample/"><I>bandlimited interpolation</I></A>
+[<A
+ HREF="Bibliography.html#SmithAndGossett84">75</A>].
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3640"
+  HREF="Aliasing_Sampled_Signals.html" 
+ onMouseover="return escape('Aliasing of Sampled Signals')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3632"
+  HREF="Sinc_Function.html" 
+ onMouseover="return escape('The Sinc Function')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3636"
+  HREF="Introduction_Sampling.html" 
+ onMouseover="return escape('Introduction to Sampling')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3638"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sampling Theory</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Sampling Theory">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="http://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="http://ccrma.stanford.edu/~jos/mdft/Taylor_Series_Expansions.html">
+<LINK REL="previous" HREF="http://ccrma.stanford.edu/~jos/mdft/Selected_Continuous_Time_Fourier_Theorems.html">
+<LINK REL="up" HREF="http://ccrma.stanford.edu/~jos/mdft/mdft.html">
+<LINK REL="next" HREF="http://ccrma.stanford.edu/~jos/mdft/Introduction_Sampling.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3583"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Introduction_Sampling.html" 
+ onMouseover="return escape('Introduction to Sampling')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3573"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Time_Bandwidth_Products_Unbounded_Above.html" 
+ onMouseover="return escape('Time-Bandwidth Products are Unbounded Above')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3581"
+   
+ HREF="http://ccrma.stanford.edu/~jos/mdft/Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="http://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001300000000000000000"></A><A NAME="app:sampling"></A><A NAME="24160"></A>
+<A NAME="24161"></A>
+<A NAME="24162"></A>
+<BR>
+Sampling Theory
+</H1>
+
+<P>
+In this appendix, <A HREF="Sampling_Theorem.html" onMouseover="return escape('Derivation of the &lt;i&gt;sampling theorem&lt;/i&gt; which states that any signal can be perfectly reconstructed, in principle, from uniformly spaced samples of that signal, provided that the sampling rate is higher than twice the highest frequency present in the signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling theory</A> is derived as an application of the
+<A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">DTFT</A> and the <A HREF="Fourier_Theorems.html" onMouseover="return escape('The Fourier theorems establish important, elementary time-frequency relationships.  The theorems are largely the same whether stated for the case of the Fourier Transform (FT), Discrete Fourier Transform (DFT), Discrete Time Fourier Transform (DTFT), or Fourier Series (FS). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html')">Fourier theorems</A> developed in Appendix <A HREF="http://ccrma.stanford.edu/~jos/mdft/Selected_Continuous_Time_Fourier_Theorems.html#app:contthms">C</A>.  First, we
+must derive a formula for <I><A HREF="Alias_Operator.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Alias_Operator.html')">aliasing</A></I> due to uniformly <A HREF="Sampling_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling a
+continuous-time signal</A>.  Next, the <I><A HREF="Sampling_Theorem.html" onMouseover="return escape('Derivation of the &lt;i&gt;sampling theorem&lt;/i&gt; which states that any signal can be perfectly reconstructed, in principle, from uniformly spaced samples of that signal, provided that the sampling rate is higher than twice the highest frequency present in the signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling theorem</A></I> is proved.
+The sampling theorem provides that a properly bandlimited
+continuous-time <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> can be sampled and reconstructed from its
+samples without error, in principle.
+
+<P>
+An early derivation of the sampling theorem is often cited as a 1928
+paper by Harold Nyquist, and Claude Shannon is credited with reviving
+interest in the sampling theorem after World War II when computers
+became public.<A NAME="tex2html163"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/footnode.html#foot24157"><SUP>D.1</SUP></A>As a result, the sampling theorem is often called
+``<A HREF="https://mathworld.wolfram.com/NyquistSampling.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/NyquistSampling.html')">Nyquist's sampling</A> theorem,'' ``<A HREF="Sampling_Theorem.html" onMouseover="return escape('Derivation of the &lt;i&gt;sampling theorem&lt;/i&gt; which states that any signal can be perfectly reconstructed, in principle, from uniformly spaced samples of that signal, provided that the sampling rate is higher than twice the highest frequency present in the signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">Shannon's sampling theorem</A>,'' or the
+like.  Also, the sampling rate has been called the
+<I>Nyquist rate</I><A NAME="24164"></A> in honor of Nyquist's contributions 
+[<A
+ HREF="http://ccrma.stanford.edu/~jos/mdft/Bibliography.html#OppenheimAndSchafer">50</A>].
+In the author's experience, however, modern usage of the term
+``Nyquist rate'' refers instead to <I>half</I> the sampling rate.  To
+resolve this clash between historical and current usage, the term
+<I>Nyquist limit</I><A NAME="24166"></A> will always mean <I>half</I> the sampling rate in this
+book series, and the term ``Nyquist rate'' will not be used at all.
+
+<P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html3584"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Introduction_Sampling.html">Introduction to Sampling</A>
+<UL>
+<LI><A NAME="tex2html3585"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Reconstruction_Samples_Pictorial_Version.html">Reconstruction from Samples--Pictorial Version</A>
+<LI><A NAME="tex2html3586"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sinc_Function.html">The Sinc Function</A>
+<LI><A NAME="tex2html3587"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Reconstruction_Samples_The_Math.html">Reconstruction from Samples--The Math</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3588"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Aliasing_Sampled_Signals.html">Aliasing of Sampled Signals</A>
+<UL>
+<LI><A NAME="tex2html3589"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Continuous_Time_Aliasing_Theorem.html">Continuous-Time Aliasing Theorem</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3590"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html">Sampling Theorem</A>
+<LI><A NAME="tex2html3591"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Appendix_Frequencies_Representable_by.html">Geometric Sequence Frequencies</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3583"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Introduction_Sampling.html" 
+ onMouseover="return escape('Introduction to Sampling')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3573"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Time_Bandwidth_Products_Unbounded_Above.html" 
+ onMouseover="return escape('Time-Bandwidth Products are Unbounded Above')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3581"
+   
+ HREF="http://ccrma.stanford.edu/~jos/mdft/Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="http://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="http://ccrma.stanford.edu/~jos/mdft/mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="http://ccrma.stanford.edu/~jos/mdft/mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="http://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="http://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

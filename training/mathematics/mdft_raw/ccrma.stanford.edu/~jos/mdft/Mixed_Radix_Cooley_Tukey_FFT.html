@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Mixed-Radix Cooley-Tukey FFT</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Mixed-Radix Cooley-Tukey FFT">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Prime_Factor_Algorithm_PFA.html">
+<LINK REL="previous" HREF="Fast_Fourier_Transform_FFT.html">
+<LINK REL="up" HREF="Fast_Fourier_Transform_FFT.html">
+<LINK REL="next" HREF="Decimation_Time.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3252"
+  HREF="Decimation_Time.html" 
+ onMouseover="return escape('Decimation in Time')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3242"
+  HREF="Fast_Fourier_Transform_FFT.html" 
+ onMouseover="return escape('Fast Fourier Transforms (FFT)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3248"
+  HREF="Fast_Fourier_Transform_FFT.html" 
+ onMouseover="return escape('Fast Fourier Transforms (FFT)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3250"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001010000000000000000"></A><A NAME="sec:mrfft"></A><A NAME="22247"></A>
+<A NAME="22248"></A>
+<BR>
+Mixed-Radix <A HREF="http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm')">Cooley-Tukey FFT</A>
+</H2>
+
+<P>
+When the desired <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> length <SPAN CLASS="MATH">\(N\)</SPAN> can be expressed as a product of
+smaller integers, the Cooley-Tukey decomposition provides what is
+called a <I>mixed radix</I><A NAME="22250"></A> Cooley-Tukey <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> algorithm.<A NAME="tex2html137"
+  HREF="footnode.html#foot22229"><SUP>A.2</SUP></A>
+<P>
+Two basic varieties of Cooley-Tukey FFT are <I><A HREF="Decimation_Time.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decimation_Time.html')">decimation in time</A></I>
+(DIT) and its Fourier dual, <I><A HREF="Decimation_Time.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decimation_Time.html')">decimation in frequency</A></I> (DIF).  The
+next section illustrates <A HREF="Downsampling_Operator.html" onMouseover="return escape('To &lt;i&gt;downsample&lt;/i&gt; a signal by the factor &lt;i&gt;N&lt;/i&gt; means to form a new signal consisting of every &lt;i&gt;N&lt;/i&gt;th sample of the original signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Downsampling_Operator.html')">decimation</A> in time.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html3253"
+  HREF="Decimation_Time.html">Decimation in Time</A>
+<LI><A NAME="tex2html3254"
+  HREF="Radix_2_FFT.html">Radix 2 FFT</A>
+<UL>
+<LI><A NAME="tex2html3255"
+  HREF="Radix_2_FFT_Complexity.html">Radix 2 FFT Complexity is N Log N</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3256"
+  HREF="Fixed_Point_FFTs_NFFTs.html">Fixed-Point FFTs and NFFTs</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3252"
+  HREF="Decimation_Time.html" 
+ onMouseover="return escape('Decimation in Time')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3242"
+  HREF="Fast_Fourier_Transform_FFT.html" 
+ onMouseover="return escape('Fast Fourier Transforms (FFT)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3248"
+  HREF="Fast_Fourier_Transform_FFT.html" 
+ onMouseover="return escape('Fast Fourier Transforms (FFT)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3250"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

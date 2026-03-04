@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Hann Window Spectrum Analysis Results</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Hann Window Spectrum Analysis Results">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Spectral_Phase.html">
+<LINK REL="previous" HREF="Hann_Windowed_Complex_Sinusoid.html">
+<LINK REL="up" HREF="Hann_Windowed_Complex_Sinusoid.html">
+<LINK REL="next" HREF="Spectral_Phase.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3013"
+  HREF="Spectral_Phase.html" 
+ onMouseover="return escape('Spectral Phase')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3003"
+  HREF="Hann_Windowed_Complex_Sinusoid.html" 
+ onMouseover="return escape('Hann-Windowed Complex Sinusoid')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3009"
+  HREF="Hann_Windowed_Complex_Sinusoid.html" 
+ onMouseover="return escape('Hann-Windowed Complex Sinusoid')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3011"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00915100000000000000">
+Hann Window Spectrum Analysis Results</A>
+</H4>
+
+<P>
+Finally, the <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> for computing the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> of the <A HREF="https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html')">Hann-windowed</A> complex
+<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> and plotting the results is listed below. To help see the
+full <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>, we also compute a heavily interpolated <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> (via
+<A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero padding</A> as before) which we'll draw using solid lines.
+
+<P>
+
+<BLOCKQUOTE></BLOCKQUOTE><PRE>
+% Compute the <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The spectrum of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> and its alternative forms:
+Xw = <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">fft</A>(xw);              % FFT of windowed data
+fn = [0:1.0/N:1-1.0/N];    % Normalized frequency axis
+spec = 20*log10(abs(Xw));  % Spectral magnitude in <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">dB</A>
+% Since the nulls can go to minus infinity, clip at -100 <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A>:
+spec = max(spec,-100*ones(1,length(spec)));
+phs = angle(Xw);           % <A HREF="Spectral_Phase.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Spectral_Phase.html')">Spectral phase</A> in radians
+phsu = unwrap(phs);        % Unwrapped spectral phase
+
+% Compute heavily interpolated versions for comparison:
+Nzp = 16;                   % Zero-padding factor
+Nfft = N*Nzp;               % Increased FFT size
+xwi = [xw,zeros(1,Nfft-N)]; % New zero-padded FFT buffer
+Xwi = fft(xwi);             % Compute interpolated spectrum
+fni = [0:1.0/Nfft:1.0-1.0/Nfft]; % Normalized freq axis
+speci = 20*log10(abs(Xwi)); % Interpolated spec mag (<A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A>)
+speci = max(speci,-100*ones(1,length(speci))); % clip
+phsi = angle(Xwi);          % Interpolated phase
+phsiu = unwrap(phsi);       % Unwrapped interpolated phase
+
+figure(1);
+subplot(2,1,1);
+
+plot(fn,abs(Xw),'*k'); hold on; 
+plot(fni,abs(Xwi),'-k'); hold off;
+title('Spectral Magnitude'); 
+xlabel('Normalized Frequency (cycles per sample))'); 
+ylabel('Amplitude (linear)');
+
+subplot(2,1,2);
+
+% Same thing on a <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB scale</A>
+plot(fn,spec,'*k'); hold on; plot(fni,speci,'-k'); hold off;
+title('Spectral Magnitude (dB)'); 
+xlabel('Normalized Frequency (cycles per sample))'); 
+ylabel('Magnitude (dB)');
+
+cmd = ['print -deps ', 'specmag.eps']; disp(cmd); eval(cmd);
+disp 'pausing for RETURN (check the plot). . .'; pause
+
+figure(1);
+subplot(2,1,1);
+plot(fn,phs,'*k'); hold on; plot(fni,phsi,'-k'); hold off;
+title('Spectral Phase'); 
+xlabel('Normalized Frequency (cycles per sample))'); 
+ylabel('Phase (rad)'); grid;
+subplot(2,1,2);
+plot(fn,phsu,'*k'); hold on; plot(fni,phsiu,'-k'); hold off;
+title('Unwrapped Spectral Phase'); 
+xlabel('Normalized Frequency (cycles per sample))'); 
+ylabel('Phase (rad)'); grid;
+cmd = ['print -deps ', 'specphs.eps']; disp(cmd); eval(cmd);
+</PRE><BLOCKQUOTE></BLOCKQUOTE> Figure <A HREF="Hann_Window_Spectrum_Analysis.html#fig:specmag">8.8</A> shows the spectral magnitude and
+Fig.<A HREF="Hann_Window_Spectrum_Analysis.html#figboth:specphs-wrapped">8.9</A> the spectral phase.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:specmag"></A></P><IMG
+ WIDTH="768" HEIGHT="623" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img111.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img111.png 1x,https://ccrma.stanford.edu/~jos/mdft/img111_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img111_3x.png 3x"
+ ALT="\includegraphics[width=\twidth]{eps/specmag}">
+	<IMG
+ WIDTH="785" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img110.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img110.png 1x,https://ccrma.stanford.edu/~jos/mdft/img110_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img110_3x.png 3x"
+ ALT="% latex2html id marker 36817
+$\textstyle \parbox{\twidth }{\caption{\protect\small Spectral magnitude on linear
+(top) and dB (bottom) scales.}}$">
+</DIV>
+
+<P>
+There are no <A HREF="Positive_Negative_Frequencies.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Positive_Negative_Frequencies.html')">negative-frequency</A> components in Fig.<A HREF="Hann_Window_Spectrum_Analysis.html#fig:specmag">8.8</A> because
+we are analyzing a <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex sinusoid</A> <SPAN CLASS="MATH">\(x=[1,j,-1,-j,1,j,\ldots\,]\)</SPAN>,
+which has frequency <SPAN CLASS="MATH">\(f_s/4\)</SPAN> only, with no component at <SPAN CLASS="MATH">\(-f_s/4\)</SPAN>.
+
+<P>
+Notice how difficult it would be to correctly interpret the shape of
+the ``<A HREF="https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html" onMouseover="return escape('A &lt;i&gt;side lobe&lt;/i&gt; in the Fourier transform of a window function, such as the Chebyshev window, is any local maximum in the transform magnitude outside of the main lobe (response about dc). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html')">sidelobes</A>'' without zero padding.  The asterisks correspond to a
+zero-padding factor of 2, already twice as much as needed to preserve
+all spectral information faithfully, but not enough to clearly outline
+the sidelobes in a spectral magnitude plot.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3013"
+  HREF="Spectral_Phase.html" 
+ onMouseover="return escape('Spectral Phase')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3003"
+  HREF="Hann_Windowed_Complex_Sinusoid.html" 
+ onMouseover="return escape('Hann-Windowed Complex Sinusoid')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3009"
+  HREF="Hann_Windowed_Complex_Sinusoid.html" 
+ onMouseover="return escape('Hann-Windowed Complex Sinusoid')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3011"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

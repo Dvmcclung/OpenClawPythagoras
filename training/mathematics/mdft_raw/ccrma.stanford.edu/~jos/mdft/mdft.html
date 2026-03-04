@@ -1,0 +1,916 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>MATHEMATICS OF THE DISCRETE FOURIER TRANSFORM (DFT)
+WITH AUDIO APPLICATIONS
+SECOND EDITION</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="MATHEMATICS OF THE DISCRETE FOURIER TRANSFORM (DFT)
+WITH AUDIO APPLICATIONS
+SECOND EDITION">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Preface.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html237"
+  HREF="Preface.html" 
+ onMouseover="return escape('Preface')">Next</A> &nbsp;|&nbsp;
+ <A NAME="tex2html235"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<P>
+
+<P>
+
+
+<P>
+ 
+<P>
+<H1 ALIGN=CENTER>M<SMALL>ATHEMATICS OF THE 
+</SMALL>
+<BR>
+D<SMALL>ISCRETE </SMALL>F<SMALL>OURIER </SMALL>T<SMALL>RANSFORM </SMALL>(DFT)
+<BR><FONT SIZE="+2"><SMALL>WITH </SMALL>A<SMALL>UDIO </SMALL>A<SMALL>PPLICATIONS</SMALL></FONT>
+<BR>
+S<SMALL>ECOND </SMALL>E<SMALL>DITION</SMALL></H1>
+<P ALIGN=CENTER><STRONG><A NAME="tex2html2"
+  HREF="http://ccrma.stanford.edu/%7Ejos">J<SMALL>ULIUS </SMALL>O. S<SMALL>MITH </SMALL>III</A></STRONG>
+<BR><FONT SIZE=-1><A NAME="tex2html3"
+  HREF="http://ccrma.stanford.edu/"><I><FONT SIZE="-1">Center for Computer Research in Music
+and Acoustics (CCRMA)</FONT></I></A></FONT>
+</P>
+<HR>
+
+<P>
+
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"></A>
+
+<UL>
+<LI><A NAME="tex2html238"
+  HREF="Preface.html">Preface</A>
+<UL>
+<LI><A NAME="tex2html239"
+  HREF="Chapter_Outline.html">Chapter Outline</A>
+<LI><A NAME="tex2html240"
+  HREF="Acknowledgments.html">Acknowledgments</A>
+<LI><A NAME="tex2html241"
+  HREF="Errata.html">Errata</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html242"
+  HREF="Introduction_DFT.html">Introduction to the DFT</A>
+<UL>
+<LI><A NAME="tex2html243"
+  HREF="DFT_Definition.html">DFT Definition</A>
+<LI><A NAME="tex2html244"
+  HREF="Inverse_DFT.html">Inverse DFT</A>
+<LI><A NAME="tex2html245"
+  HREF="Mathematics_DFT.html">Mathematics of the DFT</A>
+<LI><A NAME="tex2html246"
+  HREF="DFT_Math_Outline.html">DFT Math Outline</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html247"
+  HREF="Complex_Numbers.html">Complex Numbers</A>
+<UL>
+<LI><A NAME="tex2html248"
+  HREF="Factoring_Polynomial.html">Factoring a Polynomial</A>
+<LI><A NAME="tex2html249"
+  HREF="Quadratic_Formula.html">The Quadratic Formula</A>
+<LI><A NAME="tex2html250"
+  HREF="Complex_Roots.html">Complex Roots</A>
+<LI><A NAME="tex2html251"
+  HREF="Fundamental_Theorem_Algebra.html">Fundamental Theorem of Algebra</A>
+<LI><A NAME="tex2html252"
+  HREF="Complex_Basics.html">Complex Basics</A>
+<LI><A NAME="tex2html253"
+  HREF="Complex_Plane.html">The Complex Plane</A>
+<LI><A NAME="tex2html254"
+  HREF="More_Notation_Terminology.html">More Notation and Terminology</A>
+<LI><A NAME="tex2html255"
+  HREF="Elementary_Relationships.html">Elementary Relationships</A>
+<LI><A NAME="tex2html256"
+  HREF="Euler_s_Identity.html">Euler's Identity</A>
+<LI><A NAME="tex2html257"
+  HREF="De_Moivre_s_Theorem.html">De Moivre's Theorem</A>
+<LI><A NAME="tex2html258"
+  HREF="Conclusion.html">Conclusion</A>
+<LI><A NAME="tex2html259"
+  HREF="Complex_Number_Problems.html">Complex_Number Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html260"
+  HREF="Proof_Euler_s_Identity.html">Proof of Euler's Identity</A>
+<UL>
+<LI><A NAME="tex2html261"
+  HREF="Euler_s_Identity_I.html">Euler's Identity</A>
+<LI><A NAME="tex2html262"
+  HREF="Positive_Integer_Exponents.html">Positive Integer Exponents</A>
+<LI><A NAME="tex2html263"
+  HREF="Properties_Exponents.html">Properties of Exponents</A>
+<LI><A NAME="tex2html264"
+  HREF="Exponent_Zero.html">The Exponent Zero</A>
+<LI><A NAME="tex2html265"
+  HREF="Negative_Exponents.html">Negative Exponents</A>
+<LI><A NAME="tex2html266"
+  HREF="Rational_Exponents.html">Rational Exponents</A>
+<LI><A NAME="tex2html267"
+  HREF="Real_Exponents.html">Real Exponents</A>
+<LI><A NAME="tex2html268"
+  HREF="First_Look_Taylor_Series.html">A First Look at Taylor Series</A>
+<LI><A NAME="tex2html269"
+  HREF="Imaginary_Exponents.html">Imaginary Exponents</A>
+<LI><A NAME="tex2html270"
+  HREF="Derivatives_f_x_power.html">Derivatives of f(x) = a to the power x</A>
+<LI><A NAME="tex2html271"
+  HREF="Back_e.html">Back to <I>e</I></A>
+<LI><A NAME="tex2html272"
+  HREF="e_j_theta.html">e^(j theta)</A>
+<LI><A NAME="tex2html273"
+  HREF="Back_Mth_Roots.html">Back to Mth Roots</A>
+<LI><A NAME="tex2html274"
+  HREF="Roots_Unity.html">Roots of Unity</A>
+<LI><A NAME="tex2html275"
+  HREF="Direct_Proof_De_Moivre_s.html">Direct Proof of De Moivre's Theorem</A>
+<LI><A NAME="tex2html276"
+  HREF="Euler_Identity_Problems.html">Euler_Identity Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html277"
+  HREF="Sinusoids_Exponentials.html">Sinusoids and Exponentials</A>
+<UL>
+<LI><A NAME="tex2html278"
+  HREF="Sinusoids.html">Sinusoids</A>
+<UL>
+<LI><A NAME="tex2html279"
+  HREF="Example_Sinusoids.html">Example Sinusoids</A>
+<LI><A NAME="tex2html280"
+  HREF="Why_Sinusoids_Important.html">Why Sinusoids are Important</A>
+<LI><A NAME="tex2html281"
+  HREF="In_Phase_Quadrature_Sinusoidal.html">In-Phase &amp; Quadrature Sinusoidal Components</A>
+<LI><A NAME="tex2html282"
+  HREF="Sinusoids_Same_Frequency.html">Sinusoids at the Same Frequency</A>
+<LI><A NAME="tex2html283"
+  HREF="Constructive_Destructive_Interference.html">Constructive and Destructive Interference</A>
+<LI><A NAME="tex2html284"
+  HREF="Sinusoid_Magnitude_Spectra.html">Sinusoid Magnitude Spectra</A>
+</UL>
+<LI><A NAME="tex2html285"
+  HREF="Exponentials.html">Exponentials</A>
+<UL>
+<LI><A NAME="tex2html286"
+  HREF="Why_Exponentials_Important.html">Why Exponentials are Important</A>
+<LI><A NAME="tex2html287"
+  HREF="Audio_Decay_Time_T60.html">Audio Decay Time (T60)</A>
+</UL>
+<LI><A NAME="tex2html288"
+  HREF="Complex_Sinusoids.html">Complex Sinusoids</A>
+<UL>
+<LI><A NAME="tex2html289"
+  HREF="Circular_Motion.html">Circular Motion</A>
+<LI><A NAME="tex2html290"
+  HREF="Projection_Circular_Motion.html">Projection of Circular Motion</A>
+<LI><A NAME="tex2html291"
+  HREF="Positive_Negative_Frequencies.html">Positive and Negative Frequencies</A>
+<LI><A NAME="tex2html292"
+  HREF="Plotting_Complex_Sinusoids_versus.html">Plotting Complex Sinusoids versus Frequency</A>
+<LI><A NAME="tex2html293"
+  HREF="Sinusoidal_Amplitude_Modulation_AM.html">Sinusoidal Amplitude Modulation (AM)</A>
+<UL>
+<LI><A NAME="tex2html294"
+  HREF="Example_AM_Spectra.html">Example AM Spectra</A>
+</UL>
+<LI><A NAME="tex2html295"
+  HREF="Sinusoidal_Frequency_Modulation_FM.html">Sinusoidal Frequency Modulation (FM)</A>
+<UL>
+<LI><A NAME="tex2html296"
+  HREF="Bessel_Functions.html">Bessel Functions</A>
+<LI><A NAME="tex2html297"
+  HREF="FM_Spectra.html">FM Spectra</A>
+</UL>
+<LI><A NAME="tex2html298"
+  HREF="Analytic_Signals_Hilbert_Transform.html">Analytic Signals and Hilbert Transform Filters</A>
+<LI><A NAME="tex2html299"
+  HREF="Generalized_Complex_Sinusoids.html">Generalized Complex Sinusoids</A>
+<LI><A NAME="tex2html300"
+  HREF="Sampled_Sinusoids.html">Sampled Sinusoids</A>
+<LI><A NAME="tex2html301"
+  HREF="Powers_z.html">Powers of <I>z</I></A>
+<LI><A NAME="tex2html302"
+  HREF="Phasor_Carrier_Components_Sinusoids.html">Phasors and Carriers</A>
+<UL>
+<LI><A NAME="tex2html303"
+  HREF="Phasor.html">Phasor</A>
+<LI><A NAME="tex2html304"
+  HREF="Why_Phasors_Important.html">Why Phasors are Important</A>
+</UL>
+<LI><A NAME="tex2html305"
+  HREF="Importance_Generalized_Complex_Sinusoids.html">Importance of Generalized Complex Sinusoids</A>
+<LI><A NAME="tex2html306"
+  HREF="Comparing_Analog_Digital_Complex.html">Comparing Analog and Digital Complex Planes</A>
+</UL>
+<LI><A NAME="tex2html307"
+  HREF="Sinusoid_Problems.html">Sinusoid Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html308"
+  HREF="Geometric_Signal_Theory.html">Geometric Signal Theory</A>
+<UL>
+<LI><A NAME="tex2html309"
+  HREF="DFT.html">The DFT</A>
+<LI><A NAME="tex2html310"
+  HREF="Signals_Vectors.html">Signals as Vectors</A>
+<UL>
+<LI><A NAME="tex2html311"
+  HREF="Example_Vector_View.html">An Example Vector View: <SPAN CLASS="MATH">\(N=2\)</SPAN></A>
+</UL>
+<LI><A NAME="tex2html312"
+  HREF="Vector_Addition.html">Vector Addition</A>
+<LI><A NAME="tex2html313"
+  HREF="Vector_Subtraction.html">Vector Subtraction</A>
+<LI><A NAME="tex2html314"
+  HREF="Scalar_Multiplication.html">Scalar Multiplication</A>
+<LI><A NAME="tex2html315"
+  HREF="Linear_Combination_Vectors.html">Linear Combination of Vectors</A>
+<LI><A NAME="tex2html316"
+  HREF="Linear_Vector_Space.html">Linear Vector Space</A>
+<LI><A NAME="tex2html317"
+  HREF="Signal_Metrics.html">Signal Metrics</A>
+<UL>
+<LI><A NAME="tex2html318"
+  HREF="Other_Lp_Norms.html">Other Lp Norms</A>
+<LI><A NAME="tex2html319"
+  HREF="Norm_Properties.html">Norm Properties</A>
+<LI><A NAME="tex2html320"
+  HREF="Summary_Related_Mathematical_Topics.html">Summary and Related Mathematical Topics</A>
+</UL>
+<LI><A NAME="tex2html321"
+  HREF="Inner_Product.html">The Inner Product</A>
+<UL>
+<LI><A NAME="tex2html322"
+  HREF="Linearity_Inner_Product.html">Linearity of the Inner Product</A>
+<LI><A NAME="tex2html323"
+  HREF="Norm_Induced_Inner_Product.html">Norm Induced by the Inner Product</A>
+<LI><A NAME="tex2html324"
+  HREF="Cauchy_Schwarz_Inequality.html">Cauchy-Schwarz Inequality</A>
+<LI><A NAME="tex2html325"
+  HREF="Triangle_Inequality.html">Triangle Inequality</A>
+<LI><A NAME="tex2html326"
+  HREF="Triangle_Difference_Inequality.html">Triangle Difference Inequality</A>
+<LI><A NAME="tex2html327"
+  HREF="Vector_Cosine.html">Vector Cosine</A>
+<LI><A NAME="tex2html328"
+  HREF="Orthogonality.html">Orthogonality</A>
+<LI><A NAME="tex2html329"
+  HREF="Pythagorean_Theorem_N_Space.html">The Pythagorean Theorem in N-Space</A>
+<LI><A NAME="tex2html330"
+  HREF="Projection.html">Projection</A>
+</UL>
+<LI><A NAME="tex2html331"
+  HREF="Signal_Reconstruction_Projections.html">Signal Reconstruction from Projections</A>
+<UL>
+<LI><A NAME="tex2html332"
+  HREF="Changing_Coordinates.html">Changing Coordinates</A>
+<UL>
+<LI><A NAME="tex2html333"
+  HREF="Example_Changing_Coordinates_2D.html">An Example of Changing Coordinates in 2D</A>
+</UL>
+<LI><A NAME="tex2html334"
+  HREF="Projection_onto_Linearly_Dependent.html">Projection onto Linearly Dependent Vectors</A>
+<LI><A NAME="tex2html335"
+  HREF="Projection_onto_Non_Orthogonal_Vectors.html">Projection onto Non-Orthogonal Vectors</A>
+<LI><A NAME="tex2html336"
+  HREF="General_Conditions.html">General Conditions</A>
+<LI><A NAME="tex2html337"
+  HREF="Signal_Vector_Reconstruction_Projections.html">Signal/Vector Reconstruction from Projections</A>
+<LI><A NAME="tex2html338"
+  HREF="Gram_Schmidt_Orthogonalization.html">Gram-Schmidt Orthogonalization</A>
+</UL>
+<LI><A NAME="tex2html339"
+  HREF="Signal_Projection_Problems.html">Signal Projection Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html340"
+  HREF="DFT_Derived.html">The DFT
+ Derived</A>
+<UL>
+<LI><A NAME="tex2html341"
+  HREF="Geometric_Series.html">Geometric Series</A>
+<LI><A NAME="tex2html342"
+  HREF="Orthogonality_Sinusoids.html">Orthogonality of Sinusoids</A>
+<UL>
+<LI><A NAME="tex2html343"
+  HREF="Nth_Roots_Unity.html">Nth Roots of Unity</A>
+<LI><A NAME="tex2html344"
+  HREF="DFT_Sinusoids.html">DFT Sinusoids</A>
+</UL>
+<LI><A NAME="tex2html345"
+  HREF="Orthogonality_DFT_Sinusoids.html">Orthogonality of the DFT Sinusoids</A>
+<LI><A NAME="tex2html346"
+  HREF="Norm_DFT_Sinusoids.html">Norm of the DFT Sinusoids</A>
+<LI><A NAME="tex2html347"
+  HREF="Orthonormal_Sinusoidal_Set.html">An Orthonormal Sinusoidal Set</A>
+<LI><A NAME="tex2html348"
+  HREF="Discrete_Fourier_Transform_DFT.html">The Discrete Fourier Transform (DFT)</A>
+<LI><A NAME="tex2html349"
+  HREF="Frequencies_Cracks.html">Frequencies in the ``Cracks''</A>
+<LI><A NAME="tex2html350"
+  HREF="Spectral_Bin_Numbers.html">Spectral Bin Numbers</A>
+<LI><A NAME="tex2html351"
+  HREF="Fourier_Series_Special_Case.html">Fourier Series Special Case</A>
+<LI><A NAME="tex2html352"
+  HREF="Normalized_DFT.html">Normalized DFT</A>
+<LI><A NAME="tex2html353"
+  HREF="Length_2_DFT.html">The Length 2 DFT</A>
+<LI><A NAME="tex2html354"
+  HREF="Matrix_Formulation_DFT.html">Matrix Formulation of the DFT</A>
+<LI><A NAME="tex2html355"
+  HREF="DFT_Problems.html">DFT Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html356"
+  HREF="Fourier_Theorems_DFT.html">Fourier Theorems for the DFT</A>
+<UL>
+<LI><A NAME="tex2html357"
+  HREF="DFT_Inverse_Restated.html">The DFT and its Inverse Restated</A>
+<UL>
+<LI><A NAME="tex2html358"
+  HREF="Notation_Terminology.html">Notation and Terminology</A>
+<LI><A NAME="tex2html359"
+  HREF="Modulo_Indexing_Periodic_Extension.html">Modulo Indexing, Periodic Extension</A>
+</UL>
+<LI><A NAME="tex2html360"
+  HREF="Signal_Operators.html">Signal Operators</A>
+<UL>
+<LI><A NAME="tex2html361"
+  HREF="Operator_Notation.html">Operator Notation</A>
+<LI><A NAME="tex2html362"
+  HREF="Flip_Operator.html">Flip Operator</A>
+<LI><A NAME="tex2html363"
+  HREF="Shift_Operator.html">Shift Operator</A>
+<UL>
+<LI><A NAME="tex2html364"
+  HREF="Examples.html">Examples</A>
+</UL>
+<LI><A NAME="tex2html365"
+  HREF="Convolution.html">Convolution</A>
+<UL>
+<LI><A NAME="tex2html366"
+  HREF="Commutativity_Convolution.html">Commutativity of Convolution</A>
+<LI><A NAME="tex2html367"
+  HREF="Convolution_Filtering_Operation.html">Convolution as a Filtering Operation</A>
+<LI><A NAME="tex2html368"
+  HREF="Convolution_Example_1_Smoothing.html">Convolution Example 1: Smoothing a Rectangular Pulse</A>
+<LI><A NAME="tex2html369"
+  HREF="Convolution_Example_2_ADSR.html">Convolution Example 2: ADSR Envelope</A>
+<LI><A NAME="tex2html370"
+  HREF="Convolution_Example_3_Matched.html">Convolution Example 3: Matched Filtering</A>
+<LI><A NAME="tex2html371"
+  HREF="Graphical_Convolution.html">Graphical Convolution</A>
+<LI><A NAME="tex2html372"
+  HREF="Polynomial_Multiplication.html">Polynomial Multiplication</A>
+<LI><A NAME="tex2html373"
+  HREF="Multiplication_Decimal_Numbers.html">Multiplication of Decimal Numbers</A>
+</UL>
+<LI><A NAME="tex2html374"
+  HREF="Correlation.html">Correlation</A>
+<LI><A NAME="tex2html375"
+  HREF="Stretch_Operator.html">Stretch Operator</A>
+<LI><A NAME="tex2html376"
+  HREF="Zero_Padding.html">Zero Padding</A>
+<LI><A NAME="tex2html377"
+  HREF="Causal_Periodic_Signals.html">Causal (Periodic) Signals</A>
+<LI><A NAME="tex2html378"
+  HREF="Causal_Zero_Padding.html">Causal Zero Padding</A>
+<LI><A NAME="tex2html379"
+  HREF="Zero_Padding_Applications.html">Zero Padding Applications</A>
+<LI><A NAME="tex2html380"
+  HREF="Ideal_Spectral_Interpolation.html">Ideal Spectral Interpolation</A>
+<LI><A NAME="tex2html381"
+  HREF="Interpolation_Operator.html">Interpolation Operator</A>
+<LI><A NAME="tex2html382"
+  HREF="Repeat_Operator.html">Repeat Operator</A>
+<LI><A NAME="tex2html383"
+  HREF="Downsampling_Operator.html">Downsampling Operator</A>
+<LI><A NAME="tex2html384"
+  HREF="Alias_Operator.html">Alias Operator</A>
+</UL>
+<LI><A NAME="tex2html385"
+  HREF="Even_Odd_Functions.html">Even and Odd Functions</A>
+<LI><A NAME="tex2html386"
+  HREF="Fourier_Theorems.html">Fourier Theorems</A>
+<UL>
+<LI><A NAME="tex2html387"
+  HREF="Linearity.html">Linearity</A>
+<LI><A NAME="tex2html388"
+  HREF="Conjugation_Reversal.html">Conjugation and Reversal</A>
+<LI><A NAME="tex2html389"
+  HREF="Symmetry.html">Symmetry</A>
+<LI><A NAME="tex2html390"
+  HREF="Shift_Theorem.html">Shift Theorem</A>
+<UL>
+<LI><A NAME="tex2html391"
+  HREF="Linear_Phase_Terms.html">Linear Phase Terms</A>
+<LI><A NAME="tex2html392"
+  HREF="Linear_Phase_Signals.html">Linear Phase Signals</A>
+<LI><A NAME="tex2html393"
+  HREF="Zero_Phase_Signals.html">Zero Phase Signals</A>
+<LI><A NAME="tex2html394"
+  HREF="Application_Shift_Theorem_FFT.html">Application of the Shift Theorem to FFT Windows</A>
+</UL>
+<LI><A NAME="tex2html395"
+  HREF="Convolution_Theorem.html">Convolution Theorem</A>
+<LI><A NAME="tex2html396"
+  HREF="Dual_Convolution_Theorem.html">Dual of the Convolution Theorem</A>
+<LI><A NAME="tex2html397"
+  HREF="Correlation_Theorem.html">Correlation Theorem</A>
+<LI><A NAME="tex2html398"
+  HREF="Power_Theorem.html">Power Theorem</A>
+<UL>
+<LI><A NAME="tex2html399"
+  HREF="Normalized_DFT_Power_Theorem.html">Normalized DFT Power Theorem</A>
+</UL>
+<LI><A NAME="tex2html400"
+  HREF="Rayleigh_Energy_Theorem_Parseval_s.html">Rayleigh Energy Theorem (Parseval's Theorem)</A>
+<LI><A NAME="tex2html401"
+  HREF="Stretch_Theorem_Repeat_Theorem.html">Stretch Theorem (Repeat Theorem)</A>
+<LI><A NAME="tex2html402"
+  HREF="Downsampling_Theorem_Aliasing_Theorem.html">Downsampling Theorem (Aliasing Theorem)</A>
+<UL>
+<LI><A NAME="tex2html403"
+  HREF="Illustration_Downsampling_Aliasing_Theorem_Matlab.html">Illustration of the Downsampling/Aliasing Theorem in Matlab</A>
+</UL>
+<LI><A NAME="tex2html404"
+  HREF="Zero_Padding_Theorem_Spectral.html">Zero Padding Theorem (Spectral Interpolation)</A>
+<LI><A NAME="tex2html405"
+  HREF="Periodic_Interpolation_Spectral_Zero.html">Interpolation Theorems</A>
+<UL>
+<LI><A NAME="tex2html406"
+  HREF="Relation_Stretch_Theorem.html">Relation to Stretch Theorem</A>
+<LI><A NAME="tex2html407"
+  HREF="Bandlimited_Interpolation_Time_Limited_Signals.html">Bandlimited Interpolation of Time-Limited Signals</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html408"
+  HREF="DFT_Theorems_Problems.html">DFT Theorems Problems</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html409"
+  HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html">DFT Applications</A>
+<UL>
+<LI><A NAME="tex2html410"
+  HREF="Why_DFT_usually_called.html">Why a DFT is usually called an FFT in practice</A>
+<LI><A NAME="tex2html411"
+  HREF="Spectrum_Analysis_Sinusoid_Windowing.html">Spectrum Analysis of a Sinusoid</A>
+<UL>
+<LI><A NAME="tex2html412"
+  HREF="FFT_Simple_Sinusoid.html">FFT of a Simple Sinusoid</A>
+<LI><A NAME="tex2html413"
+  HREF="FFT_Not_So_Simple_Sinusoid.html">FFT of a Not-So-Simple Sinusoid</A>
+<LI><A NAME="tex2html414"
+  HREF="FFT_Zero_Padded_Sinusoid.html">FFT of a Zero-Padded Sinusoid</A>
+<LI><A NAME="tex2html415"
+  HREF="Use_Blackman_Window.html">Use of a Blackman Window</A>
+<UL>
+<LI><A NAME="tex2html416"
+  HREF="Applying_Blackman_Window.html">Applying the Blackman Window</A>
+</UL>
+<LI><A NAME="tex2html417"
+  HREF="Hann_Windowed_Complex_Sinusoid.html">Hann-Windowed Complex Sinusoid</A>
+<UL>
+<LI><A NAME="tex2html418"
+  HREF="Hann_Window_Spectrum_Analysis.html">Hann Window Spectrum Analysis Results</A>
+<LI><A NAME="tex2html419"
+  HREF="Spectral_Phase.html">Spectral Phase</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html420"
+  HREF="Spectrograms.html">Spectrograms</A>
+<UL>
+<LI><A NAME="tex2html421"
+  HREF="Spectrogram_Speech.html">Spectrogram of Speech</A>
+</UL>
+<LI><A NAME="tex2html422"
+  HREF="Filters_Convolution.html">Filters and Convolution</A>
+<UL>
+<LI><A NAME="tex2html423"
+  HREF="Frequency_Response.html">Frequency Response</A>
+<LI><A NAME="tex2html424"
+  HREF="Amplitude_Response.html">Amplitude Response</A>
+<LI><A NAME="tex2html425"
+  HREF="Phase_Response.html">Phase Response</A>
+</UL>
+<LI><A NAME="tex2html426"
+  HREF="Correlation_Analysis.html">Correlation Analysis</A>
+<UL>
+<LI><A NAME="tex2html427"
+  HREF="Cross_Correlation.html">Cross-Correlation</A>
+<LI><A NAME="tex2html428"
+  HREF="Unbiased_Cross_Correlation.html">Unbiased Cross-Correlation</A>
+<LI><A NAME="tex2html429"
+  HREF="Autocorrelation.html">Autocorrelation</A>
+<LI><A NAME="tex2html430"
+  HREF="Matched_Filtering.html">Matched Filtering</A>
+<LI><A NAME="tex2html431"
+  HREF="FIR_System_Identification.html">FIR System Identification</A>
+</UL>
+<LI><A NAME="tex2html432"
+  HREF="Power_Spectral_Density_Estimation.html">Power Spectral Density</A>
+<LI><A NAME="tex2html433"
+  HREF="Coherence_Function.html">Coherence Function</A>
+<UL>
+<LI><A NAME="tex2html434"
+  HREF="Coherence_Function_Matlab.html">Coherence Function in Matlab</A>
+</UL>
+<LI><A NAME="tex2html435"
+  HREF="Recommended_Further_Reading.html">Recommended Further Reading</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html436"
+  HREF="Fast_Fourier_Transform_FFT.html">Fast Fourier Transforms (FFT)</A>
+<UL>
+<LI><A NAME="tex2html437"
+  HREF="Mixed_Radix_Cooley_Tukey_FFT.html">Mixed-Radix Cooley-Tukey FFT</A>
+<UL>
+<LI><A NAME="tex2html438"
+  HREF="Decimation_Time.html">Decimation in Time</A>
+<LI><A NAME="tex2html439"
+  HREF="Radix_2_FFT.html">Radix 2 FFT</A>
+<UL>
+<LI><A NAME="tex2html440"
+  HREF="Radix_2_FFT_Complexity.html">Radix 2 FFT Complexity is N Log N</A>
+</UL>
+<LI><A NAME="tex2html441"
+  HREF="Fixed_Point_FFTs_NFFTs.html">Fixed-Point FFTs and NFFTs</A>
+</UL>
+<LI><A NAME="tex2html442"
+  HREF="Prime_Factor_Algorithm_PFA.html">Prime Factor Algorithm
+(PFA)</A>
+<LI><A NAME="tex2html443"
+  HREF="Rader_s_FFT_Algorithm_Prime.html">Rader's FFT Algorithm for Prime Lengths</A>
+<LI><A NAME="tex2html444"
+  HREF="Bluestein_s_FFT_Algorithm.html">Bluestein's FFT Algorithm</A>
+<LI><A NAME="tex2html445"
+  HREF="Fast_Transforms_Audio_DSP.html">Fast Transforms in Audio DSP</A>
+<LI><A NAME="tex2html446"
+  HREF="Related_Transforms.html">Related Transforms</A>
+<UL>
+<LI><A NAME="tex2html447"
+  HREF="Discrete_Cosine_Transform_DCT.html">The Discrete
+Cosine Transform (DCT)</A>
+<LI><A NAME="tex2html448"
+  HREF="Number_Theoretic_Transform.html">Number Theoretic Transform</A>
+</UL>
+<LI><A NAME="tex2html449"
+  HREF="FFT_Software.html">FFT Software</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html450"
+  HREF="Fourier_Transforms_Continuous_Discrete_Time_Frequency.html">Continuous/Discrete Transforms</A>
+<UL>
+<LI><A NAME="tex2html451"
+  HREF="Discrete_Time_Fourier_Transform.html">Discrete Time Fourier Transform (DTFT)</A>
+<LI><A NAME="tex2html452"
+  HREF="Fourier_Transform_FT_Inverse.html">Fourier Transform (FT) and Inverse</A>
+<UL>
+<LI><A NAME="tex2html453"
+  HREF="Existence_Fourier_Transform.html">Existence of the Fourier Transform</A>
+<LI><A NAME="tex2html454"
+  HREF="Continuous_Time_Impulse.html">The Continuous-Time Impulse</A>
+</UL>
+<LI><A NAME="tex2html455"
+  HREF="Fourier_Series_FS_Relation.html">Fourier Series (FS)</A>
+<UL>
+<LI><A NAME="tex2html456"
+  HREF="Relation_DFT_Fourier_Series.html">Relation of the DFT to Fourier Series</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html457"
+  HREF="Selected_Continuous_Time_Fourier_Theorems.html">Continuous Fourier Theorems</A>
+<UL>
+<LI><A NAME="tex2html458"
+  HREF="Differentiation_Theorem.html">Differentiation Theorem</A>
+<LI><A NAME="tex2html459"
+  HREF="Scaling_Theorem.html">Scaling Theorem</A>
+<LI><A NAME="tex2html460"
+  HREF="Uncertainty_Principle.html">The Uncertainty Principle</A>
+<UL>
+<LI><A NAME="tex2html461"
+  HREF="Duration_Bandwidth_Second_Moments.html">Second Moments</A>
+<LI><A NAME="tex2html462"
+  HREF="Time_Limited_Signals.html">Time-Limited Signals</A>
+<LI><A NAME="tex2html463"
+  HREF="Time_Bandwidth_Products_Unbounded_Above.html">Time-Bandwidth Products
+are Unbounded Above</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html464"
+  HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html">Sampling Theory</A>
+<UL>
+<LI><A NAME="tex2html465"
+  HREF="Introduction_Sampling.html">Introduction to Sampling</A>
+<UL>
+<LI><A NAME="tex2html466"
+  HREF="Reconstruction_Samples_Pictorial_Version.html">Reconstruction from Samples--Pictorial Version</A>
+<LI><A NAME="tex2html467"
+  HREF="Sinc_Function.html">The Sinc Function</A>
+<LI><A NAME="tex2html468"
+  HREF="Reconstruction_Samples_The_Math.html">Reconstruction from Samples--The Math</A>
+</UL>
+<LI><A NAME="tex2html469"
+  HREF="Aliasing_Sampled_Signals.html">Aliasing of Sampled Signals</A>
+<UL>
+<LI><A NAME="tex2html470"
+  HREF="Continuous_Time_Aliasing_Theorem.html">Continuous-Time Aliasing Theorem</A>
+</UL>
+<LI><A NAME="tex2html471"
+  HREF="Sampling_Theorem.html">Sampling Theorem</A>
+<LI><A NAME="tex2html472"
+  HREF="Appendix_Frequencies_Representable_by.html">Geometric Sequence Frequencies</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html473"
+  HREF="Taylor_Series_Expansions.html">Taylor Series Expansions</A>
+<UL>
+<LI><A NAME="tex2html474"
+  HREF="Informal_Derivation_Taylor_Series.html">Informal Derivation of Taylor Series</A>
+<LI><A NAME="tex2html475"
+  HREF="Taylor_Series_Remainder.html">Taylor Series with Remainder</A>
+<LI><A NAME="tex2html476"
+  HREF="Formal_Statement_Taylor_s_Theorem.html">Formal Statement of Taylor's Theorem</A>
+<LI><A NAME="tex2html477"
+  HREF="Weierstrass_Approximation_Theorem.html">Weierstrass Approximation Theorem</A>
+<LI><A NAME="tex2html478"
+  HREF="Points_Infinite_Flatness.html">Points of Infinite Flatness</A>
+<LI><A NAME="tex2html479"
+  HREF="Differentiability_Audio_Signals.html">Differentiability of Audio Signals</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html480"
+  HREF="Logarithms_Decibels.html">Logarithms and Decibels</A>
+<UL>
+<LI><A NAME="tex2html481"
+  HREF="Logarithms.html">Logarithms</A>
+<UL>
+<LI><A NAME="tex2html482"
+  HREF="Changing_Base.html">Changing the Base</A>
+<LI><A NAME="tex2html483"
+  HREF="Logarithms_Negative_Imaginary_Numbers.html">Logarithms of
+Negative and Imaginary Numbers</A>
+</UL>
+<LI><A NAME="tex2html484"
+  HREF="Decibels.html">Decibels</A>
+<UL>
+<LI><A NAME="tex2html485"
+  HREF="Properties_DB_Scales.html">Properties of DB Scales</A>
+<LI><A NAME="tex2html486"
+  HREF="Specific_DB_Scales.html">Specific DB Scales</A>
+<UL>
+<LI><A NAME="tex2html487"
+  HREF="DBm_Scale.html">DBm Scale</A>
+<LI><A NAME="tex2html488"
+  HREF="VU_Meters_DBu_ScaleF_3.html">VU Meters and the DBu
+  Scale<SUP>F.4</SUP></A>
+<LI><A NAME="tex2html489"
+  HREF="DBV_Scale.html">DBV Scale</A>
+<LI><A NAME="tex2html490"
+  HREF="DB_SPL.html">DB SPL</A>
+<LI><A NAME="tex2html491"
+  HREF="DBA_A_Weighted_DB.html">DBA (A-Weighted DB)</A>
+<LI><A NAME="tex2html492"
+  HREF="DB_Full_Scale_dBFS.html">DB Full Scale (dBFS) for Spectrum Display</A>
+</UL>
+<LI><A NAME="tex2html493"
+  HREF="Dynamic_Range.html">Dynamic Range</A>
+</UL>
+<LI><A NAME="tex2html494"
+  HREF="Voltage_Current_Resistance.html">Voltage, Current, and Resistance</A>
+<LI><A NAME="tex2html495"
+  HREF="Exercises.html">Exercises</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html496"
+  HREF="Number_Systems_Digital_Audio.html">Digital Audio Number Systems</A>
+<UL>
+<LI><A NAME="tex2html497"
+  HREF="Linear_Number_Systems.html">Linear Number Systems</A>
+<UL>
+<LI><A NAME="tex2html498"
+  HREF="Pulse_Code_Modulation_PCM.html">Pulse Code Modulation (PCM)</A>
+<LI><A NAME="tex2html499"
+  HREF="Binary_Integer_Fixed_Point_Numbers.html">Binary Integer Fixed-Point Numbers</A>
+<UL>
+<LI><A NAME="tex2html500"
+  HREF="One_s_Complement_Fixed_Point_Format.html">One's Complement Fixed-Point Format</A>
+<LI><A NAME="tex2html501"
+  HREF="Two_s_Complement_Fixed_Point_Format.html">Two's Complement Fixed-Point Format</A>
+<LI><A NAME="tex2html502"
+  HREF="Two_s_Complement_Integer_Fixed_Point_Numbers.html">Two's-Complement, Integer Fixed-Point Numbers</A>
+</UL>
+<LI><A NAME="tex2html503"
+  HREF="Fractional_Binary_Fixed_Point_Numbers.html">Fractional Binary Fixed-Point Numbers</A>
+<LI><A NAME="tex2html504"
+  HREF="How_Many_Bits_Enough.html">How Many Bits are Enough for Digital Audio?</A>
+<LI><A NAME="tex2html505"
+  HREF="When_Do_We_Have.html">When Do We Have to Swap Bytes?<SUP>G.5</SUP></A>
+</UL>
+<LI><A NAME="tex2html506"
+  HREF="Logarithmic_Number_Systems_Audio.html">Logarithmic Number Systems for Audio</A>
+<UL>
+<LI><A NAME="tex2html507"
+  HREF="Floating_Point_Numbers.html">Floating-Point Numbers</A>
+<LI><A NAME="tex2html508"
+  HREF="Logarithmic_Fixed_Point_Numbers.html">Logarithmic Fixed-Point Numbers</A>
+<LI><A NAME="tex2html509"
+  HREF="Mu_Law_Coding.html">Mu-Law Coding</A>
+</UL>
+<LI><A NAME="tex2html510"
+  HREF="Round_Off_Error_Variance.html">Round-Off Error Variance</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html511"
+  HREF="Matrices.html">Matrices</A>
+<UL>
+<LI><A NAME="tex2html512"
+  HREF="Matrix_Multiplication.html">Matrix Multiplication</A>
+<LI><A NAME="tex2html513"
+  HREF="Solving_Linear_Equations_Using.html">Solving Linear Equations Using Matrices</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html514"
+  HREF="Matlab_Octave_Examples.html">Matlab/Octave Examples</A>
+<UL>
+<LI><A NAME="tex2html515"
+  HREF="Complex_Numbers_Matlab_Octave.html">Complex Numbers in Matlab and Octave</A>
+<UL>
+<LI><A NAME="tex2html516"
+  HREF="Complex_Number_Manipulation.html">Complex Number Manipulation</A>
+</UL>
+<LI><A NAME="tex2html517"
+  HREF="Factoring_Polynomials_Matlab.html">Factoring Polynomials in Matlab</A>
+<LI><A NAME="tex2html518"
+  HREF="Geometric_Signal_Theory_I.html">Geometric Signal Theory</A>
+<UL>
+<LI><A NAME="tex2html519"
+  HREF="Vector_Interpretation_Complex_Numbers.html">Vector Interpretation of Complex Numbers</A>
+<LI><A NAME="tex2html520"
+  HREF="Signal_Metrics_I.html">Signal Metrics</A>
+<UL>
+<LI><A NAME="tex2html521"
+  HREF="Signal_Energy_Power.html">Signal Energy and Power</A>
+</UL>
+<LI><A NAME="tex2html522"
+  HREF="Inner_Product_I.html">Inner Product</A>
+<LI><A NAME="tex2html523"
+  HREF="Vector_Cosine_I.html">Vector Cosine</A>
+<LI><A NAME="tex2html524"
+  HREF="Projection_I.html">Projection</A>
+<UL>
+<LI><A NAME="tex2html525"
+  HREF="Projection_Example_1.html">Projection Example 1</A>
+<LI><A NAME="tex2html526"
+  HREF="Projection_Example_2.html">Projection Example 2</A>
+</UL>
+<LI><A NAME="tex2html527"
+  HREF="Orthogonal_Basis_Computation.html">Orthogonal Basis Computation</A>
+</UL>
+<LI><A NAME="tex2html528"
+  HREF="DFT_I.html">The DFT</A>
+<UL>
+<LI><A NAME="tex2html529"
+  HREF="DFT_Sinusoids_I.html">DFT Sinusoids for <SPAN CLASS="MATH">\(N=8\)</SPAN></A>
+<LI><A NAME="tex2html530"
+  HREF="DFT_Bin_Response.html">DFT Bin Response</A>
+<LI><A NAME="tex2html531"
+  HREF="DFT_Matrix.html">DFT Matrix</A>
+</UL>
+<LI><A NAME="tex2html532"
+  HREF="Spectrogram_Computation.html">Spectrogram Computation</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html533"
+  HREF="Bibliography.html">Bibliography</A>
+<LI><A NAME="tex2html534"
+  HREF="Index_this_Document.html">Index for this Document</A>
+<LI><A NAME="tex2html535"
+  HREF="About_this_document.html">About this document ...</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html237"
+  HREF="Preface.html" 
+ onMouseover="return escape('Preface')">Next</A> &nbsp;|&nbsp;
+ <A NAME="tex2html235"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

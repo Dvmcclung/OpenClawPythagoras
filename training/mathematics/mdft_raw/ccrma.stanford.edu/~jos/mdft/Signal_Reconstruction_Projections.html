@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Signal Reconstruction from Projections</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Signal Reconstruction from Projections">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Signal_Projection_Problems.html">
+<LINK REL="previous" HREF="Inner_Product.html">
+<LINK REL="up" HREF="Geometric_Signal_Theory.html">
+<LINK REL="next" HREF="Changing_Coordinates.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1827"
+  HREF="Changing_Coordinates.html" 
+ onMouseover="return escape('Changing Coordinates')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1817"
+  HREF="Projection.html" 
+ onMouseover="return escape('Projection')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1823"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1825"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION006100000000000000000"></A><A NAME="sec:reconstr"></A><A NAME="11486"></A>
+<BR>
+<A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">Signal</A> Reconstruction from Projections
+</H2>
+
+<P>
+We now know how to project a signal onto other signals.  We now need
+to learn how to reconstruct a signal <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN> from its projections
+onto <SPAN CLASS="MATH">\(N\)</SPAN> different vectors <SPAN CLASS="MATH">\(\underline{s}_k\in\mathbb{C}^N\)</SPAN>, <SPAN CLASS="MATH">\(k=0,1,2,\ldots,N-1\)</SPAN>.  This
+will give us the <I>inverse <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A></I> operation (or the inverse of
+whatever transform we are working with).
+
+<P>
+As a simple example, consider the projection of a signal <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN> onto the
+rectilinear <I>coordinate axes</I> of <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>.  The coordinates of the
+projection onto the <SPAN CLASS="MATH">\(0\)</SPAN>th coordinate axis are simply <SPAN CLASS="MATH">\((x_0,0,\ldots,0)\)</SPAN>.
+The projection along coordinate axis <SPAN CLASS="MATH">\(1\)</SPAN> has coordinates
+<SPAN CLASS="MATH">\((0,x_1,0,\ldots,0)\)</SPAN>, and so on.  The original signal <SPAN CLASS="MATH">\(x\)</SPAN> is then clearly
+the <I>vector sum</I> of its projections onto the coordinate axes:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}x &=& (x_0,\ldots,x_{N-1})\\
+  &=& (x_0,0,\ldots,0) + (0,x_1,0,\ldots,0) + \cdots
+			   (0,\ldots,0,x_{N-1})\end{eqnarray*}</DIV><P></P>
+
+<P>
+To make sure the previous paragraph is understood, let's look at the
+details for the case <SPAN CLASS="MATH">\(N=2\)</SPAN>.  We want to project an arbitrary
+two-sample signal <SPAN CLASS="MATH">\(x= (x_0,x_1)\)</SPAN> onto the coordinate axes in 2D.  A
+coordinate axis can be generated by multiplying any nonzero vector by
+<A HREF="http://en.wikipedia.org/wiki/Scalar" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Scalar')">scalars</A>.  The horizontal axis can be represented by any vector of the
+form <SPAN CLASS="MATH">\(\underline{e}_0=(\alpha,0)\)</SPAN>, <SPAN CLASS="MATH">\(\alpha\neq0\)</SPAN> while the vertical axis can be
+represented by any vector of the form <SPAN CLASS="MATH">\(\underline{e}_1=(0,\beta)\)</SPAN>, <SPAN CLASS="MATH">\(\beta\neq0\)</SPAN>.
+For maximum simplicity, let's choose
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\underline{e}_0 &\isdef& [1,0], \\
+\underline{e}_1 &\isdef& [0,1].\end{eqnarray*}</DIV><P></P>
+The projection of <SPAN CLASS="MATH">\(x\)</SPAN> onto <SPAN CLASS="MATH">\(\underline{e}_0\)</SPAN> is, by definition,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}{\bf P}_{\underline{e}_0}(x) &\isdef& \frac{\ip{x,\underline{e}_0}}{\|\underline{e}_0\|^2} \underline{e}_0\\[5pt]
+	&=& \ip{x,\underline{e}_0} \underline{e}_0
+	= \ip{[x_0,x_1],[1,0]} \underline{e}_0
+	= (x_0 \cdot \overline{1} + x_1 \cdot \overline{0}) \underline{e}_0
+	= x_0 \underline{e}_0\\[5pt]
+        &=& [x_0,0].\end{eqnarray*}</DIV><P></P>
+Similarly, the projection of <SPAN CLASS="MATH">\(x\)</SPAN> onto <SPAN CLASS="MATH">\(\underline{e}_1\)</SPAN> is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}{\bf P}_{\underline{e}_1}(x) &\isdef& \frac{\ip{x,\underline{e}_1}}{\|\underline{e}_1\|^2} \underline{e}_1\\[5pt]
+	&=& \ip{x,\underline{e}_1} \underline{e}_1
+	= \ip{[x_0,x_1],[0,1]} \underline{e}_1
+	= (x_0 \cdot \overline{0} + x_1 \cdot \overline{1}) \underline{e}_1
+	= x_1 \underline{e}_1\\[5pt]
+	&=& [0,x_1].\end{eqnarray*}</DIV><P></P>
+The <I>reconstruction</I> of <SPAN CLASS="MATH">\(x\)</SPAN> from its projections onto the coordinate
+axes is then the <I>vector sum of the projections</I>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x= {\bf P}_{\underline{e}_0}(x) + {\bf P}_{\underline{e}_1}(x) = x_0 \underline{e}_0 + x_1 \underline{e}_1
+	\isdef x_0 \cdot [1,0] + x_1 \cdot [0,1] = (x_0,x_1)\]</DIV><P></P>
+
+<P>
+The projection of a vector onto its coordinate axes is in some sense
+trivial because the very meaning of the <I>coordinates</I> is that they are
+scalars <SPAN CLASS="MATH">\(x_n\)</SPAN> to be applied to the <I>coordinate vectors</I> <SPAN CLASS="MATH">\(\underline{e}_n\)</SPAN> in
+order to form an arbitrary vector <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN> as a <I><A HREF="https://mathworld.wolfram.com/LinearCombination.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearCombination.html')">linear combination</A></I>
+of the coordinate vectors:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x\isdef x_0 \underline{e}_0 + x_1 \underline{e}_1 + \cdots + x_{N-1} \underline{e}_{N-1}\]</DIV><P></P>
+Note that the coordinate vectors are <I><A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A></I>.  Since they are also
+unit length, <SPAN CLASS="MATH">\(\|\underline{e}_n\|=1\)</SPAN>, we say that the coordinate vectors
+<SPAN CLASS="MATH">\({\underline{e}_n}_{n=0}^{N-1}\)</SPAN> are <I>orthonormal</I>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1828"
+  HREF="Changing_Coordinates.html">Changing Coordinates</A>
+<UL>
+<LI><A NAME="tex2html1829"
+  HREF="Example_Changing_Coordinates_2D.html">An Example of Changing Coordinates in 2D</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1830"
+  HREF="Projection_onto_Linearly_Dependent.html">Projection onto Linearly Dependent Vectors</A>
+<LI><A NAME="tex2html1831"
+  HREF="Projection_onto_Non_Orthogonal_Vectors.html">Projection onto Non-Orthogonal Vectors</A>
+<LI><A NAME="tex2html1832"
+  HREF="General_Conditions.html">General Conditions</A>
+<LI><A NAME="tex2html1833"
+  HREF="Signal_Vector_Reconstruction_Projections.html">Signal/Vector Reconstruction from Projections</A>
+<LI><A NAME="tex2html1834"
+  HREF="Gram_Schmidt_Orthogonalization.html">Gram-Schmidt Orthogonalization</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1827"
+  HREF="Changing_Coordinates.html" 
+ onMouseover="return escape('Changing Coordinates')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1817"
+  HREF="Projection.html" 
+ onMouseover="return escape('Projection')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1823"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1825"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>e^(j theta)</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="e^(j theta)">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Back_Mth_Roots.html">
+<LINK REL="previous" HREF="Back_e.html">
+<LINK REL="up" HREF="Proof_Euler_s_Identity.html">
+<LINK REL="next" HREF="Back_Mth_Roots.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html984"
+  HREF="Back_Mth_Roots.html" 
+ onMouseover="return escape('Back to Mth Roots')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html974"
+  HREF="Back_e.html" 
+ onMouseover="return escape('Back to e')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html980"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html982"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION004120000000000000000"></A><A NAME="sec:eseries"></A><A NAME="6816"></A>
+<BR>
+e^(j theta)
+</H2>
+
+<P>
+We've now defined <SPAN CLASS="MATH">\(a^z\)</SPAN> for any positive <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real number</A> <SPAN CLASS="MATH">\(a\)</SPAN> and any
+<A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex number</A> <SPAN CLASS="MATH">\(z\)</SPAN>.  Setting <SPAN CLASS="MATH">\(a=e\)</SPAN> and <SPAN CLASS="MATH">\(z=j\theta\)</SPAN> gives us the
+special case we need for <A HREF="Proof_Euler_s_Identity.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Proof_Euler_s_Identity.html')">Euler's identity</A>.  Since <SPAN CLASS="MATH">\(e^x\)</SPAN> is its own
+derivative, the <A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">Taylor series expansion</A> for <SPAN CLASS="MATH">\(f(x)=e^x\)</SPAN> is one of
+the simplest imaginable infinite series:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[e^x = \sum_{n=0}^\infty \frac{x^n}{n!} 
+	= 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \cdots\]</DIV><P></P>
+The simplicity comes about because <SPAN CLASS="MATH">\(f^{(n)}(0)=1\)</SPAN> for all <SPAN CLASS="MATH">\(n\)</SPAN> and because
+we chose to expand about the point <SPAN CLASS="MATH">\(x=0\)</SPAN>.  We of course define
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[e^{j\theta} \isdef \sum_{n=0}^\infty \frac{(j\theta)^n}{n!} 
+	= 1 + j\theta - \frac{\theta^2}{2} - j\frac{\theta^3}{3!} + \cdots
+\,.\]</DIV><P></P>
+Note that all even-order terms are real while all odd-order terms are
+imaginary.  Separating out the real and imaginary parts gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\realPart{e^{j\theta}} &=& 1 - \theta^2/2 + \theta^4/4! - \cdots \\[5pt]
+\imagPart{e^{j\theta}} &=& \theta - \theta^3/3! + \theta^5/5! - \cdots\,.\end{eqnarray*}</DIV><P></P>
+
+<P>
+Comparing the Maclaurin expansion for <SPAN CLASS="MATH">\(e^{j\theta}\)</SPAN> with that of
+<SPAN CLASS="MATH">\(\cos(\theta)\)</SPAN> and <SPAN CLASS="MATH">\(\sin(\theta)\)</SPAN> proves Euler's identity.  Recall 
+from introductory <A HREF="https://mathworld.wolfram.com/Calculus.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Calculus.html')">calculus</A> that
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\frac{d}{d\theta}\cos(\theta) &=& -\sin(\theta) \\[5pt]
+\frac{d}{d\theta}\sin(\theta) &=& \cos(\theta)\end{eqnarray*}</DIV><P></P>
+so that
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\left.\frac{d^n}{d\theta^n}\cos(\theta)\right|_{\theta=0} 
+	&=& \left{\begin{array}{ll}
+	(-1)^{n/2}, & n\;\mbox{\small even} \\[5pt]
+	0, & n\;\mbox{\small odd} \\
+	\end{array}
+	\right. \\[10pt]
+\left.\frac{d^n}{d\theta^n}\sin(\theta)\right|_{\theta=0} 
+	&=& \left{\begin{array}{ll}
+	(-1)^{(n-1)/2}, & n\;\mbox{\small odd} \\[5pt]
+	0, & n\;\mbox{\small even}. \\
+	\end{array}
+	\right.\end{eqnarray*}</DIV><P></P>
+Plugging into the general <A HREF="Informal_Derivation_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Informal_Derivation_Taylor_Series.html')">Maclaurin series</A> gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\cos(\theta) &=& \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!}\theta^n \\
+	     &=& \sum_{\stackrel{n\geq 0}{\vspace{2pt}\mbox{\tiny$n$\  even}}}^\infty \frac{(-1)^{n/2}}{n!} \theta^n \\
+\sin(\theta) &=& \sum_{\stackrel{n\geq 0}{\vspace{2pt}\mbox{\tiny$n$\  odd}}}^\infty \frac{(-1)^{(n-1)/2}}{n!} \theta^n.\end{eqnarray*}</DIV><P></P>
+Separating the Maclaurin expansion for <SPAN CLASS="MATH">\(e^{j\theta}\)</SPAN> into its even and odd
+terms (real and imaginary parts) gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}e^{j\theta} \isdef \sum_{n=0}^\infty \frac{(j\theta)^n}{n!}
+ &=& \sum_{\stackrel{n\geq 0}{\vspace{2pt}\mbox{\tiny$n$\  even}}}^\infty \frac{(-1)^{n/2}}{n!} \theta^n 
+ + j \sum_{\stackrel{n\geq 0}{\vspace{2pt}\mbox{\tiny$n$\  odd}}}^\infty \frac{(-1)^{(n-1)/2}}{n!} \theta^n\\
+ &=& \cos(\theta) + j\sin(\theta)\end{eqnarray*}</DIV><P></P>
+thus proving Euler's identity.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html984"
+  HREF="Back_Mth_Roots.html" 
+ onMouseover="return escape('Back to Mth Roots')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html974"
+  HREF="Back_e.html" 
+ onMouseover="return escape('Back to e')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html980"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html982"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Roots of Unity</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Roots of Unity">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Direct_Proof_De_Moivre_s.html">
+<LINK REL="previous" HREF="Back_Mth_Roots.html">
+<LINK REL="up" HREF="Proof_Euler_s_Identity.html">
+<LINK REL="next" HREF="Direct_Proof_De_Moivre_s.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1008"
+  HREF="Direct_Proof_De_Moivre_s.html" 
+ onMouseover="return escape('Direct Proof of De Moivre\'s Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html998"
+  HREF="Back_Mth_Roots.html" 
+ onMouseover="return escape('Back to Mth Roots')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1004"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1006"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION004140000000000000000"></A><A NAME="sec:rootsofunity"></A><A NAME="6872"></A>
+<A NAME="6873"></A>
+<BR>
+Roots of Unity
+</H2>
+
+<P>
+Since <SPAN CLASS="MATH">\(e^{j2\pi}=1\)</SPAN>, we can write
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[1 = 1^{k/M} = (e^{j2\pi})^{k/M} = e^{j2\pi k/M}, \quad k=0,1,2,3,\dots,M-1,\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(M\)</SPAN> is any positive integer. 
+The <SPAN CLASS="MATH">\(M\)</SPAN> <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A> <SPAN CLASS="MATH">\({e^{j2\pi k/M}}_{k=0}^{M-1}\)</SPAN> are called
+the <I><SPAN CLASS="MATH">\(M\)</SPAN>th roots of unity</I>.  The special case <SPAN CLASS="MATH">\(k=1\)</SPAN> is
+called a
+<A NAME="6874"></A><I>primitive <SPAN CLASS="MATH">\(M\)</SPAN>th root of unity</I>, 
+since integer powers
+of it give all of the others:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[e^{j2\pi k/M} = \left(e^{j2\pi/M}\right)^k\]</DIV><P></P>
+The <SPAN CLASS="MATH">\(M\)</SPAN>th roots of unity are so frequently used that they are often
+given a special notation in the <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> processing literature:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[W_M^k \isdef e^{j2\pi k/M}, \qquad k=0,1,2,\dots,M-1,\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(W_M\)</SPAN> denotes a primitive <SPAN CLASS="MATH">\(M\)</SPAN>th root of
+unity.<A NAME="tex2html27"
+  HREF="footnode.html#foot6752"><SUP>3.7</SUP></A>  We may also call <SPAN CLASS="MATH">\(W_M\)</SPAN> a <I>generator</I> of the
+mathematical <I>group</I> consisting of the <SPAN CLASS="MATH">\(M\)</SPAN>th roots of unity under 
+ordinary complex multiplication.
+
+<P>
+We will learn later that the <SPAN CLASS="MATH">\(N\)</SPAN>th roots of unity are used to generate
+all the <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoids</A> used by the length-<SPAN CLASS="MATH">\(N\)</SPAN> <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> and its inverse.  
+The <SPAN CLASS="MATH">\(k\)</SPAN>th <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex sinusoid</A> used in a DFT of length <SPAN CLASS="MATH">\(N\)</SPAN> is given by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[W_N^{kn} = e^{j2\pi k n/N} \isdef e^{j\omega_k t_n} 
+        = \cos(\omega_k t_n) + j \sin(\omega_k t_n),
+  	  \quad n=0,1,2,\dots,N-1,\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(\omega_k \isdef 2\pi k/NT\)</SPAN>, <SPAN CLASS="MATH">\(t_n \isdef nT\)</SPAN>, and <SPAN CLASS="MATH">\(T\)</SPAN> is the
+<A HREF="Sampling_Theorem.html" onMouseover="return escape('The sampling interval (or sampling period) of a discrete-time signal is defined as the reciprocal of the sampling rate.  Since the sampling rate is normally in units of samples per second (Hz), the sampling interval is normally in units of seconds.  See also: sampling rate, sampling theorem &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling interval</A> in seconds.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1008"
+  HREF="Direct_Proof_De_Moivre_s.html" 
+ onMouseover="return escape('Direct Proof of De Moivre\'s Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html998"
+  HREF="Back_Mth_Roots.html" 
+ onMouseover="return escape('Back to Mth Roots')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1004"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1006"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Matrices</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Matrices">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Matlab_Octave_Examples.html">
+<LINK REL="previous" HREF="Number_Systems_Digital_Audio.html">
+<LINK REL="up" HREF="mdft.html">
+<LINK REL="next" HREF="Example_I_I_I_I.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4201"
+  HREF="Example_I_I_I_I.html" 
+ onMouseover="return escape('Example:')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4191"
+  HREF="Round_Off_Error_Variance.html" 
+ onMouseover="return escape('Round-Off Error Variance')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4199"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001700000000000000000"></A><A NAME="app:matrices"></A><A NAME="27639"></A>
+<BR>
+Matrices
+</H1>
+
+<P>
+A <I>matrix</I> is defined as a rectangular array of numbers, <I>e.g.</I>, 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\mathbf{A}= \left[\begin{array}{cc} a & b \\[2pt] c & d \end{array}\right]\]</DIV><P></P>
+which is a <SPAN CLASS="MATH">\(2\times2\)</SPAN> (``two by two'') matrix.  A general matrix may
+be <SPAN CLASS="MATH">\(M\times N\)</SPAN>, where <SPAN CLASS="MATH">\(M\)</SPAN> is the number of <I>rows</I>,
+and <SPAN CLASS="MATH">\(N\)</SPAN> is the number of <I>columns</I> of the matrix.
+For example, the general <SPAN CLASS="MATH">\(3\times 2\)</SPAN> matrix is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left[\begin{array}{cc} a & b \\c & d \\e & f \end{array}\right].\]</DIV><P></P>
+Either square brackets or large parentheses may be used to delimit the
+matrix.  The <SPAN CLASS="MATH">\((i,j)\)</SPAN>th element<A NAME="tex2html207"
+  HREF="footnode.html#foot27632"><SUP>H.1</SUP></A> of a matrix <SPAN CLASS="MATH">\(\mathbf{A}\)</SPAN> may be denoted by <SPAN CLASS="MATH">\(\mathbf{A}[i,j]\)</SPAN>,
+<SPAN CLASS="MATH">\(\mathbf{A}(i,j)\)</SPAN>, or <SPAN CLASS="MATH">\(\mathbf{A}_{ij}\)</SPAN>.  For example, <SPAN CLASS="MATH">\(\mathbf{A}[1,2]=b\)</SPAN> in the
+above two examples.  The rows and columns of matrices are normally
+numbered from <SPAN CLASS="MATH">\(1\)</SPAN> instead of from <SPAN CLASS="MATH">\(0\)</SPAN>; thus, <SPAN CLASS="MATH">\(1\leq i \leq M\)</SPAN> and
+<SPAN CLASS="MATH">\(1\leq j \leq N\)</SPAN>.  When <SPAN CLASS="MATH">\(N=M\)</SPAN>, the matrix is said to be
+<I>square</I><A NAME="27651"></A>.
+
+<P>
+The <I>transpose</I><A NAME="27653"></A> of a real matrix
+<SPAN CLASS="MATH">\(\mathbf{A}\in\mathbb{R}^{M\times N}\)</SPAN> is denoted by <SPAN CLASS="MATH">\(\mathbf{A}^{\!\hbox{\tiny T}}\)</SPAN> and is defined by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\mathbf{A}^{\!\hbox{\tiny T}}[i,j] \isdef \mathbf{A}[j,i].\]</DIV><P></P>
+While <SPAN CLASS="MATH">\(\mathbf{A}\)</SPAN> is <SPAN CLASS="MATH">\(M\times N\)</SPAN>, its transpose is <SPAN CLASS="MATH">\(N\times M\)</SPAN>.  We may
+say that the ``rows and columns are interchanged'' by the transpose
+operation, and transposition can be visualized as ``flipping'' the
+matrix about its main diagonal.  For example,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left[\begin{array}{cc} a & b \\c & d \\e & f \end{array}\right]^{\hbox{\tiny T}}
+=\left[\begin{array}{ccc} a & c & e \\b & d & f \end{array}\right].\]</DIV><P></P>
+
+<P>
+A <I>complex matrix</I><A NAME="27670"></A> <SPAN CLASS="MATH">\(\mathbf{A}\in\mathbb{C}^{M\times N}\)</SPAN>, is simply a
+matrix containing <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A>.  The 
+<A NAME="27673"></A><A NAME="27674"></A><I>transpose</I> of a complex matrix is normally defined to
+include <I>conjugation</I>.  The conjugating transpose operation is called the
+<I>Hermitian transpose</I><A NAME="27676"></A>.  To avoid confusion, in this tutorial,
+<SPAN CLASS="MATH">\(\mathbf{A}^{\!\hbox{\tiny T}}\)</SPAN> and the word ``transpose'' will always denote transposition
+<I>without</I> conjugation, while conjugating transposition will be
+denoted by <SPAN CLASS="MATH">\(A^{\ast }\)</SPAN> and be called the ``Hermitian transpose'' or the
+``conjugate transpose.''  Thus,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[A^{\ast }[i,j] \isdef \overline{\mathbf{A}[j,i]}.\]</DIV><P></P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><UL>
+<LI><UL>
+<LI><UL>
+<LI><A NAME="tex2html4202"
+  HREF="Example_I_I_I_I.html">Example:</A>
+</UL>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html4203"
+  HREF="Matrix_Multiplication.html">Matrix Multiplication</A>
+<LI><A NAME="tex2html4204"
+  HREF="Solving_Linear_Equations_Using.html">Solving Linear Equations Using Matrices</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4201"
+  HREF="Example_I_I_I_I.html" 
+ onMouseover="return escape('Example:')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4191"
+  HREF="Round_Off_Error_Variance.html" 
+ onMouseover="return escape('Round-Off Error Variance')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4199"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

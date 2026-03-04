@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Imaginary Exponents</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Imaginary Exponents">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Derivatives_f_x_power.html">
+<LINK REL="previous" HREF="First_Look_Taylor_Series.html">
+<LINK REL="up" HREF="Proof_Euler_s_Identity.html">
+<LINK REL="next" HREF="Derivatives_f_x_power.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html948"
+  HREF="Derivatives_f_x_power.html" 
+ onMouseover="return escape('Derivatives of f(x) = a to the power x')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html938"
+  HREF="First_Look_Taylor_Series.html" 
+ onMouseover="return escape('A First Look at Taylor Series')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html944"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html946"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00490000000000000000"></A><A NAME="sec:imagexp"></A><A NAME="6799"></A>
+<BR>
+Imaginary Exponents
+</H2>
+
+<P>
+We may define <I>imaginary exponents</I> the same way that all
+sufficiently smooth real-valued functions of a real variable are
+generalized to the complex case--using <A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">Taylor series</A>.  A
+<A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">Taylor series expansion</A> is just a polynomial (possibly of infinitely
+high order), and polynomials involve only addition, multiplication,
+and division.  Since these elementary operations are also defined for
+<A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A>, any smooth function of a real variable <SPAN CLASS="MATH">\(f(x)\)</SPAN> may be
+generalized to a function of a <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex variable</A> <SPAN CLASS="MATH">\(f(z)\)</SPAN> by simply
+substituting the complex variable <SPAN CLASS="MATH">\(z=x+jy\)</SPAN> for the real variable <SPAN CLASS="MATH">\(x\)</SPAN>
+in the Taylor <A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">series expansion</A> of <SPAN CLASS="MATH">\(f(x)\)</SPAN>.
+
+<P>
+Let <SPAN CLASS="MATH">\(f(x) \isdef a^x\)</SPAN>, where <SPAN CLASS="MATH">\(a\)</SPAN> is any positive <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real number</A> and <SPAN CLASS="MATH">\(x\)</SPAN> is 
+real.  The Taylor
+series expansion about <SPAN CLASS="MATH">\(x_0=0\)</SPAN> (``<A HREF="Informal_Derivation_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Informal_Derivation_Taylor_Series.html')">Maclaurin series</A>''),
+generalized to the complex case is then
+<A NAME="eq:convergence"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}a^z \isdef f(0)+f^\prime(0)(z) + \frac{f^{\prime\prime}(0)}{2}z^2 + \frac{f^{\prime\prime\prime}(0)}{3!}z^3 + \cdots\,.
+\end{equation}</DIV><P></P>
+This is well defined, provided the series <I>converges</I> for every
+finite <SPAN CLASS="MATH">\(z\)</SPAN> (see Problem&nbsp;<A HREF="Imaginary_Exponents.html#item:convergence">8</A>).  We have <SPAN CLASS="MATH">\(f(0) \isdeftext a^0
+= 1\)</SPAN>, so the first term is no problem.  But what is <SPAN CLASS="MATH">\(f^\prime(0)\)</SPAN>?  In
+other words, what is the derivative of <SPAN CLASS="MATH">\(a^x\)</SPAN> at <SPAN CLASS="MATH">\(x=0\)</SPAN>?  Once we find
+the successive derivatives of <SPAN CLASS="MATH">\(f(x) \isdeftext a^x\)</SPAN> at <SPAN CLASS="MATH">\(x=0\)</SPAN>, we will have
+the definition of <SPAN CLASS="MATH">\(a^z\)</SPAN> for any complex <SPAN CLASS="MATH">\(z\)</SPAN>.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html948"
+  HREF="Derivatives_f_x_power.html" 
+ onMouseover="return escape('Derivatives of f(x) = a to the power x')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html938"
+  HREF="First_Look_Taylor_Series.html" 
+ onMouseover="return escape('A First Look at Taylor Series')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html944"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html946"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Second Moments</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Second Moments">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Time_Limited_Signals.html">
+<LINK REL="previous" HREF="Uncertainty_Principle.html">
+<LINK REL="up" HREF="Uncertainty_Principle.html">
+<LINK REL="next" HREF="Time_Limited_Signals.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3549"
+  HREF="Time_Limited_Signals.html" 
+ onMouseover="return escape('Time-Limited Signals')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3539"
+  HREF="Uncertainty_Principle.html" 
+ onMouseover="return escape('The Uncertainty Principle')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3545"
+  HREF="Uncertainty_Principle.html" 
+ onMouseover="return escape('The Uncertainty Principle')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3547"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001231000000000000000"></A><A NAME="sec:secmoments"></A><A NAME="23640"></A>
+<BR>
+Duration and <A HREF="http://en.wikipedia.org/wiki/Bandpass" onMouseover="return escape('The size of the passband, typically expressed in Hz. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Bandpass')">Bandwidth</A> as Second Moments
+</H3>
+
+<P>
+More interesting definitions of duration and bandwidth are obtained
+for nonzero <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signals</A> using the normalized <I>second moments</I> of the
+squared magnitude:
+<A NAME="eq:DWdef"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray}\Delta t&\isdef& \frac{1}{\left\|\,x\,\right\|_2} \sqrt{\int_{-\infty}^\infty t^2 \left|x(t)\right|^2 dt} 
+	\quad\isdef\quad \frac{\left\|\,tx\,\right\|_2}{\left\|\,x\,\right\|_2}\nonumber \\
+\Delta \omega &\isdef& \frac{1}{\left\|\,X\,\right\|_2} \sqrt{\int_{-\infty}^\infty \omega^2 \left|X(\omega)\right|^2 \frac{d\omega}{2\pi}}
+	\quad\isdef\quad \frac{\left\|\,\omega X\,\right\|_2}{\left\|\,X\,\right\|_2}, 
+	\end{eqnarray}</DIV><P></P>
+&nbsp;&nbsp;&nbsp;&nbsp;where 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray}\left\|\,x\,\right\|_2^2 &\isdef& \int_{-\infty}^\infty \left|x(t)\right|^2 dt\nonumber \\
+\left\|\,X\,\right\|_2^2 &\isdef& \int_{-\infty}^\infty \left|X(\omega)\right|^2 \frac{d\omega}{2\pi}.\end{eqnarray}</DIV><P></P>
+By the <A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">DTFT</A> <A HREF="Power_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Power_Theorem.html')">power theorem</A>, which is proved in a manner
+analogous to the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> case in &#167;<A HREF="Power_Theorem.html#sec:powerthm">7.4.8</A>, we have
+<SPAN CLASS="MATH">\(\left\|\,x\,\right\|_2=\left\|\,X\,\right\|_2\)</SPAN>.  Note that writing ``<SPAN CLASS="MATH">\(\left\|\,tx\,\right\|_2\)</SPAN>'' and
+``<SPAN CLASS="MATH">\(\left\|\,\omega X\,\right\|_2\)</SPAN>'' is an abuse of notation, but a convenient one.
+These duration/bandwidth definitions are routinely used in <A HREF="https://scienceworld.wolfram.com/physics/" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/')">physics</A>,
+<I>e.g.</I>, in connection with the <I><A HREF="https://scienceworld.wolfram.com/physics/UncertaintyPrinciple.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/UncertaintyPrinciple.html')">Heisenberg uncertainty principle</A></I><A NAME="23650"></A>.<A NAME="tex2html161"
+  HREF="footnode.html#foot23585"><SUP>C.1</SUP></A>Under these definitions, we have the following theorem
+[<A
+ HREF="Bibliography.html#Papoulis">54</A>, p.&nbsp;273-274]:
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>If <SPAN CLASS="MATH">\(x(t)
+\ne
+0\)</SPAN> and <SPAN CLASS="MATH">\(\sqrt{|t|}\,x(t) \to 0\)</SPAN> as <SPAN CLASS="MATH">\(\left|t\right|\to\infty\)</SPAN>, then
+<A NAME="eq:uncertainty"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\zbox{\Delta t\cdot \Delta \omega \geq \frac{1}{2}}
+\end{equation}</DIV><P></P>
+with equality if and only if
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x(t) = Ae^{-\alpha t^2}, \quad \alpha&gt;0, \quad A\ne 0.\]</DIV><P></P>
+That is, only the <I><A HREF="http://en.wikipedia.org/wiki/Normal_distribution" onMouseover="return escape('The Gaussian probability density function is, in Matlab syntax, exp(-(x-mu)^2/(2*sigma^2))/sqrt(2*pi*sigma^2), where mu is the mean and sigma is the standard deviation. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Normal_distribution')">Gaussian function</A></I><A NAME="23658"></A> (also known as the ``<A HREF="http://en.wikipedia.org/wiki/Normal_distribution" onMouseover="return escape('The Gaussian probability density function is, in Matlab syntax, exp(-(x-mu)^2/(2*sigma^2))/sqrt(2*pi*sigma^2), where mu is the mean and sigma is the standard deviation. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Normal_distribution')">bell
+curve</A>'' or ``<A HREF="http://en.wikipedia.org/wiki/Normal_distribution" onMouseover="return escape('The Gaussian probability density function is, in Matlab syntax, exp(-(x-mu)^2/(2*sigma^2))/sqrt(2*pi*sigma^2), where mu is the mean and sigma is the standard deviation. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Normal_distribution')">normal curve</A>'') achieves the lower bound on the
+time-bandwidth product.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>Without loss of generality, we may take <SPAN CLASS="MATH">\(x(t)\)</SPAN> to be real
+and normalized to have unit <SPAN CLASS="MATH">\(\ensuremath{L_2}\)</SPAN> <A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norm</A> (<SPAN CLASS="MATH">\(\left\|\,x\,\right\|_2=1\)</SPAN>).  From the
+<A HREF="Cauchy_Schwarz_Inequality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cauchy_Schwarz_Inequality.html')">Schwarz inequality</A> (see &#167;<A HREF="Cauchy_Schwarz_Inequality.html#sec:schwarzneq">5.9.3</A> for the discrete-time case),
+<A NAME="eq:btproof"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\left|\int_{-\infty}^\infty t x(t) \left[\frac{d}{dt}x(t)\right] dt\right|^2 \leq
+\int_{-\infty}^\infty t^2 x^2(t) dt
+\int_{-\infty}^\infty \left|\frac{d}{dt}x(t)\right|^2 dt.
+\end{equation}</DIV><P></P>
+The left-hand side can be evaluated using <A HREF="https://en.wikipedia.org/wiki/Integration_by_parts" onMouseover="return escape('Click for https://en.wikipedia.org/wiki/Integration_by_parts')">integration by parts</A>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\int_{-\infty}^\infty tx \frac{dx}{dt} dt
+= \left . t \frac{x^2(t)}{2} \right|_{-\infty}^{\infty} - \frac{1}{2}
+\int_{-\infty}^\infty x^2(t) dt \isdef -\frac{1}{2}\left\|\,x\,\right\|_2^2 = -\frac{1}{2}\]</DIV><P></P>
+where we used the assumption that <SPAN CLASS="MATH">\(\sqrt{|t|}\,x(t)\to 0\)</SPAN> as
+<SPAN CLASS="MATH">\(\left|t\right|\to\infty\)</SPAN>. 
+
+<P>
+The second term on the right-hand side of Eq.(<A HREF="Duration_Bandwidth_Second_Moments.html#eq:btproof">C.4</A>) can be
+evaluated using the power theorem 
+(&#167;<A HREF="Power_Theorem.html#sec:powerthm">7.4.8</A> proves the discrete-time case)
+and <A HREF="Differentiation_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Differentiation_Theorem.html')">differentiation theorem</A> (&#167;<A HREF="Differentiation_Theorem.html#sec:diffthm">C.1</A> above):
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\int_{-\infty}^\infty \left|\frac{dx(t)}{dt}\right|^2 dt
+= \int_{-\infty}^\infty \left|j\omega X(\omega)\right|^2 \frac{d\omega}{2\pi}
+= \int_{-\infty}^\infty \omega^2 \left|X(\omega)\right|^2 \frac{d\omega}{2\pi}\]</DIV><P></P>
+Substituting these evaluations into Eq.(<A HREF="Duration_Bandwidth_Second_Moments.html#eq:btproof">C.4</A>) gives 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left|-\frac{1}{2}\right|^2 \leq \left\|\,tx\,\right\|_2^2 \left\|\,\omega X\,\right\|_2^2.\]</DIV><P></P>
+Taking the square root of both sides gives the uncertainty relation
+sought.
+
+<P>
+If equality holds in the uncertainty relation Eq.(<A HREF="Duration_Bandwidth_Second_Moments.html#eq:uncertainty">C.3</A>), then
+Eq.(<A HREF="Duration_Bandwidth_Second_Moments.html#eq:btproof">C.4</A>) implies
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\frac{d}{dt}x(t) = c t x(t)\]</DIV><P></P>
+for some constant <SPAN CLASS="MATH">\(c\)</SPAN>, which implies <SPAN CLASS="MATH">\(x(t)=A e^{\frac{c}{2} t^2}\)</SPAN> for
+some constants <SPAN CLASS="MATH">\(A\)</SPAN> and <SPAN CLASS="MATH">\(c\)</SPAN>.  Since <SPAN CLASS="MATH">\(x(\pm\infty)=0\)</SPAN> by hypothesis, we have
+<SPAN CLASS="MATH">\(c&lt;0\)</SPAN> while <SPAN CLASS="MATH">\(A\ne 0\)</SPAN> remains arbitrary.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3549"
+  HREF="Time_Limited_Signals.html" 
+ onMouseover="return escape('Time-Limited Signals')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3539"
+  HREF="Uncertainty_Principle.html" 
+ onMouseover="return escape('The Uncertainty Principle')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3545"
+  HREF="Uncertainty_Principle.html" 
+ onMouseover="return escape('The Uncertainty Principle')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3547"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

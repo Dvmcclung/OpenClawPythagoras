@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fast Transforms in Audio DSP</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Fast Transforms in Audio DSP">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Related_Transforms.html">
+<LINK REL="previous" HREF="Bluestein_s_FFT_Algorithm.html">
+<LINK REL="up" HREF="Fast_Fourier_Transform_FFT.html">
+<LINK REL="next" HREF="Related_Transforms.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3349"
+  HREF="Related_Transforms.html" 
+ onMouseover="return escape('Related Transforms')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3339"
+  HREF="Bluestein_s_FFT_Algorithm.html" 
+ onMouseover="return escape('Bluestein\'s FFT Algorithm')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3345"
+  HREF="Fast_Fourier_Transform_FFT.html" 
+ onMouseover="return escape('Fast Fourier Transforms (FFT)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3347"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001050000000000000000"></A>
+<A NAME="22356"></A>
+<BR>
+Fast Transforms in Audio<A HREF="https://faust.grame.fr/" onMouseover="return escape('The .dsp filename suffix is used by &lt;i&gt;Faust&lt;/i&gt; language files, and stands for Digital Signal Processing. &nbsp;&#8212;&nbsp; Click for https://faust.grame.fr/')"> DSP</A>
+</H2>
+
+<P>
+Since most audio <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> processing applications benefit from
+<I><A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero padding</A></I> (see &#167;<A HREF="Spectrum_Analysis_Sinusoid_Windowing.html#sec:wzp">8.1</A>), in which case we can always
+choose the <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> length to be a power of 2, there is almost never a need
+in practice for more ``exotic'' FFT algorithms than the basic
+``pruned'' power-of-2 algorithms. (Here ``pruned'' means elimination
+of all unnecessary operations, such as when the input signal is real
+[<A
+ HREF="Bibliography.html#SorensonEtAl87">77</A>,<A
+ HREF="Bibliography.html#DuhamelAndVetterli87">22</A>].)
+
+<P>
+An exception is when processing exactly <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic signals</A> where the
+<A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">period</A> is known to be an exact integer number of samples in
+length.<A NAME="tex2html150"
+  HREF="footnode.html#foot22219"><SUP>A.8</SUP></A>  In such a case, the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> of one period of the waveform can be
+interpreted as a <I><A HREF="Fourier_Series_FS_Relation.html" onMouseover="return escape('A Fourier Series (FS) expansion is the appropriate Fourier transform for &lt;i&gt;periodic&lt;/i&gt; signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Series_FS_Relation.html')">Fourier series</A></I> (&#167;<A HREF="Fourier_Series_FS_Relation.html#sec:fs">B.3</A>) 
+of the <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic</A> waveform, and
+unlike virtually all other practical <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A> scenarios,
+spectral interpolation is not needed (or wanted).  In the exactly
+periodic case, the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> is truly zero between adjacent <A HREF="https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics" onMouseover="return escape('Every periodic signal has a &lt;i&gt;fundamental frequency&lt;/i&gt; given by the &lt;i&gt;inverse&lt;/i&gt; of the period.  If the period is in units of seconds, then the fundamental frequency is in units of Hertz (cycles per second).  According to Fourier theory, every periodic signal can be expressed as a sum of sinusoids at frequencies given by integer multiples of the fundamental frequency.  For integers greater than 1, these frequencies are called &lt;i&gt;harmonic frequencies&lt;/i&gt;, and the sinusoids at harmonic frequencies are typically called &lt;i&gt;harmonics&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics')">harmonic</A>
+frequencies, and the DFT of one period provides spectral samples only
+at the <A HREF="http://en.wikipedia.org/wiki/Harmonic" onMouseover="return escape('For a tone which posesses a perfectly harmonic overtone series, the nth harmonic is generally defined to oscillate at nf&lt;sub&gt;0&lt;/sub&gt;Hz, where f&lt;sub&gt;0&lt;/sub&gt; is the fundamental frequency. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Harmonic')">harmonic</A> frequencies.
+
+<P>
+Adaptive FFT software (see &#167;<A HREF="FFT_Software.html#sec:fftsw">A.7</A> below) will choose the fastest
+algorithm available for any desired DFT length.  Due to modern
+processor architectures, execution time is not normally minimized by
+minimizing arithmetic complexity [<A
+ HREF="Bibliography.html#FFTWPaper">24</A>].
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3349"
+  HREF="Related_Transforms.html" 
+ onMouseover="return escape('Related Transforms')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3339"
+  HREF="Bluestein_s_FFT_Algorithm.html" 
+ onMouseover="return escape('Bluestein\'s FFT Algorithm')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3345"
+  HREF="Fast_Fourier_Transform_FFT.html" 
+ onMouseover="return escape('Fast Fourier Transforms (FFT)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3347"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

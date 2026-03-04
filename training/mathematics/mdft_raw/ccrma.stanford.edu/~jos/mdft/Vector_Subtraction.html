@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Vector Subtraction</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Vector Subtraction">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Scalar_Multiplication.html">
+<LINK REL="previous" HREF="Vector_Addition.html">
+<LINK REL="up" HREF="Geometric_Signal_Theory.html">
+<LINK REL="next" HREF="Scalar_Multiplication.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1555"
+  HREF="Scalar_Multiplication.html" 
+ onMouseover="return escape('Scalar Multiplication')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1545"
+  HREF="Vector_Addition.html" 
+ onMouseover="return escape('Vector Addition')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1551"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1553"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00640000000000000000"></A><A NAME="sec:vectorsub"></A><A NAME="10864"></A>
+<BR>
+Vector Subtraction
+</H2>
+
+<P>
+Figure <A HREF="Vector_Subtraction.html#fig:vecsub">5.4</A> illustrates the vector difference <SPAN CLASS="MATH">\(\underline{w}=\underline{x}-\underline{y}\)</SPAN> between
+<SPAN CLASS="MATH">\(\underline{x}=(2, 3)\)</SPAN> and <SPAN CLASS="MATH">\(\underline{y}=(4, 1)\)</SPAN>.  From the coordinates, we compute
+<SPAN CLASS="MATH">\(\underline{w}= \underline{x}-\underline{y}= (-2, 2)\)</SPAN>.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:vecsub"></A></P><IMG
+ WIDTH="341" HEIGHT="183" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img51.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img51.png 1x,https://ccrma.stanford.edu/~jos/mdft/img51_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img51_3x.png 3x"
+ ALT="\includegraphics[scale=0.7]{eps/vecsub}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img50.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img50.png 1x,https://ccrma.stanford.edu/~jos/mdft/img50_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img50_3x.png 3x"
+ ALT="% latex2html id marker 35938
+$\textstyle \parbox{\twidth }{\caption{\protect\small Geometric interpretation of a
+difference vector.}}$">
+</DIV>
+
+<P>
+Note that the difference vector <SPAN CLASS="MATH">\(\underline{w}\)</SPAN> may be drawn from the tip of <SPAN CLASS="MATH">\(\underline{y}\)</SPAN> to the
+tip of <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> rather than from the origin to the point <SPAN CLASS="MATH">\((-2,2)\)</SPAN>; this is a
+customary practice which emphasizes relationships among vectors, but the
+translation in the plot has no effect on the mathematical definition or
+properties of the vector. Subtraction, however, is not commutative.
+
+<P>
+To ascertain the proper orientation of the difference vector <SPAN CLASS="MATH">\(\underline{w}=\underline{x}-\underline{y}\)</SPAN>,
+rewrite its definition as <SPAN CLASS="MATH">\(\underline{x}=\underline{y}+\underline{w}\)</SPAN>, and then it is clear that the vector <SPAN CLASS="MATH">\(\underline{x}\)</SPAN>
+should be the sum of vectors <SPAN CLASS="MATH">\(\underline{y}\)</SPAN> and <SPAN CLASS="MATH">\(\underline{w}\)</SPAN>, hence the arrowhead is on the
+correct endpoint.  Or remember ``<SPAN CLASS="MATH">\(x-y\)</SPAN> points to <SPAN CLASS="MATH">\(x\)</SPAN>,'' or ``<SPAN CLASS="MATH">\(x-y\)</SPAN> is <SPAN CLASS="MATH">\(x\)</SPAN> from
+<SPAN CLASS="MATH">\(y\)</SPAN>.''
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1555"
+  HREF="Scalar_Multiplication.html" 
+ onMouseover="return escape('Scalar Multiplication')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1545"
+  HREF="Vector_Addition.html" 
+ onMouseover="return escape('Vector Addition')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1551"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1553"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

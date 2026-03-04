@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>An Example of Changing Coordinates in 2D</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="An Example of Changing Coordinates in 2D">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Changing_Coordinates.html">
+<LINK REL="up" HREF="Changing_Coordinates.html">
+<LINK REL="next" HREF="Projection_onto_Linearly_Dependent.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1857"
+  HREF="Projection_onto_Linearly_Dependent.html" 
+ onMouseover="return escape('Projection onto Linearly Dependent Vectors')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1849"
+  HREF="Changing_Coordinates.html" 
+ onMouseover="return escape('Changing Coordinates')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1853"
+  HREF="Changing_Coordinates.html" 
+ onMouseover="return escape('Changing Coordinates')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1855"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION006101100000000000000">
+An Example of Changing Coordinates in 2D</A>
+</H4>
+
+<P>
+As a simple example, let's pick the following pair of new coordinate vectors in 2D:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\underline{s}_0 &\isdef& [1,1] \\
+\underline{s}_1 &\isdef& [1,-1]\end{eqnarray*}</DIV><P></P>
+These happen to be the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoids</A> for <SPAN CLASS="MATH">\(N=2\)</SPAN> having frequencies <SPAN CLASS="MATH">\(f_0=0\)</SPAN>
+(``<A HREF="https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html" onMouseover="return escape('&lt;i&gt;dc&lt;/i&gt; stands for &lt;i&gt;direct current&lt;i&gt; in electrical engineering and signal processing (as opposed to \&#39;alternating current\&#39;).  The mean (average value) of a signal may be called its dc component.  Similarly, frequency zero is called the dc frequency, because a sinusoid with zero frequency is a constant signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html')">dc</A>'') and <SPAN CLASS="MATH">\(f_1=f_s/2\)</SPAN> (half the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling rate</A>).  (The sampled <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex
+sinusoids</A> of the DFT reduce to <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real numbers</A> only for <SPAN CLASS="MATH">\(N=1\)</SPAN> and <SPAN CLASS="MATH">\(N=2\)</SPAN>.)  We
+already showed in an earlier example that these vectors are <I><A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A></I>.  However, they are not orthonormal since the <A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norm</A> is
+<SPAN CLASS="MATH">\(\sqrt{2}\)</SPAN> in each case.  Let's try projecting <SPAN CLASS="MATH">\(x\)</SPAN> onto these vectors and
+seeing if we can reconstruct by summing the projections.
+
+<P>
+The projection of <SPAN CLASS="MATH">\(x\)</SPAN> onto <SPAN CLASS="MATH">\(\underline{s}_0\)</SPAN> is, by
+definition,<A NAME="tex2html65"
+  HREF="footnode.html#foot10765"><SUP>5.12</SUP></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}{\bf P}_{\underline{s}_0}(x) &\isdef& \frac{\ip{x,\underline{s}_0}}{\|\underline{s}_0\|^2} \underline{s}_0
+	= \frac{\ip{[x_0,x_1],[1,1]}}{2} \underline{s}_0\\[5pt]
+	&=& \frac{(x_0 \cdot \overline{1} + x_1 \cdot \overline{1})}{2} \underline{s}_0
+	= \frac{x_0 + x_1}{2}\underline{s}_0.\end{eqnarray*}</DIV><P></P>
+Similarly, the projection of <SPAN CLASS="MATH">\(x\)</SPAN> onto <SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN> is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}{\bf P}_{\underline{s}_1}(x) &\isdef& \frac{\ip{x,\underline{s}_1}}{\|\underline{s}_1\|^2} \underline{s}_1
+	= \frac{\ip{[x_0,x_1],[1,-1]}}{2} \underline{s}_1\\[5pt]
+	&=& \frac{(x_0 \cdot \overline{1} - x_1 \cdot \overline{1})}{2} \underline{s}_1
+	= \frac{x_0 - x_1}{2}\underline{s}_1.\end{eqnarray*}</DIV><P></P>
+The sum of these projections is then
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}{\bf P}_{\underline{s}_0}(x) + {\bf P}_{\underline{s}_1}(x) &=& 
+	 \frac{x_0 + x_1}{2}\underline{s}_0 + \frac{x_0 - x_1}{2}\underline{s}_1 \\[5pt]
+	 &\isdef& \frac{x_0 + x_1}{2}(1,1) + \frac{x_0 - x_1}{2} (1,-1) \\[5pt]
+	 &=& \left(\frac{x_0 + x_1}{2} + \frac{x_0 - x_1}{2}, 
+		\frac{x_0 + x_1}{2} - \frac{x_0 - x_1}{2}\right) \\[5pt]
+	 &=& (x_0,x_1) \isdef x.\end{eqnarray*}</DIV><P></P>
+It worked!
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1857"
+  HREF="Projection_onto_Linearly_Dependent.html" 
+ onMouseover="return escape('Projection onto Linearly Dependent Vectors')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1849"
+  HREF="Changing_Coordinates.html" 
+ onMouseover="return escape('Changing Coordinates')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1853"
+  HREF="Changing_Coordinates.html" 
+ onMouseover="return escape('Changing Coordinates')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1855"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

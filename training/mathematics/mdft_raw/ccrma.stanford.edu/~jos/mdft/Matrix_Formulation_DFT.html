@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Matrix Formulation of the DFT</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Matrix Formulation of the DFT">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="DFT_Problems.html">
+<LINK REL="previous" HREF="Length_2_DFT.html">
+<LINK REL="up" HREF="DFT_Derived.html">
+<LINK REL="next" HREF="DFT_Problems.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2120"
+  HREF="DFT_Problems.html" 
+ onMouseover="return escape('DFT Problems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2110"
+  HREF="Length_2_DFT.html" 
+ onMouseover="return escape('The Length 2 DFT')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2116"
+  HREF="DFT_Derived.html" 
+ onMouseover="return escape('The DFT Derived')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2118"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION007120000000000000000"></A><A NAME="sec:dftmtx"></A><A NAME="14689"></A>
+<BR>
+<A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">Matrix</A> Formulation of the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A>
+</H2>
+
+<P>
+The DFT can be formulated as a complex <A HREF="Matrix_Multiplication.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrix_Multiplication.html')">matrix multiply</A>, as we show in
+this section. (This section can be omitted without affecting what
+follows.)  For basic definitions regarding <A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">matrices</A>, see
+Appendix <A HREF="Matrices.html#app:matrices">H</A>.
+
+<P>
+The DFT consists of <A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner products</A> of the input <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> <SPAN CLASS="MATH">\(\underline{x}\)</SPAN>
+with sampled complex <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoidal</A> sections <SPAN CLASS="MATH">\(\underline{s}_k\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[X(\omega_k) \isdef \ip{\underline{x},\underline{s}_k} \isdef \sum_{n=0}^{N-1}\underline{x}(n) e^{-j 2\pi n k/N}, 
+\quad k=0,1,2,\ldots,N-1\]</DIV><P></P>
+By collecting the DFT output samples into a column vector, we have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\underbrace{
+\left[\begin{array}{c} 
+X(\omega_0) \\
+X(\omega_1) \\
+X(\omega_2) \\
+\vdots \\
+X(\omega_{N-1})
+\end{array}\right]
+}_{\displaystyle\underline{X}}
+=
+\underbrace{
+\left[\begin{array}{cccc} 
+\overline{s_0(0)} & \overline{s_0(1)} & \cdots & \overline{s_0(N-1)} \\
+\overline{s_1(0)} & \overline{s_1(1)} & \cdots & \overline{s_1(N-1)} \\
+\overline{s_2(0)} & \overline{s_2(1)} & \cdots & \overline{s_2(N-1)} \\
+\vdots & \vdots & \vdots & \vdots \\
+\overline{s_{N-1}(0)} & \overline{s_{N-1}(1)} & \cdots & \overline{s_{N-1}(N-1)}
+\end{array}\right]
+}_{\displaystyle\mathbf{S}^\ast_N}
+\underbrace{
+\left[\begin{array}{c} 
+x(0) \\
+x(1) \\
+x(2) \\
+\vdots \\
+x(N-1)
+\end{array}\right]
+}_{\displaystyle\underline{x}}\]</DIV><P></P>
+or
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\underline{X}= \mathbf{S}^\ast_N \underline{x}
+= \left[\begin{array}{c} \underline{s}_0^\ast \\[2pt] \vdots \\[2pt] \underline{s}_{N-1}^\ast\end{array}\right]\underline{x}
+= \left[\begin{array}{c} \ip{\underline{x},\underline{s}_0} \\[2pt] \vdots \\[2pt] \ip{\underline{x},\underline{s}_{N-1}}\end{array}\right]\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(\mathbf{S}^\ast_N\)</SPAN> denotes the 
+<I>DFT matrix</I><A NAME="14737"></A> <SPAN CLASS="MATH">\(\mathbf{S}^\ast_N[k,n]\isdef W_N^{-kn} \isdef
+e^{-j2\pi k n/N}\)</SPAN>, <I>i.e.</I>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\mathbf{S}^\ast_N 
+&\!\!\isdef\!\!& \left[\begin{array}{cccc} \underline{s}_0 & \underline{s}_1 & \cdots & \underline{s}_{N-1} \end{array}\right]^\ast\\[10pt]
+&\!\!\isdef\!\!&
+\left[\!\begin{array}{cccc} 
+\overline{s_0(0)} & \overline{s_0(1)} & \cdots & \overline{s_0(N-1)} \\
+\overline{s_1(0)} & \overline{s_1(1)} & \cdots & \overline{s_1(N-1)} \\
+\overline{s_2(0)} & \overline{s_2(1)} & \cdots & \overline{s_2(N-1)} \\
+\vdots & \vdots & \vdots & \vdots \\
+\overline{s_{N-1}(0)} & \overline{s_{N-1}(1)} & \cdots & \overline{s_{N-1}(N-1)}
+\end{array}\!\right] \\[10pt]
+&\!\!\isdef\!\!&
+\left[\!\begin{array}{ccccc}
+1 & 1 & 1 & \cdots & 1 \\
+1 & e^{-j 2\pi/N} & e^{-j 4\pi/N} & \cdots & e^{-j 2\pi (N-1)/N} \\
+1 & e^{-j 4\pi/N} & e^{-j 8\pi/N} & \cdots & e^{-j 2\pi 2(N-1)/N} \\
+\vdots & \vdots &     \vdots &      \vdots &   \vdots \\
+1 & e^{-j 2\pi(N-1)/N} & e^{-j 2\pi 2(N-1)/N} & \cdots & e^{-j 2\pi (N-1)(N-1)/N}
+\end{array}\!\right].\end{eqnarray*}</DIV><P></P>
+The notation <SPAN CLASS="MATH">\(A^\ast\isdef\overline{A^{\hbox{\tiny T}}}\)</SPAN> denotes the
+<I>Hermitian transpose</I><A NAME="14771"></A> of the complex matrix <SPAN CLASS="MATH">\(A\)</SPAN> (transposition
+and complex conjugation).
+
+<P>
+Note that the <SPAN CLASS="MATH">\(k\)</SPAN>th column of <SPAN CLASS="MATH">\(\mathbf{S}_N\)</SPAN> is the <SPAN CLASS="MATH">\(k\)</SPAN>th DFT <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A>, so
+that the <SPAN CLASS="MATH">\(k\)</SPAN>th row of the DFT matrix <SPAN CLASS="MATH">\(\mathbf{S}^\ast_N\)</SPAN> is the
+complex-conjugate of the <SPAN CLASS="MATH">\(k\)</SPAN>th <A HREF="Orthogonality_DFT_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality_DFT_Sinusoids.html')">DFT sinusoid</A>.  Therefore, multiplying
+the DFT matrix times a signal vector <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> produces a column-vector
+<SPAN CLASS="MATH">\(\underline{X}=\mathbf{S}^\ast_N\underline{x}\)</SPAN> in which the <SPAN CLASS="MATH">\(k\)</SPAN>th element <SPAN CLASS="MATH">\(\underline{X}[k]\)</SPAN> is the inner
+product of the <SPAN CLASS="MATH">\(k\)</SPAN>th DFT <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A> with <SPAN CLASS="MATH">\(\underline{x}\)</SPAN>, or <SPAN CLASS="MATH">\(\underline{X}[k]=\underline{s}^\ast_k\underline{x}
+= \ip{\underline{x},s_k}\)</SPAN>, as expected.
+
+<P>
+Computation of the DFT matrix in <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> is illustrated in &#167;<A HREF="DFT_Matrix.html#sec:dftmtxml">I.4.3</A>.
+
+<P>
+The <I>inverse DFT matrix</I><A NAME="14785"></A> is simply <SPAN CLASS="MATH">\(\mathbf{S}_N/N\)</SPAN>.  That is,
+we can perform the inverse DFT operation as
+<A NAME="eq:idftmtx"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\underline{x}= \frac{1}{N} \mathbf{S}_N \underline{X}.
+\end{equation}</DIV><P></P>
+Since the forward DFT is <SPAN CLASS="MATH">\(\underline{X}= \mathbf{S}^\ast_N \underline{x}\)</SPAN>, 
+substituting <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> from Eq.(<A HREF="Matrix_Formulation_DFT.html#eq:idftmtx">6.2</A>) into the forward DFT 
+leads quickly to the conclusion that
+<A NAME="eq:dftmtxprod"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\mathbf{S}^\ast_N \mathbf{S}_N = N\cdot \mathbf{I}.
+\end{equation}</DIV><P></P>
+This equation succinctly states that the <I>columns of <SPAN CLASS="MATH">\(\mathbf{S}_N\)</SPAN>
+are <A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A></I>, which, of course, we already knew. <I>I.e.</I>,
+<SPAN CLASS="MATH">\(\ip{\underline{s}_k,\underline{s}_n}=0\)</SPAN> for <SPAN CLASS="MATH">\(k\ne n\)</SPAN>, and <SPAN CLASS="MATH">\(\ip{\underline{s}_k,\underline{s}_k}=N\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\mathbf{S}^\ast_N \mathbf{S}_N 
+&\!\!=\!\!&
+\left[\!\begin{array}{ccccc}
+\ip{\underline{s}_0,\underline{s}_0} & \ip{\underline{s}_0,\underline{s}_1} & \cdots & \ip{\underline{s}_0,\underline{s}_{N-1}} \\
+\ip{\underline{s}_1,\underline{s}_0} & \ip{\underline{s}_1,\underline{s}_1} & \cdots & \ip{\underline{s}_1,\underline{s}_{N-1}} \\
+\ip{\underline{s}_2,\underline{s}_0} & \ip{\underline{s}_2,\underline{s}_1} & \cdots & \ip{\underline{s}_2,\underline{s}_{N-1}} \\
+\vdots & \vdots & \vdots & \vdots \\
+\ip{\underline{s}_{N-1},\underline{s}_0} & \ip{\underline{s}_{N-1},\underline{s}_1} & \cdots & \ip{\underline{s}_{N-1},\underline{s}_{N-1}}
+\end{array}\!\right] \\[5pt]
+&\!\!=\!\!&
+\left[\!\begin{array}{cccccc}
+N & 0 & 0 & \cdots & 0 \\
+0 & N & 0 & \cdots & 0 \\
+0 & 0 & N & \cdots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+0 & 0 & 0 & \cdots & N
+\end{array}\!\right]
+= N\cdot \mathbf{I}.\end{eqnarray*}</DIV><P></P>
+
+<P>
+The <I><A HREF="Normalized_DFT.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Normalized_DFT.html')">normalized DFT</A> matrix</I><A NAME="14841"></A> is given by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\tilde{\mathbf{S}}^\ast_{N} \isdef \frac{1}{\sqrt{N}} \mathbf{S}^\ast_{N}\]</DIV><P></P>
+and the corresponding
+normalized <I>inverse</I> DFT matrix<A NAME="14848"></A> is simply
+<SPAN CLASS="MATH">\(\tilde{\mathbf{S}}_N\)</SPAN>, so that Eq.(<A HREF="Matrix_Formulation_DFT.html#eq:dftmtxprod">6.3</A>) becomes
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\tilde{\mathbf{S}}^\ast_N \tilde{\mathbf{S}}_N = \mathbf{I}.\]</DIV><P></P>
+This implies that the columns of <SPAN CLASS="MATH">\(\tilde{\mathbf{S}}_N\)</SPAN> are <I>orthonormal</I><A NAME="14861"></A>.  Such a
+complex matrix is said to be <I>unitary</I><A NAME="14863"></A>.
+
+<P>
+When a <I>real</I> matrix <SPAN CLASS="MATH">\(\mathbf{Q}\)</SPAN> satisfies <SPAN CLASS="MATH">\(\mathbf{Q}^{\!\hbox{\tiny T}}\mathbf{Q}= \mathbf{I}\)</SPAN>, then
+<SPAN CLASS="MATH">\(\mathbf{Q}\)</SPAN> is said to be
+<A NAME="14871"></A><I>orthogonal</I>.
+``Unitary'' is the generalization of ``orthogonal'' to
+complex matrices.
+
+<P>
+
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2120"
+  HREF="DFT_Problems.html" 
+ onMouseover="return escape('DFT Problems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2110"
+  HREF="Length_2_DFT.html" 
+ onMouseover="return escape('The Length 2 DFT')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2116"
+  HREF="DFT_Derived.html" 
+ onMouseover="return escape('The DFT Derived')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2118"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

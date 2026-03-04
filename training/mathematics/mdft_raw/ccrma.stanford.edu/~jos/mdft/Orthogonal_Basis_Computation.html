@@ -1,0 +1,340 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Orthogonal Basis Computation</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Orthogonal Basis Computation">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Projection_I.html">
+<LINK REL="up" HREF="Geometric_Signal_Theory_I.html">
+<LINK REL="next" HREF="DFT_I.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4427"
+  HREF="DFT_I.html" 
+ onMouseover="return escape('The DFT')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4419"
+  HREF="Projection_Example_2.html" 
+ onMouseover="return escape('Projection Example 2')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4423"
+  HREF="Geometric_Signal_Theory_I.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4425"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001836000000000000000"></A><A NAME="sec:mlorth"></A><A NAME="28639"></A>
+<A NAME="28640"></A>
+<BR>
+<A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">Orthogonal</A> Basis Computation
+</H3>
+
+<P>
+<A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> and Octave have a function <TT>orth()</TT> which will compute an
+orthonormal basis for a space given any set of vectors which span the
+space.  In Matlab, <I>e.g.</I>, we have the following help info:
+
+<BLOCKQUOTE></BLOCKQUOTE><PRE>
+&gt;&gt; help orth
+ ORTH  Orthogonalization.
+       <A HREF="https://ccrma.stanford.edu/~jos/filters/Quality_Factor_Q.html" onMouseover="return escape('The &lt;i&gt;quality factor&lt;/i&gt; or &lt;i&gt;Q&lt;/i&gt; of a resonator may be thought of as the number of cycles of oscillation at the resonant frequency in the impulse response of the resonator before it substantially decays to zero. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Quality_Factor_Q.html')">Q</A> = orth(A) is an orthonormal basis for the range of A.
+       <A HREF="http://ccrma.stanford.edu/~jos/filters/Quality_Factor_Q.html" onMouseover="return escape('The quality factor &lt;i&gt;Q&lt;/i&gt; of a two-pole resonator is equal to the resonant frequency divided by two times the damping constant.  If the &lt;i&gt;Q&lt;/i&gt; is large, then the impulse response of the resonator will be long.  Conversely, if the &lt;i&gt;Q&lt;/i&gt; is small, then the impulse response of the resonator will be short. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Quality_Factor_Q.html')">Q</A>'*Q = I, the columns of Q span the same space as the
+       columns of A and the number of columns of Q is the rank 
+       of A.
+ 
+       See also QR, NULL.
+</PRE><BLOCKQUOTE></BLOCKQUOTE>
+
+<P>
+Below is an example of using <TT>orth()</TT> to orthonormalize a <A HREF="https://mathworld.wolfram.com/LinearlyIndependent.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearlyIndependent.html')">linearly
+independent</A> basis set for <SPAN CLASS="MATH">\(N=3\)</SPAN>:
+
+<P>
+
+<BLOCKQUOTE></BLOCKQUOTE><PRE>
+% Demonstration of the orth() function.
+v1 = [1; 2; 3];  % our first <A HREF="https://mathworld.wolfram.com/Basis.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Basis.html')">basis vector</A> (a column vector)
+v2 = [1; -2; 3]; % a second, linearly independent vector
+v1' * v2         % show that v1 is not orthogonal to v2
+
+ans =
+     6
+
+V = [v1,v2]      % Each column of V is one of our vectors
+
+V =
+     1     1
+     2    -2
+     3     3
+
+W = orth(V)  % Find an orthonormal basis for the same space
+
+W =
+    0.2673    0.1690
+    0.5345   -0.8452
+    0.8018    0.5071
+
+w1 = W(:,1)  % Break out the returned vectors
+
+w1 =
+    0.2673
+    0.5345
+    0.8018
+
+w2 = W(:,2)
+
+w2 =
+    0.1690
+   -0.8452
+    0.5071
+
+w1' * w2  % Check that w1 is orthogonal to w2
+
+ans =
+   2.5723e-17
+
+w1' * w1  % Also check that the new vectors are unit length
+
+ans =
+     1
+
+w2' * w2
+
+ans =
+     1
+
+W' * W   % faster way to do the above checks 
+
+ans =
+    1    0
+    0    1
+
+
+% Construct some vector x in the space spanned by v1 and v2:
+x = 2 * v1 - 3 * v2
+
+x =
+    -1
+    10
+    -3
+
+% Show that x is also some <A HREF="https://mathworld.wolfram.com/LinearCombination.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearCombination.html')">linear combination</A> of w1 and w2:
+c1 = x' * w1      % <A HREF="Projection.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Projection.html')">Coefficient of projection</A> of x onto w1
+
+c1 =
+    2.6726
+
+c2 = x' * w2      % Coefficient of projection of x onto w2
+
+c2 =
+  -10.1419
+
+xw = c1 * w1 + c2 * w2  % Can we make x using w1 and w2?
+
+xw =
+   -1
+   10
+   -3
+
+error = x - xw 
+
+error = 1.0e-14 *
+
+    0.1332
+         0
+         0
+
+<A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norm</A>(error)       % typical way to summarize a vector error
+
+ans =
+   1.3323e-15
+
+% It works! (to working precision, of course)
+</PRE><BLOCKQUOTE></BLOCKQUOTE>
+<P>
+
+<BLOCKQUOTE></BLOCKQUOTE><PRE>
+% Construct a vector x NOT in the space spanned by v1 and v2:
+y = [1; 0; 0];     % Almost anything we guess in 3D will work
+
+%  Try to express y as a linear combination of w1 and w2:
+c1 = y' * w1;      % Coefficient of projection of y onto w1
+c2 = y' * w2;      % Coefficient of projection of y onto w2
+yw = c1 * w1 + c2 * w2  % Can we make y using w1 and w2?
+</PRE><BLOCKQUOTE></BLOCKQUOTE>
+<PRE>
+yw =
+
+    0.1
+    0.0
+    0.3
+
+yerror = y - yw 
+
+yerror =
+
+    0.9
+    0.0
+   -0.3
+
+norm(yerror)
+
+ans =
+    0.9487
+</PRE>
+
+<P>
+While the error is not zero, it is the smallest possible error in the
+<A HREF="https://mathworld.wolfram.com/LeastSquaresFitting.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LeastSquaresFitting.html')">least squares</A> sense.  That is, <TT>yw</TT> is the optimal
+<A HREF="https://mathworld.wolfram.com/LeastSquaresFitting.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LeastSquaresFitting.html')">least-squares approximation</A> to y in the space spanned by <TT>v1</TT>
+and <TT>v2</TT> (<TT>w1</TT> and <TT>w2</TT>).  In other words,
+<TT>norm(yerror) is less than or equal to norm(y-yw2)</TT> for any
+other vector <TT>yw2</TT> made using a linear combination of
+<TT>v1</TT> and <TT>v2</TT>.  In yet other words, we obtain the
+optimal least squares approximation of
+<TT>y</TT> (which lives in 3D) in some subspace <SPAN CLASS="MATH">\(W\)</SPAN> (a 2D subspace of 3D
+spanned by the columns of <A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">matrix</A> <TT>W</TT>) by projecting
+<TT>y</TT> orthogonally onto the subspace <SPAN CLASS="MATH">\(W\)</SPAN> to get
+<TT>yw</TT> as above.
+
+<P>
+An important property of the optimal least-squares approximation is
+that the approximation error is <I>orthogonal</I> to the the subspace
+in which the approximation lies.  Let's verify this:
+<PRE>
+W' * yerror   % must be zero to working precision
+
+ans = 1.0e-16 *
+
+   -0.2574
+   -0.0119
+</PRE>
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4427"
+  HREF="DFT_I.html" 
+ onMouseover="return escape('The DFT')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4419"
+  HREF="Projection_Example_2.html" 
+ onMouseover="return escape('Projection Example 2')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4423"
+  HREF="Geometric_Signal_Theory_I.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4425"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Summary and Related Mathematical Topics</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Summary and Related Mathematical Topics">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Norm_Properties.html">
+<LINK REL="up" HREF="Signal_Metrics.html">
+<LINK REL="next" HREF="Inner_Product.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1677"
+  HREF="Inner_Product.html" 
+ onMouseover="return escape('The Inner Product')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1669"
+  HREF="Norm_Properties.html" 
+ onMouseover="return escape('Norm Properties')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1673"
+  HREF="Signal_Metrics.html" 
+ onMouseover="return escape('Signal Metrics')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1675"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00683000000000000000"></A>
+<A NAME="11045"></A>
+<A NAME="11046"></A>
+<BR>
+Summary and Related Mathematical Topics
+</H3>
+
+<P>
+We have defined a <I><A HREF="Linear_Vector_Space.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Linear_Vector_Space.html')">vector space</A></I> <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> (&#167;<A HREF="Linear_Vector_Space.html#sec:linvecspace">5.7</A>) where
+each vector in the space is a list of <SPAN CLASS="MATH">\(N\)</SPAN> <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A>. There are
+two operations we can perform on vectors: <I><A HREF="Vector_Addition.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Vector_Addition.html')">vector addition</A></I>
+(&#167;<A HREF="Vector_Addition.html#sec:vectoradd">5.3</A>) and <I><A HREF="Scalar_Multiplication.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Scalar_Multiplication.html')">scalar multiplication</A></I>
+(&#167;<A HREF="Scalar_Multiplication.html#sec:scalarmul">5.5</A>).  The sum of two or more vectors <SPAN CLASS="MATH">\(\underline{x}_i\in\mathbb{C}^N\)</SPAN>
+multiplied by <A HREF="http://en.wikipedia.org/wiki/Scalar" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Scalar')">scalars</A> <SPAN CLASS="MATH">\(\alpha_i\in\mathbb{C}\)</SPAN> is called a <I><A HREF="https://mathworld.wolfram.com/LinearCombination.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearCombination.html')">linear
+combination</A></I><A NAME="11052"></A>.  Vector spaces are <I>closed</I> under linear
+combinations.  That is, the linear combination <SPAN CLASS="MATH">\(\underline{y}= \alpha_1\,\underline{x}_1
++ \alpha_2\,\underline{x}_2 + \cdots + \alpha_M\,\underline{x}_M\)</SPAN> is also in the space
+<SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> for any positive integer <SPAN CLASS="MATH">\(M\)</SPAN>, any <SPAN CLASS="MATH">\(\alpha_i\in\mathbb{C}\)</SPAN>, and
+any <SPAN CLASS="MATH">\(\underline{x}_i\in\mathbb{C}^N\)</SPAN>.  More generally, vector spaces can be defined over
+any <I>field</I> <SPAN CLASS="MATH">\(F\)</SPAN> of scalars and any set of vectors <SPAN CLASS="MATH">\(V\)</SPAN> in which
+vector addition forms an <I>abelian
+group</I> [<A
+ HREF="Bibliography.html#Pinter90">58</A>, pp.&nbsp;282-291].  In this book, we only need
+<SPAN CLASS="MATH">\(F=\mathbb{C}\)</SPAN> and <SPAN CLASS="MATH">\(V=\mathbb{C}^N\)</SPAN>.
+
+<P>
+We have introduced the usual <I>Eucidean <A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norm</A></I> to define vector
+<I>length</I>.  When every <I>Cauchy sequence</I> is convergent to a point
+in the space, the space is said to be <I>complete</I> (``it contains
+its limit points''), and a complete vector space with a norm defined
+on it is called a <I><A HREF="http://en.wikipedia.org/wiki/Banach_space" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Banach_space')">Banach space</A></I>.  Our vector space <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> with
+the Euclidean norm defined on it qualifies as a Banach space.  We will
+next define an <I><A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner product</A></I> on the space, which will give us
+a <I><A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">Hilbert space</A></I>.  Formal proofs of such classifications are
+beyond the scope of this book, but [<A
+ HREF="Bibliography.html#Pinter90">58</A>] and Web searches
+on the above terms can spur further mathematical study.  It is also
+useful to know the names (especially ``Hilbert space''), as they are
+often used.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1677"
+  HREF="Inner_Product.html" 
+ onMouseover="return escape('The Inner Product')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1669"
+  HREF="Norm_Properties.html" 
+ onMouseover="return escape('Norm Properties')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1673"
+  HREF="Signal_Metrics.html" 
+ onMouseover="return escape('Signal Metrics')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1675"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

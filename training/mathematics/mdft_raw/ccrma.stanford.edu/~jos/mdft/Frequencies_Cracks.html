@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Frequencies in the ``Cracks''</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Frequencies in the ``Cracks''">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Spectral_Bin_Numbers.html">
+<LINK REL="previous" HREF="Discrete_Fourier_Transform_DFT.html">
+<LINK REL="up" HREF="DFT_Derived.html">
+<LINK REL="next" HREF="Spectral_Bin_Numbers.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2060"
+  HREF="Spectral_Bin_Numbers.html" 
+ onMouseover="return escape('Spectral Bin Numbers')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2050"
+  HREF="Discrete_Fourier_Transform_DFT.html" 
+ onMouseover="return escape('The Discrete Fourier Transform (DFT)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2056"
+  HREF="DFT_Derived.html" 
+ onMouseover="return escape('The DFT Derived')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2058"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00770000000000000000"></A><A NAME="sec:cracks"></A><A NAME="14538"></A>
+<BR>
+Frequencies in the ``Cracks''
+</H2>
+
+<P>
+The <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> is defined only for frequencies <SPAN CLASS="MATH">\(\omega_k = 2\pi k f_s/N\)</SPAN>.  If we
+are analyzing one or more <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periods</A> of an exactly <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic signal</A>, where the
+period is exactly <SPAN CLASS="MATH">\(N\)</SPAN> samples (or some integer divisor of <SPAN CLASS="MATH">\(N\)</SPAN>), then these
+really are the only frequencies present in the <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A>, and the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> is
+actually zero everywhere but at <SPAN CLASS="MATH">\(\omega=\omega_k\)</SPAN>, <SPAN CLASS="MATH">\(k\in[0,N-1]\)</SPAN>.  
+However, we use the
+DFT to analyze arbitrary signals from nature.  What happens when a
+frequency <SPAN CLASS="MATH">\(\omega\)</SPAN> is present in a signal <SPAN CLASS="MATH">\(x\)</SPAN> that is not one of the
+DFT-<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> frequencies <SPAN CLASS="MATH">\(\omega_k\)</SPAN>?
+
+<P>
+To find out, let's project a length <SPAN CLASS="MATH">\(N\)</SPAN> segment of a <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A> at an
+arbitrary frequency <SPAN CLASS="MATH">\(\omega_x\)</SPAN> onto the <SPAN CLASS="MATH">\(k\)</SPAN>th <A HREF="Orthogonality_DFT_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality_DFT_Sinusoids.html')">DFT sinusoid</A>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}x(n) &\isdef& e^{j\omega_x n T} \\
+s_k(n) &\isdef& e^{j\omega_k n T} \\
+{\bf P}_{s_k}(x) &=& \frac{\ip{x,s_k}}{\ip{s_k,s_k}}s_k \;\isdef\;
+	\frac{X(\omega_k)}{N}s_k\end{eqnarray*}</DIV><P></P>
+The <A HREF="Projection.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Projection.html')">coefficient of projection</A> is proportional to
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}X(\omega_k) & \isdef & \ip{x,s_k} \;\isdef\; \sum_{n=0}^{N-1}x(n) \overline{s_k(n)} \\
+	& = & \sum_{n=0}^{N-1}e^{j\omega_x n T} e^{-j\omega_k n T}
+	 \;=\;  \sum_{n=0}^{N-1}e^{j(\omega_x-\omega_k) n T}
+	 \;=\; \frac{1 - e^{j(\omega_x-\omega_k) N T}}{1 - e^{j(\omega_x-\omega_k) T}} \\
+	&=& e^{j(\omega_x-\omega_k) (N-1)T/2}
+	  \frac{\sin[(\omega_x-\omega_k)NT/2]}{\sin[(\omega_x-\omega_k)T/2]},\end{eqnarray*}</DIV><P></P>
+using the closed-form expression for a <A HREF="Geometric_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Geometric_Series.html')">geometric series</A> sum once
+again.  As shown in &#167;<A HREF="Orthogonality_DFT_Sinusoids.html#sec:orthdftsines">6.3</A>-&#167;<A HREF="Norm_DFT_Sinusoids.html#sec:normdftsines">6.4</A> above,
+the sum is <SPAN CLASS="MATH">\(N\)</SPAN> if
+<SPAN CLASS="MATH">\(\omega_k=\omega_x\)</SPAN> and zero at <SPAN CLASS="MATH">\(\omega_l\)</SPAN>, for <SPAN CLASS="MATH">\(l\neq k\)</SPAN>.  However,
+the sum is <I>nonzero at all other frequencies</I> <SPAN CLASS="MATH">\(\omega_x\)</SPAN>.
+
+<P>
+Since we are only looking at <SPAN CLASS="MATH">\(N\)</SPAN> samples, any <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoidal</A> segment can be
+projected onto the <SPAN CLASS="MATH">\(N\)</SPAN> DFT sinusoids and be reconstructed exactly by a
+<A HREF="https://mathworld.wolfram.com/LinearCombination.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearCombination.html')">linear combination</A> of them.  Another way to say this is that the DFT
+sinusoids form a <I>basis</I> for <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>, so that any length <SPAN CLASS="MATH">\(N\)</SPAN> signal
+whatsoever can be expressed as a linear combination of them.  Therefore, when
+analyzing segments of recorded signals, we must interpret what we see
+accordingly.
+
+<P>
+<A NAME="14554"></A>
+The typical way to think about this in practice is to consider the DFT
+operation as a <I><A HREF="https://ccrma.stanford.edu/~jos/filters/" onMouseover="return escape('A &lt;i&gt;digital filter&lt;/i&gt; can be visualized as a \&#39;black box\&#39; that accepts a sequence of numbers and emits a new sequence of numbers. In digital audio signal processing applications, such number sequences usually represent sounds. For example, digital filters are used to implement graphic equalizers and other digital audio effects. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/')">digital filter</A></I> for each <SPAN CLASS="MATH">\(k\)</SPAN>, whose input is <SPAN CLASS="MATH">\(x\)</SPAN>
+and whose output is <SPAN CLASS="MATH">\(X(\omega_k)\)</SPAN> at time <SPAN CLASS="MATH">\(n=N-1\)</SPAN>.<A NAME="tex2html72"
+  HREF="footnode.html#foot14399"><SUP>6.4</SUP></A> The
+<I><A HREF="https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html" onMouseover="return escape('The &lt;i&gt;frequency response&lt;/i&gt; is defined for LTI filters as the Fourier transform of the filter output signal divided by the Fourier transform of the filter input signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html')">frequency response</A></I> of this <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filter</A> is what we just
+computed,<A NAME="tex2html73"
+  HREF="footnode.html#foot14400"><SUP>6.5</SUP></A> and its magnitude is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left|X(\omega_k)\right| = 
+	\left|\frac{\sin[(\omega_x-\omega_k)NT/2]}{\sin[(\omega_x-\omega_k)T/2]}\right|\]</DIV><P></P>
+(shown in Fig.<A HREF="Frequencies_Cracks.html#fig:dftfilter">6.3</A>a for <SPAN CLASS="MATH">\(k=N/4\)</SPAN>).  At all other integer values of
+<SPAN CLASS="MATH">\(k\)</SPAN>, the frequency response is the same but shifted (circularly) left or right so
+that the peak is centered on <SPAN CLASS="MATH">\(\omega_k\)</SPAN>.  The secondary peaks away from
+<SPAN CLASS="MATH">\(\omega_k\)</SPAN> are called <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html" onMouseover="return escape('A &lt;i&gt;side lobe&lt;/i&gt; in the Fourier transform of a window function, such as the Chebyshev window, is any local maximum in the transform magnitude outside of the main lobe (response about dc). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html')">sidelobes</A></I><A NAME="14565"></A> of the DFT response, while the main
+peak may be called the <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html" onMouseover="return escape('The &lt;i&gt;main lobe&lt;/i&gt; in the Fourier transform of a window function, such as the Chebyshev window, is the central local maximum in the transform magnitude (response about dc).  Outside of the main lobe are usually &lt;i&gt;side lobes&lt;/i&gt; (ripples in the magnitude spectrum). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html')">main lobe</A></I><A NAME="14567"></A> of the response.  Since we are
+normally most interested in <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectra</A> from an audio perspective, the same
+plot is repeated using a <I><A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">decibel</A></I> vertical scale in 
+Fig.<A HREF="Frequencies_Cracks.html#fig:dftfilter">6.3</A>b<A NAME="tex2html74"
+  HREF="footnode.html#foot14402"><SUP>6.6</SUP></A>(clipped at <SPAN CLASS="MATH">\(-60\)</SPAN> <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">dB</A>).  We see that the sidelobes are really quite high
+from an audio perspective.  Sinusoids with frequencies near <SPAN CLASS="MATH">\(\omega_{k\pm
+1.5}\)</SPAN>, for example, are only attenuated approximately <SPAN CLASS="MATH">\(13\)</SPAN> <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A> in the DFT
+output <SPAN CLASS="MATH">\(X(\omega_k)\)</SPAN>.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:dftfilter"></A></P><IMG
+ WIDTH="677" HEIGHT="536" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img67.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img67.png 1x,https://ccrma.stanford.edu/~jos/mdft/img67_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img67_3x.png 3x"
+ ALT="\includegraphics[width=\twidth]{eps/dftfilter}">
+	<IMG
+ WIDTH="785" HEIGHT="77" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img66.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img66.png 1x,https://ccrma.stanford.edu/~jos/mdft/img66_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img66_3x.png 3x"
+ ALT="% latex2html id marker 36156
+$\textstyle \parbox{\twidth }{\caption{\protect\small Magnitude frequency response of a particular DFT \lq\lq bin'' (where \lq\lq bin'' is defined in \spref {binnumbers}).
+The solid curve shows the relative contribution of arbitrary frequency
+components to the spectral bin at one-fourth the sampling rate.}}$">
+</DIV>
+
+<P>
+We see that <SPAN CLASS="MATH">\(X(\omega_k)\)</SPAN> is sensitive to <I>all</I> frequencies between <A HREF="https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html" onMouseover="return escape('&lt;i&gt;dc&lt;/i&gt; stands for &lt;i&gt;direct current&lt;i&gt; in electrical engineering and signal processing (as opposed to \&#39;alternating current\&#39;).  The mean (average value) of a signal may be called its dc component.  Similarly, frequency zero is called the dc frequency, because a sinusoid with zero frequency is a constant signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html')">dc</A>
+and the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling rate</A> <I>except</I> the other DFT-sinusoid frequencies
+<SPAN CLASS="MATH">\(\omega_l\)</SPAN> for <SPAN CLASS="MATH">\(l\neq k\)</SPAN>.  This is sometimes called <I>spectral leakage</I><A NAME="14577"></A>
+or <I>cross-talk</I><A NAME="14579"></A> in the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A>.  Again, there is <I>no
+leakage</I> when the signal being analyzed is truly <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic</A> and we can choose
+<SPAN CLASS="MATH">\(N\)</SPAN> to be exactly a period, or some multiple of a period.  Normally,
+however, this cannot be easily arranged, and spectral leakage can 
+be a problem.
+
+<P>
+Note that peak spectral leakage is not reduced by increasing
+<SPAN CLASS="MATH">\(N\)</SPAN>.<A NAME="tex2html75"
+  HREF="footnode.html#foot14404"><SUP>6.7</SUP></A>  It can be thought of as being caused by abruptly
+<I>truncating</I> a sinusoid at the beginning and/or end of the
+<SPAN CLASS="MATH">\(N\)</SPAN>-sample time window.  Only the DFT sinusoids are not cut off at the
+window boundaries.  All other frequencies will suffer some truncation
+<A HREF="http://ccrma.stanford.edu/realsimple/SimpleStrings/Nonlinear_Overdrive.html" onMouseover="return escape('Click for http://ccrma.stanford.edu/realsimple/SimpleStrings/Nonlinear_Overdrive.html')">distortion</A>, and the spectral content of the abrupt cut-off or turn-on
+<A HREF="http://en.wikipedia.org/wiki/Transient_%28acoustics%29" onMouseover="return escape('Transients are short intervals during which the signal evolves quickly in some nontrivial or relatively unpredictable way (Bello, 2005).  In computer music, the short attack portion of a sound is often treated as a transient signal. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Transient_%28acoustics%29')">transient</A> can be viewed as the source of the sidelobes.  Remember
+that, as far as the DFT is concerned, the input signal <SPAN CLASS="MATH">\(x(n)\)</SPAN> is the
+same as its
+<I><A HREF="Modulo_Indexing_Periodic_Extension.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Modulo_Indexing_Periodic_Extension.html')">periodic extension</A></I><A NAME="14584"></A> (more about this in
+&#167;<A HREF="Modulo_Indexing_Periodic_Extension.html#sec:modulo">7.1.2</A>).  If we repeat <SPAN CLASS="MATH">\(N\)</SPAN> samples of a sinusoid at frequency
+<SPAN CLASS="MATH">\(\omega\neq\omega_k\)</SPAN> (for any <SPAN CLASS="MATH">\(k\in\mathbb{Z}\)</SPAN>), there will be a ``glitch''
+every <SPAN CLASS="MATH">\(N\)</SPAN> samples since the signal is not periodic in <SPAN CLASS="MATH">\(N\)</SPAN> samples.
+This glitch can be considered a source of new energy over the entire
+<A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>.  See
+Fig.<A HREF="FFT_Not_So_Simple_Sinusoid.html#fig:waveform2">8.3</A> for an example waveform.
+
+<P>
+To reduce spectral leakage (cross-talk from far-away
+frequencies), we typically use a 
+<A NAME="14586"></A><I>window</I><A NAME="14588"></A> 
+function, such as a
+``raised cosine'' window, to <I>taper</I> the data record gracefully
+to zero at both endpoints of the window.  As a result of the smooth
+tapering, the <I>main lobe widens</I> and the <I>sidelobes
+decrease</I> in the DFT response.  Using no window is better viewed as
+using a <I>rectangular window</I><A NAME="14590"></A> of length <SPAN CLASS="MATH">\(N\)</SPAN>, unless the signal is
+exactly periodic in <SPAN CLASS="MATH">\(N\)</SPAN> samples.  These topics are considered further
+in Chapter <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html#chap:dftex">8</A>.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2060"
+  HREF="Spectral_Bin_Numbers.html" 
+ onMouseover="return escape('Spectral Bin Numbers')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2050"
+  HREF="Discrete_Fourier_Transform_DFT.html" 
+ onMouseover="return escape('The Discrete Fourier Transform (DFT)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2056"
+  HREF="DFT_Derived.html" 
+ onMouseover="return escape('The DFT Derived')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2058"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

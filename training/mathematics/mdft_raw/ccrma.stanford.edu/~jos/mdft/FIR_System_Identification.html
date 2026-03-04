@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>FIR System Identification</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="FIR System Identification">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Matched_Filtering.html">
+<LINK REL="up" HREF="Correlation_Analysis.html">
+<LINK REL="next" HREF="Power_Spectral_Density_Estimation.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3170"
+  HREF="Power_Spectral_Density_Estimation.html" 
+ onMouseover="return escape('Power Spectral Density')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3162"
+  HREF="Matched_Filtering.html" 
+ onMouseover="return escape('Matched Filtering')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3166"
+  HREF="Correlation_Analysis.html" 
+ onMouseover="return escape('Correlation Analysis')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3168"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00945000000000000000">
+FIR System Identification</A>
+</H3>
+
+<P>
+Estimating an <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse response&lt;/i&gt; of a system is its output signal in response to the impulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse response</A> from input-output measurements is
+called <I>system identification</I><A NAME="21481"></A>, and a large literature exists on
+this topic (<I>e.g.</I>, [<A
+ HREF="Bibliography.html#LjungAndSoderstrom">40</A>]).
+
+<P>
+<A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">Cross-correlation</A> can be used to compute the <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse</A> response <SPAN CLASS="MATH">\(h(n)\)</SPAN>
+of a <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filter</A> from the cross-<A HREF="Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Correlation.html')">correlation</A> of its input and output <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signals</A>
+<SPAN CLASS="MATH">\(x(n)\)</SPAN> and <SPAN CLASS="MATH">\(y = h\ast x\)</SPAN>, respectively.  To see this, note that, by
+the <A HREF="Correlation_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Correlation_Theorem.html')">correlation theorem</A>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x\star y \;\longleftrightarrow\;\overline{X}\cdot Y = \overline{X}\cdot (H\cdot X) = 
+H\cdot\left|X\right|^2.\]</DIV><P></P>
+Therefore, the <A HREF="https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html" onMouseover="return escape('The &lt;i&gt;frequency response&lt;/i&gt; is defined for LTI filters as the Fourier transform of the filter output signal divided by the Fourier transform of the filter input signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html')">frequency response</A> equals the input-output
+<A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">cross-spectrum</A> divided by the input power <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[H = \frac{\overline{X}\cdot Y}{\left|X\right|^2} = \frac{{\hat R}_{xy}}{{\hat R}_{xx}}\]</DIV><P></P>
+where multiplication and division of <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectra</A> are defined pointwise, <I>i.e.</I>, 
+<SPAN CLASS="MATH">\(H(\omega_k) =  \overline{X(\omega_k)}\cdot Y(\omega_k)/|X(\omega_k)|^2\)</SPAN>.
+A <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> program illustrating these relationships is listed in
+Fig.<A HREF="FIR_System_Identification.html#code:sidex">8.13</A>.
+(A <A NAME="tex2html125"
+  HREF="mdft-python.html#FIR-System-Identification">Python version</A><A NAME="tex2html122"
+
+HREF="footnode.html#foot21350"><SUP>8.12</SUP></A>is also available.)
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="code:sidex"></A><A NAME="21354"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 8.13:</STRONG>
+<A HREF="https://ccrma.stanford.edu/~jos/filters/FIR_Digital_Filters.html" onMouseover="return escape('In digital signal processing, &lt;i&gt;FIR&lt;/i&gt; is an acronym for &lt;i&gt;Finite Impulse Response&lt;/i&gt; &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/FIR_Digital_Filters.html')">FIR</A> system identification example in matlab.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<HR></DIV>
+		&nbsp;
+<BR>
+
+<PRE>
+% sidex.m - Demonstration of the use of <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> cross-
+% correlation to compute the impulse response 
+% of a filter given its input and output.
+% This is called "FIR system identification".
+
+Nx = 32; % input signal length Nh = 10; % filter length Ny =
+Nx+Nh-1; % max output signal length
+% FFT size to accommodate cross-correlation:
+Nfft = 2^nextpow2(Ny); % FFT wants power of 2
+
+x = rand(1,Nx); % input signal = <A HREF="https://ccrma.stanford.edu/~jos/sasp/What_Noise.html" onMouseover="return escape('Noise (in signal processing) is a random signal.  In the language of statistical signal processing, a noise signal is typically modeled as \&#39;stochastic process\&#39;, which is in turn defined as a sequence of random variables. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/What_Noise.html')">noise</A>
+%x = 1:Nx; 	% input signal = ramp
+h = [1:Nh]; 	% the filter
+xzp = [x,zeros(1,Nfft-Nx)]; % zero-padded input
+yzp = filter(h,1,xzp); % apply the filter
+X = fft(xzp);   % input <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>
+Y = fft(yzp);   % output <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The spectrum of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>
+Rxx = conj(X) .* X; % energy spectrum of x
+Rxy = conj(X) .* Y; % cross-energy spectrum
+Hxy = Rxy ./ Rxx;   % should be the freq. response
+hxy = ifft(Hxy);    % should be the imp. response
+
+hxy(1:Nh) 	    % print estimated impulse response
+freqz(hxy,1,Nfft);  % plot estimated freq response
+
+err = <A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norm</A>(hxy - [h,zeros(1,Nfft-Nh)])/norm(h);
+disp(sprintf(['Impulse Response Error = ',...
+	'%0.14f%%'],100*err));
+
+err = norm(Hxy-fft([h,zeros(1,Nfft-Nh)]))/norm(h);
+disp(sprintf(['Frequency Response Error = ',...
+	'%0.14f%%'],100*err));
+</PRE>
+<DIV ALIGN="CENTER">
+<HR></DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3170"
+  HREF="Power_Spectral_Density_Estimation.html" 
+ onMouseover="return escape('Power Spectral Density')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3162"
+  HREF="Matched_Filtering.html" 
+ onMouseover="return escape('Matched Filtering')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3166"
+  HREF="Correlation_Analysis.html" 
+ onMouseover="return escape('Correlation Analysis')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3168"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

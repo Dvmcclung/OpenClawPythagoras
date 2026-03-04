@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Plotting Complex Sinusoids versus Frequency</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Plotting Complex Sinusoids versus Frequency">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Sinusoidal_Amplitude_Modulation_AM.html">
+<LINK REL="previous" HREF="Positive_Negative_Frequencies.html">
+<LINK REL="up" HREF="Complex_Sinusoids.html">
+<LINK REL="next" HREF="Sinusoidal_Amplitude_Modulation_AM.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1274"
+  HREF="Sinusoidal_Amplitude_Modulation_AM.html" 
+ onMouseover="return escape('Sinusoidal Amplitude Modulation (AM)')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1264"
+  HREF="Positive_Negative_Frequencies.html" 
+ onMouseover="return escape('Positive and Negative Frequencies')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1270"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1272"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00534000000000000000"></A><A NAME="sec:csspecrep"></A><A NAME="8240"></A>
+<BR>
+Plotting Complex <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">Sinusoids</A> versus Frequency
+</H3>
+
+<P>
+As discussed in the previous section, we regard the <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A>
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x(t) = A_x e^{j\omega_x t}\]</DIV><P></P>
+as a <I>positive-frequency <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A></I> when <SPAN CLASS="MATH">\(\omega_x&gt;0\)</SPAN>.  In a
+manner analogous to spectral magnitude plots (discussed in
+&#167;<A HREF="Sinusoid_Magnitude_Spectra.html#sec:specrep">4.1.6</A>), we can plot this <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex sinusoid</A> over a frequency
+axis as a vertical line of length <SPAN CLASS="MATH">\(A_x\)</SPAN> at the point
+<SPAN CLASS="MATH">\(\omega=\omega_x\)</SPAN>, as shown in Fig.<A HREF="Plotting_Complex_Sinusoids_versus.html#fig:csplot">4.10</A>.  Such a plot of
+amplitude versus frequency may be called a <I>spectral plot</I><A NAME="8242"></A>, or
+<I>spectral representation</I><A NAME="8244"></A> [<A
+ HREF="Bibliography.html#DSPFirst">46</A>] of the (<A HREF="https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html')">zero-phase</A>)
+complex sinusoid.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:csplot"></A></P>	<IMG
+ WIDTH="379" HEIGHT="234" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img25.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img25.png 1x,https://ccrma.stanford.edu/~jos/mdft/img25_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img25_3x.png 3x"
+ ALT="\includegraphics{eps/csplot}"> <DIV ALIGN="CENTER">        <IMG
+ WIDTH="785" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img24.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img24.png 1x,https://ccrma.stanford.edu/~jos/mdft/img24_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img24_3x.png 3x"
+ ALT="% latex2html id marker 35781
+$\textstyle \parbox{\twidth }{\caption{\protect\small Spectral plot of a complex sinusoid $A_x e^{j\omega_x t}$.}}$"></DIV>
+</DIV>
+More generally, however, a complex sinusoid has both an amplitude and
+a <I>phase</I> (or, equivalently, a <I>complex amplitude</I>):
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x(t) = \left(A_x e^{j\theta_x}\right)e^{j\omega_x t}\]</DIV><P></P>
+To accommodate the phase angle <SPAN CLASS="MATH">\(\theta_x\)</SPAN> in spectral plots, the
+plotted vector may be rotated by the angle <SPAN CLASS="MATH">\(\theta_x\)</SPAN> in the plane
+<A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A> to the frequency axis passing through <SPAN CLASS="MATH">\(\omega_x\)</SPAN>, as done
+in Fig.<A HREF="Analytic_Signals_Hilbert_Transform.html#fig:sineFD">4.16</A>b below (p.&nbsp;<A HREF="Analytic_Signals_Hilbert_Transform.html#fig:sineFD"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="https://ccrma.stanford.edu/~jos/icons/crossref.png"></A>) 
+for phase angles <SPAN CLASS="MATH">\(\theta_x=\pm \pi/2\)</SPAN>.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1274"
+  HREF="Sinusoidal_Amplitude_Modulation_AM.html" 
+ onMouseover="return escape('Sinusoidal Amplitude Modulation (AM)')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1264"
+  HREF="Positive_Negative_Frequencies.html" 
+ onMouseover="return escape('Positive and Negative Frequencies')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1270"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1272"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

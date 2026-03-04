@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fast Fourier Transforms (FFT)</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Fast Fourier Transforms (FFT)">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Fourier_Transforms_Continuous_Discrete_Time_Frequency.html">
+<LINK REL="previous" HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html">
+<LINK REL="up" HREF="mdft.html">
+<LINK REL="next" HREF="Mixed_Radix_Cooley_Tukey_FFT.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3227"
+  HREF="Mixed_Radix_Cooley_Tukey_FFT.html" 
+ onMouseover="return escape('Mixed-Radix Cooley-Tukey FFT')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3217"
+  HREF="Recommended_Further_Reading.html" 
+ onMouseover="return escape('Recommended Further Reading')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3225"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001000000000000000000"></A><A NAME="app:fft"></A><A NAME="22238"></A>
+<A NAME="22239"></A>
+<BR>
+Fast Fourier Transform (FFT) Algorithms
+</H1>
+
+<P>
+The term <I>fast <A HREF="Fourier_Transform_FT_Inverse.html" onMouseover="return escape('The Fourier Transform (FT) gives the (complex) spectrum of a continuous-time signal of any length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html')">Fourier transform</A></I> (FFT) refers to an efficient
+implementation of the discrete Fourier transform (<A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A>) for highly
+composite<A NAME="tex2html134"
+  HREF="footnode.html#foot22193"><SUP>A.1</SUP></A> transform
+lengths <SPAN CLASS="MATH">\(N\)</SPAN>.  When computing the DFT as a set of <SPAN CLASS="MATH">\(N\)</SPAN> <A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner products</A> of
+length <SPAN CLASS="MATH">\(N\)</SPAN> each, the computational complexity is <SPAN CLASS="MATH">\({\cal O}(N^2)\)</SPAN>.  When
+<SPAN CLASS="MATH">\(N\)</SPAN> is an integer power of 2, a <A HREF="http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm')">Cooley-Tukey FFT</A> algorithm delivers
+complexity <SPAN CLASS="MATH">\({\cal O}(N\lg N)\)</SPAN>, where <SPAN CLASS="MATH">\(\lg N\)</SPAN> denotes the log-base-2 of
+<SPAN CLASS="MATH">\(N\)</SPAN>, and <SPAN CLASS="MATH">\({\cal O}(x)\)</SPAN> means ``on the order of <SPAN CLASS="MATH">\(x\)</SPAN>''.
+Such FFT algorithms were evidently first used by Gauss in 1805
+[<A
+ HREF="Bibliography.html#GaussFFT">31</A>] and rediscovered in the 1960s by Cooley and Tukey
+[<A
+ HREF="Bibliography.html#CooleyAndTukey65">17</A>].
+
+<P>
+In this appendix, a brief introduction is given for various FFT
+algorithms.  A tutorial review (1990) is given in
+[<A
+ HREF="Bibliography.html#DuhamelAndVetterli90">23</A>].
+Additionally, there are some excellent FFT ``home pages'':
+
+<UL>
+<LI><A NAME="tex2html135"
+  HREF="http://en.wikipedia.org/wiki/Category:_FFT_algorithms"><TT>http://en.wikipedia.org/wiki/Category:FFT_algorithms</TT></A>
+</LI>
+<LI><A NAME="tex2html136"
+  HREF="http://faculty.prairiestate.edu/skifowit/fft/"><TT>http://faculty.prairiestate.edu/skifowit/fft/</TT></A>
+</LI>
+</UL>
+Pointers to FFT software are given in &#167;<A HREF="FFT_Software.html#sec:fftsw">A.7</A>.
+
+<P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html3228"
+  HREF="Mixed_Radix_Cooley_Tukey_FFT.html">Mixed-Radix Cooley-Tukey FFT</A>
+<UL>
+<LI><A NAME="tex2html3229"
+  HREF="Decimation_Time.html">Decimation in Time</A>
+<LI><A NAME="tex2html3230"
+  HREF="Radix_2_FFT.html">Radix 2 FFT</A>
+<UL>
+<LI><A NAME="tex2html3231"
+  HREF="Radix_2_FFT_Complexity.html">Radix 2 FFT Complexity is N Log N</A>
+</UL>
+<LI><A NAME="tex2html3232"
+  HREF="Fixed_Point_FFTs_NFFTs.html">Fixed-Point FFTs and NFFTs</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3233"
+  HREF="Prime_Factor_Algorithm_PFA.html">Prime Factor Algorithm
+(PFA)</A>
+<LI><A NAME="tex2html3234"
+  HREF="Rader_s_FFT_Algorithm_Prime.html">Rader's FFT Algorithm for Prime Lengths</A>
+<LI><A NAME="tex2html3235"
+  HREF="Bluestein_s_FFT_Algorithm.html">Bluestein's FFT Algorithm</A>
+<LI><A NAME="tex2html3236"
+  HREF="Fast_Transforms_Audio_DSP.html">Fast Transforms in Audio DSP</A>
+<LI><A NAME="tex2html3237"
+  HREF="Related_Transforms.html">Related Transforms</A>
+<UL>
+<LI><A NAME="tex2html3238"
+  HREF="Discrete_Cosine_Transform_DCT.html">The Discrete
+Cosine Transform (DCT)</A>
+<LI><A NAME="tex2html3239"
+  HREF="Number_Theoretic_Transform.html">Number Theoretic Transform</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3240"
+  HREF="FFT_Software.html">FFT Software</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3227"
+  HREF="Mixed_Radix_Cooley_Tukey_FFT.html" 
+ onMouseover="return escape('Mixed-Radix Cooley-Tukey FFT')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3217"
+  HREF="Recommended_Further_Reading.html" 
+ onMouseover="return escape('Recommended Further Reading')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3225"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

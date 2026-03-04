@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Analytic Signals and Hilbert Transform Filters</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Analytic Signals and Hilbert Transform Filters">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Generalized_Complex_Sinusoids.html">
+<LINK REL="previous" HREF="Sinusoidal_Frequency_Modulation_FM.html">
+<LINK REL="up" HREF="Complex_Sinusoids.html">
+<LINK REL="next" HREF="Generalized_Complex_Sinusoids.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1345"
+  HREF="Generalized_Complex_Sinusoids.html" 
+ onMouseover="return escape('Generalized Complex Sinusoids')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1335"
+  HREF="FM_Spectra.html" 
+ onMouseover="return escape('FM Spectra')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1341"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1343"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00537000000000000000"></A><A NAME="sec:hilbertxform"></A><A NAME="9011"></A>
+<BR>
+Analytic <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">Signals</A> and Hilbert Transform <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">Filters</A>
+</H3>
+
+<P>
+A signal which has no <A HREF="Positive_Negative_Frequencies.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Positive_Negative_Frequencies.html')">negative-frequency</A> components is called an
+<I>analytic signal</I><A NAME="9013"></A>.<A NAME="tex2html48"
+  HREF="footnode.html#foot8867"><SUP>4.13</SUP></A> Therefore, in continuous time, every analytic signal
+<SPAN CLASS="MATH">\(z(t)\)</SPAN> can be represented as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z(t) = \frac{1}{2\pi}\int_0^{\infty} Z(\omega)e^{j\omega t}d\omega\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(Z(\omega)\)</SPAN> is the complex coefficient (setting the amplitude and
+phase) of the positive-frequency complex <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> <SPAN CLASS="MATH">\(\exp(j\omega t)\)</SPAN> at
+frequency <SPAN CLASS="MATH">\(\omega\)</SPAN>.
+
+<P>
+Any real <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A> <SPAN CLASS="MATH">\(A\cos(\omega t + \phi)\)</SPAN> may be converted to a 
+positive-frequency <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex sinusoid</A> <SPAN CLASS="MATH">\(A\exp[j(\omega t +
+\phi)]\)</SPAN> by simply generating a <A HREF="In_Phase_Quadrature_Sinusoidal.html" onMouseover="return escape('Two sinusoids are in a &lt;i&gt;phase quadrature&lt;/i&gt; relationship when their phases differ by 90 degrees. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/In_Phase_Quadrature_Sinusoidal.html')">phase-quadrature</A> component <SPAN CLASS="MATH">\(A\sin(\omega t +
+\phi)\)</SPAN> to serve as the ``imaginary part'':
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[A e^{j(\omega t + \phi)} = A\cos(\omega t + \phi) + j A\sin(\omega t + \phi)\]</DIV><P></P>
+The phase-<A HREF="In_Phase_Quadrature_Sinusoidal.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/In_Phase_Quadrature_Sinusoidal.html')">quadrature</A> component can be generated from the <A HREF="In_Phase_Quadrature_Sinusoidal.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/In_Phase_Quadrature_Sinusoidal.html')">in-phase component</A>
+by a simple quarter-cycle time shift.<A NAME="tex2html49"
+  HREF="footnode.html#foot8642"><SUP>4.14</SUP></A>
+<P>
+For more complicated signals which are expressible as a sum of many
+sinusoids, a <I>filter</I> can be constructed which shifts each
+<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoidal</A> component by a quarter cycle.  This is called a
+<I>Hilbert transform filter</I>.  Let <SPAN CLASS="MATH">\({\cal H}_t{x}\)</SPAN> denote the output
+at time <SPAN CLASS="MATH">\(t\)</SPAN> of the Hilbert-transform filter applied to the signal <SPAN CLASS="MATH">\(x\)</SPAN>.
+Ideally, this filter has magnitude <SPAN CLASS="MATH">\(1\)</SPAN> at all frequencies and
+introduces a phase shift of <SPAN CLASS="MATH">\(-\pi/2\)</SPAN> at each positive frequency and
+<SPAN CLASS="MATH">\(+\pi/2\)</SPAN> at each negative frequency.  When a real signal <SPAN CLASS="MATH">\(x(t)\)</SPAN> and
+its Hilbert transform <SPAN CLASS="MATH">\(y(t) =
+{\cal H}_t{x}\)</SPAN> are used to form a new complex signal <SPAN CLASS="MATH">\(z(t) = x(t) + j y(t)\)</SPAN>,
+the signal <SPAN CLASS="MATH">\(z(t)\)</SPAN> is the (complex) <I>analytic signal</I> corresponding to
+the real signal <SPAN CLASS="MATH">\(x(t)\)</SPAN>. In other words, for any real signal <SPAN CLASS="MATH">\(x(t)\)</SPAN>, the
+corresponding analytic signal <SPAN CLASS="MATH">\(z(t)=x(t) + j {\cal H}_t{x}\)</SPAN> has the property
+that all ``<A HREF="Positive_Negative_Frequencies.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Positive_Negative_Frequencies.html')">negative frequencies</A>'' of <SPAN CLASS="MATH">\(x(t)\)</SPAN> have been ``filtered out.''  
+
+<P>
+To see how this works, recall that these phase shifts can be impressed on a
+complex sinusoid by multiplying it by <SPAN CLASS="MATH">\(\exp(\pm j\pi/2) = \pm j\)</SPAN>.  Consider
+the positive and negative frequency components at the particular frequency
+<SPAN CLASS="MATH">\(\omega_0\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}x_+(t) &\isdef& e^{j\omega_0 t} \\
+x_-(t) &\isdef& e^{-j\omega_0 t}\end{eqnarray*}</DIV><P></P>
+Now let's apply a <SPAN CLASS="MATH">\(-90\)</SPAN> degrees phase shift to the positive-frequency
+component, and a <SPAN CLASS="MATH">\(+90\)</SPAN> degrees phase shift to the negative-frequency
+component:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}y_+(t) &=& e^{-j\pi/2} e^{j\omega_0 t} = -j e^{j\omega_0 t} \\
+y_-(t) &=& e^{j\pi/2} e^{-j\omega_0 t} = j e^{-j\omega_0 t}\end{eqnarray*}</DIV><P></P>
+Adding them together gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}z_+(t) &\isdef& x_+(t) + j y_+(t) = e^{j\omega_0 t} - j^2 e^{j\omega_0 t} 
+	= 2 e^{j\omega_0 t} \\
+z_-(t) &\isdef& x_-(t) + j y_-(t) = e^{-j\omega_0 t} + j^2 e^{-j\omega_0 t} = 0\end{eqnarray*}</DIV><P></P>
+and sure enough, the negative frequency component is filtered out.  (There
+is also a gain of 2 at positive frequencies.)
+
+<P>
+For a concrete example, let's start with the real sinusoid
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x(t)=2\cos(\omega_0 t) = e^{j\omega_0 t} + e^{-j\omega_0 t}.\]</DIV><P></P>
+Applying the ideal phase shifts, the Hilbert transform is 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}y(t) &=& e^{j\omega_0 t-j\pi/2} + e^{-j\omega_0 t + j\pi/2}\\
+     &=& -je^{j\omega_0 t} + je^{-j\omega_0 t} = 2\sin(\omega_0 t).\end{eqnarray*}</DIV><P></P>
+The analytic signal is then 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z(t) = x(t) + j y(t) = 2\cos(\omega_0 t) + j 2\sin(\omega_0 t) = 2 e^{j\omega_0 t},\]</DIV><P></P>
+by <A HREF="Proof_Euler_s_Identity.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Proof_Euler_s_Identity.html')">Euler's identity</A>.  Thus, in the sum <SPAN CLASS="MATH">\(x(t) + j y(t)\)</SPAN>, the
+negative-frequency components of <SPAN CLASS="MATH">\(x(t)\)</SPAN> and <SPAN CLASS="MATH">\(jy(t)\)</SPAN> cancel out,
+leaving only the positive-frequency component.  This happens for any
+real signal <SPAN CLASS="MATH">\(x(t)\)</SPAN>, not just for sinusoids as in our example.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:sineFD"></A></P><IMG
+ WIDTH="308" HEIGHT="787" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img37.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img37.png 1x,https://ccrma.stanford.edu/~jos/mdft/img37_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img37_3x.png 3x"
+ ALT="\includegraphics[width=2.8in]{eps/sineFD}">
+	<IMG
+ WIDTH="785" HEIGHT="80" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img36.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img36.png 1x,https://ccrma.stanford.edu/~jos/mdft/img36_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img36_3x.png 3x"
+ ALT="% latex2html id marker 35853
+$\textstyle \parbox{\twidth }{\caption{\protect\small Creation of the analytic signal
+$z(t)=e^{j\omega_0 t}$\ from the real sinusoid $x(t) = \cos(\omega_0
+t)$\ and the derived phase-quadrature sinusoid $y(t) = \sin(\omega_0
+t)$, viewed in the frequency domain. a) Spectrum of $x$. b) Spectrum
+of $y$. c) Spectrum of $j y$. d) Spectrum of $z = x + jy$.}}$">
+</DIV>
+
+<P>
+Figure <A HREF="Analytic_Signals_Hilbert_Transform.html#fig:sineFD">4.16</A> illustrates what is going on in the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domain</A>.
+At the top is a graph of the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> of the sinusoid <SPAN CLASS="MATH">\(\cos(\omega_0
+t)\)</SPAN> consisting of <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulses</A> at frequencies <SPAN CLASS="MATH">\(\omega=\pm\omega_0\)</SPAN> and
+zero at all other frequencies (since <SPAN CLASS="MATH">\(\cos(\omega_0 t) =
+(1/2)\exp(j\omega_0 t) + (1/2)\exp(-j\omega_0 t)\)</SPAN>).  Each impulse
+amplitude is equal to <SPAN CLASS="MATH">\(1/2\)</SPAN>. (The amplitude of an impulse is its
+algebraic area.)  Similarly, since <SPAN CLASS="MATH">\(\sin(\omega_0 t) =
+(1/2j)\exp(j\omega_0 t) - (1/2j)\exp(-j\omega_0 t) = -(j/2)
+\exp(j\omega_0 t) + (j/2)\exp(-j\omega_0 t)\)</SPAN>, the <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> of
+<SPAN CLASS="MATH">\(\sin(\omega_0 t)\)</SPAN> is an impulse of amplitude <SPAN CLASS="MATH">\(-j/2\)</SPAN> at
+<SPAN CLASS="MATH">\(\omega=\omega_0\)</SPAN> and amplitude <SPAN CLASS="MATH">\(+j/2\)</SPAN> at <SPAN CLASS="MATH">\(\omega=-\omega_0\)</SPAN>.
+Multiplying <SPAN CLASS="MATH">\(y(t)\)</SPAN> by <SPAN CLASS="MATH">\(j\)</SPAN> results in <SPAN CLASS="MATH">\(j\sin(\omega_0 t) =
+(1/2)\exp(j\omega_0 t) - (1/2)\exp(-j\omega_0 t)\)</SPAN> which is shown in
+the third plot, Fig.<A HREF="Analytic_Signals_Hilbert_Transform.html#fig:sineFD">4.16</A>c.  Finally, adding together the first and
+third plots, corresponding to <SPAN CLASS="MATH">\(z(t) = x(t) + j y(t)\)</SPAN>, we see that the
+two positive-frequency impulses <I>add in phase</I> to give a unit
+impulse (corresponding to <SPAN CLASS="MATH">\(\exp(j\omega_0 t)\)</SPAN>), and at frequency
+<SPAN CLASS="MATH">\(-\omega_0\)</SPAN>, the two impulses, having opposite sign,
+<I>cancel</I> in the sum, thus creating an analytic signal <SPAN CLASS="MATH">\(z\)</SPAN>,
+as shown in Fig.<A HREF="Analytic_Signals_Hilbert_Transform.html#fig:sineFD">4.16</A>d.  This sequence of operations illustrates
+how the negative-frequency component <SPAN CLASS="MATH">\(\exp(-j\omega_0 t)\)</SPAN> gets
+<I>filtered out</I> by summing <SPAN CLASS="MATH">\(\cos(\omega_0 t)\)</SPAN> with <SPAN CLASS="MATH">\(j\sin(\omega_0
+t)\)</SPAN> to produce the analytic signal <SPAN CLASS="MATH">\(\exp(j\omega_0 t)\)</SPAN> corresponding
+to the real signal <SPAN CLASS="MATH">\(\cos(\omega_0 t)\)</SPAN>.  
+
+<P>
+As a final example (and application), let <SPAN CLASS="MATH">\(x(t) = A(t)\cos(\omega t)\)</SPAN>,
+where <SPAN CLASS="MATH">\(A(t)\)</SPAN> is a slowly varying <A HREF="https://en.wikipedia.org/wiki/Envelope_(waves)" onMouseover="return escape('Click for https://en.wikipedia.org/wiki/Envelope_(waves)')">amplitude envelope</A> (slow compared
+with <SPAN CLASS="MATH">\(\omega\)</SPAN>).  This is an example of <I><A HREF="Sinusoidal_Amplitude_Modulation_AM.html" onMouseover="return escape('&lt;i&gt;Amplitude Modulation&lt;/i&gt; (AM) is said to occur when one signal modulations the amplitude of another signal.  The most typical case of AM is multiplying by an offset sinusoid 1 + &lt;i&gt;g&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;g&lt;/i&gt; is a real number between 0 and 1. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoidal_Amplitude_Modulation_AM.html')">amplitude modulation</A></I>
+applied to a sinusoid at ``carrier frequency'' <SPAN CLASS="MATH">\(\omega\)</SPAN> (which is
+where you tune your AM radio).  The Hilbert transform is very close to
+<SPAN CLASS="MATH">\(y(t)\approx A(t)\sin(\omega t)\)</SPAN> (if <SPAN CLASS="MATH">\(A(t)\)</SPAN> were constant, this would
+be exact), and the analytic signal is <SPAN CLASS="MATH">\(z(t)\approx A(t)e^{j\omega t}\)</SPAN>.
+Note that AM <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24352" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24352')">demodulation</A></I><A NAME="tex2html50"
+  HREF="footnode.html#foot8869"><SUP>4.15</SUP></A>is now nothing more than the <I>absolute value</I>.  <I>I.e.</I>, <SPAN CLASS="MATH">\(A(t) =
+\left|z(t)\right|\)</SPAN>.  Due to this simplicity, Hilbert transforms are sometimes
+used in making
+<I>amplitude <A HREF="http://en.wikipedia.org/wiki/ADSR_envelope" onMouseover="return escape('The amplitude envelope, or relatively slowly-changing outline of a sound waveform, makes for a useful first approximation of the instantaneous loudness of the sound. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/ADSR_envelope')">envelope</A> followers</I> for narrowband signals (<I>i.e.</I>, signals with all energy centered about a single ``carrier'' frequency).
+AM demodulation is one application of a narrowband envelope follower.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1345"
+  HREF="Generalized_Complex_Sinusoids.html" 
+ onMouseover="return escape('Generalized Complex Sinusoids')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1335"
+  HREF="FM_Spectra.html" 
+ onMouseover="return escape('FM Spectra')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1341"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1343"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Projection</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Projection">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Pythagorean_Theorem_N_Space.html">
+<LINK REL="up" HREF="Inner_Product.html">
+<LINK REL="next" HREF="Signal_Reconstruction_Projections.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1815"
+  HREF="Signal_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal Reconstruction from Projections')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1807"
+  HREF="Pythagorean_Theorem_N_Space.html" 
+ onMouseover="return escape('The Pythagorean Theorem in N-Space')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1811"
+  HREF="Inner_Product.html" 
+ onMouseover="return escape('The Inner Product')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1813"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00699000000000000000"></A><A NAME="sec:projection"></A><A NAME="11459"></A>
+<A NAME="11460"></A>
+<BR>
+Projection
+</H3>
+
+<P>
+The <I><A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A> projection</I><A NAME="11462"></A> (or simply ``projection'') of
+<SPAN CLASS="MATH">\(y\in\mathbb{C}^N\)</SPAN> onto <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN> is defined by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{{\bf P}_{x}(y) \isdef \frac{\ip{y,x}}{\|x\|^2} x.}\]</DIV><P></P>
+The complex <A HREF="http://en.wikipedia.org/wiki/Scalar" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Scalar')">scalar</A> <SPAN CLASS="MATH">\(\ip{y,x}/\|x\|^2\)</SPAN> is called the
+<I>coefficient of projection</I>.  When projecting <SPAN CLASS="MATH">\(y\)</SPAN> onto a <I>unit
+length</I> vector <SPAN CLASS="MATH">\(x\)</SPAN>, the coefficient of projection is simply the <A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner
+product</A> of <SPAN CLASS="MATH">\(y\)</SPAN> with <SPAN CLASS="MATH">\(x\)</SPAN>.
+
+<P>
+<B>Motivation:</B> The basic idea of orthogonal projection of <SPAN CLASS="MATH">\(y\)</SPAN> onto
+<SPAN CLASS="MATH">\(x\)</SPAN> is to ``drop a <A HREF="https://mathworld.wolfram.com/Perpendicular.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Perpendicular.html')">perpendicular</A>'' from <SPAN CLASS="MATH">\(y\)</SPAN> onto <SPAN CLASS="MATH">\(x\)</SPAN> to define a new
+vector along <SPAN CLASS="MATH">\(x\)</SPAN> which we call the ``projection'' of <SPAN CLASS="MATH">\(y\)</SPAN> onto <SPAN CLASS="MATH">\(x\)</SPAN>.
+This is illustrated for <SPAN CLASS="MATH">\(N=2\)</SPAN> in Fig.<A HREF="Projection.html#fig:proj">5.9</A> for <SPAN CLASS="MATH">\(x= [4,1]\)</SPAN> and
+<SPAN CLASS="MATH">\(y=[2,3]\)</SPAN>, in which case
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[{\bf P}_{x}(y) \isdef \frac{\ip{y,x}}{\|x\|^2} x
+	= \frac{(2\cdot \overline{4} + 3\cdot \overline{1})}{4^2+1^2} x
+	= \frac{11}{17} x= \left[\frac{44}{17},\frac{11}{17}\right].\]</DIV><P></P>
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:proj"></A></P><IMG
+ WIDTH="374" HEIGHT="183" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img61.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img61.png 1x,https://ccrma.stanford.edu/~jos/mdft/img61_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img61_3x.png 3x"
+ ALT="\includegraphics[scale=0.7]{eps/proj}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img60.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img60.png 1x,https://ccrma.stanford.edu/~jos/mdft/img60_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img60_3x.png 3x"
+ ALT="% latex2html id marker 36048
+$\textstyle \parbox{\twidth }{\caption{\protect\small Projection of $\protect y$
+onto $\protect x$\ in 2D space.}}$">
+</DIV>
+
+<P>
+<B>Derivation:</B> (1) Since any projection onto <SPAN CLASS="MATH">\(x\)</SPAN> must lie along the
+line collinear with <SPAN CLASS="MATH">\(x\)</SPAN>, write the projection as <SPAN CLASS="MATH">\({\bf P}_{x}(y)=\alpha
+ x\)</SPAN>.  (2) Since by definition the <I>projection error</I><A NAME="11478"></A> <SPAN CLASS="MATH">\(y-{\bf P}_{x}(y)\)</SPAN>
+is orthogonal to <SPAN CLASS="MATH">\(x\)</SPAN>, we must have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}(y-\alpha x) & \perp & x\\
+	\;\Leftrightarrow\;\ip{y-\alpha x,x} &=& 0 \\
+	\;\Leftrightarrow\;\ip{y,x} &=& \alpha\ip{x,x} \\
+	\;\Leftrightarrow\;\alpha &=& \frac{\ip{y,x}}{\ip{x,x}} 
+		 = \frac{\ip{y,x}}{\|x\|^2}.\end{eqnarray*}</DIV><P></P>
+Thus, 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[{\bf P}_{x}(y) = \frac{\ip{y,x}}{\|x\|^2} x.\]</DIV><P></P>
+
+<P>
+
+<P>
+See &#167;<A HREF="Projection_I.html#sec:mlproj">I.3.3</A> for illustration of orthogonal projection in <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">matlab</A>.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1815"
+  HREF="Signal_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal Reconstruction from Projections')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1807"
+  HREF="Pythagorean_Theorem_N_Space.html" 
+ onMouseover="return escape('The Pythagorean Theorem in N-Space')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1811"
+  HREF="Inner_Product.html" 
+ onMouseover="return escape('The Inner Product')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1813"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

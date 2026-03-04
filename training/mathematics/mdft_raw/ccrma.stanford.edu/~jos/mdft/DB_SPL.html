@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>DB SPL</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="DB SPL">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="DBA_A_Weighted_DB.html">
+<LINK REL="previous" HREF="DBV_Scale.html">
+<LINK REL="up" HREF="Specific_DB_Scales.html">
+<LINK REL="next" HREF="DBA_A_Weighted_DB.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3935"
+  HREF="DBA_A_Weighted_DB.html" 
+ onMouseover="return escape('DBA (A-Weighted DB)')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3925"
+  HREF="DBV_Scale.html" 
+ onMouseover="return escape('DBV Scale')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3931"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3933"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION001522400000000000000"></A><A NAME="sec:dbspl"></A><A NAME="25824"></A>
+<A NAME="25825"></A>
+<A NAME="25826"></A>
+<BR>
+<A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">DB SPL</A>
+</H4>
+
+<P>
+<I><A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">Sound Pressure Level</A></I> (<A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">SPL</A>) is a <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">dB</A> scale defined relative to a reference
+that is approximately the <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">intensity</A> of a 1000 Hz <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> that is just
+barely audible (zero ``<A HREF="http://hyperphysics.phy-astr.gsu.edu/hbase/sound/phon.html#c1" onMouseover="return escape('Click for http://hyperphysics.phy-astr.gsu.edu/hbase/sound/phon.html#c1')">phons</A>'').  In <I><A HREF="http://en.wikipedia.org/wiki/Pressure" onMouseover="return escape('&lt;i&gt;Pressure&lt;/i&gt; is the force per unit area on a surface. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Pressure')">pressure</A></I> units, the reference root-mean-square (rms)
+amplitude for <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A> SPL calculation is<A NAME="tex2html177"
+  HREF="footnode.html#foot25699"><SUP>F.6</SUP></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\mbox{$0$\  dB SPL} &\isdef& \mbox{0.0002 $\mu$bar (micro-barometric 
+                pressure)} \\
+        &=& \mbox{20 $\mu$Pa (micro-Pascals)} \\
+        &=& \mbox{$2.9\times 10^{-9}$\  PSI (pounds per square inch)} \\
+        &=& 2\times 10^{-4}\, \frac{\mbox{\small dynes}}{\mbox{\small cm}^2} 
+\quad\mbox{(CGS units)} \\
+        &=& 2\times 10^{-5}\, \frac{\mbox{\small N}}{\mbox{\small m}^2}
+                \quad\mbox{(SI (MKS) units)}.\end{eqnarray*}</DIV><P></P>
+
+<P>
+The <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A> SPL reference <I>intensity</I> is given by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[I_0 = 10^{-16} \frac{\mbox{\small W}}{\mbox{\small cm}^2}.\]</DIV><P></P>
+In SI units, this is <SPAN CLASS="MATH">\(I_0 = 10^{-12}\, \mbox{\small W}/\mbox{\small
+  m}^2\)</SPAN>.<A NAME="tex2html178"
+  HREF="footnode.html#foot25588"><SUP>F.7</SUP></A>
+<P>
+Since <I>sound</I> is created by a time-varying pressure, we compute
+sound levels in dB-SPL by using the <I>average</I>
+fluctuation-intensity (averaged over at least one <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">period</A> of the lowest
+frequency contained in the sound).
+
+<P>
+The <I><A HREF="https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html" onMouseover="return escape('The &lt;i&gt;wave impedance&lt;/i&gt; in a propagation medium is the force variable (such as pressure for acoustic waves) divided by the velocity variable.  In ideal plane waves and traveling waves, the wave impedance is a real, positive number.  For spherical waves in air, the wave impedance is different at each frequency. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html')">wave impedance</A></I> of air plays the role of ``resistor'' in
+relating the pressure- and intensity-based references exactly
+analogous to the <A HREF="DBm_Scale.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/DBm_Scale.html')">dBm</A> case discussed above.  Using a typical SI value
+of <SPAN CLASS="MATH">\(R=413\)</SPAN> for the acoustic <A HREF="https://en.wikipedia.org/wiki/Wave" onMouseover="return escape('In physics, a wave is an oscillation that propagates through a medium (space-time, gas, fluid, or solid) &nbsp;&#8212;&nbsp; Click for https://en.wikipedia.org/wiki/Wave')">wave</A> <A HREF="https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html" onMouseover="return escape('The &lt;i&gt;wave impedance&lt;/i&gt; in a propagation medium is the force variable (such as pressure for acoustic waves) divided by the velocity variable.  In ideal plane waves and traveling waves, the wave impedance is a real, positive number.  For spherical waves in air, the wave impedance is different at each frequency. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html')">impedance</A> (calculatable as the
+density of air <SPAN CLASS="MATH">\(\rho\)</SPAN> times the <A HREF="http://hyperphysics.phy-astr.gsu.edu/hbase/sound/souspe.html#c3" onMouseover="return escape('Click for http://hyperphysics.phy-astr.gsu.edu/hbase/sound/souspe.html#c3')">speed of sound</A> <SPAN CLASS="MATH">\(c\)</SPAN>), and the basic
+formula <SPAN CLASS="MATH">\(I_0 = p_0^2/R\)</SPAN> relating intensity to rms pressure, we
+calculate <SPAN CLASS="MATH">\(p_0=\sqrt{R\,I_0} = \sqrt{413\times 10^{-12}} \approx
+2.03\times 10^{-5}\)</SPAN>, in agreement with the SI value above for the
+rms-pressure-reference for dB SPL.
+
+<P>
+
+<P>
+Table <A HREF="DB_SPL.html#table:dBlevels">F.1</A> gives a list of common sound levels and their dB
+equivalents [<A
+ HREF="Bibliography.html#Pierce">56</A>]. In other references, the ``threshold of
+pain'' is defined as 120 dB-SPL.  Note that <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/hearing.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/hearing.html')">hearing</A> damage is a
+function of both level and duration of exposure.
+
+<P>
+
+	<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="25839"></A>
+<TABLE>
+<CAPTION><STRONG>Table:</STRONG>
+Approximate dB-SPL level of common sounds.
+(Information from S. S. Stevens, F. Warshofsky, and the Editors of
+Time-Life Books, <I>Sound and <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/hearing.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/hearing.html')">Hearing</A></I>, Life Science <A HREF="http://en.wikipedia.org/wiki/Library_(computer_science)" onMouseover="return escape('Containing both code and data, libraries provide extended functionality to a programming environment. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Library_(computer_science)')">Library</A>,
+Time-Life Books, Alexandria, VA, 1965, p. 173.)</CAPTION>
+<TR><TD>	<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="LEFT"><B>Sound</B></TD>
+<TD ALIGN="CENTER"><B>dB-SPL</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><A HREF="http://www.phys.unsw.edu.au/jw/fluteacoustics.html#airjet" onMouseover="return escape('Flutists produce a jet of air by forcing air out of the mouth through a small opening in the lips. &nbsp;&#8212;&nbsp; Click for http://www.phys.unsw.edu.au/jw/fluteacoustics.html#airjet')">Jet</A> engine at 3m</TD>
+<TD ALIGN="CENTER">140</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Threshold of pain</TD>
+<TD ALIGN="CENTER">130</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Rock concert</TD>
+<TD ALIGN="CENTER">120</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Accelerating motorcycle at 5m</TD>
+<TD ALIGN="CENTER">110</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Pneumatic hammer at 2m</TD>
+<TD ALIGN="CENTER">100</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Noisy factory</TD>
+<TD ALIGN="CENTER">90</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Vacuum cleaner</TD>
+<TD ALIGN="CENTER">80</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Busy traffic</TD>
+<TD ALIGN="CENTER">70</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Quiet restaurant</TD>
+<TD ALIGN="CENTER">50</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Residential area at night</TD>
+<TD ALIGN="CENTER">40</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Empty movie house</TD>
+<TD ALIGN="CENTER">30</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Rustling of leaves</TD>
+<TD ALIGN="CENTER">20</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Human breathing (at 3m)</TD>
+<TD ALIGN="CENTER">10</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Threshold of hearing (good ears)</TD>
+<TD ALIGN="CENTER">0</TD>
+</TR>
+</TABLE>
+</DIV>
+	
+	<A NAME="table:dBlevels"></A> </TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+The relationship between sound amplitude and actual <I><A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">loudness</A></I><A NAME="25844"></A> is
+complex [<A
+ HREF="Bibliography.html#StevensAndDavis38">79</A>].  <A HREF="http://www.acoustics.salford.ac.uk/research/arc/cox/sound_quality/loudness.htm" onMouseover="return escape('&lt;i&gt;Loudness&lt;/i&gt; is a quantity, expressed in sones, which corresponds to the perceptual intensity of a sound. &nbsp;&#8212;&nbsp; Click for http://www.acoustics.salford.ac.uk/research/arc/cox/sound_quality/loudness.htm')">Loudness</A> is a perceptual dimension while
+sound amplitude is physical.  Since loudness sensitivity is closer to
+logarithmic than linear in amplitude (especially at moderate to high
+loudnesses), we typically use <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">decibels</A> to represent sound amplitude,
+especially in spectral displays. 
+
+<P>
+The <I><A HREF="http://hyperphysics.phy-astr.gsu.edu/hbase/sound/phon.html#c2" onMouseover="return escape('Click for http://hyperphysics.phy-astr.gsu.edu/hbase/sound/phon.html#c2')">sone</A> amplitude scale</I><A NAME="25846"></A> is defined in terms of actual loudness
+perception experiments [<A
+ HREF="Bibliography.html#StevensAndDavis38">79</A>].  At 1kHz and above,
+loudness perception is approximately logarithmic above 50 dB SPL or so.
+Below that, it tends toward being more linear.
+
+<P>
+The <I>phon amplitude scale</I><A NAME="25848"></A> is simply the <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB scale</A> at 1kHz
+[<A
+ HREF="Bibliography.html#StevensAndDavis38">79</A>, p.&nbsp;111].  At other frequencies, the amplitude in
+phons is defined by following the <A HREF="http://en.wikipedia.org/wiki/Equal-loudness_contour" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Equal-loudness_contour')">equal-loudness</A> curve over to 1 kHz and
+reading off the level there in dB SPL.  In other words, all <A HREF="http://en.wikipedia.org/wiki/Pure_tone" onMouseover="return escape('A musical sound whose waveform is comprised of a single sinusoid. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Pure_tone')">pure tones</A> have
+the same loudness at the same phon level, and 1 kHz is used to set the
+reference in dB SPL.  Just remember that one phon is one dB-SPL at 1 kHz.
+Looking at the Fletcher-Munson equal-loudness curves
+[<A
+ HREF="Bibliography.html#StevensAndDavis38">79</A>, p.&nbsp;124], loudness in phons can be read off 
+along the vertical line at 1 kHz.
+
+<P>
+Classically, the <I>intensity level</I><A NAME="25850"></A> of a sound wave is its dB SPL
+level, measuring the peak time-domain <A HREF="https://scienceworld.wolfram.com/physics/PressureWave.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/PressureWave.html')">pressure-wave</A> amplitude relative to
+<SPAN CLASS="MATH">\(10^{-16}\)</SPAN> watts per centimeter squared (<I>i.e.</I>, there is no consideration of
+the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domain</A> here at all).
+
+<P>
+Another classical term still encountered is the <I>sensation level</I><A NAME="25853"></A> of
+pure tones: The sensation level is the number of dB SPL above the
+<I>hearing threshold</I> at that frequency [<A
+ HREF="Bibliography.html#StevensAndDavis38">79</A>, p.&nbsp;110].
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3935"
+  HREF="DBA_A_Weighted_DB.html" 
+ onMouseover="return escape('DBA (A-Weighted DB)')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3925"
+  HREF="DBV_Scale.html" 
+ onMouseover="return escape('DBV Scale')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3931"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3933"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

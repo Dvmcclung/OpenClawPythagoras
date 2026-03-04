@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Spectrogram of Speech</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Spectrogram of Speech">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Spectrograms.html">
+<LINK REL="up" HREF="Spectrograms.html">
+<LINK REL="next" HREF="Filters_Convolution.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3046"
+  HREF="Filters_Convolution.html" 
+ onMouseover="return escape('Filters and Convolution')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3038"
+  HREF="Spectrograms.html" 
+ onMouseover="return escape('Spectrograms')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3042"
+  HREF="Spectrograms.html" 
+ onMouseover="return escape('Spectrograms')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3044"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00921000000000000000"></A><A NAME="20787"></A>
+<BR>
+<A HREF="http://en.wikipedia.org/wiki/Spectrogram" onMouseover="return escape('The &lt;i&gt;spectrogram&lt;/i&gt; is a three-dimensional plot of signal amplitude versus time and frequency.  It is typically computed using the Short Time Fast Fourier Transform (&lt;A HREF=\&#39;https://ccrma.stanford.edu/~jos/sasp/Short_Time_Fourier_Transform.html\&#39;&gt;STFT&lt;/A&gt;). &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Spectrogram')">Spectrogram</A> of Speech
+</H3>
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:speechspgm"></A></P><IMG
+ WIDTH="782" HEIGHT="587" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img116.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img116.png 1x,https://ccrma.stanford.edu/~jos/mdft/img116_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img116_3x.png 3x"
+ ALT="\includegraphics[width=\twidth]{eps/speechspgm}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img115.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img115.png 1x,https://ccrma.stanford.edu/~jos/mdft/img115_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img115_3x.png 3x"
+ ALT="% latex2html id marker 36849
+$\textstyle \parbox{\twidth }{\caption{\protect\small Classic spectrogram of a speech sample.}}$">
+</DIV>
+
+<P>
+An example spectrogram for recorded <I>speech data</I> is shown in
+Fig.<A HREF="Spectrogram_Speech.html#fig:speechspgm">8.10</A>.  It was generated using the <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> code displayed
+in Fig.<A HREF="Spectrogram_Speech.html#code:spspecgm">8.11</A>.
+The function <TT>spectrogram</TT> is listed in
+&#167;<A HREF="Spectrogram_Computation.html#sec:spectrogramml">I.5</A>.  The spectrogram is computed
+as a sequence of <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFTs</A> of windowed data segments.  The spectrogram is
+plotted by <TT>spectrogram</TT> using <TT>imagesc</TT>.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="code:spspecgm"></A><A NAME="20777"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 8.11:</STRONG>
+Matlab for computing a speech spectrogram.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<HR></DIV>
+		&nbsp;
+<BR>
+
+<PRE>
+[y,fs,bits] = wavread('SpeechSample.wav');
+soundsc(y,fs); % Let's hear it
+% for classic look:
+colormap('gray'); map = colormap; imap = flipud(map);
+M = round(0.02*fs);  % 20 <A HREF="https://scienceworld.wolfram.com/physics/Second.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Second.html')">ms</A> window is typical
+N = 2^nextpow2(4*M); % <A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero padding</A> for interpolation
+w = 0.54 - 0.46 * cos(2*pi*[0:M-1]/(M-1)); % w = hamming(M);
+colormap(imap); % Octave wants it here
+spectrogram(y,N,fs,w,-M/8,1,60); 
+colormap(imap); % Matlab wants it here
+title('Hi - This is &lt;you-know-who&gt; ');
+ylim([0,(fs/2)/1000]); % don't plot neg. frequencies
+</PRE>
+<DIV ALIGN="CENTER">
+<HR></DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+In this example, the <A HREF="https://ccrma.stanford.edu/~jos/sasp/Hamming_Window.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Hamming_Window.html')">Hamming window</A> length was chosen to be 20 ms, as
+is typical in speech analysis.  This is short enough so that any
+single 20 ms frame will typically contain data from only one
+phoneme,<A NAME="tex2html116"
+  HREF="footnode.html#foot20774"><SUP>8.6</SUP></A> yet long enough that it will include at least two
+<A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periods</A> of the <A HREF="https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics" onMouseover="return escape('Every periodic signal has a &lt;i&gt;fundamental frequency&lt;/i&gt; given by the &lt;i&gt;inverse&lt;/i&gt; of the period.  If the period is in units of seconds, then the fundamental frequency is in units of Hertz (cycles per second).  According to Fourier theory, every periodic signal can be expressed as a sum of sinusoids at frequencies given by integer multiples of the fundamental frequency.  For integers greater than 1, these frequencies are called &lt;i&gt;harmonic frequencies&lt;/i&gt;, and the sinusoids at harmonic frequencies are typically called &lt;i&gt;harmonics&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics')">fundamental frequency</A> during voiced speech, assuming
+the lowest voiced <A HREF="http://en.wikipedia.org/wiki/Pitch_(music)" onMouseover="return escape('Pitch is the perceived fundamental frequency of a sound. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Pitch_(music)')">pitch</A> to be around 100 Hz.
+
+<P>
+More generally, for speech and the singing voice (and any <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic</A>
+tone), the <A HREF="https://ccrma.stanford.edu/~jos/sasp/Short_Time_Fourier_Transform.html" onMouseover="return escape('The Short Time Fourier Transform (STFT) computes the spectrum (DFT) of successive time frames of a signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Short_Time_Fourier_Transform.html')">STFT</A> analysis parameters are chosen to trade off among the
+following conflicting criteria:
+
+<OL>
+<LI>The <I><A HREF="https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics" onMouseover="return escape('Every periodic signal has a &lt;i&gt;fundamental frequency&lt;/i&gt; given by the &lt;i&gt;inverse&lt;/i&gt; of the period.  If the period is in units of seconds, then the fundamental frequency is in units of Hertz (cycles per second).  According to Fourier theory, every periodic signal can be expressed as a sum of sinusoids at frequencies given by integer multiples of the fundamental frequency.  For integers greater than 1, these frequencies are called &lt;i&gt;harmonic frequencies&lt;/i&gt;, and the sinusoids at harmonic frequencies are typically called &lt;i&gt;harmonics&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics')">harmonics</A></I> should be resolved.
+</LI>
+<LI><I>Pitch</I> and <I>formant</I> variations should be closely followed.
+</LI>
+</OL>
+The <I>formants</I><A NAME="20800"></A> in speech are the resonances in the vocal tract.
+They appear as dark groups of <A HREF="http://en.wikipedia.org/wiki/Harmonic" onMouseover="return escape('For a tone which posesses a perfectly harmonic overtone series, the nth harmonic is generally defined to oscillate at nf&lt;sub&gt;0&lt;/sub&gt;Hz, where f&lt;sub&gt;0&lt;/sub&gt; is the fundamental frequency. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Harmonic')">harmonics</A> in Fig.<A HREF="Spectrogram_Speech.html#fig:speechspgm">8.10</A>.  The
+first two formants largely determine the ``<A HREF="http://ccrma.stanford.edu/~rjc/pubs/audio_speech/Describing_Speech_Sounds.html" onMouseover="return escape('A speech sound produced primarily by vibration of the vocal folds, with the vocal tract held in an open configuration. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~rjc/pubs/audio_speech/Describing_Speech_Sounds.html')">vowel</A>'' in voiced speech.
+In telephone speech, nominally between 200 and 3200 Hz, only three or four
+formants are usually present in the band.
+
+<P>
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3046"
+  HREF="Filters_Convolution.html" 
+ onMouseover="return escape('Filters and Convolution')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3038"
+  HREF="Spectrograms.html" 
+ onMouseover="return escape('Spectrograms')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3042"
+  HREF="Spectrograms.html" 
+ onMouseover="return escape('Spectrograms')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3044"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

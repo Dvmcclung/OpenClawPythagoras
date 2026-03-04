@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Polynomial Multiplication</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Polynomial Multiplication">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Multiplication_Decimal_Numbers.html">
+<LINK REL="previous" HREF="Graphical_Convolution.html">
+<LINK REL="up" HREF="Convolution.html">
+<LINK REL="next" HREF="Multiplication_Decimal_Numbers.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2417"
+  HREF="Multiplication_Decimal_Numbers.html" 
+ onMouseover="return escape('Multiplication of Decimal Numbers')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2407"
+  HREF="Graphical_Convolution.html" 
+ onMouseover="return escape('Graphical Convolution')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2413"
+  HREF="Convolution.html" 
+ onMouseover="return escape('Convolution')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2415"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00824700000000000000"></A><A NAME="sec:polmul"></A><A NAME="16463"></A>
+<BR>
+Polynomial Multiplication
+</H4>
+
+<P>
+Note that when you multiply two polynomials together, their
+coefficients are <I>convolved</I>.  To see this, let <SPAN CLASS="MATH">\(p(x)\)</SPAN> denote the
+<SPAN CLASS="MATH">\(m\)</SPAN>th-order polynomial
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[p(x) = p_0 + p_1 x + p_2 x^2 + \cdots + p_m x^m\]</DIV><P></P>
+with coefficients <SPAN CLASS="MATH">\(p_i\)</SPAN>, and let 
+<SPAN CLASS="MATH">\(q(x)\)</SPAN> denote the <SPAN CLASS="MATH">\(n\)</SPAN>th-order polynomial
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[q(x) = q_0 + q_1 x + q_2 x^2 + \cdots + q_n x^n\]</DIV><P></P>
+with coefficients <SPAN CLASS="MATH">\(q_i\)</SPAN>.  Then we have [<A
+ HREF="Bibliography.html#AbramowitzAndStegun">1</A>]
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}p(x) q(x) &=& p_0 q_0 + (p_0 q_1 + p_1 q_0) x + (p_0 q_2 + p_1 q_1 + p_2 q_0) x^2 \\
+	& & \mathop{+} (p_0 q_3 + p_1 q_2 + p_2 q_1 + p_3 q_0) x^3\\
+	& & \mathop{+} (p_0 q_4 + p_1 q_3 + p_2 q_2 + p_3 q_1 + p_4 q_0) x^4 + \cdots\\
+	& & \mathop{+} (p_0 q_{n+m} + p_1 q_{n+m-1} + p_2 q_{n+m-2} \\
+        & & \qquad\qquad\;
+	\mathop{+} p_{n+m-1} q_1 + p_{n+m} q_0) x^{n+m}.\end{eqnarray*}</DIV><P></P>
+Denoting <SPAN CLASS="MATH">\(p(x) q(x)\)</SPAN> by 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[r(x) \isdef p(x) q(x) = r_0 + r_1 x + r_2 x^2 + \cdots + r_{m+n} x^{m+n},\]</DIV><P></P>
+we have that the <SPAN CLASS="MATH">\(i\)</SPAN>th coefficient can be expressed as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}r_i &=& p_0 q_i + p_1 q_{i-1} + p_2 q_{i-2} + \cdots + p_{i-1}q_1 + p_i q_0\\
+    &=& \sum_{j=0}^i p_j q_{i-j} = \sum_{j=-\infty}^\infty p_j q_{i-j}\\
+    &\isdef& (p \circledast q)(i),\end{eqnarray*}</DIV><P></P>
+where <SPAN CLASS="MATH">\(p_i\)</SPAN> and <SPAN CLASS="MATH">\(q_i\)</SPAN> are doubly infinite sequences, defined as
+zero for <SPAN CLASS="MATH">\(i&lt;0\)</SPAN> and <SPAN CLASS="MATH">\(i&gt;m,n\)</SPAN>, respectively.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2417"
+  HREF="Multiplication_Decimal_Numbers.html" 
+ onMouseover="return escape('Multiplication of Decimal Numbers')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2407"
+  HREF="Graphical_Convolution.html" 
+ onMouseover="return escape('Graphical Convolution')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2413"
+  HREF="Convolution.html" 
+ onMouseover="return escape('Convolution')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2415"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

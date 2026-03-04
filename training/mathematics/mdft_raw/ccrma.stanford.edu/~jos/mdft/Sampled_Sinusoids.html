@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sampled Sinusoids</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Sampled Sinusoids">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Powers_z.html">
+<LINK REL="previous" HREF="Generalized_Complex_Sinusoids.html">
+<LINK REL="up" HREF="Complex_Sinusoids.html">
+<LINK REL="next" HREF="Powers_z.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1369"
+  HREF="Powers_z.html" 
+ onMouseover="return escape('Powers of z')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1359"
+  HREF="Generalized_Complex_Sinusoids.html" 
+ onMouseover="return escape('Generalized Complex Sinusoids')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1365"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1367"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00539000000000000000">
+Sampled Sinusoids</A>
+</H3>
+
+<P>
+In discrete-time audio processing, such as we normally do on a computer,
+we work with <I>samples</I> of continuous-time <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signals</A>.  Let <SPAN CLASS="MATH">\(f_s\)</SPAN>
+denote the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling rate</A> in Hz.  For audio, we typically have <SPAN CLASS="MATH">\(f_s&gt;40\)</SPAN>
+kHz, since the audio band nominally extends to <SPAN CLASS="MATH">\(20\)</SPAN> kHz.  For compact
+discs (CDs), <SPAN CLASS="MATH">\(f_s= 44.1\)</SPAN> kHz,
+while for digital audio tape (DAT), <SPAN CLASS="MATH">\(f_s= 48\)</SPAN> kHz.
+
+<P>
+Let <SPAN CLASS="MATH">\(T\isdef 1/f_s\)</SPAN> denote the <I><A HREF="Sampling_Theorem.html" onMouseover="return escape('The sampling interval (or sampling period) of a discrete-time signal is defined as the reciprocal of the sampling rate.  Since the sampling rate is normally in units of samples per second (Hz), the sampling interval is normally in units of seconds.  See also: sampling rate, sampling theorem &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling interval</A></I> in seconds.  Then to
+convert from continuous to discrete time, we replace <SPAN CLASS="MATH">\(t\)</SPAN> by <SPAN CLASS="MATH">\(nT\)</SPAN>, where <SPAN CLASS="MATH">\(n\)</SPAN>
+is an integer interpreted as the <I>sample number</I>.
+
+<P>
+The sampled generalized complex <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> 
+is then
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}y(nT) &\isdef& \left.{\cal A}\,e^{st}\right|_{t=nT}\\
+     &=& {\cal A}e^{s n T} = {\cal A}\left[e^{sT}\right]^n \\
+     &\isdef&  A e^{j\phi} e^{(\sigma+j\omega) nT} \\
+     &=&  A e^{\sigma nT} \left[\cos(\omega nT + \phi) + j\sin(\omega nT + \phi)\right] \\
+     &=&  A \left[e^{\sigma T}\right]^n
+	 \left[\cos(\omega nT + \phi) + j\sin(\omega nT + \phi)\right].\end{eqnarray*}</DIV><P></P>
+Thus, the sampled case consists of a sampled <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex sinusoid</A>
+multiplied by a sampled <A HREF="Exponentials.html" onMouseover="return escape('An &lt;i&gt;exponential&lt;/i&gt; is any function of the form &lt;i&gt;Ae&lt;sup&gt;-t/&amp;#964;&lt;/sup&gt;&lt;/i&gt;, where &lt;i&gt;t&lt;/i&gt; is the independent variable (often denoting time in seconds), &lt;i&gt;A&lt;/i&gt; is an arbitrary scale factor, &lt;i&gt;&amp;#964;&lt;/i&gt; is called the &lt;i&gt;time constant&lt;/i&gt;, and &lt;i&gt;e&lt;/i&gt; is Euler\&#39;s number (2.718281828459...). Many systems in nature exhibit exponential decay over time, because an exponential decay is produced whenever the &lt;i&gt;rate&lt;/i&gt; of decay is proportional to how much is left. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponential</A> <A HREF="http://en.wikipedia.org/wiki/ADSR_envelope" onMouseover="return escape('The amplitude envelope, or relatively slowly-changing outline of a sound waveform, makes for a useful first approximation of the instantaneous loudness of the sound. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/ADSR_envelope')">envelope</A> <SPAN CLASS="MATH">\(\left[e^{\sigma
+T}\right]^n = e^{-nT/\tau}\)</SPAN>.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1369"
+  HREF="Powers_z.html" 
+ onMouseover="return escape('Powers of z')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1359"
+  HREF="Generalized_Complex_Sinusoids.html" 
+ onMouseover="return escape('Generalized Complex Sinusoids')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1365"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1367"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

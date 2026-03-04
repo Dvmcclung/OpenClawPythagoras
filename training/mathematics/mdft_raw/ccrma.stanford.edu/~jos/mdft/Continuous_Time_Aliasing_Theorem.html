@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Continuous-Time Aliasing Theorem</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Continuous-Time Aliasing Theorem">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Aliasing_Sampled_Signals.html">
+<LINK REL="up" HREF="Aliasing_Sampled_Signals.html">
+<LINK REL="next" HREF="Sampling_Theorem.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3663"
+  HREF="Sampling_Theorem.html" 
+ onMouseover="return escape('Sampling Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3655"
+  HREF="Aliasing_Sampled_Signals.html" 
+ onMouseover="return escape('Aliasing of Sampled Signals')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3659"
+  HREF="Aliasing_Sampled_Signals.html" 
+ onMouseover="return escape('Aliasing of Sampled Signals')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3661"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001321000000000000000"></A><A NAME="24201"></A>
+<A NAME="24202"></A>
+<A NAME="24203"></A>
+<BR>
+Continuous-Time <A HREF="Alias_Operator.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Alias_Operator.html')">Aliasing Theorem</A>
+</H3>
+
+<P>
+Let <SPAN CLASS="MATH">\(x(t)\)</SPAN> denote any continuous-time <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> having a <A HREF="Fourier_Transform_FT_Inverse.html" onMouseover="return escape('The Fourier Transform (FT) gives the (complex) spectrum of a continuous-time signal of any length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html')">Fourier
+Transform</A> (FT)
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[X(j\omega)\isdef\int_{-\infty}^\infty x(t) e^{-j\omega t} dt.\]</DIV><P></P>
+Let 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x_d(n) \isdef x(nT), \quad n=\ldots,-2,-1,0,1,2,\ldots,\]</DIV><P></P>
+denote the samples of <SPAN CLASS="MATH">\(x(t)\)</SPAN> at uniform intervals of <SPAN CLASS="MATH">\(T\)</SPAN> seconds,
+and denote its <A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">Discrete-Time Fourier Transform</A> (<A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">DTFT</A>) by 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[X_d(e^{j\theta})\isdef\sum_{n=-\infty}^\infty x_d(n) e^{-j\theta n}.\]</DIV><P></P>
+Then the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> <SPAN CLASS="MATH">\(X_d\)</SPAN> of the sampled signal <SPAN CLASS="MATH">\(x_d\)</SPAN> is related to the
+<A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> <SPAN CLASS="MATH">\(X\)</SPAN> of the original continuous-time signal <SPAN CLASS="MATH">\(x\)</SPAN> by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[X_d(e^{j\theta}) = \frac{1}{T} \sum_{m=-\infty}^\infty X\left[j\left(\frac{\theta}{T} 
+	+ m\frac{2\pi}{T}\right)\right].\]</DIV><P></P>
+The terms in the above sum for <SPAN CLASS="MATH">\(m\neq 0\)</SPAN> are called <I><A HREF="Alias_Operator.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Alias_Operator.html')">aliasing</A>
+terms</I>.  They are said to <I>alias</I> into the <I>base band</I>
+<SPAN CLASS="MATH">\([-\pi/T,\pi/T]\)</SPAN>.  Note that the summation of a <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The spectrum of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> with
+aliasing components involves addition of <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A>; therefore,
+aliasing components can be removed only if both their <I>amplitude
+and phase</I> are known.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>
+Writing <SPAN CLASS="MATH">\(x(t)\)</SPAN> as an inverse FT gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x(t) = \frac{1}{2\pi}\int_{-\infty}^\infty X(j\omega) e^{j\omega t} d\omega.\]</DIV><P></P>
+Writing <SPAN CLASS="MATH">\(x_d(n)\)</SPAN> as an inverse DTFT gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x_d(n) = \frac{1}{2\pi}\int_{-\pi}^\pi X_d(e^{j\theta}) e^{j \theta t} d\theta\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(\theta \isdef 2\pi \omega_d T\)</SPAN> denotes the normalized discrete-time
+frequency variable.
+
+<P>
+The inverse FT can be broken up into a sum of finite integrals, each of length
+<SPAN CLASS="MATH">\(\Omega_s \isdef 2\pi f_s= 2\pi/T\)</SPAN>, as follows:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}x(t) &=& \frac{1}{2\pi}\int_{-\infty}^\infty X(j\omega) e^{j\omega t} d\omega \\
+     &=& \frac{1}{2\pi}\sum_{m=-\infty}^\infty \int_{(2m-1)\pi/T)}^{(2m+1)\pi/T} 
+	X(j\omega) e^{j\omega t} d\omega \qquad \mbox{(let $\omega\leftarrow m\Omega_s $)}\\
+     &=& \frac{1}{2\pi}\sum_{m=-\infty}^\infty \int_{-\Omega_s /2}^{\Omega_s /2}
+	X\left(j\omega + j m\Omega_s \right) e^{j\omega t} e^{j \Omega_s m t} d\omega \\
+     &=& \frac{1}{2\pi}\int_{-\Omega_s /2}^{\Omega_s /2} e^{j\omega t} 
+	\sum_{m=-\infty}^\infty X\left(j\omega + j m\Omega_s \right) e^{j\Omega_s m t} d\omega\end{eqnarray*}</DIV><P></P>
+Let us now sample this representation for <SPAN CLASS="MATH">\(x(t)\)</SPAN> at <SPAN CLASS="MATH">\(t=nT\)</SPAN> to obtain
+<SPAN CLASS="MATH">\(x_d(n) \isdef x(nT)\)</SPAN>, and we have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}x_d(n) &=& \frac{1}{2\pi}\int_{-\Omega_s /2}^{\Omega_s /2} e^{j\omega nT} 
+	   \sum_{m=-\infty}^\infty X\left(j\omega + j m\Omega_s \right) e^{j\Omega_s m nT} d\omega \\
+	&=& \frac{1}{2\pi}\int_{-\Omega_s /2}^{\Omega_s /2} e^{j\omega nT} 
+		\sum_{m=-\infty}^\infty X\left(j\omega + j m\Omega_s \right) 
+		e^{j(2\pi/T) m nT} d\omega \\
+	&=& \frac{1}{2\pi}\int_{-\Omega_s /2}^{\Omega_s /2} e^{j\omega nT} 
+		\sum_{m=-\infty}^\infty X\left(j\omega + j m\Omega_s \right) d\omega\end{eqnarray*}</DIV><P></P>
+since <SPAN CLASS="MATH">\(n\)</SPAN> and <SPAN CLASS="MATH">\(m\)</SPAN> are integers.  
+Normalizing frequency as <SPAN CLASS="MATH">\(\theta^\prime = \omega T\)</SPAN> yields
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x_d(n) = \frac{1}{2\pi}\int_{-\pi}{\pi} e^{j\theta^\prime n} 
+		\frac{1}{T}\sum_{m=-\infty}^\infty X\left[j\left(\frac{\theta^\prime }{T} 
+	+ m\frac{2\pi}{T}\right) \right] d\theta^\prime .\]</DIV><P></P>
+Since this is formally the inverse DTFT of <SPAN CLASS="MATH">\(X_d(e^{j\theta^\prime })\)</SPAN> written in terms of <SPAN CLASS="MATH">\(X(j\theta^\prime /T)\)</SPAN>,
+the result follows.
+
+<BR><SPAN CLASS="MATH">\(\Box\)</SPAN>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3663"
+  HREF="Sampling_Theorem.html" 
+ onMouseover="return escape('Sampling Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3655"
+  HREF="Aliasing_Sampled_Signals.html" 
+ onMouseover="return escape('Aliasing of Sampled Signals')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3659"
+  HREF="Aliasing_Sampled_Signals.html" 
+ onMouseover="return escape('Aliasing of Sampled Signals')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3661"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

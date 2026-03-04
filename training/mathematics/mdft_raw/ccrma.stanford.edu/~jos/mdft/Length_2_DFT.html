@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Length 2 DFT</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="The Length 2 DFT">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Matrix_Formulation_DFT.html">
+<LINK REL="previous" HREF="Normalized_DFT.html">
+<LINK REL="up" HREF="DFT_Derived.html">
+<LINK REL="next" HREF="Matrix_Formulation_DFT.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2108"
+  HREF="Matrix_Formulation_DFT.html" 
+ onMouseover="return escape('Matrix Formulation of the DFT')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2098"
+  HREF="Normalized_DFT.html" 
+ onMouseover="return escape('Normalized DFT')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2104"
+  HREF="DFT_Derived.html" 
+ onMouseover="return escape('The DFT Derived')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2106"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION007110000000000000000">
+The Length 2 DFT</A>
+</H2>
+
+<P>
+The length <SPAN CLASS="MATH">\(2\)</SPAN> <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> is particularly simple, since the basis <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoids</A>
+are real:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\underline{s}_0 &=& (1,1) \\
+\underline{s}_1 &=& (1,-1)\end{eqnarray*}</DIV><P></P>
+The <A HREF="Orthogonality_DFT_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality_DFT_Sinusoids.html')">DFT sinusoid</A> <SPAN CLASS="MATH">\(\underline{s}_0\)</SPAN> is a sampled constant <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A>, while <SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN> is a
+sampled <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A> at half the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling rate</A>.
+
+<P>
+Figure <A HREF="Length_2_DFT.html#fig:dft2">6.4</A> illustrates the graphical relationships for the length
+<SPAN CLASS="MATH">\(2\)</SPAN> DFT of the signal <SPAN CLASS="MATH">\(\underline{x}=[6,2]\)</SPAN>.  
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:dft2"></A></P><IMG
+ WIDTH="727" HEIGHT="645" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img69.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img69.png 1x,https://ccrma.stanford.edu/~jos/mdft/img69_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img69_3x.png 3x"
+ ALT="\includegraphics[width=\twidth]{eps/dft2}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img68.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img68.png 1x,https://ccrma.stanford.edu/~jos/mdft/img68_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img68_3x.png 3x"
+ ALT="% latex2html id marker 36202
+$\textstyle \parbox{\twidth }{\caption{\protect\small Graphical interpretation of the length 2 DFT.}}$">
+</DIV>
+
+<P>
+Analytically, we compute the DFT to be
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}X(\omega_0) &=& \ip{\underline{x},\underline{s}_0} = 6\cdot 1 + 2\cdot 1 = 8\\
+X(\omega_1) &=& \ip{\underline{x},\underline{s}_1} = 6\cdot 1 + 2\cdot (-1) = 4\end{eqnarray*}</DIV><P></P>
+and the corresponding projections onto the DFT sinusoids are
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}{\bf P}_{\underline{s}_0}(\underline{x}) &\isdef&
+\frac{\ip{\underline{x},\underline{s}_0}}{\ip{\underline{s}_0,\underline{s}_0}} \underline{s}_0 = 
+\frac{6\cdot 1 + 2 \cdot 1}{1^2 + 1^2} \underline{s}_0 = 4 \underline{s}_0 = (4,4),\mbox{ and}\\
+{\bf P}_{\underline{s}_1}(\underline{x}) &\isdef&
+\frac{\ip{\underline{x},\underline{s}_1}}{\ip{\underline{s}_1,\underline{s}_1}} \underline{s}_1 = 
+\frac{6\cdot 1 + 2 \cdot (-1)}{1^2 + (-1)^2} \underline{s}_1 = 2 \underline{s}_1 = (2,-2).\end{eqnarray*}</DIV><P></P>
+Note the lines of <A HREF="Projection.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Projection.html')">orthogonal projection</A> illustrated in the figure.  The
+``time domain'' basis consists of the vectors <SPAN CLASS="MATH">\({\underline{e}_0,\underline{e}_1}\)</SPAN>, and the
+<A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A> projections onto them are simply the coordinate axis projections
+<SPAN CLASS="MATH">\((6,0)\)</SPAN> and <SPAN CLASS="MATH">\((0,2)\)</SPAN>.  The ``<A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domain</A>'' <A HREF="https://mathworld.wolfram.com/Basis.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Basis.html')">basis vectors</A> are <SPAN CLASS="MATH">\({\underline{s}_0,
+\underline{s}_1}\)</SPAN>, and they provide an orthogonal basis set that is rotated
+<SPAN CLASS="MATH">\(45\)</SPAN> degrees relative to the time-domain basis vectors.  Projecting
+orthogonally onto them gives <SPAN CLASS="MATH">\({\bf P}_{\underline{s}_0}(\underline{x}) = (4,4)\)</SPAN> and
+<SPAN CLASS="MATH">\({\bf P}_{\underline{s}_1}(\underline{x}) =(2,-2)\)</SPAN>, respectively.  
+The original signal <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> can be
+expressed either as the vector sum of its coordinate projections
+(0,...,x(i),...,0), (a time-domain representation), or as the
+vector sum of its projections onto the DFT sinusoids (a
+frequency-domain representation of the time-domain signal <SPAN CLASS="MATH">\(\underline{x}\)</SPAN>).
+Computing the <A HREF="Projection.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Projection.html')">coefficients of projection</A> is essentially ``taking the
+DFT,'' and constructing <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> as the vector sum of its projections onto
+the DFT sinusoids amounts to ``taking the inverse DFT.''  
+
+<P>
+In summary, the oblique coordinates in Fig.<A HREF="Length_2_DFT.html#fig:dft2">6.4</A> are interpreted as
+follows:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\underline{x}\;=\; (6,2)&=& (4,4)+(2,-2)=4\cdot(1,1)+2\cdot(1,-1)\\
+     &=& 4\cdot\mbox{dc}+2\cdot\mbox{sinusoid-at-half-the-sampling-rate}\\
+     &=& \frac{X(\omega_0)}{\left\|\,\underline{s}_0\,\right\|^2}\underline{s}_0 
+       + \frac{X(\omega_1)}{\left\|\,\underline{s}_1\,\right\|^2}\underline{s}_1\end{eqnarray*}</DIV><P></P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2108"
+  HREF="Matrix_Formulation_DFT.html" 
+ onMouseover="return escape('Matrix Formulation of the DFT')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2098"
+  HREF="Normalized_DFT.html" 
+ onMouseover="return escape('Normalized DFT')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2104"
+  HREF="DFT_Derived.html" 
+ onMouseover="return escape('The DFT Derived')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2106"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

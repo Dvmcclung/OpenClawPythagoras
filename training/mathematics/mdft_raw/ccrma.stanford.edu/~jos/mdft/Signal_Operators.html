@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Signal Operators</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Signal Operators">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Even_Odd_Functions.html">
+<LINK REL="previous" HREF="DFT_Inverse_Restated.html">
+<LINK REL="up" HREF="Fourier_Theorems_DFT.html">
+<LINK REL="next" HREF="Operator_Notation.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2242"
+  HREF="Operator_Notation.html" 
+ onMouseover="return escape('Operator Notation')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2232"
+  HREF="Modulo_Indexing_Periodic_Extension.html" 
+ onMouseover="return escape('Modulo Indexing, Periodic Extension')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2238"
+  HREF="Fourier_Theorems_DFT.html" 
+ onMouseover="return escape('Fourier Theorems for the DFT')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2240"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00820000000000000000"></A><A NAME="sec:sigop"></A><A NAME="16258"></A>
+<BR>
+<A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">Signal</A> Operators
+</H2>
+
+<P>
+It will be convenient in the <A HREF="Fourier_Theorems.html" onMouseover="return escape('The Fourier theorems establish important, elementary time-frequency relationships.  The theorems are largely the same whether stated for the case of the Fourier Transform (FT), Discrete Fourier Transform (DFT), Discrete Time Fourier Transform (DTFT), or Fourier Series (FS). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html')">Fourier theorems</A> of &#167;<A HREF="Fourier_Theorems.html#sec:thms-dft">7.4</A> to
+make use of the following <I>signal operator</I> definitions.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html2243"
+  HREF="Operator_Notation.html">Operator Notation</A>
+<LI><A NAME="tex2html2244"
+  HREF="Flip_Operator.html">Flip Operator</A>
+<LI><A NAME="tex2html2245"
+  HREF="Shift_Operator.html">Shift Operator</A>
+<UL>
+<LI><A NAME="tex2html2246"
+  HREF="Examples.html">Examples</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2247"
+  HREF="Convolution.html">Convolution</A>
+<UL>
+<LI><A NAME="tex2html2248"
+  HREF="Commutativity_Convolution.html">Commutativity of Convolution</A>
+<LI><A NAME="tex2html2249"
+  HREF="Convolution_Filtering_Operation.html">Convolution as a Filtering Operation</A>
+<LI><A NAME="tex2html2250"
+  HREF="Convolution_Example_1_Smoothing.html">Convolution Example 1: Smoothing a Rectangular Pulse</A>
+<LI><A NAME="tex2html2251"
+  HREF="Convolution_Example_2_ADSR.html">Convolution Example 2: ADSR Envelope</A>
+<LI><A NAME="tex2html2252"
+  HREF="Convolution_Example_3_Matched.html">Convolution Example 3: Matched Filtering</A>
+<LI><A NAME="tex2html2253"
+  HREF="Graphical_Convolution.html">Graphical Convolution</A>
+<LI><A NAME="tex2html2254"
+  HREF="Polynomial_Multiplication.html">Polynomial Multiplication</A>
+<LI><A NAME="tex2html2255"
+  HREF="Multiplication_Decimal_Numbers.html">Multiplication of Decimal Numbers</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2256"
+  HREF="Correlation.html">Correlation</A>
+<LI><A NAME="tex2html2257"
+  HREF="Stretch_Operator.html">Stretch Operator</A>
+<LI><A NAME="tex2html2258"
+  HREF="Zero_Padding.html">Zero Padding</A>
+<LI><A NAME="tex2html2259"
+  HREF="Causal_Periodic_Signals.html">Causal (Periodic) Signals</A>
+<LI><A NAME="tex2html2260"
+  HREF="Causal_Zero_Padding.html">Causal Zero Padding</A>
+<LI><A NAME="tex2html2261"
+  HREF="Zero_Padding_Applications.html">Zero Padding Applications</A>
+<LI><A NAME="tex2html2262"
+  HREF="Ideal_Spectral_Interpolation.html">Ideal Spectral Interpolation</A>
+<LI><A NAME="tex2html2263"
+  HREF="Interpolation_Operator.html">Interpolation Operator</A>
+<LI><A NAME="tex2html2264"
+  HREF="Repeat_Operator.html">Repeat Operator</A>
+<LI><A NAME="tex2html2265"
+  HREF="Downsampling_Operator.html">Downsampling Operator</A>
+<LI><A NAME="tex2html2266"
+  HREF="Alias_Operator.html">Alias Operator</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2242"
+  HREF="Operator_Notation.html" 
+ onMouseover="return escape('Operator Notation')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2232"
+  HREF="Modulo_Indexing_Periodic_Extension.html" 
+ onMouseover="return escape('Modulo Indexing, Periodic Extension')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2238"
+  HREF="Fourier_Theorems_DFT.html" 
+ onMouseover="return escape('Fourier Theorems for the DFT')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2240"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Importance of Generalized Complex Sinusoids</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Importance of Generalized Complex Sinusoids">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Comparing_Analog_Digital_Complex.html">
+<LINK REL="previous" HREF="Phasor_Carrier_Components_Sinusoids.html">
+<LINK REL="up" HREF="Complex_Sinusoids.html">
+<LINK REL="next" HREF="Comparing_Analog_Digital_Complex.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1429"
+  HREF="Comparing_Analog_Digital_Complex.html" 
+ onMouseover="return escape('Comparing Analog and Digital Complex Planes')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1419"
+  HREF="Why_Phasors_Important.html" 
+ onMouseover="return escape('Why Phasors are Important')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1425"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1427"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION005312000000000000000">
+Importance of Generalized Complex Sinusoids</A>
+</H3>
+
+<P>
+As a preview of things to come, note that one <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A>
+<SPAN CLASS="MATH">\(y(\cdot)\)</SPAN><A NAME="tex2html51"
+  HREF="footnode.html#foot8871"><SUP>4.16</SUP></A> is
+<I>projected</I> onto another signal <SPAN CLASS="MATH">\(x(\cdot)\)</SPAN> using an <I><A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner
+product</A></I>.  The inner product <SPAN CLASS="MATH">\(\ip{y,x}\)</SPAN> computes the <I><A HREF="Projection.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Projection.html')">coefficient
+of projection</A></I><A NAME="tex2html52"
+  HREF="footnode.html#foot8783"><SUP>4.17</SUP></A> of <SPAN CLASS="MATH">\(y\)</SPAN> onto <SPAN CLASS="MATH">\(x\)</SPAN>.  If <SPAN CLASS="MATH">\(x_k(n) = e^{j\omega_k n T},
+n=0,1,2,\ldots,N-1\)</SPAN> (a sampled, unit-amplitude, <A HREF="https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html')">zero-phase</A>, complex
+<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A>), then the inner product computes the <I>Discrete <A HREF="Fourier_Transform_FT_Inverse.html" onMouseover="return escape('The Fourier Transform (FT) gives the (complex) spectrum of a continuous-time signal of any length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html')">Fourier
+Transform</A></I> (<A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A>), provided the frequencies are chosen to be <SPAN CLASS="MATH">\(\omega_k
+= 2\pi k f_s/N\)</SPAN>.  For the DFT, the inner product is specifically
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{y,x_k} \isdef \sum_{n=0}^{N-1}y(n)\overline{x_k(n)} 
+	= \sum_{n=0}^{N-1}y(n)e^{-j 2\pi n k/N} 
+	\isdef \oper{DFT}_k(y) 
+	\isdef Y(\omega_k).\]</DIV><P></P>
+
+<P>
+Another case of importance is the <I><A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">Discrete Time Fourier Transform</A></I>
+(<A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">DTFT</A>), which is like the DFT except that the transform accepts an
+infinite number of samples instead of only <SPAN CLASS="MATH">\(N\)</SPAN>.  In this case,
+frequency is continuous, and
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{y,x_\omega} = \sum_{n=0}^\infty y(n) e^{-j \omega n T} 
+\isdef \oper{DTFT}_\omega(y).\]</DIV><P></P>
+The DTFT is what you get in the limit as the number of samples in the
+DFT approaches infinity.  The lower limit of summation remains zero
+because we are assuming all signals are zero for negative time (such
+signals are said to be <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html" onMouseover="return escape('A &lt;i&gt;causal filter&lt;/i&gt; is any filter whose impulse response is zero prior to time zero. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html')">causal</A></I><A NAME="9105"></A>).  This means we are working with
+<I>unilateral</I> Fourier transforms.  There are also corresponding
+<I>bilateral</I> transforms for which the lower summation limit is
+<SPAN CLASS="MATH">\(-\infty\)</SPAN>.  The DTFT is discussed further in
+&#167;<A HREF="Discrete_Time_Fourier_Transform.html#sec:dtft">B.1</A>.
+
+<P>
+If, more generally, <SPAN CLASS="MATH">\(x(n) = z^n\)</SPAN> (a sampled <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex sinusoid</A> with
+<A HREF="Exponentials.html" onMouseover="return escape('An &lt;i&gt;exponential&lt;/i&gt; is any function of the form &lt;i&gt;Ae&lt;sup&gt;-t/&amp;#964;&lt;/sup&gt;&lt;/i&gt;, where &lt;i&gt;t&lt;/i&gt; is the independent variable (often denoting time in seconds), &lt;i&gt;A&lt;/i&gt; is an arbitrary scale factor, &lt;i&gt;&amp;#964;&lt;/i&gt; is called the &lt;i&gt;time constant&lt;/i&gt;, and &lt;i&gt;e&lt;/i&gt; is Euler\&#39;s number (2.718281828459...). Many systems in nature exhibit exponential decay over time, because an exponential decay is produced whenever the &lt;i&gt;rate&lt;/i&gt; of decay is proportional to how much is left. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponential</A> growth or decay), then the inner product becomes
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{y,x} = \sum_{n=0}^\infty y(n) z^{-n}\]</DIV><P></P>
+and this is the definition of the <I><SPAN CLASS="MATH">\(z\)</SPAN> transform</I>.  It is a
+generalization of the DTFT: The DTFT equals the <SPAN CLASS="MATH">\(z\)</SPAN> transform evaluated on
+the <I>unit circle</I> in the <SPAN CLASS="MATH">\(z\)</SPAN> plane.  In principle, the <SPAN CLASS="MATH">\(z\)</SPAN> transform
+can also be recovered from the DTFT by means of ``analytic continuation''
+from the unit circle to the entire <SPAN CLASS="MATH">\(z\)</SPAN> plane (subject to mathematical
+disclaimers which are unnecessary in practical applications since they are
+always finite).  
+
+<P>
+Why have a <SPAN CLASS="MATH">\(z\)</SPAN> transform when it seems to contain no more information than
+the DTFT?  It is useful to generalize from the unit circle (where the DFT
+and DTFT live) to the entire <A HREF="Complex_Plane.html" onMouseover="return escape('The &lt;i&gt;complex plane&lt;/i&gt; may be defined as the graph of all complex numbers \textit{z} = \textit{x} + \textit{j y} formed by using the real part \textit{x} as the horizontal coordinate and the imaginary part \textit{y} as the vertical coordinate on the graph.  In other words, each complex number \textit{z} = \textit{x} + \textit{j y} corresponds to a point in the complex plane located at Cartesian coordinate (\textit{x,y}). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Plane.html')">complex plane</A> (the <SPAN CLASS="MATH">\(z\)</SPAN> transform's domain) for
+a number of reasons.  First, it allows transformation of <I>growing</I>
+functions of time such as growing <A HREF="Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponentials</A>; the only limitation on
+growth is that it cannot be faster than exponential.  Secondly, the <SPAN CLASS="MATH">\(z\)</SPAN>
+transform has a deeper algebraic structure over the complex plane as a
+whole than it does only over the unit circle.  For example, the <SPAN CLASS="MATH">\(z\)</SPAN>
+transform of any finite signal is simply a <I>polynomial</I> in <SPAN CLASS="MATH">\(z\)</SPAN>.  As
+such, it can be fully characterized (up to a constant scale factor) by its
+<I>zeros</I> in the <SPAN CLASS="MATH">\(z\)</SPAN> plane.  Similarly, the <SPAN CLASS="MATH">\(z\)</SPAN> transform of an 
+<I>exponential</I> can be characterized to within a scale factor 
+by a single point in the <SPAN CLASS="MATH">\(z\)</SPAN> plane (the
+point which <I>generates</I> the exponential); since the <SPAN CLASS="MATH">\(z\)</SPAN> transform goes
+to infinity at that point, it is called a <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Pole_Zero_Analysis_I.html" onMouseover="return escape('In the context of linear time-invariant filter analysis, a zero is a point in the complex s or z plane at which the transfer function goes to zero.  A pole is a point in the s or z plane at which the transfer function goes to infinity.  The s plane is used to analyze analog filters while the z plane is used for digital filters. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Pole_Zero_Analysis_I.html')">pole</A></I> of the transform.
+More generally, the <SPAN CLASS="MATH">\(z\)</SPAN> transform of any <I><A HREF="Generalized_Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Generalized_Complex_Sinusoids.html')">generalized complex sinusoid</A></I>
+is simply a <I>pole</I> located at the point which generates the <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A>.
+<A HREF="https://ccrma.stanford.edu/~jos/filters/Pole_Zero_Analysis_I.html" onMouseover="return escape('In the context of linear time-invariant filter analysis, a zero is a point in the complex s or z plane at which the transfer function goes to zero.  A pole is a point in the s or z plane at which the transfer function goes to infinity.  The s plane is used to analyze analog filters while the z plane is used for digital filters. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Pole_Zero_Analysis_I.html')">Poles and zeros</A> are used extensively in the analysis of <I>recursive
+<A HREF="https://ccrma.stanford.edu/~jos/filters/" onMouseover="return escape('A &lt;i&gt;digital filter&lt;/i&gt; can be visualized as a \&#39;black box\&#39; that accepts a sequence of numbers and emits a new sequence of numbers. In digital audio signal processing applications, such number sequences usually represent sounds. For example, digital filters are used to implement graphic equalizers and other digital audio effects. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/')">digital filters</A></I>.  On the most general level, every <A HREF="https://ccrma.stanford.edu/~jos/filters/Filter_Order.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Filter_Order.html')">finite-order</A>, linear,
+time-invariant, discrete-time system is fully specified (up to a scale
+factor) by its poles and zeros in the <SPAN CLASS="MATH">\(z\)</SPAN> plane.  This topic will be taken
+up in detail in Book II [<A
+ HREF="Bibliography.html#JOSFP">71</A>].
+
+<P>
+In the <I>continuous-time</I> case, we have the <I>Fourier transform</I>
+which projects <SPAN CLASS="MATH">\(y\)</SPAN> onto the continuous-time sinusoids defined by
+<SPAN CLASS="MATH">\(x(t)=e^{j\omega t}\)</SPAN>, and the appropriate inner product is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{y,x} = \int_{0}^{\infty} y(t) e^{-j\omega t} dt \isdef Y(\omega).\]</DIV><P></P>
+
+<P>
+Finally, the <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Laplace_Transform_Analysis.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Laplace_Transform_Analysis.html')">Laplace transform</A></I> is the continuous-time counterpart
+of the <SPAN CLASS="MATH">\(z\)</SPAN> transform, and it projects signals onto exponentially growing
+or decaying complex sinusoids:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{y,x} = \int_{0}^{\infty} y(t) e^{-s t} dt \isdef Y(s)\]</DIV><P></P>
+The Fourier transform equals the Laplace transform evaluated along the
+``<SPAN CLASS="MATH">\(j\omega\)</SPAN> axis'' in the <SPAN CLASS="MATH">\(s\)</SPAN> plane, <I>i.e.</I>, along the line <SPAN CLASS="MATH">\(s=j\omega\)</SPAN>, for
+which <SPAN CLASS="MATH">\(\sigma=0\)</SPAN>.  Also, the Laplace transform is obtainable from the
+Fourier transform via analytic continuation.  The usefulness of the Laplace
+transform relative to the Fourier transform is exactly analogous to that of
+the <SPAN CLASS="MATH">\(z\)</SPAN> transform outlined above.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1429"
+  HREF="Comparing_Analog_Digital_Complex.html" 
+ onMouseover="return escape('Comparing Analog and Digital Complex Planes')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1419"
+  HREF="Why_Phasors_Important.html" 
+ onMouseover="return escape('Why Phasors are Important')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1425"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1427"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

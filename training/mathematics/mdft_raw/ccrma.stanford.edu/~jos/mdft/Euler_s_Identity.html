@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Euler's Identity</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Euler's Identity">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="De_Moivre_s_Theorem.html">
+<LINK REL="previous" HREF="Elementary_Relationships.html">
+<LINK REL="up" HREF="Complex_Numbers.html">
+<LINK REL="next" HREF="De_Moivre_s_Theorem.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html778"
+  HREF="De_Moivre_s_Theorem.html" 
+ onMouseover="return escape('De Moivre\'s Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html768"
+  HREF="Elementary_Relationships.html" 
+ onMouseover="return escape('Elementary Relationships')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html774"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html776"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00390000000000000000"></A>
+<A NAME="sec:ei"></A><A NAME="5873"></A>
+<BR>
+<A HREF="Proof_Euler_s_Identity.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Proof_Euler_s_Identity.html')">Euler's Identity</A>
+</H2>
+
+<P>
+Since <SPAN CLASS="MATH">\(z = x + jy\)</SPAN> is the algebraic expression of <SPAN CLASS="MATH">\(z\)</SPAN> in terms of its
+rectangular coordinates, the corresponding expression in terms of its polar
+coordinates is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z = r\cos(\theta) + j\,r\sin(\theta).\]</DIV><P></P>
+
+<P>
+There is another, more powerful representation of <SPAN CLASS="MATH">\(z\)</SPAN> in terms of its
+polar coordinates.  In order to define it, we must introduce <I>Euler's
+identity</I><A NAME="5875"></A>:
+<A NAME="eq:euler"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\zbox{e^{j\theta}=\cos(\theta)+j\sin(\theta)}\end{equation}</DIV><P></P>
+A proof of Euler's identity is given in the next chapter.  
+Before, the only algebraic representation of a <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex number</A> we had was
+<SPAN CLASS="MATH">\(z=x+jy\)</SPAN>, which fundamentally uses Cartesian (rectilinear) coordinates in
+the <A HREF="Complex_Plane.html" onMouseover="return escape('The &lt;i&gt;complex plane&lt;/i&gt; may be defined as the graph of all complex numbers \textit{z} = \textit{x} + \textit{j y} formed by using the real part \textit{x} as the horizontal coordinate and the imaginary part \textit{y} as the vertical coordinate on the graph.  In other words, each complex number \textit{z} = \textit{x} + \textit{j y} corresponds to a point in the complex plane located at Cartesian coordinate (\textit{x,y}). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Plane.html')">complex plane</A>.  Euler's identity gives us an alternative 
+representation in terms of polar coordinates in the complex plane:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{z = re^{j\theta}}\]</DIV><P></P>
+We'll call <SPAN CLASS="MATH">\(re^{j\theta}\)</SPAN> the <I>polar form</I><A NAME="5879"></A> of the complex number
+<SPAN CLASS="MATH">\(z\)</SPAN>, in contrast with the <I>rectangular form</I><A NAME="5881"></A> <SPAN CLASS="MATH">\(z=x+jy\)</SPAN>.  Polar
+form often simplifies algebraic manipulations of complex numbers,
+especially when they are multiplied together.  Simple rules of
+exponents can often be used in place of messier trigonometric
+identities.  In the case of two complex numbers being multiplied, we
+have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z_1 z_2 = \left(r_1 e^{j \theta_1}\right)
+	\left(r_2 e^{j \theta_2}\right)
+	= \left(r_1 r_2\right)\left(e^{j \theta_1} e^{j \theta_2}\right)
+	= r_1 r_2 e^{j \left(\theta_1 + \theta_2\right)}.\]</DIV><P></P>
+
+<P>
+A corollary of Euler's identity is obtained by setting <SPAN CLASS="MATH">\(\theta=\pi\)</SPAN> to get
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[e^{j\pi} + 1 = 0.\]</DIV><P></P>
+This has been called the ``most beautiful formula in mathematics'' due
+to the extremely simple form in which the fundamental constants <SPAN CLASS="MATH">\(e, j,
+\pi, 1\)</SPAN>, and <SPAN CLASS="MATH">\(0\)</SPAN>, together with the elementary operations of addition,
+multiplication, exponentiation, and equality, all appear exactly once.
+
+<P>
+For another example of manipulating the polar form of a complex number,
+let's again verify <SPAN CLASS="MATH">\(z\overline{z} = \left|z\right|^2\)</SPAN>, as we did above in 
+Eq.(<A HREF="Elementary_Relationships.html#eq:zmodsq">2.4</A>), but this time using polar form:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z \overline{z} = r e^{j \theta} r e^{-j \theta} = r^2 e^0 = r^2 = |z|^2\]</DIV><P></P>
+As mentioned in &#167;<A HREF="More_Notation_Terminology.html#sec:mnt">2.7</A>, any complex expression can be conjugated
+by replacing <SPAN CLASS="MATH">\(j\)</SPAN> by <SPAN CLASS="MATH">\(-j\)</SPAN> wherever it occurs.  This implies
+<SPAN CLASS="MATH">\(\overline{r e^{j \theta}} = r e^{-j \theta}\)</SPAN>,
+as used above.  The same result can be obtained by using Euler's
+identity to expand <SPAN CLASS="MATH">\(r e^{j \theta}\)</SPAN> into <SPAN CLASS="MATH">\(r \cos(\theta) + j r
+\sin(\theta)\)</SPAN> and negating the imaginary part
+to obtain <SPAN CLASS="MATH">\(\overline{r e^{j\theta}} = r \cos(\theta) - j r
+\sin(\theta) = r \cos(-\theta) + j r \sin(-\theta) = r e^{-j \theta}\)</SPAN>,
+where we used also the fact that cosine is an <I>even</I> function
+(<SPAN CLASS="MATH">\(\cos(-\theta) = \cos(\theta)\)</SPAN>) while sine is <I>odd</I>
+(<SPAN CLASS="MATH">\(\sin(-\theta) = -\sin(\theta)\)</SPAN>).
+
+<P>
+We can now easily add a fourth line to that set of examples:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z/\overline{z} = \frac{r e^{j \theta}}{r e^{-j \theta}} = e^{j2\theta} = 
+	e^{j2\angle{z}}\]</DIV><P></P>
+Thus, <SPAN CLASS="MATH">\(\left|z/\overline{z}\right|=1\)</SPAN> for every <SPAN CLASS="MATH">\(z\neq 0\)</SPAN>.
+
+<P>
+Euler's identity can be used to derive formulas for sine and cosine in
+terms of <SPAN CLASS="MATH">\(e^{j \theta}\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}e^{j \theta} + \overline{e^{j \theta}}&=&e^{j \theta} + e^{-j \theta}\\
+&=&\left[\cos(\theta) + j \sin(\theta)\right] + \left[\cos(\theta) - j \sin(\theta)\right]\\
+&=&2\cos(\theta)\end{eqnarray*}</DIV><P></P>
+Similarly, <SPAN CLASS="MATH">\(e^{j \theta} - \overline{e^{j \theta}} = 2j\, \sin(\theta)\)</SPAN>, and
+we obtain the following classic identities:
+ <BLOCKQUOTE>
+<IMG
+ WIDTH="679" HEIGHT="74" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img5.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img5.png 1x,https://ccrma.stanford.edu/~jos/mdft/img5_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img5_3x.png 3x"
+ ALT="$\textstyle \parbox{0.8\textwidth}{%
+\begin{displaymath}
+\cos(\theta) = \displaystyle\frac{e^{j \theta} + e^{-j \theta}}{2}
+\quad\qquad
+\sin(\theta) = \displaystyle\frac{e^{j \theta} - e^{-j \theta}}{2j}
+\end{displaymath}}$">
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html778"
+  HREF="De_Moivre_s_Theorem.html" 
+ onMouseover="return escape('De Moivre\'s Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html768"
+  HREF="Elementary_Relationships.html" 
+ onMouseover="return escape('Elementary Relationships')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html774"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html776"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

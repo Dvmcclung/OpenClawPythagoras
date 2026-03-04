@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>DFT Applications</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="DFT Applications">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="http://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="http://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html">
+<LINK REL="previous" HREF="http://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems_DFT.html">
+<LINK REL="up" HREF="http://ccrma.stanford.edu/~jos/mdft/mdft.html">
+<LINK REL="next" HREF="http://ccrma.stanford.edu/~jos/mdft/Why_DFT_usually_called.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2874"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Why_DFT_usually_called.html" 
+ onMouseover="return escape('Why a DFT is usually called an FFT in practice')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2864"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Theorems_Problems.html" 
+ onMouseover="return escape('DFT Theorems Problems')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2872"
+   
+ HREF="http://ccrma.stanford.edu/~jos/mdft/Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="http://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00900000000000000000"></A><A NAME="chap:dftex"></A><A NAME="20195"></A>
+<BR>
+Example Applications of the DFT
+</H1>
+
+<P>
+This chapter gives a start on some applications of the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A>.  First, we
+work through a progressive series of <I>spectrum analysis</I> examples
+using an efficient implementation of the DFT
+in <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> or Octave.  The various <A HREF="Fourier_Theorems.html" onMouseover="return escape('The Fourier theorems establish important, elementary time-frequency relationships.  The theorems are largely the same whether stated for the case of the Fourier Transform (FT), Discrete Fourier Transform (DFT), Discrete Time Fourier Transform (DTFT), or Fourier Series (FS). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html')">Fourier theorems</A> provide a ``thinking
+vocabulary'' for understanding elements of spectral analysis.  Next,
+the basics of <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html" onMouseover="return escape('The topic of &lt;i&gt;linear systems theory&lt;/i&gt; is primarily about &lt;i&gt;linear, time-invariant (LTI) filters&lt;/i&gt;.   A &lt;i&gt;linear&lt;/i&gt; filter is characterized by the property that its output-signal amplitude is linearly proportional to its input-signal amplitude.  A &lt;i&gt;time-invariant&lt;/i&gt; filter, or \&#39;constant-coefficient\&#39; filter, performs the same filtering operation at all times.  Only LTI filters can be characeterized by their &lt;i&gt;impulse response&lt;/i&gt;, or their &lt;i&gt;frequency response&lt;/i&gt;, or their &lt;i&gt;poles and zeros&lt;/i&gt; plus a gain, or the like.  Also, only LTI filters have the &lt;i&gt;superposition property&lt;/i&gt; for audio signals, in which the filtering of an audio mix can be obtained alternatively by filtering each channel separately and adding the filtered channels together.  Equivalently, only LTI filters exhibit no &lt;i&gt;intermodulation distortion&lt;/i&gt; for audio signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html')">linear systems theory</A></I> are presented, relying
+heavily on the <A HREF="Convolution_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Convolution_Theorem.html')">convolution theorem</A> and properties of <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A>.
+Finally, some applications of the DFT in <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Beginning_Statistical_Signal_Processing.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Beginning_Statistical_Signal_Processing.html')">statistical signal
+processing</A></I> are introduced, including <A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">cross-correlation</A>, <A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">matched
+filtering</A>, <A HREF="FIR_System_Identification.html" onMouseover="return escape('Techniques for &lt;i&gt;system identification&lt;/i&gt; are concerned with estimating the coefficients of a filter given observations of its input and output signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/FIR_System_Identification.html')">system identification</A>, power spectrum estimation, and
+<A HREF="Coherence_Function.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Coherence_Function.html')">coherence function</A> measurement.  A side topic in this chapter is
+practical usage of matlab for <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> processing, including display of
+signals and spectra.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><UL>
+<LI><A NAME="tex2html2875"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Why_DFT_usually_called.html">Why a DFT is usually called an FFT in practice</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2876"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectrum_Analysis_Sinusoid_Windowing.html">Spectrum Analysis of a Sinusoid</A>
+<UL>
+<LI><A NAME="tex2html2877"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FFT_Simple_Sinusoid.html">FFT of a Simple Sinusoid</A>
+<LI><A NAME="tex2html2878"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FFT_Not_So_Simple_Sinusoid.html">FFT of a Not-So-Simple Sinusoid</A>
+<LI><A NAME="tex2html2879"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FFT_Zero_Padded_Sinusoid.html">FFT of a Zero-Padded Sinusoid</A>
+<LI><A NAME="tex2html2880"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Use_Blackman_Window.html">Use of a Blackman Window</A>
+<UL>
+<LI><A NAME="tex2html2881"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Applying_Blackman_Window.html">Applying the Blackman Window</A>
+</UL>
+<LI><A NAME="tex2html2882"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Hann_Windowed_Complex_Sinusoid.html">Hann-Windowed Complex Sinusoid</A>
+<UL>
+<LI><A NAME="tex2html2883"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Hann_Window_Spectrum_Analysis.html">Hann Window Spectrum Analysis Results</A>
+<LI><A NAME="tex2html2884"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectral_Phase.html">Spectral Phase</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html2885"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectrograms.html">Spectrograms</A>
+<UL>
+<LI><A NAME="tex2html2886"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Spectrogram_Speech.html">Spectrogram of Speech</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2887"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Filters_Convolution.html">Filters and Convolution</A>
+<UL>
+<LI><A NAME="tex2html2888"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Frequency_Response.html">Frequency Response</A>
+<LI><A NAME="tex2html2889"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Amplitude_Response.html">Amplitude Response</A>
+<LI><A NAME="tex2html2890"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Phase_Response.html">Phase Response</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2891"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Correlation_Analysis.html">Correlation Analysis</A>
+<UL>
+<LI><A NAME="tex2html2892"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html">Cross-Correlation</A>
+<LI><A NAME="tex2html2893"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Unbiased_Cross_Correlation.html">Unbiased Cross-Correlation</A>
+<LI><A NAME="tex2html2894"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Autocorrelation.html">Autocorrelation</A>
+<LI><A NAME="tex2html2895"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Matched_Filtering.html">Matched Filtering</A>
+<LI><A NAME="tex2html2896"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/FIR_System_Identification.html">FIR System Identification</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2897"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Power_Spectral_Density_Estimation.html">Power Spectral Density</A>
+<LI><A NAME="tex2html2898"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Coherence_Function.html">Coherence Function</A>
+<UL>
+<LI><A NAME="tex2html2899"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Coherence_Function_Matlab.html">Coherence Function in Matlab</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2900"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Recommended_Further_Reading.html">Recommended Further Reading</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2874"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/Why_DFT_usually_called.html" 
+ onMouseover="return escape('Why a DFT is usually called an FFT in practice')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2864"
+  HREF="http://ccrma.stanford.edu/~jos/mdft/DFT_Theorems_Problems.html" 
+ onMouseover="return escape('DFT Theorems Problems')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2872"
+   
+ HREF="http://ccrma.stanford.edu/~jos/mdft/Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="http://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="http://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="http://ccrma.stanford.edu/~jos/mdft/mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="http://ccrma.stanford.edu/~jos/mdft/mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="http://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="http://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

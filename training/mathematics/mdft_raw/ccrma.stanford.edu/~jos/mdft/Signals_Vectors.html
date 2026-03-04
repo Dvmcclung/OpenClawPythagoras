@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Signals as Vectors</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Signals as Vectors">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Vector_Addition.html">
+<LINK REL="previous" HREF="DFT.html">
+<LINK REL="up" HREF="Geometric_Signal_Theory.html">
+<LINK REL="next" HREF="Example_Vector_View.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1520"
+  HREF="Example_Vector_View.html" 
+ onMouseover="return escape('An Example Vector View:')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1510"
+  HREF="DFT.html" 
+ onMouseover="return escape('The DFT')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1516"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1518"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00620000000000000000"></A><A NAME="sec:signalsav"></A><A NAME="10802"></A>
+<BR>
+<A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">Signals</A> as Vectors
+</H2>
+
+<P>
+For the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A>, all signals and <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectra</A> are length <SPAN CLASS="MATH">\(N\)</SPAN>.  A length <SPAN CLASS="MATH">\(N\)</SPAN> sequence
+<SPAN CLASS="MATH">\(x\)</SPAN> can be denoted by <SPAN CLASS="MATH">\(x(n)\)</SPAN>, <SPAN CLASS="MATH">\(n=0,1,2,\ldots N-1\)</SPAN>, where <SPAN CLASS="MATH">\(x(n)\)</SPAN> may be
+real (<SPAN CLASS="MATH">\(x\in\mathbb{R}^N\)</SPAN>) or complex (<SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN>).  We now wish to regard <SPAN CLASS="MATH">\(x\)</SPAN> as a
+<I>vector</I><A NAME="tex2html54"
+  HREF="footnode.html#foot10713"><SUP>5.1</SUP></A> <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> in an <SPAN CLASS="MATH">\(N\)</SPAN> dimensional <I><A HREF="Linear_Vector_Space.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Linear_Vector_Space.html')">vector space</A></I>. That is,
+each sample <SPAN CLASS="MATH">\(x(n)\)</SPAN> is regarded as a <I>coordinate</I> in that space.
+A <I>vector</I> <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> is mathematically a single <I>point</I> in
+<SPAN CLASS="MATH">\(N\)</SPAN>-space represented by a list of coordinates
+<SPAN CLASS="MATH">\((x_0,x_1,x_2,\ldots,x_{N-1})\)</SPAN> called an <I><SPAN CLASS="MATH">\(N\)</SPAN>-tuple</I>.  (The
+notation <SPAN CLASS="MATH">\(x_n\)</SPAN> means the same thing as <SPAN CLASS="MATH">\(x(n)\)</SPAN>.)  It can be interpreted
+geometrically as an arrow in <SPAN CLASS="MATH">\(N\)</SPAN>-space from the origin <SPAN CLASS="MATH">\(\underline{0}
+\isdef (0,0,\ldots,0)\)</SPAN> to the point <SPAN CLASS="MATH">\(\underline{x}\isdef
+(x_0,x_1,x_2,\ldots,x_{N-1})\)</SPAN>.
+
+<P>
+
+<P>
+We define the following as equivalent:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x \isdef \underline{x}\isdef x(\cdot) 
+	\isdef (x_0,x_1,\ldots,x_{N-1}) 
+	\isdef [x_0,x_1,\ldots,x_{N-1}]
+	\isdef [x_0\; x_1\; \cdots\; x_{N-1}]\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(x_n \isdef x(n)\)</SPAN> is the <SPAN CLASS="MATH">\(n\)</SPAN>th sample of the signal (vector) <SPAN CLASS="MATH">\(x\)</SPAN>.
+From now on, unless specifically mentioned otherwise, <I>all signals are
+length <SPAN CLASS="MATH">\(N\)</SPAN></I>.
+
+<P>
+The reader comfortable with vectors, <A HREF="Vector_Addition.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Vector_Addition.html')">vector addition</A>, and <A HREF="Vector_Subtraction.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Vector_Subtraction.html')">vector
+subtraction</A> may skip to &#167;<A HREF="Linear_Combination_Vectors.html#sec:lincomb">5.6</A>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1521"
+  HREF="Example_Vector_View.html">An Example Vector View: <SPAN CLASS="MATH">\(N=2\)</SPAN></A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1520"
+  HREF="Example_Vector_View.html" 
+ onMouseover="return escape('An Example Vector View:')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1510"
+  HREF="DFT.html" 
+ onMouseover="return escape('The DFT')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1516"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1518"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

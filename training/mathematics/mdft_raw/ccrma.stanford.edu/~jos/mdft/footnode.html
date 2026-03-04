@@ -1,0 +1,5747 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Footnotes</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Footnotes">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Index_this_Document.html">
+<LINK REL="up" HREF="mdft.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+
+<DL>
+<DT><A NAME="foot32621">...</A><A
+ HREF="footnode.html#tex2html1"><SUP>1</SUP></A></DT>
+<DD>This section was added in the third printing of this book (September 2013).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot5028">...
+email</A><A
+ HREF="Errata.html#tex2html7"><SUP>2</SUP></A></DT>
+<DD><A NAME="tex2html8"
+  HREF="mailto:jos@ccrma.stanford.edu"><TT>jos at ccrma.stanford.edu</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot5199">...
+numbers.</A><A
+ HREF="Mathematics_DFT.html#tex2html9"><SUP>1.1</SUP></A></DT>
+<DD>Physicists and mathematicians use <SPAN CLASS="MATH">\(i\)</SPAN> instead of
+<SPAN CLASS="MATH">\(j\)</SPAN> to denote <SPAN CLASS="MATH">\(\sqrt{-1}\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot5715">...
+unknowns.</A><A
+ HREF="Factoring_Polynomial.html#tex2html11"><SUP>2.1</SUP></A></DT>
+<DD>``Linear'' in this context means that the unknowns
+are multiplied only by constants--they may not be multiplied by each
+other or raised to any power other than <SPAN CLASS="MATH">\(1\)</SPAN> (<I>e.g.</I>, not squared or cubed
+or raised to the <SPAN CLASS="MATH">\(1/5\)</SPAN> power).  <A HREF="https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html" onMouseover="return escape('The topic of &lt;i&gt;linear systems theory&lt;/i&gt; is primarily about &lt;i&gt;linear, time-invariant (LTI) filters&lt;/i&gt;.   A &lt;i&gt;linear&lt;/i&gt; filter is characterized by the property that its output-signal amplitude is linearly proportional to its input-signal amplitude.  A &lt;i&gt;time-invariant&lt;/i&gt; filter, or \&#39;constant-coefficient\&#39; filter, performs the same filtering operation at all times.  Only LTI filters can be characeterized by their &lt;i&gt;impulse response&lt;/i&gt;, or their &lt;i&gt;frequency response&lt;/i&gt;, or their &lt;i&gt;poles and zeros&lt;/i&gt; plus a gain, or the like.  Also, only LTI filters have the &lt;i&gt;superposition property&lt;/i&gt; for audio signals, in which the filtering of an audio mix can be obtained alternatively by filtering each channel separately and adding the filtered channels together.  Equivalently, only LTI filters exhibit no &lt;i&gt;intermodulation distortion&lt;/i&gt; for audio signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html')">Linear systems</A> of <SPAN CLASS="MATH">\(N\)</SPAN> equations in <SPAN CLASS="MATH">\(N\)</SPAN>
+unknowns are very easy to solve compared to <I><A HREF="http://en.wikipedia.org/wiki/Nonlinear" onMouseover="return escape('Any function that is not linear is nonlinear.  There are no general methods for solving nonlinear equations or nonlinear differential equations. This is why it is usually easier, although generally less accurate, to approximate a nonlinear function by a linear function if possible. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Nonlinear')">nonlinear</A></I> systems
+of <SPAN CLASS="MATH">\(N\)</SPAN> equations in <SPAN CLASS="MATH">\(N\)</SPAN> unknowns.  For example, <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> and Octave can
+easily handle them.  You learn all about this in a course on
+<I>Linear <A HREF="https://www.khanacademy.org/math/algebra2" onMouseover="return escape('Click for https://www.khanacademy.org/math/algebra2')">Algebra</A></I> which is highly recommended for anyone
+interested in getting involved with <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> processing.  <A HREF="https://mathworld.wolfram.com/LinearAlgebra.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearAlgebra.html')">Linear algebra</A>
+also teaches you all about <I><A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">matrices</A></I>, which are introduced only
+briefly in Appendix <A HREF="Matrices.html#app:matrices">H</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot5537">...
+numbers</A><A
+ HREF="Complex_Roots.html#tex2html12"><SUP>2.2</SUP></A></DT>
+<DD>(multiplication, addition, division, distributivity
+of multiplication over addition, commutativity of multiplication and
+addition)
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot5742">...field.</A><A
+ HREF="Complex_Roots.html#tex2html13"><SUP>2.3</SUP></A></DT>
+<DD>See, <I>e.g.</I>,
+Eric Weisstein's <I>World of Mathematics</I>
+(<A NAME="tex2html14"
+  HREF="http://mathworld.wolfram.com/"><TT>http://mathworld.wolfram.com/</TT></A>) for definitions of any
+unfamiliar mathematical terms such as a <I>field</I> (which is described,
+for example, at the easily guessed URL
+<A NAME="tex2html15"
+  HREF="http://mathworld.wolfram.com/Field.html"><TT>http://mathworld.wolfram.com/Field.html</TT></A>).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot5746">... tool.</A><A
+ HREF="Fundamental_Theorem_Algebra.html#tex2html16"><SUP>2.4</SUP></A></DT>
+<DD>Proofs for the
+<A HREF="Fundamental_Theorem_Algebra.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Fundamental_Theorem_Algebra.html')">fundamental theorem of algebra</A> have a long history involving many of
+the great names in classical mathematics.  The first known rigorous
+proof was by Gauss based on earlier efforts by Euler and Lagrange.
+(Gauss also introduced the term ``<A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex number</A>.'')  An alternate
+proof was given by Argand based on the ideas of d'Alembert.  For a
+summary of the history, see  <A NAME="tex2html17"
+  HREF="http://www-gap.dcs.st-and.ac.uk/~history/HistTopics/Fund_theorem_of_algebra.html"><TT><FONT SIZE="-2">http://www-gap.dcs.st-and.ac.uk/~history/HistTopics/Fund_theorem_of_algebra.html</FONT></TT></A>
+<BR>(the first Google search result for ``fundamental theorem of
+algebra'' in July of 2002).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot6451">...</A><A
+ HREF="Real_Exponents.html#tex2html19"><SUP>3.1</SUP></A></DT>
+<DD>That the rationals are dense in the reals
+is easy to show using <A HREF="https://mathworld.wolfram.com/DecimalExpansion.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/DecimalExpansion.html')">decimal expansions</A>.  Let <SPAN CLASS="MATH">\(r_1\)</SPAN> and <SPAN CLASS="MATH">\(r_2\)</SPAN> denote
+any two distinct, positive, irrational <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real numbers</A>.  Since <SPAN CLASS="MATH">\(r_1\)</SPAN> and
+<SPAN CLASS="MATH">\(r_2\)</SPAN> are distinct, their <A HREF="https://mathworld.wolfram.com/DecimalExpansion.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/DecimalExpansion.html')">decimal expansions</A> must differ in some
+digit, say the <SPAN CLASS="MATH">\(n\)</SPAN>th.  Without loss of generality, assume <SPAN CLASS="MATH">\(r_2&gt;r_1\)</SPAN>.
+Form the rational number <SPAN CLASS="MATH">\(q_2\)</SPAN> by zeroing all digits in the decimal
+expansion of <SPAN CLASS="MATH">\(r_2\)</SPAN> after the <SPAN CLASS="MATH">\(n\)</SPAN>th.  Then <SPAN CLASS="MATH">\(r_2&gt;q_2&gt;r_1\)</SPAN>, as needed.
+For two negative real numbers, we can negate them, use the same
+argument, and negate the result.  For one positive and one negative
+real number, the rational number zero lies between them.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot6757">... as</A><A
+ HREF="Real_Exponents.html#tex2html20"><SUP>3.2</SUP></A></DT>
+<DD>This was computed via <TT>N[Sqrt[2],60]</TT> in <TT>Mathematica</TT>.
+Symbolic mathematics programs, such as <TT>Mathematica</TT>,
+<TT>Maple</TT> (offered as a <TT>Matlab</TT> extension),
+<TT><A HREF="https://def.fe.up.pt/dynamics/maxima_tutorial.html" onMouseover="return escape('&lt;i&gt;Maxima&lt;/i&gt; is a system for the manipulation of symbolic and numerical expressions, including differentiation, integration, Taylor series, Laplace transforms, ordinary differential equations, systems of linear equations, polynomials, sets, lists, vectors, matrices and tensors &nbsp;&#8212;&nbsp; Click for https://def.fe.up.pt/dynamics/maxima_tutorial.html')">maxima</A></TT> (a free, <A HREF="http://www.gnu.org/" onMouseover="return escape('\&#39;GNU\&#39;s Not Unix\&#39; (GNU) is the collection of free, open-source software that started the free, open-source software movement.  Started by Richard Stallman as a collection of the main system tools in UNIX written in C, it has grown to become a primary component of Unix-compatible operating systems such as the Linux distributions. &nbsp;&#8212;&nbsp; Click for http://www.gnu.org/')">GNU</A> descendant of the original <TT><A HREF="https://def.fe.up.pt/dynamics/maxima_tutorial.html" onMouseover="return escape('&lt;i&gt;Maxima&lt;/i&gt; is a system for the manipulation of symbolic and numerical expressions, including differentiation, integration, Taylor series, Laplace transforms, ordinary differential equations, systems of linear equations, polynomials, sets, lists, vectors, matrices and tensors &nbsp;&#8212;&nbsp; Click for https://def.fe.up.pt/dynamics/maxima_tutorial.html')">Macsyma</A></TT>,
+written in Common Lisp, and available at 
+<A NAME="tex2html21"
+  HREF="http://maxima.sourceforge.net"><TT>http://maxima.sourceforge.net</TT>),</A>
+<TT>GiNaC</TT> (the <TT>Maple</TT>-replacement 
+used in the <I>Octave Symbolic Manipulation Toolbox</I><A NAME="6779"></A>),
+or
+<TT>Yacas</TT> (another free, <A HREF="http://www.opensource.org/" onMouseover="return escape('Program developers may choose to openly distribute the source code to their programs.  This open-source development paradigm makes it easier for a large development community to work together because anyone can can see what code everyone else is writing. In addition, it makes it possible for independent developers to make use of one another\&#39;s code. &nbsp;&#8212;&nbsp; Click for http://www.opensource.org/')">open-source</A> program with similar goals
+as <TT>Mathematica</TT>), are handy tools for cranking out any number
+of digits in <A HREF="https://mathworld.wolfram.com/IrrationalNumber.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/IrrationalNumber.html')">irrational numbers</A> such as <SPAN CLASS="MATH">\(\sqrt{2}\)</SPAN>.  In
+<TT>Yacas</TT> (as of Version 1.0.55), the syntax is
+<BLOCKQUOTE>
+<TT>Precision(60)</TT>
+<BR><TT>N(Sqrt(2))</TT>
+
+</BLOCKQUOTE>
+Of course, symbolic math programs can do much more than this, such as
+carrying out algebraic manipulations on polynomials and solving
+systems of symbolic equations in closed form.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot6722">... rule,</A><A
+ HREF="Derivatives_f_x_power.html#tex2html22"><SUP>3.3</SUP></A></DT>
+<DD>We will use the <A HREF="https://mathworld.wolfram.com/ChainRule.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/ChainRule.html')">chain rule</A> from
+<A HREF="https://mathworld.wolfram.com/Calculus.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Calculus.html')">calculus</A> without proof.  Note that the use of calculus is beyond the
+normal level of this book.  Since calculus is only needed at this one
+point in the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A>-math story, the reader should not be discouraged if
+its usage seems like ``magic''.  Calculus will not be needed at all for
+practical applications of the DFT, such as <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A>,
+discussed in Chapter <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html#chap:dftex">8</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot6723">....</A><A
+ HREF="Derivatives_f_x_power.html#tex2html23"><SUP>3.4</SUP></A></DT>
+<DD>Logarithms are reviewed in
+Appendix <A HREF="Logarithms_Decibels.html#app:logsdb">F</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot6758">...
+number</A><A
+ HREF="Back_e.html#tex2html24"><SUP>3.5</SUP></A></DT>
+<DD>A number is said to be
+<I><A HREF="https://mathworld.wolfram.com/TranscendentalNumber.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/TranscendentalNumber.html')">transcendental</A></I><A NAME="6810"></A> if it is not a
+root of any polynomial with integer coefficients, <I>i.e.</I>, it is not an
+<I>algebraic number</I> of any degree. (Rational numbers are algebraic
+numbers of degree 1; irrational numbers include <A HREF="https://mathworld.wolfram.com/TranscendentalNumber.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/TranscendentalNumber.html')">transcendental numbers</A>
+and algebraic numbers of degree greater than 1, such as <SPAN CLASS="MATH">\(\sqrt{2}\)</SPAN>
+which is of degree 2.)  See
+<A NAME="tex2html25"
+  HREF="http://mathworld.wolfram.com/TranscendentalNumber.html"><TT>http://mathworld.wolfram.com/TranscendentalNumber.html</TT></A>
+for further discussion.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot6728">... by</A><A
+ HREF="Back_e.html#tex2html26"><SUP>3.6</SUP></A></DT>
+<DD>In
+<TT>Mathematica</TT>, the first 50 digits of <SPAN CLASS="MATH">\(e\)</SPAN> may be computed by
+the expression <TT>N[E,50]</TT> (``evaluate numerically the
+reserved-constant <TT>E</TT> to 50 decimal places'').  In the
+<I>Octave Symbolic Manipulation Toolbox</I><A NAME="6813"></A> (part of <A HREF="http://octave.sourceforge.net/" onMouseover="return escape('Click for http://octave.sourceforge.net/')">Octave Forge</A>), one
+may type ``<TT>digits(50); Exp(1)</TT>''.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot6752">...
+unity.</A><A
+ HREF="Roots_Unity.html#tex2html27"><SUP>3.7</SUP></A></DT>
+<DD>Sometimes we see <SPAN CLASS="MATH">\(W_M\isdef e^{-j2\pi/M}\)</SPAN>, which is
+the complex conjugate of the definition we have used here.  It is
+similarly a primitive <SPAN CLASS="MATH">\(M\)</SPAN>th root, since powers of it will generate all
+other <SPAN CLASS="MATH">\(M\)</SPAN>th roots.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot6760">...
+geo\-metry.</A><A
+ HREF="Direct_Proof_De_Moivre_s.html#tex2html28"><SUP>3.8</SUP></A></DT>
+<DD>See, for example,
+<A NAME="tex2html29"
+  HREF="http://www-spof.gsfc.nasa.gov/stargaze/Strig5.htm"><TT>http://www-spof.gsfc.nasa.gov/stargaze/Strig5.htm</TT></A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot7657">... oscillator.</A><A
+ HREF="Why_Sinusoids_Important.html#tex2html31"><SUP>4.1</SUP></A></DT>
+<DD>A <A HREF="http://en.wikipedia.org/wiki/Harmonic_oscillator#Spring-mass_system" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Harmonic_oscillator#Spring-mass_system')">mass-spring</A> <A HREF="http://ccrma.stanford.edu/~jos/filters/Mass_Spring_Oscillator_Analysis.html" onMouseover="return escape('When displaced from its equilibrium state, a harmonic oscillator experiences a restoring force according to Hooke\&#39;s law. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Mass_Spring_Oscillator_Analysis.html')">oscillator</A> analysis is given at
+<BR><A NAME="tex2html32"
+  HREF="http://ccrma.stanford.edu/~jos/filters/Mass_Spring_Oscillator_Analysis.html"><TT>http://ccrma.stanford.edu/~jos/filters/Mass_Spring_Oscillator_Analysis.html</TT></A>
+(from the next book [<A
+ HREF="Bibliography.html#JOSFP">71</A>] in the music signal processing series).
+
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot7658">... (LTI</A><A
+ HREF="Sinusoids_Same_Frequency.html#tex2html33"><SUP>4.2</SUP></A></DT>
+<DD>A system <SPAN CLASS="MATH">\(S\)</SPAN> is said to be
+<I>linear</I> if for any two input signals <SPAN CLASS="MATH">\(x_1(t)\)</SPAN> and <SPAN CLASS="MATH">\(x_2(t)\)</SPAN>, we have
+<SPAN CLASS="MATH">\(S[x_1(t) + x_2(t)] = S[x_1(t)] + S[x_2(t)]\)</SPAN>.  A system is said to be
+<I>time invariant</I> if <SPAN CLASS="MATH">\(y(t)=S[x(t)]\)</SPAN> implies
+<SPAN CLASS="MATH">\(S[x(t-\tau)] = y(t-\tau)\)</SPAN>.  This subject is developed in detail in
+the second book [<A
+ HREF="Bibliography.html#JOSFP">71</A>] of the music signal processing series,
+available on-line at
+<BR><A NAME="tex2html34"
+  HREF="http://ccrma.stanford.edu/~jos/filters/"><TT>http://ccrma.stanford.edu/~jos/filters/</TT></A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot7659">...
+soundfield,</A><A
+ HREF="Constructive_Destructive_Interference.html#tex2html35"><SUP>4.3</SUP></A></DT>
+<DD>For a definition, see
+<BR><A NAME="tex2html36"
+  HREF="http://ccrma.stanford.edu/~jos/pasp/Mean_Free_Path.html"><TT>http://ccrma.stanford.edu/~jos/pasp/Mean_Free_Path.html</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot7660">...combfilter.</A><A
+ HREF="Constructive_Destructive_Interference.html#tex2html37"><SUP>4.4</SUP></A></DT>
+<DD>Technically, Fig.<A HREF="Constructive_Destructive_Interference.html#fig:combfilter">4.3</A> shows the
+<I><A HREF="https://ccrma.stanford.edu/~jos/pasp/Feedforward_Comb_Filters.html" onMouseover="return escape('The &lt;i&gt;feedforward comb filter&lt;/i&gt; is made by forming a linear combination of the input and output of a delay line. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/pasp/Feedforward_Comb_Filters.html')">feedforward comb filter</A></I>, also called the ``inverse <A HREF="https://ccrma.stanford.edu/~jos/pasp/Comb_Filters.html" onMouseover="return escape('A &lt;i&gt;comb filter&lt;/i&gt; is made from a delay line using a linear combination of its input and output signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/pasp/Comb_Filters.html')">comb
+filter</A>'' [<A
+ HREF="Bibliography.html#SteiglitzText96">78</A>].  The longer names are meant to
+distinguish it from the <I><A HREF="https://ccrma.stanford.edu/~jos/pasp/Feedback_Comb_Filters.html" onMouseover="return escape('A &lt;i&gt;feedback comb filter&lt;/i&gt; is made from a delay line by scaling its output signal by some coefficient and summing that with the delay-line input signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/pasp/Feedback_Comb_Filters.html')">feedback comb filter</A></I>, in which the
+delay output is fed <I>back</I> around the <A HREF="https://ccrma.stanford.edu/~jos/pasp/Delay_Lines.html" onMouseover="return escape('A &lt;i&gt;delay line&lt;/i&gt; is used to delay a signal in time.  Delay lines for digital signals are typically implemented in software using a circular buffer. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/pasp/Delay_Lines.html')">delay line</A> and summed with
+the delay input instead of the input being fed <I>forward</I> around
+the <A HREF="http://ccrma.stanford.edu/realsimple/Delay/Delay_lines.html" onMouseover="return escape('Click for http://ccrma.stanford.edu/realsimple/Delay/Delay_lines.html')">delay line</A> and summed with its output.  (A diagram and further
+discussion, including how time-varying comb <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filters</A> create a
+<I><A HREF="https://ccrma.stanford.edu/~jos/pasp/Flanging.html#6405" onMouseover="return escape('The &lt;i&gt;flanger&lt;/i&gt; digital audio effect is implemented using a time-varying delay line and summing its input and output, creating moving interference notches. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/pasp/Flanging.html#6405')">flanging</A> effect</I>, can be found at
+<A NAME="tex2html38"
+  HREF="http://ccrma.stanford.edu/~jos/pasp/Feedback_Comb_Filters.html"><TT><FONT SIZE="-1">http://ccrma.stanford.edu/~jos/pasp/Feedback_Comb_Filters.html</FONT></TT></A>.)
+The <A HREF="https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html" onMouseover="return escape('The &lt;i&gt;frequency response&lt;/i&gt; is defined for LTI filters as the Fourier transform of the filter output signal divided by the Fourier transform of the filter input signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html')">frequency response</A> of the feedforward comb filter is the inverse
+of that of the feedback comb filter (one can cancel the effect of the
+other), hence the name ``inverse comb filter.''  Frequency-response
+analysis of <A HREF="https://ccrma.stanford.edu/~jos/filters/" onMouseover="return escape('A &lt;i&gt;digital filter&lt;/i&gt; can be visualized as a \&#39;black box\&#39; that accepts a sequence of numbers and emits a new sequence of numbers. In digital audio signal processing applications, such number sequences usually represent sounds. For example, digital filters are used to implement graphic equalizers and other digital audio effects. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/')">digital filters</A> is developed in [<A
+ HREF="Bibliography.html#JOSFP">71</A>] (available online).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot7635">... name.</A><A
+ HREF="Constructive_Destructive_Interference.html#tex2html39"><SUP>4.5</SUP></A></DT>
+<DD>While there is no reason it should be obvious
+at this point, the comb-filter gain varies in fact sinusoidally
+as a function of frequency.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot7638">...
+dc</A><A
+ HREF="Constructive_Destructive_Interference.html#tex2html40"><SUP>4.6</SUP></A></DT>
+<DD>``<A HREF="https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html" onMouseover="return escape('&lt;i&gt;dc&lt;/i&gt; stands for &lt;i&gt;direct current&lt;i&gt; in electrical engineering and signal processing (as opposed to \&#39;alternating current\&#39;).  The mean (average value) of a signal may be called its dc component.  Similarly, frequency zero is called the dc frequency, because a sinusoid with zero frequency is a constant signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html')">dc</A>'' means ``<A HREF="https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html" onMouseover="return escape('&lt;i&gt;dc&lt;/i&gt; stands for &lt;i&gt;direct current&lt;i&gt; in electrical engineering and signal processing (as opposed to \&#39;alternating current\&#39;).  The mean (average value) of a signal may be called its dc component.  Similarly, frequency zero is called the dc frequency, because a sinusoid with zero frequency is a constant signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html')">direct current</A>'' and is an electrical
+engineering term for ``frequency <SPAN CLASS="MATH">\(0\)</SPAN>''.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8167">... dB.</A><A
+ HREF="Audio_Decay_Time_T60.html#tex2html41"><SUP>4.7</SUP></A></DT>
+<DD>Recall that a gain factor
+<SPAN CLASS="MATH">\(g\)</SPAN> is converted to <I><A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">decibels</A></I> (<A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">dB</A>) by the formula
+<SPAN CLASS="MATH">\(20\log_{10}(g)\)</SPAN>.  See &#167;<A HREF="Decibels.html#sec:decibels">F.2</A> for a review.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8852">... receiver.</A><A
+ HREF="Sinusoidal_Amplitude_Modulation_AM.html#tex2html42"><SUP>4.8</SUP></A></DT>
+<DD>In practical AM radio,
+<I>single-sideband</I> <A HREF="Sinusoidal_Amplitude_Modulation_AM.html" onMouseover="return escape('&lt;i&gt;Amplitude Modulation&lt;/i&gt; (AM) is said to occur when one signal modulations the amplitude of another signal.  The most typical case of AM is multiplying by an offset sinusoid 1 + &lt;i&gt;g&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;g&lt;/i&gt; is a real number between 0 and 1. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoidal_Amplitude_Modulation_AM.html')">amplitude modulation</A> is used, obtainable by filtering out the lower half of the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> we will
+derive here, since it's not needed for broadcast.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8858">...
+practice.</A><A
+ HREF="Sinusoidal_Frequency_Modulation_FM.html#tex2html43"><SUP>4.9</SUP></A></DT>
+<DD>An important variant of FM called
+<I>feedback FM</I><A NAME="8958"></A>, in which a single oscillator phase-modulates
+itself, simply does not work if true <A HREF="Sinusoidal_Frequency_Modulation_FM.html" onMouseover="return escape('&lt;i&gt;Frequency Modulation&lt;/i&gt; (FM) is said to occur when one signal modulations the frequency of another signal, usually a sinusoid.  The most typical case of FM is sinusoidal modulation of a sinusoid.  Originally, FM was invented for high quality radio signal broadcast.  More recently, FM synthesis was invented as the first widely used digital sound synthesis technique. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoidal_Frequency_Modulation_FM.html')">frequency modulation</A> is
+implemented.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8577">... section.</A><A
+ HREF="Sinusoidal_Frequency_Modulation_FM.html#tex2html44"><SUP>4.10</SUP></A></DT>
+<DD>The mathematical derivation of <A HREF="FM_Spectra.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/FM_Spectra.html')">FM
+spectra</A> is included here as a side note.  No further use will be made
+of it in this book.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8859">...Watson44,</A><A
+ HREF="Bessel_Functions.html#tex2html45"><SUP>4.11</SUP></A></DT>
+<DD>Existence of the
+<A HREF="https://mathworld.wolfram.com/LaurentSeries.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LaurentSeries.html')">Laurent expansion</A> follows from the fact that the generating function is a
+product of an <A HREF="Exponentials.html" onMouseover="return escape('An &lt;i&gt;exponential&lt;/i&gt; is any function of the form &lt;i&gt;Ae&lt;sup&gt;-t/&amp;#964;&lt;/sup&gt;&lt;/i&gt;, where &lt;i&gt;t&lt;/i&gt; is the independent variable (often denoting time in seconds), &lt;i&gt;A&lt;/i&gt; is an arbitrary scale factor, &lt;i&gt;&amp;#964;&lt;/i&gt; is called the &lt;i&gt;time constant&lt;/i&gt;, and &lt;i&gt;e&lt;/i&gt; is Euler\&#39;s number (2.718281828459...). Many systems in nature exhibit exponential decay over time, because an exponential decay is produced whenever the &lt;i&gt;rate&lt;/i&gt; of decay is proportional to how much is left. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponential function</A>, <SPAN CLASS="MATH">\(\exp(\beta z/2)\)</SPAN>, and an
+<A HREF="Exponentials.html" onMouseover="return escape('An &lt;i&gt;exponential&lt;/i&gt; is any function of the form &lt;i&gt;Ae&lt;sup&gt;-t/&amp;#964;&lt;/sup&gt;&lt;/i&gt;, where &lt;i&gt;t&lt;/i&gt; is the independent variable (often denoting time in seconds), &lt;i&gt;A&lt;/i&gt; is an arbitrary scale factor, &lt;i&gt;&amp;#964;&lt;/i&gt; is called the &lt;i&gt;time constant&lt;/i&gt;, and &lt;i&gt;e&lt;/i&gt; is Euler\&#39;s number (2.718281828459...). Many systems in nature exhibit exponential decay over time, because an exponential decay is produced whenever the &lt;i&gt;rate&lt;/i&gt; of decay is proportional to how much is left. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponential</A> function inverted with respect to the unit circle,
+<SPAN CLASS="MATH">\(\exp(-0.5\beta/z)\)</SPAN>.  It is readily verified by direct differentiation
+in the <A HREF="Complex_Plane.html" onMouseover="return escape('The &lt;i&gt;complex plane&lt;/i&gt; may be defined as the graph of all complex numbers \textit{z} = \textit{x} + \textit{j y} formed by using the real part \textit{x} as the horizontal coordinate and the imaginary part \textit{y} as the vertical coordinate on the graph.  In other words, each complex number \textit{z} = \textit{x} + \textit{j y} corresponds to a point in the complex plane located at Cartesian coordinate (\textit{x,y}). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Plane.html')">complex plane</A> that the <A HREF="Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponential</A> is an
+<I>entire function</I><A NAME="8974"></A> of <SPAN CLASS="MATH">\(z\)</SPAN> (analytic at all finite points in the complex
+plane) [<A
+ HREF="Bibliography.html#Churchill">16</A>], and therefore the inverted exponential is analytic
+everywhere except at <SPAN CLASS="MATH">\(z=0\)</SPAN>.  
+The desired Laurent expansion may be obtained, in principle, 
+by multiplying the one-sided series for the exponential and inverted exponential
+together.  The exponential series has the well known form <SPAN CLASS="MATH">\(\exp(z) = 
+1+z+z^2/2!+z^3/3!+\cdots\,\)</SPAN>.  The series for the inverted exponential
+can be obtained by inverting again (<SPAN CLASS="MATH">\(z\leftarrow 1/z\)</SPAN>), obtaining the
+appropriate exponential series, and inverting each term.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8874">...phasor),</A><A
+ HREF="FM_Spectra.html#tex2html46"><SUP>4.12</SUP></A></DT>
+<DD>Another example of <A HREF="https://ccrma.stanford.edu/~jos/filters/Phasor_Analysis.html" onMouseover="return escape('The &lt;i&gt;phasor&lt;/i&gt; of a sinusoid is its &lt;i&gt;complex amplitude&lt;/i&gt;, containing both the amplitude and phase of the sinusoid (all but the frequency parameter) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Phasor_Analysis.html')">phasor analysis</A> can be found at
+<BLOCKQUOTE>
+<A NAME="tex2html47"
+  HREF="http://ccrma.stanford.edu/~jos/filters/Phasor_Analysis.html"><TT>http://ccrma.stanford.edu/~jos/filters/Phasor_Analysis.html</TT></A>
+
+</BLOCKQUOTE>
+(from the next book in this music signal processing series).
+
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8867">... signal|textbf.</A><A
+ HREF="Analytic_Signals_Hilbert_Transform.html#tex2html48"><SUP>4.13</SUP></A></DT>
+<DD>In <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex variables</A>, a function 
+is ``analytic'' at a point <SPAN CLASS="MATH">\(z_0\in\mathbb{C}\)</SPAN> if it is differentiable of
+all orders at each point in some neighborhood of <SPAN CLASS="MATH">\(z_0\)</SPAN>
+[<A
+ HREF="Bibliography.html#Churchill">16</A>].  Therefore, one might expect an ``<A HREF="Analytic_Signals_Hilbert_Transform.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Analytic_Signals_Hilbert_Transform.html')">analytic signal</A>''
+to be any signal which is differentiable of all orders at any point in
+time, <I>i.e.</I>, one that admits a fully valid Taylor expansion about any
+point in time.  However, <I>all</I> bandlimited signals (being sums of
+finite-frequency <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoids</A>) are analytic in the complex-variables
+sense at every point in time.  Therefore, the signal processing term
+``analytic signal'' refers instead to a signal having ``no <A HREF="Positive_Negative_Frequencies.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Positive_Negative_Frequencies.html')">negative
+frequencies</A>''.  Equivalently, one could say that the <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> of an analytic
+signal is ``<A HREF="https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html" onMouseover="return escape('A &lt;i&gt;causal filter&lt;/i&gt; is any filter whose impulse response is zero prior to time zero. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html')">causal</A> in the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domain</A>''.  
+
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8642">... shift.</A><A
+ HREF="Analytic_Signals_Hilbert_Transform.html#tex2html49"><SUP>4.14</SUP></A></DT>
+<DD>This operation is actually
+used in some real-world AM and FM radio receivers (particularly in digital
+radio receivers).  The signal comes in centered about a high ``carrier
+frequency'' (such as 101 MHz for radio station FM 101), so it looks very
+much like a <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A> at frequency 101 MHz.  (The frequency <A HREF="https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24349" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24349')">modulation</A> only
+varies the carrier frequency in a relatively tiny interval about 101 MHz.
+The total FM <A HREF="http://en.wikipedia.org/wiki/Bandpass" onMouseover="return escape('The size of the passband, typically expressed in Hz. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Bandpass')">bandwidth</A> including all the FM ``sidebands'' is about 100 kHz.
+AM bands are only 10kHz wide.)  By delaying the signal by 1/4 cycle, a good
+approximation to the imaginary part of the analytic signal is created, and
+its instantaneous amplitude and frequency are then simple to compute from
+the analytic signal.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8869">...demodulation</A><A
+ HREF="Analytic_Signals_Hilbert_Transform.html#tex2html50"><SUP>4.15</SUP></A></DT>
+<DD><I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24352" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24352')">Demodulation</A></I> is the
+process of recovering the modulation signal. For amplitude modulation
+(AM), the modulated signal is of the form <SPAN CLASS="MATH">\(y(t) = A(t) \cos(\omega_c
+t)\)</SPAN>, where <SPAN CLASS="MATH">\(\omega_c\)</SPAN> is the ``carrier frequency'', <SPAN CLASS="MATH">\(A(t)=[1+\mu
+x(t)]\geq 0\)</SPAN> is the <A HREF="https://en.wikipedia.org/wiki/Envelope_(waves)" onMouseover="return escape('Click for https://en.wikipedia.org/wiki/Envelope_(waves)')">amplitude envelope</A> (modulation), <SPAN CLASS="MATH">\(x(t)\)</SPAN> is the
+modulation signal we wish to recover (the audio signal being broadcast
+in the case of AM radio), and <SPAN CLASS="MATH">\(\mu\)</SPAN> is the modulation index for AM.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8871">...<SPAN CLASS="MATH">\(y(\cdot)\)</SPAN></A><A
+ HREF="Importance_Generalized_Complex_Sinusoids.html#tex2html51"><SUP>4.16</SUP></A></DT>
+<DD>The notation <SPAN CLASS="MATH">\(y(n)\)</SPAN> denotes a single <I>sample</I>
+of the signal <SPAN CLASS="MATH">\(y\)</SPAN> at sample <SPAN CLASS="MATH">\(n\)</SPAN>, while the notation <SPAN CLASS="MATH">\(y(\cdot)\)</SPAN> or
+simply <SPAN CLASS="MATH">\(y\)</SPAN> denotes the <I>entire signal</I> for all time.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot8783">... projection</A><A
+ HREF="Importance_Generalized_Complex_Sinusoids.html#tex2html52"><SUP>4.17</SUP></A></DT>
+<DD>The <A HREF="Projection.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Projection.html')">coefficient of projection</A> of a signal <SPAN CLASS="MATH">\(y\)</SPAN>
+onto another signal <SPAN CLASS="MATH">\(x\)</SPAN> can be thought of as a measure of how much of
+<SPAN CLASS="MATH">\(x\)</SPAN> is present in <SPAN CLASS="MATH">\(y\)</SPAN>.  We will consider this topic in some detail
+later on.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10713">...vector</A><A
+ HREF="Signals_Vectors.html#tex2html54"><SUP>5.1</SUP></A></DT>
+<DD>We'll use an underline to emphasize the vector
+interpretation, but there is no difference between <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(\underline{x}\)</SPAN>.  For
+purposes of this book, a <I>signal</I> is the same thing as a
+<I>vector</I>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10715">... hear,</A><A
+ HREF="Example_Vector_View.html#tex2html55"><SUP>5.2</SUP></A></DT>
+<DD>Actually,
+two-sample signals with variable amplitude and spacing between the
+samples provide very interesting tests of <A HREF="http://en.wikipedia.org/wiki/Pitch_(music)" onMouseover="return escape('Pitch is the perceived fundamental frequency of a sound. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Pitch_(music)')">pitch</A> perception, especially
+when the samples have opposite sign [<A
+ HREF="Bibliography.html#JRPP">57</A>].
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10717">... numbers.</A><A
+ HREF="Scalar_Multiplication.html#tex2html56"><SUP>5.3</SUP></A></DT>
+<DD>More generally, <A HREF="http://en.wikipedia.org/wiki/Scalar" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Scalar')">scalars</A> are
+often defined as members of some <I><A HREF="https://mathworld.wolfram.com/FieldAxioms.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/FieldAxioms.html')">mathematical field</A></I>--usually
+the same field used for the vector elements (coordinates, signal
+samples).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10718">... type,</A><A
+ HREF="Linear_Combination_Vectors.html#tex2html57"><SUP>5.4</SUP></A></DT>
+<DD>As we'll discuss in &#167;<A HREF="Linear_Vector_Space.html#sec:linvecspace">5.7</A>
+below, vectors of the ``same type'' are typically taken to be members
+of the same <I><A HREF="Linear_Vector_Space.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Linear_Vector_Space.html')">vector space</A></I>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10025">... samples:</A><A
+ HREF="Signal_Metrics.html#tex2html58"><SUP>5.5</SUP></A></DT>
+<DD>In this section, <SPAN CLASS="MATH">\(x\)</SPAN>
+denotes a signal, while in the previous sections, we used an underline
+(<SPAN CLASS="MATH">\(\underline{x}\)</SPAN>) to emphasize the vector interpretation of a signal.  One might
+worry that it is now too easy to confuse signals (vectors) and scale
+factors (scalars), but this is usually not the case: signal names are
+generally taken from the end of the Roman alphabet (<SPAN CLASS="MATH">\(u,v,w,x,y\)</SPAN>),
+while scalar symbols are chosen from the beginning of the Roman
+(<SPAN CLASS="MATH">\(a,b,c,\ldots\)</SPAN>) and Greek (<SPAN CLASS="MATH">\(\alpha, \beta,
+\gamma,\ldots\)</SPAN>) alphabets.  Also, formulas involving signals are typlically
+specified on the sample level, so that signals are usually indexed
+(<SPAN CLASS="MATH">\(x(n)\)</SPAN>) or subscripted (<SPAN CLASS="MATH">\(x_n\)</SPAN>).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10719">... units.</A><A
+ HREF="Signal_Metrics.html#tex2html59"><SUP>5.6</SUP></A></DT>
+<DD>The energy of a
+<I><A HREF="https://scienceworld.wolfram.com/physics/PressureWave.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/PressureWave.html')">pressure wave</A></I> is the integral over time and area of the squared <A HREF="http://en.wikipedia.org/wiki/Pressure" onMouseover="return escape('&lt;i&gt;Pressure&lt;/i&gt; is the force per unit area on a surface. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Pressure')">pressure</A>
+divided by the <A HREF="https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html" onMouseover="return escape('The &lt;i&gt;wave impedance&lt;/i&gt; in a propagation medium is the force variable (such as pressure for acoustic waves) divided by the velocity variable.  In ideal plane waves and traveling waves, the wave impedance is a real, positive number.  For spherical waves in air, the wave impedance is different at each frequency. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html')">wave impedance</A> the <A HREF="https://en.wikipedia.org/wiki/Wave" onMouseover="return escape('In physics, a wave is an oscillation that propagates through a medium (space-time, gas, fluid, or solid) &nbsp;&#8212;&nbsp; Click for https://en.wikipedia.org/wiki/Wave')">wave</A> is traveling in.  The energy of
+a <I><A HREF="http://ccrma.stanford.edu/~jos/Mohonk05/Ideal_Struck_String_Velocity.html" onMouseover="return escape('The velocity of an object is the time derivative of the object\&#39;s displacement. Velocity is a commonly chosen wave variable in physical modeling. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/Mohonk05/Ideal_Struck_String_Velocity.html')">velocity</A> wave</I> is the integral over time of the squared
+velocity times the wave <A HREF="https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html" onMouseover="return escape('The &lt;i&gt;wave impedance&lt;/i&gt; in a propagation medium is the force variable (such as pressure for acoustic waves) divided by the velocity variable.  In ideal plane waves and traveling waves, the wave impedance is a real, positive number.  For spherical waves in air, the wave impedance is different at each frequency. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html')">impedance</A>.  In audio work, a signal <SPAN CLASS="MATH">\(x\)</SPAN> is
+typically a list of <I>pressure samples</I> derived from a microphone
+signal, or it might be samples of <I><A HREF="https://scienceworld.wolfram.com/physics/Force.html" onMouseover="return escape('A &lt;i&gt;force&lt;/i&gt; is required to change the &lt;i&gt;momentum&lt;/i&gt; of an object.  In the absence of external forces, momentum is conserved.  For a mass m in flight, the momentum is m v, where v denotes the velocity of the mass.  Newton\&#39;s second law, F = m a, says that force equals mass times acceleration, i.e., force equals the time derivative of momentum. &nbsp;&#8212;&nbsp; Click for https://scienceworld.wolfram.com/physics/Force.html')">force</A></I> from a piezoelectric
+transducer, <I>velocity</I> from a magnetic guitar <A HREF="http://www.till.com/articles/PickupResponseDemo/index.html" onMouseover="return escape('Click for http://www.till.com/articles/PickupResponseDemo/index.html')">pickup</A>, and so on.
+In all of these cases, the total physical energy associated with the
+signal is proportional to the sum of squared signal samples.  Physical
+connections in signal processing are explored more fully in Book III
+of the Music Signal Processing Series [<A
+ HREF="Bibliography.html#PASP">72</A>], (available
+online).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10720">...
+removed:</A><A
+ HREF="Signal_Metrics.html#tex2html60"><SUP>5.7</SUP></A></DT>
+<DD>For reasons beyond the scope of this book, when the
+sample mean <SPAN CLASS="MATH">\(\mu_x\)</SPAN> is estimated as the average value of the same <SPAN CLASS="MATH">\(N\)</SPAN>
+samples used to compute the sample variance <SPAN CLASS="MATH">\(\sigma_x^2\)</SPAN>, the sum
+should be divided by <SPAN CLASS="MATH">\(N-1\)</SPAN> rather than <SPAN CLASS="MATH">\(N\)</SPAN> to avoid a <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Bias_Parabolic_Peak_Interpolation.html#16800" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Bias_Parabolic_Peak_Interpolation.html#16800')">bias</A></I>
+[<A
+ HREF="Bibliography.html#Kay93">34</A>].
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10084">... vector.</A><A
+ HREF="Signal_Metrics.html#tex2html61"><SUP>5.8</SUP></A></DT>
+<DD>You might wonder why the <A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norm</A> of <SPAN CLASS="MATH">\(\underline{x}\)</SPAN> is
+not written as <SPAN CLASS="MATH">\(|\underline{x}|\)</SPAN>. There would be no problem with this
+since <SPAN CLASS="MATH">\(|\underline{x}|\)</SPAN> is otherwise undefined for vectors.  
+However, the historically adopted notation is
+instead <SPAN CLASS="MATH">\(\|\underline{x}\|\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10727">... by</A><A
+ HREF="Inner_Product.html#tex2html62"><SUP>5.9</SUP></A></DT>
+<DD>From some points of view, it is more elegant to
+conjugate the first operand in the definition of the <A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner
+product</A>. However, for explaining the DFT, conjugating the second
+operand is better.  The former case arises when expressing inner
+product <SPAN CLASS="MATH">\(\langle \underline{u},\underline{v}\rangle\)</SPAN> as a vector operation <SPAN CLASS="MATH">\(\underline{v}^\ast\underline{u}\)</SPAN>, where
+<SPAN CLASS="MATH">\(\underline{v}^\ast\isdeftext\overline{\underline{v}}^{\hbox{\tiny T}}\)</SPAN> denotes the
+<I>Hermitian transpose</I><A NAME="11080"></A> of
+the vector <SPAN CLASS="MATH">\(\underline{v}\)</SPAN>.  Either convention works out fine, but it is best to
+choose one and stick with it forever.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10729">...
+product:</A><A
+ HREF="Inner_Product.html#tex2html63"><SUP>5.10</SUP></A></DT>
+<DD>Remember that a norm must be a <I>real</I>-valued
+function of a signal (vector).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10344">...<SPAN CLASS="MATH">\(y\)</SPAN></A><A
+ HREF="Orthogonality.html#tex2html64"><SUP>5.11</SUP></A></DT>
+<DD>Note that we have dropped the underbar notation for
+signals/vectors such as <SPAN CLASS="MATH">\(\underline{x}=x\)</SPAN> and <SPAN CLASS="MATH">\(\underline{y}=y\)</SPAN>.  While this is commonly
+done, it is now possible to confuse vectors and scalars.  The context
+should keep everything clear.  Also, symbols for scalars tend to be
+chosen from the beginning of the alphabet (Roman or Greek), such as
+<SPAN CLASS="MATH">\(a,b,\alpha,\beta,\ldots\)</SPAN>, while symbols for vectors/signals are
+normally chosen from letters near the end, such as <SPAN CLASS="MATH">\(u,v,w,x,y\)</SPAN>--all
+of which we have seen up to now.  In later sections, the underbar
+notation will continue to be used when it seems to add clarity.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10765">...
+definition,</A><A
+ HREF="Example_Changing_Coordinates_2D.html#tex2html65"><SUP>5.12</SUP></A></DT>
+<DD>Note that, in this section, <SPAN CLASS="MATH">\(x\)</SPAN> denotes an entire
+<I>signal</I> while <SPAN CLASS="MATH">\(x_n=x(n)\)</SPAN> denotes the <SPAN CLASS="MATH">\(n\)</SPAN>th <I>sample</I> of that
+signal.  It would be clearer to use <SPAN CLASS="MATH">\(x(n)\)</SPAN>, but the expressions below
+would become messier.  In other contexts, outside of this section,
+<SPAN CLASS="MATH">\(x_i\)</SPAN> might instead denote the <SPAN CLASS="MATH">\(i\)</SPAN>th <I>signal</I> <SPAN CLASS="MATH">\(\underline{x}_i\)</SPAN> from a set of
+signals.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot10789">...Noble.</A><A
+ HREF="Gram_Schmidt_Orthogonalization.html#tex2html66"><SUP>5.13</SUP></A></DT>
+<DD>An excellent collection of free downloadable course videos by Prof.&nbsp;Strang at MIT
+is available at
+<A NAME="tex2html67"
+  HREF="http://web.mit.edu/18.06/www/Video/video-fall-99-new.html"><TT>http://web.mit.edu/18.06/www/Video/video-fall-99-new.html</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot14382">...).</A><A
+ HREF="Orthogonality_Sinusoids.html#tex2html69"><SUP>6.1</SUP></A></DT>
+<DD>The Matlab code for generating this figure is given
+in &#167;<A HREF="DFT_Sinusoids_I.html#sec:dftsinesml">I.4.1</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot14383">... unity.</A><A
+ HREF="Nth_Roots_Unity.html#tex2html70"><SUP>6.2</SUP></A></DT>
+<DD>The notations <SPAN CLASS="MATH">\(W_N\)</SPAN>, <SPAN CLASS="MATH">\(W_N^k\)</SPAN>, and <SPAN CLASS="MATH">\(W_N^{nk}\)</SPAN> are
+common in the <A HREF="https://ccrma.stanford.edu/~jos/filters/Book_Series_Overview.html" onMouseover="return escape('The subject of &lt;i&gt;Digital Signal Processing&lt;/i&gt; (DSP) is concerned with the computational processing of digital signals.  An example digital signal is music from a compact disk (CD).  An example DSP task is modifying the tone of a digital audio stream, such as boosting its bass or treble.  Another DSP example is compressing digital audio into MP3 format, or decoding an MP3 stream. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Book_Series_Overview.html')">digital signal processing</A> literature.  Sometimes <SPAN CLASS="MATH">\(W_N\)</SPAN>
+is defined with a <A HREF="Negative_Exponents.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Negative_Exponents.html')">negative exponent</A>, <I>i.e.</I>, <SPAN CLASS="MATH">\(W_N \isdeftext
+\exp(-j2\pi/N)\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot14390">...
+by</A><A
+ HREF="Discrete_Fourier_Transform_DFT.html#tex2html71"><SUP>6.3</SUP></A></DT>
+<DD>As introduced in &#167;<A HREF="Mathematics_DFT.html#sec:dftmath">1.3</A>, the notation <SPAN CLASS="MATH">\(x(\cdot)\)</SPAN> means the <I>whole signal</I>
+<SPAN CLASS="MATH">\(x(n)\)</SPAN>, <SPAN CLASS="MATH">\(n=0,1,\ldots,N-1\)</SPAN>, also written as simply <SPAN CLASS="MATH">\(x\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot14399">....</A><A
+ HREF="Frequencies_Cracks.html#tex2html72"><SUP>6.4</SUP></A></DT>
+<DD>More
+precisely, <SPAN CLASS="MATH">\(\oper{DFT}_k()\)</SPAN> is a length <SPAN CLASS="MATH">\(N\)</SPAN> finite-<A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse response&lt;/i&gt; of a system is its output signal in response to the impulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse-response</A> (<A HREF="https://ccrma.stanford.edu/~jos/filters/FIR_Digital_Filters.html" onMouseover="return escape('In digital signal processing, &lt;i&gt;FIR&lt;/i&gt; is an acronym for &lt;i&gt;Finite Impulse Response&lt;/i&gt; &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/FIR_Digital_Filters.html')">FIR</A>)
+digital filter.  See &#167;<A HREF="Filters_Convolution.html#sec:LTI">8.3</A> for related discussion.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot14400">...
+computed,</A><A
+ HREF="Frequencies_Cracks.html#tex2html73"><SUP>6.5</SUP></A></DT>
+<DD>We call this the
+<I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window.html" onMouseover="return escape('The &lt;i&gt;aliased sinc&lt;/i&gt; function is obtained from the sinc function by applying the aliasing operator.  It arises in digital audio as the spectrum of a sampled rectangular pulse. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window.html')">aliased sinc function</A></I><A NAME="14557"></A><A NAME="14558"></A> 
+to distinguish it from the <I><A HREF="Sinc_Function.html" onMouseover="return escape('The \&#39;Cardinal sine function\&#39; is defined as sin(pi x)/(pi x) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinc_Function.html')">sinc function</A></I><A NAME="14560"></A> 
+<SPAN CLASS="MATH">\(\mbox{sinc}(x)\isdeftext\sin(\pi x)/(\pi x)\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot14402">...dftfilterb</A><A
+ HREF="Frequencies_Cracks.html#tex2html74"><SUP>6.6</SUP></A></DT>
+<DD>The Matlab code for this figure is 
+given in &#167;<A HREF="DFT_Bin_Response.html#sec:dftfilterml">I.4.2</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot14404">....</A><A
+ HREF="Frequencies_Cracks.html#tex2html75"><SUP>6.7</SUP></A></DT>
+<DD>Spectral leakage is essentially equivalent to (<I>i.e.</I>, a
+Fourier dual of) the <I>Gibb's phenomenon</I><A NAME="14582"></A> for truncated <A HREF="Fourier_Series_FS_Relation.html" onMouseover="return escape('A Fourier Series (FS) expansion is the appropriate Fourier transform for &lt;i&gt;periodic&lt;/i&gt; signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Series_FS_Relation.html')">Fourier
+series expansions</A> (see &#167;<A HREF="Fourier_Series_FS_Relation.html#sec:fs">B.3</A>), which some of us studied in high
+school.  As more sinusoids are added to the expansion, the error
+waveform increases in frequency, and decreases in <A HREF="Signal_Metrics.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Signal_Metrics.html')">signal energy</A>, but
+its peak value does not converge to zero.  Instead, in the limit as 
+infinitely many sinusoids are added to the <A HREF="Fourier_Series_FS_Relation.html" onMouseover="return escape('A Fourier Series (FS) expansion is the appropriate Fourier transform for &lt;i&gt;periodic&lt;/i&gt; signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Series_FS_Relation.html')">Fourier-series</A> sum, the
+peak error converges to an <I>isolated point</I>.  Isolated points
+have ``measure zero'' under integration, and therefore have no effect
+on integrals such as the one which calculates Fourier-series
+coefficients.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot15574">....</A><A
+ HREF="DFT_Inverse_Restated.html#tex2html77"><SUP>7.1</SUP></A></DT>
+<DD>The notation <SPAN CLASS="MATH">\([a,b)\)</SPAN> denotes the
+<I>half-open interval</I><A NAME="15595"></A> on the real line from <SPAN CLASS="MATH">\(a\)</SPAN> to <SPAN CLASS="MATH">\(b\)</SPAN>.
+Thus the interval includes <SPAN CLASS="MATH">\(a\)</SPAN> but not <SPAN CLASS="MATH">\(b\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot15561">...
+spectra</A><A
+ HREF="Modulo_Indexing_Periodic_Extension.html#tex2html78"><SUP>7.2</SUP></A></DT>
+<DD>A <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The spectrum of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> is mathematically identical to a signal, since
+both are just sequences of <SPAN CLASS="MATH">\(N\)</SPAN> complex numbers.  However, for clarity, we
+generally use ``signal'' when the sequence index is considered a time
+index, and ``spectrum'' when the index is associated with successive
+frequency samples.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot15807">...:</A><A
+ HREF="Operator_Notation.html#tex2html79"><SUP>7.3</SUP></A></DT>
+<DD>The set of all integers is denoted <SPAN CLASS="MATH">\(\mathbb{Z}\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot16240">...
+convolution).</A><A
+ HREF="Convolution.html#tex2html80"><SUP>7.4</SUP></A></DT>
+<DD>To simulate <A HREF="https://ccrma.stanford.edu/~jos/sasp/Convolution_Theorem_DTFT.html#8614" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Convolution_Theorem_DTFT.html#8614')">acyclic convolution</A> using <A HREF="https://ccrma.stanford.edu/~jos/sasp/Convolution_Short_Signals.html#21256" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Convolution_Short_Signals.html#21256')">cyclic
+convolution</A>, as is appropriate for the simulation of sampled
+continuous-time systems, sufficient <I><A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero padding</A></I> is used so
+that nonzero samples do not ``wrap around'' as a result of the
+shifting of <SPAN CLASS="MATH">\(y\)</SPAN> in the definition of <A HREF="Convolution.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Convolution.html')">convolution</A>.  Zero padding is
+discussed later in this
+chapter (&#167;<A HREF="Zero_Padding.html#sec:zeropadding">7.2.7</A>).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot16241">...</A><A
+ HREF="Convolution_Filtering_Operation.html#tex2html81"><SUP>7.5</SUP></A></DT>
+<DD>See &#167;<A HREF="Filters_Convolution.html#sec:LTI">8.3</A> for an introduction to the digital-filter point 
+of view.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot16244">... exponential.</A><A
+ HREF="Convolution_Example_2_ADSR.html#tex2html84"><SUP>7.6</SUP></A></DT>
+<DD>Normally, in practice, a
+<I>first-order recursive filter</I> would be used to provide such an
+exponential <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse</A> response very efficiently in hardware or software
+(see Book II [<A
+ HREF="Bibliography.html#JOSFP">71</A>] of this series for details).  However, the impulse
+response of any linear, time-invariant filter can be recorded and used
+for implementation via convolution.  The only catch is that recursive
+filters generally have <I>infinitely long</I> impulse responses (true
+<A HREF="http://en.wikipedia.org/wiki/Exponential_decay" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Exponential_decay')">exponential decays</A>).  Therefore, it is necessary to truncate the impulse
+response when it decays enough that the remainder is negligible.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot16245">....</A><A
+ HREF="Convolution_Example_3_Matched.html#tex2html85"><SUP>7.7</SUP></A></DT>
+<DD><A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">Matched filtering</A> is briefly
+discussed in &#167;<A HREF="Correlation_Analysis.html#sec:SSP">8.4</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot16006">...
+place.</A><A
+ HREF="Multiplication_Decimal_Numbers.html#tex2html86"><SUP>7.8</SUP></A></DT>
+<DD>This is the also basis of the puzzle ``multiply your
+age times 7 times 1443.''
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot16054">....</A><A
+ HREF="Zero_Padding.html#tex2html87"><SUP>7.9</SUP></A></DT>
+<DD>The symbol ``<SPAN CLASS="MATH">\(\equiv\)</SPAN>''
+means ``is equivalent to''.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot16252">... domain.</A><A
+ HREF="Ideal_Spectral_Interpolation.html#tex2html88"><SUP>7.10</SUP></A></DT>
+<DD>Similarly, zero padding in the
+frequency domain gives what we may call ``<A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic</A> interpolation'' in the
+time domain which is exact in the DFT case only for <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic signals</A>
+having a time-domain <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">period</A> equal to the DFT length. (See &#167;<A HREF="Frequencies_Cracks.html#sec:cracks">6.7</A>.)
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot16254">... times.</A><A
+ HREF="Repeat_Operator.html#tex2html89"><SUP>7.11</SUP></A></DT>
+<DD>You might wonder why we need this
+since all indexing in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> is defined modulo <SPAN CLASS="MATH">\(N\)</SPAN> already.  The answer
+is that <SPAN CLASS="MATH">\(\oper{Repeat}_L()\)</SPAN> formally expresses a mapping from the space
+<SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> of length <SPAN CLASS="MATH">\(N\)</SPAN> signals to the space <SPAN CLASS="MATH">\(\mathbb{C}^M\)</SPAN> of length <SPAN CLASS="MATH">\(M=LN\)</SPAN>
+signals.  The <SPAN CLASS="MATH">\(\oper{Repeat}_L()\)</SPAN> operator could alternatively be defined
+as the <I>scaling operator</I> <SPAN CLASS="MATH">\(\oper{Scale}_{L,n}(x) = x(n)\)</SPAN>, <SPAN CLASS="MATH">\(n=0,1,2,
+\ldots,NL-1\)</SPAN>, where <SPAN CLASS="MATH">\(L\)</SPAN> is any positive integer (note the increase in signal
+length from <SPAN CLASS="MATH">\(N\)</SPAN> to <SPAN CLASS="MATH">\(NL\)</SPAN> samples).  Such a definition would better
+suggest the related <I>continuous-time</I> <A HREF="Fourier_Theorems.html" onMouseover="return escape('The Fourier theorems establish important, elementary time-frequency relationships.  The theorems are largely the same whether stated for the case of the Fourier Transform (FT), Discrete Fourier Transform (DFT), Discrete Time Fourier Transform (DTFT), or Fourier Series (FS). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html')">Fourier theorems</A> regarding
+time/frequency scaling (see Appendix <A HREF="Selected_Continuous_Time_Fourier_Theorems.html#app:contthms">C</A>, especially
+&#167;<A HREF="Scaling_Theorem.html#sec:scaling">C.2</A>).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot16224">....</A><A
+ HREF="Even_Odd_Functions.html#tex2html90"><SUP>7.12</SUP></A></DT>
+<DD>The function <SPAN CLASS="MATH">\(f(x) = 1/x\)</SPAN> is also considered odd,
+ignoring the singularity at <SPAN CLASS="MATH">\(x=0\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot18226">... transform,</A><A
+ HREF="Symmetry.html#tex2html91"><SUP>7.13</SUP></A></DT>
+<DD>The <A HREF="http://en.wikipedia.org/wiki/Discrete_cosine_transform" onMouseover="return escape('The Discrete Cosine Transform (DCT) computes a discrete-frequency spectrum from a discrete-time signal of finite length in a manner similar to the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Discrete_cosine_transform')">discrete cosine transform</A> (<A HREF="http://en.wikipedia.org/wiki/Discrete_cosine_transform" onMouseover="return escape('The Discrete Cosine Transform (DCT) computes a discrete-frequency spectrum from a discrete-time signal of finite length in a manner similar to the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Discrete_cosine_transform')">DCT</A>)
+used most often in applications is defined somewhat differently
+(see &#167;<A HREF="Discrete_Cosine_Transform_DCT.html#sec:dct">A.6.1</A>), but this is one variant.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot18131">....</A><A
+ HREF="Shift_Theorem.html#tex2html92"><SUP>7.14</SUP></A></DT>
+<DD>To consider 
+<SPAN CLASS="MATH">\(\omega_k\)</SPAN> as radians per second
+instead of radians per sample, just replace <SPAN CLASS="MATH">\(\Delta\)</SPAN> by <SPAN CLASS="MATH">\(\Delta T\)</SPAN> so that
+the delay is in seconds instead of samples, <I>i.e.</I>, 
+<SPAN CLASS="MATH">\(\exp(-j(2\pi k/N)(\Delta))
+=\exp(-j(2\pi k/NT)(\Delta T))
+=\exp(-j\omega_k \Delta T)\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot18231">... response.</A><A
+ HREF="Linear_Phase_Signals.html#tex2html93"><SUP>7.15</SUP></A></DT>
+<DD>See
+&#167;<A HREF="Filters_Convolution.html#sec:LTI">8.3</A> and/or Book II [<A
+ HREF="Bibliography.html#JOSFP">71</A>] of the music signal processing
+book series for an introduction to digital filters.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot18232">... Transform</A><A
+ HREF="Application_Shift_Theorem_FFT.html#tex2html94"><SUP>7.16</SUP></A></DT>
+<DD>An <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> is just a fast implementation of
+the DFT.  See Appendix <A HREF="Fast_Fourier_Transform_FFT.html#app:fft">A</A> for details and pointers.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot18235">... FFT.</A><A
+ HREF="Convolution_Theorem.html#tex2html95"><SUP>7.17</SUP></A></DT>
+<DD>These results were
+obtained using the program <TT>Octave</TT>, version 2.9.9, running on
+a <A HREF="http://www.linux.org" onMouseover="return escape('Click for http://www.linux.org')">Linux</A> PC with a 2.8GHz Pentium CPU, and <TT>Matlab</TT>, version
+5.2, running on a Windows PC with an 800MHz Athlon CPU.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot18237">...table:ffttable.</A><A
+ HREF="Convolution_Theorem.html#tex2html97"><SUP>7.18</SUP></A></DT>
+<DD>These results were obtained using
+<TT>Matlab</TT> v5.2 running on a Windows PC with an 800MHz
+Athlon CPU.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot19302">...dual</A><A
+ HREF="Dual_Convolution_Theorem.html#tex2html99"><SUP>7.19</SUP></A></DT>
+<DD>The <I>dual</I> of a Fourier operation
+is obtained by interchanging time and frequency.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot19306">... time.</A><A
+ HREF="Power_Theorem.html#tex2html100"><SUP>7.20</SUP></A></DT>
+<DD>Signal processing with a physical
+interpretation is addressed in Book III [<A
+ HREF="Bibliography.html#PASP">72</A>] of the music
+signal processing series.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot19307">....</A><A
+ HREF="Power_Theorem.html#tex2html101"><SUP>7.21</SUP></A></DT>
+<DD>You might be
+concerned about what it means when <SPAN CLASS="MATH">\({F(k)}\overline{V(k)}/N\)</SPAN> has an
+<I>imaginary</I> part. This happens when the force <SPAN CLASS="MATH">\(f(t)\)</SPAN> drives a
+so-called ``reactive'' load such as a <A HREF="http://hyperphysics.phy-astr.gsu.edu/hbase/mass.html#mas" onMouseover="return escape('Click for http://hyperphysics.phy-astr.gsu.edu/hbase/mass.html#mas')">mass</A> or <A HREF="http://en.wikipedia.org/wiki/Spring_%28device%29" onMouseover="return escape('According to Hooke\&#39;s law, the force F exerted by a spring stretched a distance x from its rest position is F=-kx. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Spring_%28device%29')">spring</A>.  For the
+details, see Book III [<A
+ HREF="Bibliography.html#PASP">72</A>] or any text on <A HREF="https://ccrma.stanford.edu/~jos/pasp/One_Port_Network_Theory.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/pasp/One_Port_Network_Theory.html')">classical network
+theory</A> or circuit theory.  When the driving force <SPAN CLASS="MATH">\(f(t)\)</SPAN> works against
+a real resistance <SPAN CLASS="MATH">\(R&gt;0\)</SPAN>, then <SPAN CLASS="MATH">\(f(t) = R\,v(t)\)</SPAN> (see &#167;<A HREF="Voltage_Current_Resistance.html#sec:ee101">F.3</A>), so
+that the power is <SPAN CLASS="MATH">\(f(t)v(t)=R\,v^2(t)=f^2(t)/R\)</SPAN>, and in the frequency
+domain, <SPAN CLASS="MATH">\(F(\omega)=R\,V(\omega)\)</SPAN> so that the spectral power is
+proportional to
+<SPAN CLASS="MATH">\({F(\omega)}\overline{V(\omega)}=R\,|V(\omega)|^2=|F(\omega)|^2/R\)</SPAN>.  Thus,
+in the case of a real driving-point <A HREF="http://ccrma.stanford.edu/~jos/OnePorts/Impedance.html" onMouseover="return escape('The &lt;i&gt;wave impedance&lt;/i&gt; in a propagation medium relates the force-related component of the wave motion to the displacement-related component of the motion. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/OnePorts/Impedance.html')">impedance</A> <SPAN CLASS="MATH">\(R\)</SPAN>, the spectral power
+is always real and nonnegative.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot19322">... frequency</A><A
+ HREF="Periodic_Interpolation_Spectral_Zero.html#tex2html102"><SUP>7.22</SUP></A></DT>
+<DD>The
+<I>folding frequency</I><A NAME="19557"></A> is defined as half the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling rate</A> <SPAN CLASS="MATH">\(f_s/2\)</SPAN>.
+It may also be called the <I><A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">Nyquist limit</A></I><A NAME="19559"></A>.  The <I><A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">Nyquist
+rate</A></I><A NAME="19561"></A>, on the other hand, means the <A HREF="Sampling_Theory.html" onMouseover="return escape('Sampling is the process of converting a continuous-time signal into a discrete-time signal. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling</A> rate<A NAME="19562"></A>, not half
+the sampling rate.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot19325">... FIR</A><A
+ HREF="Bandlimited_Interpolation_Time_Limited_Signals.html#tex2html103"><SUP>7.23</SUP></A></DT>
+<DD>FIR stands for ``Finite
+Impulse Response.''  Digital filtering concepts and terminology are
+introduced in &#167;<A HREF="Filters_Convolution.html#sec:LTI">8.3</A> and more completely in Book II [<A
+ HREF="Bibliography.html#JOSFP">71</A>]
+of the music signal processing series.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot20191">...CooleyAndTukey65.</A><A
+ HREF="Why_DFT_usually_called.html#tex2html105"><SUP>8.1</SUP></A></DT>
+<DD>While a length <SPAN CLASS="MATH">\(N\)</SPAN> DFT requires
+approximately <SPAN CLASS="MATH">\(N^2\)</SPAN> arithmetic operations, a <A HREF="http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm')">Cooley-Tukey FFT</A> requires
+closer to <SPAN CLASS="MATH">\(N \lg N=NK\)</SPAN> operations when <SPAN CLASS="MATH">\(N=2^K\)</SPAN> is a power of 2, where
+<SPAN CLASS="MATH">\(\lg N\)</SPAN> denotes the log-base-2 of <SPAN CLASS="MATH">\(N\)</SPAN>. Appendix <A HREF="Fast_Fourier_Transform_FFT.html#app:fft">A</A> provides an
+introduction to Cooley-Tukey FFT algorithms in &#167;<A HREF="Mixed_Radix_Cooley_Tukey_FFT.html#sec:mrfft">A.1</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot20192">....</A><A
+ HREF="Why_DFT_usually_called.html#tex2html106"><SUP>8.2</SUP></A></DT>
+<DD>Say ``<TT>doc fft</TT>'' in Matlab for an overview of
+how a specific FFT algorithm is chosen.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot20400">...SASP</A><A
+ HREF="Use_Blackman_Window.html#tex2html108"><SUP>8.3</SUP></A></DT>
+<DD><A NAME="tex2html109"
+  HREF="http://ccrma.stanford.edu/~jos/sasp/Classic_Blackman.html"><TT>http://ccrma.stanford.edu/~jos/sasp/Classic_Blackman.html</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot20401">... Octave</A><A
+ HREF="Use_Blackman_Window.html#tex2html110"><SUP>8.4</SUP></A></DT>
+<DD><A NAME="tex2html111"
+  HREF="http://www.octave.org/"><TT>http://www.octave.org/</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot20402">... Toolbox,</A><A
+ HREF="Use_Blackman_Window.html#tex2html112"><SUP>8.5</SUP></A></DT>
+<DD><A NAME="tex2html113"
+  HREF="
+http://www.mathworks.com/access/helpdesk/help/toolbox/signal/signal.shtml"><TT>http://www.mathworks.com/access/helpdesk/help/toolbox/signal/signal.shtml</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot20774">...
+phoneme,</A><A
+ HREF="Spectrogram_Speech.html#tex2html116"><SUP>8.6</SUP></A></DT>
+<DD>A <I>phoneme</I><A NAME="20796"></A> is a single elementary sound in
+speech, such as a single <A HREF="http://ccrma.stanford.edu/~rjc/pubs/audio_speech/Describing_Speech_Sounds.html" onMouseover="return escape('A speech sound produced primarily by vibration of the vocal folds, with the vocal tract held in an open configuration. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~rjc/pubs/audio_speech/Describing_Speech_Sounds.html')">vowel</A> sound like the `a' in ``bat'' or the
+`s' in ``sit''.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot20879">...
+system</A><A
+ HREF="Filters_Convolution.html#tex2html117"><SUP>8.7</SUP></A></DT>
+<DD><A HREF="https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html" onMouseover="return escape('The topic of &lt;i&gt;linear systems theory&lt;/i&gt; is primarily about &lt;i&gt;linear, time-invariant (LTI) filters&lt;/i&gt;.   A &lt;i&gt;linear&lt;/i&gt; filter is characterized by the property that its output-signal amplitude is linearly proportional to its input-signal amplitude.  A &lt;i&gt;time-invariant&lt;/i&gt; filter, or \&#39;constant-coefficient\&#39; filter, performs the same filtering operation at all times.  Only LTI filters can be characeterized by their &lt;i&gt;impulse response&lt;/i&gt;, or their &lt;i&gt;frequency response&lt;/i&gt;, or their &lt;i&gt;poles and zeros&lt;/i&gt; plus a gain, or the like.  Also, only LTI filters have the &lt;i&gt;superposition property&lt;/i&gt; for audio signals, in which the filtering of an audio mix can be obtained alternatively by filtering each channel separately and adding the filtered channels together.  Equivalently, only LTI filters exhibit no &lt;i&gt;intermodulation distortion&lt;/i&gt; for audio signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html')">Linearity and time invariance</A> are introduced in
+the second book of this series [<A
+ HREF="Bibliography.html#JOSFP">71</A>].
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot21308">...estimator</A><A
+ HREF="Cross_Correlation.html#tex2html118"><SUP>8.8</SUP></A></DT>
+<DD>In signal processing, a ``hat'' often denotes an <I>estimated</I> quantity.
+Thus, <SPAN CLASS="MATH">\({\hat r}_{xy}(l)\)</SPAN> is an estimate of <SPAN CLASS="MATH">\(r_{xy}(l)\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot21311">...
+value</A><A
+ HREF="Unbiased_Cross_Correlation.html#tex2html119"><SUP>8.9</SUP></A></DT>
+<DD>For present purposes, the expected value <SPAN CLASS="MATH">\(r_{xy}(l)\)</SPAN>
+may be found by averaging an infinite number of 
+<A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">cross-correlations</A> <SPAN CLASS="MATH">\({\hat r}^u_{xy}(l)\)</SPAN> computed using different segments of
+<SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN>. Both <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN> must be infinitely long, of course, and
+all stationary processes
+<I>are</I> infinitely long.  Otherwise, their statistics could not be
+time invariant.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot21129">... PSD:</A><A
+ HREF="Autocorrelation.html#tex2html120"><SUP>8.10</SUP></A></DT>
+<DD>To clarify, we are using the word ``sample'' with
+two different meanings.  In addition to the usual meaning wherein a
+continuous time or frequency axis is made discrete, a statistical
+``sample'' refers to a set of observations from some presumed random
+process.  Estimated statistics based on such a statistical sample are
+then called ``sample statistics'', such as the sample mean, sample
+variance, and so on.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot21324">....</A><A
+ HREF="Matched_Filtering.html#tex2html121"><SUP>8.11</SUP></A></DT>
+<DD>See
+Eq.(<A HREF="Flip_Operator.html#eq:flipdef">7.1</A>) for a definition of <SPAN CLASS="MATH">\(\oper{Flip}()\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot21350">...https://ccrma.stanford.edu/&nbsp;jos/mdft/mdft-python.html#FIR-System-Identification</A><A
+ HREF="FIR_System_Identification.html#tex2html122"><SUP>8.12</SUP></A></DT>
+<DD><A NAME="tex2html123"
+  HREF="mdft-python.html#FIR-System-Identification"><TT><FONT SIZE="-2">https://ccrma.stanford.edu/~jos/mdft/mdft-python.html#FIR-System-Identification</FONT></TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot21217">....</A><A
+ HREF="Power_Spectral_Density_Estimation.html#tex2html126"><SUP>8.13</SUP></A></DT>
+<DD>Since phase information is discarded
+(<SPAN CLASS="MATH">\(x_m\star x_m\leftrightarrow |X_m(\omega_k)|^2\)</SPAN>), 
+the zero-padding can go before or after <SPAN CLASS="MATH">\(x_m\)</SPAN>,
+or both, without affecting the results.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot21331">... kernel;</A><A
+ HREF="Power_Spectral_Density_Estimation.html#tex2html127"><SUP>8.14</SUP></A></DT>
+<DD>By the <A HREF="Dual_Convolution_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Dual_Convolution_Theorem.html')">convolution theorem dual</A>, windowing
+in the time domain is convolution (smoothing) in the frequency domain
+(&#167;<A HREF="Dual_Convolution_Theorem.html#sec:convthmdual">7.4.6</A>). Since a triangle is the convolution of a
+rectangle with itself, its transform is <SPAN CLASS="MATH">\(\mbox{sinc}^2\)</SPAN> in the
+continuous-time case (cf. Appendix <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html#app:sampling">D</A>).  In the discrete-time
+case, it is proportional to <SPAN CLASS="MATH">\(\oper{Alias}_{2\pi/T}(\mbox{sinc}^2)\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot21351">...https://ccrma.stanford.edu/&nbsp;jos/mdft/mdft-python.html#Coherence-Function-in-Matlab</A><A
+ HREF="Coherence_Function_Matlab.html#tex2html130"><SUP>8.15</SUP></A></DT>
+<DD><A NAME="tex2html131"
+  HREF="mdft-python.html#Coherence-Function-in-Matlab"><TT><FONT SIZE="-2">https://ccrma.stanford.edu/~jos/mdft/mdft-python.html#Coherence-Function-in-Matlab</FONT></TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22193">...
+composite</A><A
+ HREF="Fast_Fourier_Transform_FFT.html#tex2html134"><SUP>A.1</SUP></A></DT>
+<DD>In this context, ``highly composite'' means ``a
+product of many prime factors.''  For example, the number
+<SPAN CLASS="MATH">\(1024=2^{10}\)</SPAN> is highly composite since it is a power of 2.  The
+number <SPAN CLASS="MATH">\(360=2\cdot 3^2\cdot 4\cdot 5\)</SPAN> is also composite, but it
+requires prime factors other than 2.  <A HREF="https://mathworld.wolfram.com/PrimeNumber.html" onMouseover="return escape('A &lt;i&gt;prime number&lt;/i&gt; is an integer divisible only by 1 and itself.  The first few are 2,3,5,7,11,13,17,... . &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/PrimeNumber.html')">Prime numbers</A>
+<SPAN CLASS="MATH">\((2,3,5,7,11,13,17,\ldots)\)</SPAN> are not composite at all.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22229">...</A><A
+ HREF="Mixed_Radix_Cooley_Tukey_FFT.html#tex2html137"><SUP>A.2</SUP></A></DT>
+<DD>See <A NAME="tex2html138"
+  HREF="http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm"><TT>
+http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm</TT></A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22230">...DuhamelAndVetterli90.</A><A
+ HREF="Radix_2_FFT.html#tex2html139"><SUP>A.3</SUP></A></DT>
+<DD><A NAME="tex2html140"
+  HREF="http://en.wikipedia.org/wiki/Split_radix"><TT>http://en.wikipedia.org/wiki/Split_radix</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22231">...Good58,Thomas63,KolbaAndParks77,McClellanAndRader79,BurrusAndParks85,WikiPFA.</A><A
+ HREF="Prime_Factor_Algorithm_PFA.html#tex2html141"><SUP>A.4</SUP></A></DT>
+<DD><A NAME="tex2html142"
+  HREF="http://en.wikipedia.org/wiki/Prime-factor_FFT_algorithm">See
+<TT>http://en.wikipedia.org/wiki/Prime-factor_FFT_algorithm</TT></A>
+for an
+introduction.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22232">...</A><A
+ HREF="Prime_Factor_Algorithm_PFA.html#tex2html143"><SUP>A.5</SUP></A></DT>
+<DD><A NAME="tex2html144"
+  HREF="http://en.wikipedia.org/wiki/Prime-factor_FFT_algorithm#Re-indexing"><TT>http://en.wikipedia.org/wiki/Prime-factor_FFT_algorithm#Re-indexing</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22233">...GoldAndRader69.</A><A
+ HREF="Bluestein_s_FFT_Algorithm.html#tex2html147"><SUP>A.6</SUP></A></DT>
+<DD>See 
+<A NAME="tex2html148"
+  HREF="http://en.wikipedia.org/wiki/Bluestein's_FFT_algorithm"><TT>http://en.wikipedia.org/wiki/Bluestein's_FFT_algorithm</TT></A>
+for another
+derivation and description of <A HREF="http://en.wikipedia.org/wiki/Bluestein's_FFT_algorithm" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Bluestein's_FFT_algorithm')">Bluestein's FFT algorithm</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22210">...
+unity,</A><A
+ HREF="Bluestein_s_FFT_Algorithm.html#tex2html149"><SUP>A.7</SUP></A></DT>
+<DD>Note that <SPAN CLASS="MATH">\(W\)</SPAN> is the complex-conjugate of <SPAN CLASS="MATH">\(W_N\)</SPAN> used
+in &#167;<A HREF="Decimation_Time.html#sec:dit">A.1.1</A> above.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22219">...
+length.</A><A
+ HREF="Fast_Transforms_Audio_DSP.html#tex2html150"><SUP>A.8</SUP></A></DT>
+<DD>Obtaining an exact integer number of samples per
+period can be arranged using <I><A HREF="https://ccrma.stanford.edu/~jos/pasp/References_F0_Estimation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/pasp/References_F0_Estimation.html')">pitch detection</A></I> and
+<I><A HREF="https://ccrma.stanford.edu/~jos/resample/" onMouseover="return escape('Bandlimited interpolation is the ideal type of interpolation for properly sampled signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/resample/')">resampling</A></I> of the periodic signal. A time-varying pitch
+requires time-varying resampling [<A
+ HREF="Bibliography.html#SmithAndGossett84">75</A>]--see
+Appendix <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html#app:sampling">D</A>.  However, when a signal is <A HREF="https://ccrma.stanford.edu/~jos/resample/" onMouseover="return escape('Bandlimited interpolation is the ideal type of interpolation for properly sampled signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/resample/')">resampled</A> for this purpose,
+one can generally choose a power of 2 for the number of samples per
+period.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22220">... gain.</A><A
+ HREF="Discrete_Cosine_Transform_DCT.html#tex2html151"><SUP>A.9</SUP></A></DT>
+<DD>This result is well known in the field of
+image processing. The DCT performs almost as well as the optimal
+Karhunen-Lo&#232;ve Transform (KLT) when analyzing certain <A HREF="http://en.wikipedia.org/wiki/Normal_distribution" onMouseover="return escape('The Gaussian probability density function is, in Matlab syntax, exp(-(x-mu)^2/(2*sigma^2))/sqrt(2*pi*sigma^2), where mu is the mean and sigma is the standard deviation. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Normal_distribution')">Gaussian</A>
+stochastic processes as the transform size goes to infinity.  (In the
+KLT, the basis functions are taken to be the <A HREF="https://scienceworld.wolfram.com/math/Eigenvector.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/math/Eigenvector.html')">eigenvectors</A> of the
+<A HREF="Autocorrelation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Autocorrelation.html')">autocorrelation</A> <A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">matrix</A> of the input signal block.  As a result, the
+transform coefficients are <I>decorrelated</I> in the KLT, leading to
+maximum energy concentration and optimal coding gain.)  However, the
+DFT provides a similar degree of optimality for large block sizes <SPAN CLASS="MATH">\(N\)</SPAN>.
+For practical spectral analysis and processing of audio signals, there
+is typically no reason to prefer the DCT over the DFT.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22234">...
+DCT-II)</A><A
+ HREF="Discrete_Cosine_Transform_DCT.html#tex2html152"><SUP>A.10</SUP></A></DT>
+<DD>For a discussion of eight or so DCT variations,
+see the <A HREF="http://en.wikipedia.org/wiki/Main_Page/" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Main_Page/')">Wikipedia</A> page:
+<BR><A NAME="tex2html153"
+  HREF="http://en.wikipedia.org/wiki/Discrete_cosine_transform"><TT>http://en.wikipedia.org/wiki/Discrete_cosine_transform</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22235">...FFTWPaper.</A><A
+ HREF="FFT_Software.html#tex2html154"><SUP>A.11</SUP></A></DT>
+<DD>For a list of FFT implementations benchmarked against
+<A HREF="http://www.fftw.org/" onMouseover="return escape('FFTW is a C subroutine library for computing the Discrete Fourier Transform (DFT) in one or more dimensions, of both real and complex data, and of arbitrary input size. We believe that FFTW, which is free software, should become the FFT library of choice for most applications. Our benchmarks, performed on on a variety of platforms, show that FFTW\&#39;s performance is typically superior to that of other publicly available FFT software. Moreover, FFTW\&#39;s performance is portable: the program will perform well on most architectures without modification.  &nbsp;&#8212;&nbsp; Click for http://www.fftw.org/')">FFTW</A>, see <A NAME="tex2html155"
+  HREF="http://www.fftw.org/benchfft/ffts.html"><TT>http://www.fftw.org/benchfft/ffts.html</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot22960">... variable,</A><A
+ HREF="Discrete_Time_Fourier_Transform.html#tex2html158"><SUP>B.1</SUP></A></DT>
+<DD>We
+define the <A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">DTFT</A> using <I>normalized radian frequency</I><A NAME="22969"></A>
+<SPAN CLASS="MATH">\(\tilde{\omega}\isdef\omega T\in[-\pi,\pi)\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot23245">...
+seconds,</A><A
+ HREF="Fourier_Series_FS_Relation.html#tex2html159"><SUP>B.2</SUP></A></DT>
+<DD>A signal <SPAN CLASS="MATH">\(x(t)\)</SPAN> is said to be <I>periodic</I><A NAME="23255"></A> with
+period <SPAN CLASS="MATH">\(P\)</SPAN> if <SPAN CLASS="MATH">\(x(t+P)=x(t)\)</SPAN> for all <SPAN CLASS="MATH">\(t\in\mathbb{R}\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot23248">... is</A><A
+ HREF="Relation_DFT_Fourier_Series.html#tex2html160"><SUP>B.3</SUP></A></DT>
+<DD>To obtain precisely this
+result, it is necessary to define <SPAN CLASS="MATH">\(\delta(t)\)</SPAN> via a limiting pulse
+converging to time 0 from the <I>right</I> of time 0, as we have done
+in Eq.(<A HREF="Continuous_Time_Impulse.html#eq:deltafn">B.3</A>).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot23585">... principle|textbf.</A><A
+ HREF="Duration_Bandwidth_Second_Moments.html#tex2html161"><SUP>C.1</SUP></A></DT>
+<DD>The <A HREF="https://scienceworld.wolfram.com/physics/UncertaintyPrinciple.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/UncertaintyPrinciple.html')">Heisenberg uncertainty principle</A> in quantum <A HREF="https://scienceworld.wolfram.com/physics/" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/')">physics</A> 
+applies to any dual properties of a particle.  For example, the
+position and velocity of an electron are oft-cited as such duals.  An
+electron is described, in <A HREF="https://quantummechanics.ucsd.edu/ph130a/130_notes/130_notes.html" onMouseover="return escape('The theory of &lt;i&gt;quantum mechanics&lt;/i&gt; describes fundamental particles and their interactions at the smallest observable scales. &nbsp;&#8212;&nbsp; Click for https://quantummechanics.ucsd.edu/ph130a/130_notes/130_notes.html')">quantum mechanics</A>, by a probability wave
+packet.  Therefore, the <I>position</I> of an electron in space can be
+defined as the midpoint of the amplitude <A HREF="http://en.wikipedia.org/wiki/ADSR_envelope" onMouseover="return escape('The amplitude envelope, or relatively slowly-changing outline of a sound waveform, makes for a useful first approximation of the instantaneous loudness of the sound. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/ADSR_envelope')">envelope</A> of its wave
+function; its <I>velocity</I>, on the other hand, is determined by the
+<I>frequency</I> of the wave packet.  To accurately measure the
+frequency, the packet must be very long in space, to provide many
+cycles of oscillation under the envelope.  But this means the location
+in space is relatively uncertain.  In more precise mathematical terms,
+the probability wave function for velocity is proportional to the
+spatial <A HREF="Fourier_Transform_FT_Inverse.html" onMouseover="return escape('The Fourier Transform (FT) gives the (complex) spectrum of a continuous-time signal of any length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html')">Fourier transform</A> of the probability wave for position.  <I>I.e.</I>,
+they are exact Fourier duals.  The <A HREF="https://scienceworld.wolfram.com/biography/Heisenberg.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/biography/Heisenberg.html')">Heisenberg</A> <A HREF="Uncertainty_Principle.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Uncertainty_Principle.html')">Uncertainty Principle</A> is
+therefore a Fourier property of fundamental particles described by
+waves [<A
+ HREF="Bibliography.html#Dirac">20</A>].  This of course includes all matter and energy in the 
+Universe.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot23570">... filter.</A><A
+ HREF="Time_Bandwidth_Products_Unbounded_Above.html#tex2html162"><SUP>C.2</SUP></A></DT>
+<DD>An <A HREF="https://ccrma.stanford.edu/~jos/filters/Allpass_Filters.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Allpass_Filters.html')">allpass filter</A> has unity gain and
+arbitrary delay at each frequency.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot24157">... public.</A><A
+ HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html#tex2html163"><SUP>D.1</SUP></A></DT>
+<DD><A NAME="tex2html164"
+  HREF="http://cnx.org/content/m0050/latest/"><TT>http://cnx.org/content/m0050/latest/</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot24148">...
+position</A><A
+ HREF="Introduction_Sampling.html#tex2html165"><SUP>D.2</SUP></A></DT>
+<DD>More typically, each sample represents the
+instantaneous <I>velocity</I> of the speaker.  Here's why: Most
+microphones are transducers from <I>acoustic pressure</I> to
+<I>electrical voltage</I>, and analog-to-digital converters (ADCs)
+produce numerical samples which are proportional to voltage.  Thus,
+digital samples are normally proportional to <I>acoustic pressure
+deviation</I> (force per unit area on the microphone, with <A HREF="http://en.wikipedia.org/wiki/Ambient_temperature#Ambient_vs._room_temperature" onMouseover="return escape('An &lt;i&gt;ambient&lt;/i&gt; quantity is one that exists in the surrounding environment of a physical system. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Ambient_temperature#Ambient_vs._room_temperature')">ambient</A> air
+pressure subtracted out).  When digital samples are converted to
+analog form by digital-to-analog conversion (DAC), each sample is
+converted to an electrical voltage which then drives a loudspeaker (in
+audio applications).  Typical loudspeakers use a ``voice-coil'' to
+convert applied voltage to electromotive force on the speaker which
+applies pressure on the air via the speaker cone. Since the acoustic
+impedance of air is a real number, wave pressure is directly
+proportional wave <I>velocity</I>.  Since the speaker must move in
+contact with the air during wave generation, we may conclude that
+digital signal samples correspond most closely to the <I>velocity</I>
+of the speaker, not its position.  The situation is further
+complicated somewhat by the fact that typical speakers do not
+themselves have a real driving-point impedance. 
+However, for an ``ideal'' microphone and speaker, we should get
+samples proportional to speaker velocity and hence to air pressure.
+Well below resonance, the real part of the radiation impedance 
+of the pushed air
+should dominate, as long as the excursion does not exceed the linear
+interval of cone <A HREF="http://ccrma.stanford.edu/~jos/Mohonk05/Ideal_Plucked_String_Displacement.html" onMouseover="return escape('The displacement of an object describes how far away and in what direction it has been moved, or &lt;i&gt;displaced&lt;/i&gt;, from its rest position. Displacement is a commonly chosen wave variable in physical modeling. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/Mohonk05/Ideal_Plucked_String_Displacement.html')">displacement</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot24151">....</A><A
+ HREF="Sampling_Theorem.html#tex2html167"><SUP>D.3</SUP></A></DT>
+<DD>Mathematically, <SPAN CLASS="MATH">\(X(j\omega)\)</SPAN>
+can be allowed to be nonzero over points <SPAN CLASS="MATH">\(|\omega|\geq\pi/T\)</SPAN>
+provided that the set of all such points have <I>measure zero</I> in
+the sense of Lebesgue integration.  However, such distinctions do not
+arise for practical signals which are always finite in extent and
+which therefore have continuous Fourier transforms. This is why we
+specialize the <A HREF="Sampling_Theorem.html" onMouseover="return escape('Derivation of the &lt;i&gt;sampling theorem&lt;/i&gt; which states that any signal can be perfectly reconstructed, in principle, from uniformly spaced samples of that signal, provided that the sampling rate is higher than twice the highest frequency present in the signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling theorem</A> to the case of continuous-spectrum
+signals.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot24837">... pulse,</A><A
+ HREF="Points_Infinite_Flatness.html#tex2html168"><SUP>E.1</SUP></A></DT>
+<DD>Thanks to Miller
+Puckette for suggesting this example.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot24901">... energy).</A><A
+ HREF="Differentiability_Audio_Signals.html#tex2html169"><SUP>E.2</SUP></A></DT>
+<DD>One joke along these lines, due, I'm
+told, to Professor Bracewell at Stanford, is that ``since the
+telephone is bandlimited to 3kHz, and since bandlimited signals cannot
+be time limited, it follows that one cannot hang up the telephone''.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25423">... bel</A><A
+ HREF="Decibels.html#tex2html170"><SUP>F.1</SUP></A></DT>
+<DD>The ``bel'' is named after Alexander
+Graham Bell, the inventor of the telephone.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25664">... intensity,</A><A
+ HREF="Decibels.html#tex2html171"><SUP>F.2</SUP></A></DT>
+<DD>
+<A NAME="25768"></A><I><A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">Intensity</A></I> is
+physically <I>power per unit area</I>.  Bels may also be defined in
+terms of <I>energy</I><A NAME="25770"></A>, or <I>power</I><A NAME="25772"></A> which is energy per unit time.
+Since sound is always measured over some
+<I>area</I> by a microphone diaphragm, its physical power is conventionally
+normalized by area, giving intensity.  Similarly, the <I>force</I> applied
+by sound to a microphone diaphragm is normalized by area to give
+<I>pressure</I><A NAME="25774"></A> (force per unit area).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25811">... Scale</A><A
+ HREF="DBm_Scale.html#tex2html172"><SUP>F.3</SUP></A></DT>
+<DD>This section was added in the third printing of this
+  book (September 2013).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25811">... Scale</A><A
+ HREF="VU_Meters_DBu_ScaleF_3.html#tex2html173"><SUP>F.4</SUP></A></DT>
+<DD>This section was added in the third printing of this
+  book (September 2013).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25730">...LobdellAndAllen07.</A><A
+ HREF="VU_Meters_DBu_ScaleF_3.html#tex2html174"><SUP>F.5</SUP></A></DT>
+<DD>For other software implementations, see,<I>e.g.</I>,
+<BR><A NAME="tex2html175"
+  HREF="http://kokkinizita.linuxaudio.org/linuxaudio/"><TT>http://kokkinizita.linuxaudio.org/linuxaudio/</TT></A>, 
+<BR><A NAME="tex2html176"
+  HREF="https://github.com/x42/meters.lv2"><TT>https://github.com/x42/meters.lv2</TT></A>
+
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25699">... is</A><A
+ HREF="DB_SPL.html#tex2html177"><SUP>F.6</SUP></A></DT>
+<DD>The bar was originally defined as one ``atmosphere'' (atmospheric pressure at sea level), 
+but now a microbar is defined to be exactly one <SPAN CLASS="MATH">\(\mbox{dyne}/\mbox{cm}^2\)</SPAN>,
+where a dyne is the amount of force required to accelerate a <A HREF="https://scienceworld.wolfram.com/physics/Gram.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Gram.html')">gram</A> by one centimeter
+per second squared.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25588">....</A><A
+ HREF="DB_SPL.html#tex2html178"><SUP>F.7</SUP></A></DT>
+<DD>Standard International (SI) units were formerly
+  called MKS units (<A HREF="https://scienceworld.wolfram.com/physics/Meter.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Meter.html')">meters</A>, kilograms, and seconds).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25731">...
+phons.</A><A
+ HREF="DBA_A_Weighted_DB.html#tex2html180"><SUP>F.8</SUP></A></DT>
+<DD>See
+<A NAME="tex2html181"
+  HREF="http://en.wikipedia.org/wiki/A-weighting"><TT>http://en.wikipedia.org/wiki/A-weighting</TT></A>
+for more information, including a plot of the A weighting curve (as
+well as B, C, and D weightings which can be used for louder listening
+levels) and pointers to relevant standards.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25623">... by</A><A
+ HREF="DBA_A_Weighted_DB.html#tex2html182"><SUP>F.9</SUP></A></DT>
+<DD>ibid.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25732">... weighting|textbf</A><A
+ HREF="DBA_A_Weighted_DB.html#tex2html183"><SUP>F.10</SUP></A></DT>
+<DD><A NAME="tex2html184"
+  HREF="http://en.wikipedia.org/wiki/ITU-R_468_noise_weighting"><TT>http://en.wikipedia.org/wiki/ITU-R_468_noise_weighting</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot25663">...
+distortion'').</A><A
+ HREF="Dynamic_Range.html#tex2html185"><SUP>F.11</SUP></A></DT>
+<DD><A HREF="http://en.wikipedia.org/wiki/Compander" onMouseover="return escape('A &lt;i&gt;compander&lt;/i&gt; (compressor/expander) is an audio signal-processing device used to ``flatten\&#39;\&#39; the signal dynamic range for musical purposes. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Compander')">Companders</A> (compressor-expanders) essentially
+``turn down'' the signal gain when it is ``loud'' and ``turn up'' the
+gain when it is ``quiet''.  As long as the input-output curve is
+monotonic (such as a log characteristic), the <A HREF="Dynamic_Range.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Dynamic_Range.html')">dynamic-range</A>
+compression can be undone (expanded).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26605">... 0.</A><A
+ HREF="Binary_Integer_Fixed_Point_Numbers.html#tex2html186"><SUP>G.1</SUP></A></DT>
+<DD>Computers use bits, as opposed to the more
+familiar decimal digits, because they are more convenient to implement
+in digital hardware.  For example, the <I>decimal numbers</I><A NAME="26635"></A> 0, 1, 2,
+3, 4, 5 become, in binary format, 0, 1, 10, 11, 100, 101.  Each
+<I>bit</I> position in binary notation corresponds to a power of 2,
+<I>e.g.</I>, <SPAN CLASS="MATH">\(5 = 1\cdot 2^2 + 0\cdot 2^1 + 1\cdot 2^0\)</SPAN>; while each
+<I>digit</I> position in decimal notation corresponds to a power of
+10, <I>e.g.</I>, <SPAN CLASS="MATH">\(123 = 1\cdot 10^2 + 2\cdot 10^1 + 3\cdot 10^0\)</SPAN>.  The term
+``digit<A NAME="26638"></A>'' comes from the same word meaning ``finger.'' Since
+we have ten fingers (digits), the term ``digit'' technically should be
+associated only with decimal notation, but in practice it is used for
+others as well.  Other popular number systems in computers include
+<I>octal</I><A NAME="26640"></A> which is base 8 (rarely seen any more, but still
+specifiable in any C/C++ program by using a leading zero, <I>e.g.</I>, <SPAN CLASS="MATH">\(0755
+= 7\cdot 8^2 + 5 \cdot 8^1 + 5\cdot 8^0 = 493\)</SPAN> decimal = 111,101,101
+binary), and <I>hexadecimal</I><A NAME="26643"></A> (or simply ``<I>hex</I>'') which is
+base 16 and which employs the letters A through F to yield 16 digits
+(specifiable in C/C++ by starting the number with ``0x'', <I>e.g.</I>, 0x1ED
+= <SPAN CLASS="MATH">\(1\cdot 16^2 + 15 \cdot 16^1 + 14\cdot 16^0 = 493\)</SPAN> decimal =
+1,1110,1101 binary).  Note, however, that the representation within
+the computer is still always binary; octal and hex are simply
+convenient <I>groupings</I> of bits into sets of three bits (octal)
+or four bits (hex).
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26431">... processors.</A><A
+ HREF="Binary_Integer_Fixed_Point_Numbers.html#tex2html187"><SUP>G.2</SUP></A></DT>
+<DD>This information is subject to change
+without notice. Check your local <A HREF="http://en.wikipedia.org/wiki/Compiler" onMouseover="return escape('The compiler transforms human-readable source code into machine-readable code. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Compiler')">compiler</A> documentation.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26612">... feedback</A><A
+ HREF="How_Many_Bits_Enough.html#tex2html194"><SUP>G.3</SUP></A></DT>
+<DD>Normally, quantization error
+is computed as <SPAN CLASS="MATH">\(e(n)=x(n)-{\hat x}(n)\)</SPAN>, where <SPAN CLASS="MATH">\(x(n)\)</SPAN> is the signal being
+quantized, and <SPAN CLASS="MATH">\({\hat x}(n) = Q[x(n)]\)</SPAN> is the quantized value, obtained by
+rounding to the nearest representable amplitude.  Filtered error
+feedback uses instead the formula <SPAN CLASS="MATH">\({\hat x}(n) = Q[x(n)+{\cal L}{e(n-1)}]\)</SPAN>,
+where <SPAN CLASS="MATH">\({\cal L}{\;}\)</SPAN> denotes a filtering operation which ``shapes'' the
+quantization <A HREF="https://ccrma.stanford.edu/~jos/sasp/What_Noise.html" onMouseover="return escape('Noise (in signal processing) is a random signal.  In the language of statistical signal processing, a noise signal is typically modeled as \&#39;stochastic process\&#39;, which is in turn defined as a sequence of random variables. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/What_Noise.html')">noise</A> spectrum.  An excellent article on the use of
+round-off error feedback in audio digital filters is
+[<A
+ HREF="Bibliography.html#Dattorro88">18</A>].
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26528">... Bytes?</A><A
+ HREF="How_Many_Bits_Enough.html#tex2html195"><SUP>G.4</SUP></A></DT>
+<DD>This subsection can be skipped if you are using only modern laptops and desktops.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26528">... Bytes?</A><A
+ HREF="When_Do_We_Have.html#tex2html196"><SUP>G.5</SUP></A></DT>
+<DD>This subsection can be skipped if you are using only modern laptops and desktops.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26533">... most-significant).</A><A
+ HREF="When_Do_We_Have.html#tex2html197"><SUP>G.6</SUP></A></DT>
+<DD>Remember that byte
+addresses in a big endian word start at the big end of the word, while
+in a <A HREF="When_Do_We_Have.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/When_Do_We_Have.html')">little endian</A> architecture, they start at the little end of the
+word.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26542">...
+``endianness'':</A><A
+ HREF="When_Do_We_Have.html#tex2html198"><SUP>G.7</SUP></A></DT>
+<DD>Thanks to Bill Schottstaedt for help with this table.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26616">...,</A><A
+ HREF="Floating_Point_Numbers.html#tex2html200"><SUP>G.8</SUP></A></DT>
+<DD>The notation
+<SPAN CLASS="MATH">\([a,b)\)</SPAN> denotes a <I>half-open interval</I> which includes <SPAN CLASS="MATH">\(a\)</SPAN> but not <SPAN CLASS="MATH">\(b\)</SPAN>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26573">....</A><A
+ HREF="Floating_Point_Numbers.html#tex2html201"><SUP>G.9</SUP></A></DT>
+<DD>Another term commonly heard for ``significand''
+is ``mantissa.'' However, this use of the term ``mantissa'' is not the same
+as its previous definition as the fractional part of a logarithm. We will
+therefore use only the term ``significand'' to avoid confusion.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26580">... bias.</A><A
+ HREF="Floating_Point_Numbers.html#tex2html202"><SUP>G.10</SUP></A></DT>
+<DD>By choosing
+the bias equal to half the numerical dynamic range of <SPAN CLASS="MATH">\(E\)</SPAN> (thus effectively
+inverting the sign bit of the exponent), it becomes easier to compare two
+<A HREF="Floating_Point_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Floating_Point_Numbers.html')">floating-point numbers</A> in hardware: the entire floating-point word can be
+treated by the hardware as one giant integer for numerical comparison
+purposes.  This works because negative exponents correspond to
+floating-point numbers less than 1 in magnitude, while positive exponents
+correspond to floating-point numbers greater than 1 in magnitude.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot26594">...CODEC|textbfCODECs</A><A
+ HREF="Mu_Law_Coding.html#tex2html203"><SUP>G.11</SUP></A></DT>
+<DD>CODEC is an acronym for
+``COder/DECoder''.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot27324">... processing.</A><A
+ HREF="Round_Off_Error_Variance.html#tex2html204"><SUP>G.12</SUP></A></DT>
+<DD>The
+first by Gray and Davisson is available free online.  The second by
+Papoulis is a classic textbook.  The two volumes by Kay provide
+perhaps the most comprehensive coverage of the field.  The volumes by
+Sharf and Kailath represent material used for many years in the
+authors' respective graduate level courses in <A HREF="https://ccrma.stanford.edu/~jos/sasp/Beginning_Statistical_Signal_Processing.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Beginning_Statistical_Signal_Processing.html')">statistical signal
+processing</A>.  All of the cited authors are well known researchers and
+professors in the field.  It should also perhaps be noted that Book IV
+[<A
+ HREF="Bibliography.html#SASP">73</A>] in the music signal processing book series (of which this
+is Book I) contains a fair amount of introductory material in this area.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot27329">...PapoulisRV:</A><A
+ HREF="Round_Off_Error_Variance.html#tex2html205"><SUP>G.13</SUP></A></DT>
+<DD><A NAME="tex2html206"
+  HREF="http://en.wikipedia.org/wiki/Probability_density_function"><TT>http://en.wikipedia.org/wiki/Probability_density_function</TT></A>
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot27632">... element</A><A
+ HREF="Matrices.html#tex2html207"><SUP>H.1</SUP></A></DT>
+<DD>We are now using <SPAN CLASS="MATH">\(j\)</SPAN> as an
+integer counter, not as <SPAN CLASS="MATH">\(\sqrt{-1}\)</SPAN>.  This is standard notational
+practice.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot27635">...
+argument.</A><A
+ HREF="Matrix_Multiplication.html#tex2html208"><SUP>H.2</SUP></A></DT>
+<DD>Alternatively, it can be extended to the complex case by
+writing <SPAN CLASS="MATH">\(\mathbf{A}^{\ast }\mathbf{B}\isdef [\ldots&lt;b_j,a^{\ast }_i&gt;\ldots]\)</SPAN>, so that
+<SPAN CLASS="MATH">\(\mathbf{A}^{\ast }\)</SPAN> includes a conjugation of the elements of <SPAN CLASS="MATH">\(\mathbf{A}\)</SPAN>.  This
+difficulty arises from the fact that <A HREF="Matrix_Multiplication.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrix_Multiplication.html')">matrix multiplication</A> is really
+defined without consideration of conjugation or transposition at all,
+making it unwieldy to express in terms of inner products in the complex
+case, even though that is perhaps the most fundamental interpretation
+of a <A HREF="Matrix_Multiplication.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrix_Multiplication.html')">matrix multiply</A>.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot28521">... columns.</A><A
+ HREF="Signal_Metrics_I.html#tex2html209"><SUP>I.1</SUP></A></DT>
+<DD>For consistency with <TT>sum</TT> and other
+functions, it would be better if
+<TT>length()</TT> returned the number of elements along dimension
+1, with the special case of using dimension 2 (``along rows'') for
+row-vectors.  However, compatibility with early Matlab dictates
+the convention used.
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+<DT><A NAME="foot28524">... matrix|textbf.</A><A
+ HREF="Projection_I.html#tex2html210"><SUP>I.2</SUP></A></DT>
+<DD>Going back into ``math mode'', let's show that the
+<SPAN CLASS="MATH">\(N\times M\)</SPAN> <A HREF="https://mathworld.wolfram.com/ProjectionMatrix.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/ProjectionMatrix.html')">projection matrix</A> 
+<A NAME="eq:projX"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}{\bf P}= \mathbf{X}(\mathbf{X}^\ast \mathbf{X})^{-1} \mathbf{X}^\ast
+\end{equation}</DIV><P></P>
+yields <A HREF="Projection.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Projection.html')">orthogonal projection</A> onto the column-space of <SPAN CLASS="MATH">\(\mathbf{X}\)</SPAN> (when
+the <SPAN CLASS="MATH">\(M\times M\)</SPAN> matrix <SPAN CLASS="MATH">\(\mathbf{X}^\ast \mathbf{X}\)</SPAN> is invertible, and here
+<SPAN CLASS="MATH">\(\mathbf{X}^\ast\)</SPAN> denotes the Hermitian (conjugating) transpose of
+<SPAN CLASS="MATH">\(\mathbf{X}\)</SPAN>).  That is, if <SPAN CLASS="MATH">\(\hat{y}\isdeftext{\bf P}y\)</SPAN> is the
+projection of <SPAN CLASS="MATH">\(y\)</SPAN> onto <SPAN CLASS="MATH">\(\mathbf{X}\)</SPAN>, we must have, by definition of
+<A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A> projection (&#167;<A HREF="Projection.html#sec:projection">5.9.9</A>), that <SPAN CLASS="MATH">\(\hat{y}\)</SPAN> lies in the
+column-space of <SPAN CLASS="MATH">\(\mathbf{X}\)</SPAN>, and that <SPAN CLASS="MATH">\((y- \hat{y})\perp
+\hat{y}\)</SPAN>, or 
+<SPAN CLASS="MATH">\(\langle (\mathbf{I}-{\bf P})\underline{y},{\bf P}\underline{y}\rangle =0\)</SPAN>
+for any <SPAN CLASS="MATH">\(\underline{y}\in\mathbb{C}^N\)</SPAN>.
+We may say that <SPAN CLASS="MATH">\((\mathbf{I}-{\bf P})\)</SPAN> projects onto the
+<I>orthogonal complement</I><A NAME="28595"></A> of the column-space of <SPAN CLASS="MATH">\(\mathbf{X}\)</SPAN>.
+
+<P>
+That <SPAN CLASS="MATH">\(\hat{y}\)</SPAN> is a <A HREF="https://mathworld.wolfram.com/LinearCombination.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearCombination.html')">linear combination</A> of the columns of <SPAN CLASS="MATH">\(\mathbf{X}\)</SPAN> is
+immediate because <SPAN CLASS="MATH">\(\mathbf{X}\)</SPAN> is the leftmost term of the definition of
+<SPAN CLASS="MATH">\({\bf P}\)</SPAN> in Eq.(<A HREF="Projection_I.html#eq:projX">I.1</A>).  To show <A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonality</A> of the ``projection
+error'', <I>i.e.</I>, that <SPAN CLASS="MATH">\(\langle (\mathbf{I}-{\bf P})\underline{y},{\bf P}\underline{y}\rangle =0\)</SPAN> for all
+<SPAN CLASS="MATH">\(\underline{y}\in\mathbb{C}^N\)</SPAN>, note that in <A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">matrix notation</A> we must show
+<SPAN CLASS="MATH">\(\underline{y}^\ast{\bf P}^\ast(\mathbf{I}-{\bf P})\underline{y}=0\)</SPAN> for all <SPAN CLASS="MATH">\(\underline{y}\)</SPAN>, which
+requires <SPAN CLASS="MATH">\({\bf P}^\ast(\mathbf{I}-{\bf P})=0\)</SPAN>, or
+<SPAN CLASS="MATH">\({\bf P}^\ast={\bf P}^\ast{\bf P}\)</SPAN>.  Since <SPAN CLASS="MATH">\({\bf P}\isdeftext\mathbf{X}
+(\mathbf{X}^\ast \mathbf{X})^{-1} \mathbf{X}^\ast\)</SPAN>, it is Hermitian symmetric, so
+that the orthogonal projection requirement becomes
+<SPAN CLASS="MATH">\({\bf P}={\bf P}^2\)</SPAN>, which is easily verified for <SPAN CLASS="MATH">\({\bf P}\)</SPAN> as
+defined in Eq.(<A HREF="Projection_I.html#eq:projX">I.1</A>).
+
+<P>
+The general property <SPAN CLASS="MATH">\({\bf P}^2={\bf P}\)</SPAN> defines an <I><A HREF="https://mathworld.wolfram.com/Idempotent.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Idempotent.html')">idempotent</A></I><A NAME="28634"></A>
+square matrix <SPAN CLASS="MATH">\({\bf P}\)</SPAN>.  Intuitively, it makes sense that a
+projection should be idempotent, because once a vector is projected
+onto a particular subspace, projecting again should do nothing.  All
+idempotent matrices are projection matrices, and vice versa.  However,
+only Hermitian (symmetric) idempotent matrices correspond to orthogonal
+projection [<A
+ HREF="Bibliography.html#MoslehianEtAl">48</A>].
+
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DD>
+</DL>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

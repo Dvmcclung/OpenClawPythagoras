@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Signal Metrics</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Signal Metrics">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Inner_Product.html">
+<LINK REL="previous" HREF="Linear_Vector_Space.html">
+<LINK REL="up" HREF="Geometric_Signal_Theory.html">
+<LINK REL="next" HREF="Example.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1603"
+  HREF="Example.html" 
+ onMouseover="return escape('Example:')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1593"
+  HREF="Linear_Vector_Space.html" 
+ onMouseover="return escape('Linear Vector Space')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1599"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1601"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00680000000000000000"></A><A NAME="sec:signalmetrics"></A><A NAME="10939"></A>
+<BR>
+<A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">Signal</A> Metrics
+</H2>
+
+<P>
+This section defines some useful functions of signals (vectors).
+
+<P>
+The <I>mean</I> <A NAME="10940"></A><A NAME="10941"></A> of a
+signal <SPAN CLASS="MATH">\(x\)</SPAN> (more precisely the ``sample mean'') is defined as the
+<I>average value</I> of its samples:<A NAME="tex2html58"
+  HREF="footnode.html#foot10025"><SUP>5.5</SUP></A><P></P>
+<DIV CLASS="MATHDISPLAY">\[\mu_x \isdef \frac{1}{N}\sum_{n=0}^{N-1}x_n \qquad \mbox{(mean of $x$)}\]</DIV><P></P>
+
+<P>
+The <I>total energy</I><A NAME="10945"></A><A NAME="10946"></A>
+of a signal <SPAN CLASS="MATH">\(x\)</SPAN> is defined as the <I>sum of squared moduli</I>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[{\cal E}_x \isdef \sum_{n=0}^{N-1}\left|x_n\right|^2 \qquad \mbox{(energy of $x$)}\]</DIV><P></P>
+
+<P>
+In <A HREF="https://scienceworld.wolfram.com/physics/" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/')">physics</A>, energy (the ``ability to do work'') and work are in units
+of ``<A HREF="https://scienceworld.wolfram.com/physics/Force.html" onMouseover="return escape('A &lt;i&gt;force&lt;/i&gt; is required to change the &lt;i&gt;momentum&lt;/i&gt; of an object.  In the absence of external forces, momentum is conserved.  For a mass m in flight, the momentum is m v, where v denotes the velocity of the mass.  Newton\&#39;s second law, F = m a, says that force equals mass times acceleration, i.e., force equals the time derivative of momentum. &nbsp;&#8212;&nbsp; Click for https://scienceworld.wolfram.com/physics/Force.html')">force</A> times distance,'' ``<A HREF="http://hyperphysics.phy-astr.gsu.edu/hbase/mass.html#mas" onMouseover="return escape('Click for http://hyperphysics.phy-astr.gsu.edu/hbase/mass.html#mas')">mass</A> times <A HREF="http://ccrma.stanford.edu/~jos/Mohonk05/Ideal_Struck_String_Velocity.html" onMouseover="return escape('The velocity of an object is the time derivative of the object\&#39;s displacement. Velocity is a commonly chosen wave variable in physical modeling. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/Mohonk05/Ideal_Struck_String_Velocity.html')">velocity</A> squared,'' or other
+equivalent combinations of units.<A NAME="tex2html59"
+  HREF="footnode.html#foot10719"><SUP>5.6</SUP></A>  In <A HREF="https://ccrma.stanford.edu/~jos/filters/Book_Series_Overview.html" onMouseover="return escape('The subject of &lt;i&gt;Digital Signal Processing&lt;/i&gt; (DSP) is concerned with the computational processing of digital signals.  An example digital signal is music from a compact disk (CD).  An example DSP task is modifying the tone of a digital audio stream, such as boosting its bass or treble.  Another DSP example is compressing digital audio into MP3 format, or decoding an MP3 stream. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Book_Series_Overview.html')">digital signal processing</A>, physical units are routinely
+discarded, and signals are renormalized whenever convenient.
+Therefore, <SPAN CLASS="MATH">\({\cal E}_x\)</SPAN> is defined above without regard for constant
+scale factors such as ``<A HREF="https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html" onMouseover="return escape('The &lt;i&gt;wave impedance&lt;/i&gt; in a propagation medium is the force variable (such as pressure for acoustic waves) divided by the velocity variable.  In ideal plane waves and traveling waves, the wave impedance is a real, positive number.  For spherical waves in air, the wave impedance is different at each frequency. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/OnePorts/Impedance.html')">wave impedance</A>'' or the <A HREF="Sampling_Theorem.html" onMouseover="return escape('The sampling interval (or sampling period) of a discrete-time signal is defined as the reciprocal of the sampling rate.  Since the sampling rate is normally in units of samples per second (Hz), the sampling interval is normally in units of seconds.  See also: sampling rate, sampling theorem &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling interval</A> <SPAN CLASS="MATH">\(T\)</SPAN>.
+
+<P>
+The <I>average power</I><A NAME="10952"></A> of a signal <SPAN CLASS="MATH">\(x\)</SPAN> is defined as the <I>energy
+per sample</I>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[{\cal P}_x \isdef \frac{{\cal E}_x}{N} = \frac{1}{N} \sum_{n=0}^{N-1}\left|x_n\right|^2 \qquad 
+	\mbox{(average power of $x$)}\]</DIV><P></P>
+Another common description when <SPAN CLASS="MATH">\(x\)</SPAN> is real is the <I>mean square</I><A NAME="10958"></A>.
+When <SPAN CLASS="MATH">\(x\)</SPAN> is a complex <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A>, <I>i.e.</I>, <SPAN CLASS="MATH">\(x(n) = Ae^{j(\omega nT +
+\phi)}\)</SPAN>, then <SPAN CLASS="MATH">\({\cal P}_x = A^2\)</SPAN>; in other words, for <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex sinusoids</A>,
+the average power equals the <I>instantaneous power</I> which is the
+amplitude squared.  For real <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoids</A>, <SPAN CLASS="MATH">\(y_n =
+\realPart{x_n}=A\cos(\omega nT+\phi)\)</SPAN>, we have <SPAN CLASS="MATH">\({\cal P}_y = A^2/2\)</SPAN>.
+
+<P>
+Power is always in physical units of energy per unit time.  It therefore
+makes sense to define the average signal power as the total signal energy
+divided by its length.  We normally work with signals which are functions
+of time.  However, if the signal happens instead to be a function of
+distance (<I>e.g.</I>, samples of <A HREF="http://ccrma.stanford.edu/~jos/Mohonk05/Ideal_Plucked_String_Displacement.html" onMouseover="return escape('The displacement of an object describes how far away and in what direction it has been moved, or &lt;i&gt;displaced&lt;/i&gt;, from its rest position. Displacement is a commonly chosen wave variable in physical modeling. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/Mohonk05/Ideal_Plucked_String_Displacement.html')">displacement</A> along a <A HREF="https://ccrma.stanford.edu/~jos/pasp/Ideal_Vibrating_String.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/pasp/Ideal_Vibrating_String.html')">vibrating string</A>), then the
+``power'' as defined here still has the interpretation of a <I>spatial
+energy density</I>.  Power, in contrast, is a <I>temporal energy density</I><A NAME="10964"></A>.
+
+<P>
+The <I>root mean square</I><A NAME="10966"></A> (RMS) level of a signal <SPAN CLASS="MATH">\(x\)</SPAN> is simply
+<SPAN CLASS="MATH">\(\sqrt{{\cal P}_x}\)</SPAN>.  However, note that in practice (especially in audio
+work) an RMS level is typically computed after subtracting out any
+nonzero mean value.  
+<P>
+The <I>variance</I><A NAME="10969"></A> (more precisely the <I>sample variance</I><A NAME="10971"></A>) of the
+signal <SPAN CLASS="MATH">\(x\)</SPAN> is defined as the power of the signal with its mean
+removed:<A NAME="tex2html60"
+  HREF="footnode.html#foot10720"><SUP>5.7</SUP></A><P></P>
+<DIV CLASS="MATHDISPLAY">\[\sigma_x^2 \isdef \frac{1}{N}\sum_{n=0}^{N-1}\left|x_n - \mu_x\right|^2 \qquad\mbox{(sample variance of $x$)}\]</DIV><P></P>
+It is quick to show that, for real signals, we have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\sigma_x^2 = {\cal P}_x - \mu_x^2\]</DIV><P></P>
+which is the ``mean square minus the mean squared.''  We think of the
+variance as the power of the non-constant signal components (<I>i.e.</I>,
+everything but <A HREF="https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html" onMouseover="return escape('&lt;i&gt;dc&lt;/i&gt; stands for &lt;i&gt;direct current&lt;i&gt; in electrical engineering and signal processing (as opposed to \&#39;alternating current\&#39;).  The mean (average value) of a signal may be called its dc component.  Similarly, frequency zero is called the dc frequency, because a sinusoid with zero frequency is a constant signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html')">dc</A>).  The terms ``sample mean'' and ``sample variance''
+come from the field of <I>statistics</I>, particularly the theory of
+<I>stochastic processes</I>.  The field of <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Beginning_Statistical_Signal_Processing.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Beginning_Statistical_Signal_Processing.html')">statistical signal
+processing</A></I> [<A
+ HREF="Bibliography.html#GrayAndDavisson03">28</A>,<A
+ HREF="Bibliography.html#Kay93">34</A>,<A
+ HREF="Bibliography.html#Sharf91">68</A>] is firmly rooted in
+statistical topics such as ``probability,'' ``random variables,''
+``stochastic processes,'' and ``time series analysis.'' In this book,
+we will only touch lightly on a few elements of statistical signal
+processing in a self-contained way.
+
+<P>
+
+<P>
+The <I><A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norm</A></I> (more specifically, the <I><SPAN CLASS="MATH">\(\ensuremath{L_2}\)</SPAN> norm</I><A NAME="10977"></A>, or
+<I>Euclidean norm</I><A NAME="10981"></A>) of a signal <SPAN CLASS="MATH">\(x\)</SPAN> is defined as the square root
+of its total energy:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\|x\| \isdef \sqrt{{\cal E}_x} = \sqrt{\sum_{n=0}^{N-1}\left|x_n\right|^2} \qquad \mbox{(norm of $x$)}\]</DIV><P></P>
+We think of <SPAN CLASS="MATH">\(\|x\|\)</SPAN> as the <I>length</I> of the vector <SPAN CLASS="MATH">\(x\)</SPAN> in <SPAN CLASS="MATH">\(N\)</SPAN>-space.
+Furthermore, <SPAN CLASS="MATH">\(\|x-y\|\)</SPAN> is regarded as the <I>distance</I> between
+<SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN>.  The norm can also be thought of as the ``absolute value'' or
+``radius'' of a vector.<A NAME="tex2html61"
+  HREF="footnode.html#foot10084"><SUP>5.8</SUP></A>
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><UL>
+<LI><UL>
+<LI><A NAME="tex2html1604"
+  HREF="Example.html">Example:</A>
+<LI><A NAME="tex2html1605"
+  HREF="Example_I.html">Example:</A>
+<LI><A NAME="tex2html1606"
+  HREF="Example_I_I.html">Example:</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html1607"
+  HREF="Other_Lp_Norms.html">Other Lp Norms</A>
+<LI><A NAME="tex2html1608"
+  HREF="Norm_Properties.html">Norm Properties</A>
+<LI><A NAME="tex2html1609"
+  HREF="Summary_Related_Mathematical_Topics.html">Summary and Related Mathematical Topics</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1603"
+  HREF="Example.html" 
+ onMouseover="return escape('Example:')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1593"
+  HREF="Linear_Vector_Space.html" 
+ onMouseover="return escape('Linear Vector Space')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1599"
+  HREF="Geometric_Signal_Theory.html" 
+ onMouseover="return escape('Geometric Signal Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1601"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

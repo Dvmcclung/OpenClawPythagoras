@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Back to Mth Roots</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Back to Mth Roots">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Roots_Unity.html">
+<LINK REL="previous" HREF="e_j_theta.html">
+<LINK REL="up" HREF="Proof_Euler_s_Identity.html">
+<LINK REL="next" HREF="Roots_Unity.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html996"
+  HREF="Roots_Unity.html" 
+ onMouseover="return escape('Roots of Unity')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html986"
+  HREF="e_j_theta.html" 
+ onMouseover="return escape('e^(j theta)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html992"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html994"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION004130000000000000000"></A><A NAME="sec:mthroots"></A><A NAME="6866"></A>
+<BR>
+Back to Mth Roots
+</H2>
+
+<P>
+As mentioned in &#167;<A HREF="Rational_Exponents.html#sec:ratexps">3.4</A>, there are <SPAN CLASS="MATH">\(M\)</SPAN> different numbers <SPAN CLASS="MATH">\(r\)</SPAN>
+which satisfy <SPAN CLASS="MATH">\(r^M=a\)</SPAN> when <SPAN CLASS="MATH">\(M\)</SPAN> is a positive integer.
+That is, the <SPAN CLASS="MATH">\(M\)</SPAN>th root of <SPAN CLASS="MATH">\(a\)</SPAN>, which is
+written as <SPAN CLASS="MATH">\(a^{1/M}\)</SPAN>, is not unique--there are <SPAN CLASS="MATH">\(M\)</SPAN> of them.  How do
+we find them all?  The answer is to consider <I>complex</I> numbers in
+<A NAME="6867"></A><I>polar form</I>.  
+By <A HREF="Proof_Euler_s_Identity.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Proof_Euler_s_Identity.html')">Euler's Identity</A>, which we just proved, any number,
+real or complex, can be written in polar form as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z = r e^{j\theta}\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(r\geq 0\)</SPAN> and <SPAN CLASS="MATH">\(\theta\in[-\pi,\pi)\)</SPAN> are <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real numbers</A>.
+Since, by Euler's identity, <SPAN CLASS="MATH">\(e^{j2\pi k}=\cos(2\pi k)+j\sin(2\pi k)=1\)</SPAN>
+for every integer <SPAN CLASS="MATH">\(k\)</SPAN>, we also have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z = r e^{j\theta} e^{j2\pi k}.\]</DIV><P></P>
+Taking the <SPAN CLASS="MATH">\(M\)</SPAN>th root gives 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z^{\frac{1}{M}} = 
+\left(r e^{j\theta} e^{j2\pi k}\right)^{\frac{1}{M}}
+= r^{\frac{1}{M}} e^{j\frac{\theta}{M}} e^{j2\pi \frac{k}{M}}
+= r^{\frac{1}{M}} e^{j\frac{\theta+2\pi k}{M}}, \quad k\in \mathbb{Z}.\]</DIV><P></P>
+There are <SPAN CLASS="MATH">\(M\)</SPAN> different results obtainable using different values of
+<SPAN CLASS="MATH">\(k\)</SPAN>, <I>e.g.</I>, <SPAN CLASS="MATH">\(k=0,1,2,\dots,M-1\)</SPAN>.  When <SPAN CLASS="MATH">\(k=M\)</SPAN>, we get the same thing as
+when <SPAN CLASS="MATH">\(k=0\)</SPAN>.  When <SPAN CLASS="MATH">\(k=M+1\)</SPAN>, we get the same thing as when <SPAN CLASS="MATH">\(k=1\)</SPAN>, and so
+on, so there are only <SPAN CLASS="MATH">\(M\)</SPAN> distinct cases.  Thus, we may define the
+<SPAN CLASS="MATH">\(k\)</SPAN>th <SPAN CLASS="MATH">\(M\)</SPAN>th-root of <SPAN CLASS="MATH">\(z=r e^{j\theta}\)</SPAN> as 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[r^{\frac{1}{M}} e^{j\frac{\theta+2\pi k}{M}}, \quad k=0,1,2,\dots,M-1.\]</DIV><P></P>
+These are the <SPAN CLASS="MATH">\(M\)</SPAN> <SPAN CLASS="MATH">\(M\)</SPAN>th-roots of the <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex number</A> <SPAN CLASS="MATH">\(z=r e^{j\theta}\)</SPAN>.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html996"
+  HREF="Roots_Unity.html" 
+ onMouseover="return escape('Roots of Unity')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html986"
+  HREF="e_j_theta.html" 
+ onMouseover="return escape('e^(j theta)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html992"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html994"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

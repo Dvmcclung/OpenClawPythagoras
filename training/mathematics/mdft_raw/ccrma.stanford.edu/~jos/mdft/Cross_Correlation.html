@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Cross-Correlation</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Cross-Correlation">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Unbiased_Cross_Correlation.html">
+<LINK REL="previous" HREF="Correlation_Analysis.html">
+<LINK REL="up" HREF="Correlation_Analysis.html">
+<LINK REL="next" HREF="Unbiased_Cross_Correlation.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3124"
+  HREF="Unbiased_Cross_Correlation.html" 
+ onMouseover="return escape('Unbiased Cross-Correlation')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3114"
+  HREF="Correlation_Analysis.html" 
+ onMouseover="return escape('Correlation Analysis')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3120"
+  HREF="Correlation_Analysis.html" 
+ onMouseover="return escape('Correlation Analysis')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3122"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00941000000000000000"></A><A NAME="sec:crosscorr"></A><A NAME="21374"></A>
+<BR>
+Cross-<A HREF="Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Correlation.html')">Correlation</A>
+</H3>
+
+<P>
+<A NAME="21375"></A>
+
+<P>
+<BR>
+<BR><B>Definition: </B>The <I>circular cross-correlation</I><A NAME="21379"></A> of two <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signals</A> <SPAN CLASS="MATH">\(x\)</SPAN> and
+<SPAN CLASS="MATH">\(y\)</SPAN> in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> may be defined by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{{\hat r}_{xy}(l) \isdefs \frac{1}{N}(x\star y)(l)
+	\isdefs \frac{1}{N}\sum_{n=0}^{N-1}\overline{x(n)} y(n+l), \; l=0,1,2,\ldots,N-1.}\]</DIV><P></P>
+(Note that the ``lag'' <SPAN CLASS="MATH">\(l\)</SPAN> is an integer variable, not the constant
+<SPAN CLASS="MATH">\(1\)</SPAN>.)  The <I><A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> correlation operator</I> `<SPAN CLASS="MATH">\(\star\)</SPAN>' was first defined in
+&#167;<A HREF="Correlation.html#sec:correlation">7.2.5</A>.
+
+<P>
+The term ``cross-correlation'' comes from
+<I>statistics</I>, and what we have defined here is more properly
+called a ``sample cross-correlation.'' 
+That is, <SPAN CLASS="MATH">\({\hat r}_{xy}(l)\)</SPAN> is an
+<I>estimator</I><A NAME="tex2html118"
+  HREF="footnode.html#foot21308"><SUP>8.8</SUP></A>  of the true
+cross-correlation <SPAN CLASS="MATH">\(r_{xy}(l)\)</SPAN> which is an assumed statistical property
+of the signal itself.  This definition of a sample cross-correlation is only valid for
+<I>stationary</I> stochastic processes, <I>e.g.</I>, ``steady <A HREF="https://ccrma.stanford.edu/~jos/sasp/What_Noise.html" onMouseover="return escape('Noise (in signal processing) is a random signal.  In the language of statistical signal processing, a noise signal is typically modeled as \&#39;stochastic process\&#39;, which is in turn defined as a sequence of random variables. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/What_Noise.html')">noises</A>'' that
+sound unchanged over time.  The statistics of a stationary stochastic
+process are by definition <I>time invariant</I>, thereby allowing
+<I>time-averages</I> to be used for estimating statistics such
+as cross-correlations.  For brevity below, we will typically
+<I>not</I> include the ``sample'' qualifier, because all computational
+methods discussed will be sample-based methods intended for use on
+stationary data segments.
+
+<P>
+The DFT of the cross-correlation may be called the <I>cross-spectral
+density</I><A NAME="21392"></A>, or ``cross-power <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>,'' or even simply ``cross-spectrum'':
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[{\hat R}_{xy}(\omega_k) \isdef \oper{DFT}_k({\hat r}_{xy}) = \frac{\overline{X(\omega_k)}Y(\omega_k)}{N}\]</DIV><P></P>
+The last equality above follows from the <A HREF="Correlation_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Correlation_Theorem.html')">correlation theorem</A>
+(&#167;<A HREF="Correlation_Theorem.html#sec:corrthm">7.4.7</A>).
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3124"
+  HREF="Unbiased_Cross_Correlation.html" 
+ onMouseover="return escape('Unbiased Cross-Correlation')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3114"
+  HREF="Correlation_Analysis.html" 
+ onMouseover="return escape('Correlation Analysis')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3120"
+  HREF="Correlation_Analysis.html" 
+ onMouseover="return escape('Correlation Analysis')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3122"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

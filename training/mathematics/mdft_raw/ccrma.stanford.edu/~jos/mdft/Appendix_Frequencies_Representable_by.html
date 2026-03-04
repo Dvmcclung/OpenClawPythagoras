@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Geometric Sequence Frequencies</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Geometric Sequence Frequencies">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Sampling_Theorem.html">
+<LINK REL="up" HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html">
+<LINK REL="next" HREF="Taylor_Series_Expansions.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3685"
+  HREF="Taylor_Series_Expansions.html" 
+ onMouseover="return escape('Taylor Series Expansions')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3677"
+  HREF="Sampling_Theorem.html" 
+ onMouseover="return escape('Sampling Theorem')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3681"
+  HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" 
+ onMouseover="return escape('Sampling Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3683"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001340000000000000000"></A><A NAME="sec:freqrep"></A><A NAME="24283"></A>
+<BR>
+Appendix: Frequencies Representable 
+<BR>
+by a <A HREF="https://en.wikipedia.org/wiki/Geometric_progression" onMouseover="return escape('A &lt;i&gt;geometric progression&lt;/i&gt; (also called a &lt;i&gt;geometric sequence&lt;/i&gt;) is a sequence of numbers in which each number in the sequence (after the first) is obtained by multiplying the previous number in the sequence by a fixed constant called the &lt;i&gt;common ratio&lt;/i&gt;.  Thus, the general form is &lt;i&gt;a, a r, a r&lt;sup&gt;2&lt;/sup&gt;, a r&lt;sup&gt;3&lt;/sup&gt;, ... &lt;i&gt;, where &lt;i&gt;r&lt;/i&gt; denotes the common ratio and &lt;i&gt;a&lt;/i&gt; is the starting number in the sequence. &nbsp;&#8212;&nbsp; Click for https://en.wikipedia.org/wiki/Geometric_progression')">Geometric Sequence</A>
+</H2>
+
+<P>
+
+<P>
+Consider <SPAN CLASS="MATH">\(z_0\in\mathbb{C}\)</SPAN>, with <SPAN CLASS="MATH">\(|z_0|=1\)</SPAN>.  Then we can write
+<SPAN CLASS="MATH">\(z_0\)</SPAN> in polar form as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z_0\isdef e^{j\theta_0 } \isdef e^{j\omega_0 T},\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(\theta_0\)</SPAN>, <SPAN CLASS="MATH">\(\omega_0\)</SPAN>, and <SPAN CLASS="MATH">\(T\)</SPAN> are <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real numbers</A>.
+
+<P>
+Forming a geometric sequence based on <SPAN CLASS="MATH">\(z_0\)</SPAN> yields the sequence
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x(t_n) \isdef z_0^n = e^{j\theta_0 n} = e^{j\omega_0 t_n}\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(t_n\isdef nT\)</SPAN>.  Thus, successive integer powers of <SPAN CLASS="MATH">\(z_0\)</SPAN>
+produce a <I>sampled complex <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A></I> with unit amplitude, and
+<A HREF="https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html')">zero phase</A>.  Defining the <I><A HREF="Sampling_Theorem.html" onMouseover="return escape('The sampling interval (or sampling period) of a discrete-time signal is defined as the reciprocal of the sampling rate.  Since the sampling rate is normally in units of samples per second (Hz), the sampling interval is normally in units of seconds.  See also: sampling rate, sampling theorem &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling interval</A></I> as <SPAN CLASS="MATH">\(T\)</SPAN> in seconds
+provides that <SPAN CLASS="MATH">\(\omega_0\)</SPAN> is the <I>radian frequency</I> in radians per
+second.
+
+<P>
+A natural question to investigate is what frequencies <SPAN CLASS="MATH">\(\omega_0\)</SPAN> are
+possible.  The angular step of the point <SPAN CLASS="MATH">\(z_0^n\)</SPAN> along the unit circle
+in the <A HREF="Complex_Plane.html" onMouseover="return escape('The &lt;i&gt;complex plane&lt;/i&gt; may be defined as the graph of all complex numbers \textit{z} = \textit{x} + \textit{j y} formed by using the real part \textit{x} as the horizontal coordinate and the imaginary part \textit{y} as the vertical coordinate on the graph.  In other words, each complex number \textit{z} = \textit{x} + \textit{j y} corresponds to a point in the complex plane located at Cartesian coordinate (\textit{x,y}). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Plane.html')">complex plane</A> is <SPAN CLASS="MATH">\(\theta_0 =\omega_0 T\)</SPAN>.  Since <SPAN CLASS="MATH">\(e^{j(\theta_0 n + 2\pi)} =
+e^{j\theta_0 n}\)</SPAN>, an angular step <SPAN CLASS="MATH">\(\theta_0 &gt;2\pi\)</SPAN> is indistinguishable from
+the angular step <SPAN CLASS="MATH">\(\theta_0 -2\pi\)</SPAN>.  Therefore, we must restrict the
+angular step <SPAN CLASS="MATH">\(\theta_0\)</SPAN> to a length <SPAN CLASS="MATH">\(2\pi\)</SPAN> range in order to avoid
+ambiguity.
+
+<P>
+Recall from &#167;<A HREF="Positive_Negative_Frequencies.html#sec:posnegfreq">4.3.3</A> that we need support for both positive
+and <A HREF="Positive_Negative_Frequencies.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Positive_Negative_Frequencies.html')">negative frequencies</A> since equal magnitudes of each must be summed
+to produce real <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoids</A>, as indicated by the identities
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\cos(\omega_0 t_n) &=& \frac{1}{2}e^{j\omega_0 t_n} + \frac{1}{2}e^{-j\omega_0 t_n} \\
+\sin(\omega_0 t_n) &=& -\frac{j}{2}e^{j\omega_0 t_n} + \frac{j}{2}e^{-j\omega_0 t_n}.\end{eqnarray*}</DIV><P></P>
+The length <SPAN CLASS="MATH">\(2\pi\)</SPAN> range which is symmetric about zero is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\theta_0 \in [-\pi,\pi],\]</DIV><P></P>
+which, since <SPAN CLASS="MATH">\(\theta_0 =\omega_0 T= 2\pi f_0T\)</SPAN>, corresponds to the frequency range
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\omega_0 &\in& \left[-\frac{\pi}{T},\frac{\pi}{T}\right]\\
+f_0&\in& \left[-\frac{f_s}{2},\frac{f_s}{2}\right].\end{eqnarray*}</DIV><P></P>
+However, there is a problem with the point at <SPAN CLASS="MATH">\(f_0=\pm f_s/2\)</SPAN>: Both
+<SPAN CLASS="MATH">\(+f_s/2\)</SPAN> and <SPAN CLASS="MATH">\(-f_s/2\)</SPAN> correspond to the same point <SPAN CLASS="MATH">\(z_0=-1\)</SPAN> in the
+<SPAN CLASS="MATH">\(z\)</SPAN>-plane.  Technically, this can be viewed as <I><A HREF="Alias_Operator.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Alias_Operator.html')">aliasing</A></I> of the
+frequency <SPAN CLASS="MATH">\(-f_s/2\)</SPAN> on top of <SPAN CLASS="MATH">\(f_s/2\)</SPAN>, or vice versa.  The practical
+impact is that it is not possible in general to reconstruct a sinusoid
+from its samples at this frequency.  For an obvious example, consider
+the sinusoid at half the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling-rate</A> sampled on its zero-crossings:
+<SPAN CLASS="MATH">\(\sin(\omega_0 t_n) = \sin(\pi n) \equiv 0\)</SPAN>.  We cannot be expected to
+reconstruct a nonzero <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> from a sequence of zeros!  For the signal
+<SPAN CLASS="MATH">\(\cos(\omega_0 t_n) = \cos(\pi n) = (-1)^n\)</SPAN>, on the other hand, we sample
+the positive and negative peaks, and everything looks fine.  In
+general, we either do not know the amplitude, or we do not know phase
+of a sinusoid sampled at exactly twice its frequency, and if we hit the
+zero crossings, we lose it altogether.
+
+<P>
+In view of the foregoing, we may define the valid range of ``digital
+frequencies'' to be
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\theta_0 &\in& [-\pi,\pi) \\
+\omega_0 &\in& [-\pi/T,\pi/T) \\
+f_0&\in& [-f_s/2,f_s/2).\end{eqnarray*}</DIV><P></P>
+While one might have expected the open interval <SPAN CLASS="MATH">\((-\pi,\pi)\)</SPAN>, we are
+free to give the point <SPAN CLASS="MATH">\(z_0=-1\)</SPAN> either the largest positive or largest
+negative representable frequency.  Here, we chose the largest <A HREF="Positive_Negative_Frequencies.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Positive_Negative_Frequencies.html')">negative
+frequency</A> since it corresponds to the assignment of numbers in <A HREF="Two_s_Complement_Fixed_Point_Format.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Two_s_Complement_Fixed_Point_Format.html')">two's
+complement arithmetic</A>, which is often used to implement phase
+registers in <A HREF="http://www.stanford.edu/~dattorro/EffectDesignPart3.pdf" onMouseover="return escape('Click for http://www.stanford.edu/~dattorro/EffectDesignPart3.pdf')">sinusoidal oscillators</A>.  Since there is no corresponding
+positive-frequency component, samples at <SPAN CLASS="MATH">\(f_s/2\)</SPAN> must be interpreted
+as samples of clockwise circular motion around the unit circle at two
+points per revolution.  Such signals appear as an
+alternating sequence of the form
+<SPAN CLASS="MATH">\(c(-1)^n\)</SPAN>, where <SPAN CLASS="MATH">\(c\)</SPAN> can be complex.  The amplitude at <SPAN CLASS="MATH">\(-f_s/2\)</SPAN> is
+then defined as <SPAN CLASS="MATH">\(|c|\)</SPAN>, and the phase is <SPAN CLASS="MATH">\(\angle c\)</SPAN>.
+
+<P>
+We have seen that uniformly spaced samples can represent frequencies
+<SPAN CLASS="MATH">\(f_0\)</SPAN> only in the range <SPAN CLASS="MATH">\([-f_s/2,f_s/2)\)</SPAN>, where <SPAN CLASS="MATH">\(f_s\)</SPAN> denotes the
+<A HREF="Sampling_Theory.html" onMouseover="return escape('Sampling is the process of converting a continuous-time signal into a discrete-time signal. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling</A> rate.  Frequencies outside this range yield sampled sinusoids
+indistinguishable from frequencies inside the range. 
+
+<P>
+Suppose we henceforth agree to sample at <I>higher</I> than twice the
+highest frequency in our continuous-time signal. This is normally
+ensured in practice by lowpass-<A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filtering</A> the input signal to remove
+all <A HREF="Signal_Metrics.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Signal_Metrics.html')">signal energy</A> at <SPAN CLASS="MATH">\(f_s/2\)</SPAN> and above. Such a filter is called an
+<I>anti-aliasing filter</I>, and it is a standard first stage in an
+<I>Analog-to-Digital (A/D) Converter (ADC)</I>.  Nowadays, ADCs are normally
+implemented within a single integrated circuit chip, such as a CODEC
+(for ``coder/decoder'') or ``multimedia chip''.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3685"
+  HREF="Taylor_Series_Expansions.html" 
+ onMouseover="return escape('Taylor Series Expansions')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3677"
+  HREF="Sampling_Theorem.html" 
+ onMouseover="return escape('Sampling Theorem')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3681"
+  HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" 
+ onMouseover="return escape('Sampling Theory')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3683"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

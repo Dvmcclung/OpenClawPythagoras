@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Gram-Schmidt Orthogonalization</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Gram-Schmidt Orthogonalization">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Signal_Vector_Reconstruction_Projections.html">
+<LINK REL="up" HREF="Signal_Reconstruction_Projections.html">
+<LINK REL="next" HREF="Signal_Projection_Problems.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1915"
+  HREF="Signal_Projection_Problems.html" 
+ onMouseover="return escape('Signal Projection Problems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1907"
+  HREF="Signal_Vector_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal/Vector Reconstruction from Projections')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1911"
+  HREF="Signal_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal Reconstruction from Projections')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1913"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION006106000000000000000"></A><A NAME="sec:gso"></A><A NAME="11873"></A>
+<BR>
+<A HREF="https://scienceworld.wolfram.com/physics/Gram.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Gram.html')">Gram</A>-Schmidt Orthogonalization
+</H3>
+
+<P>
+Recall from the end of &#167;<A HREF="Signal_Reconstruction_Projections.html#sec:reconstr">5.10</A> above that an
+<I>orthonormal</I> set of vectors is a set of <I>unit-length</I>
+vectors that are mutually <I><A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A></I>.  In other words, an
+orthonormal vector set is just an orthogonal vector set in which each
+vector <SPAN CLASS="MATH">\(\underline{s}_i\)</SPAN> has been normalized to unit length
+<SPAN CLASS="MATH">\(\underline{s}_i/ ||\,\underline{s}_i\,||\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>Given a set of <SPAN CLASS="MATH">\(N\)</SPAN> <A HREF="https://mathworld.wolfram.com/LinearlyIndependent.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearlyIndependent.html')">linearly independent</A> vectors
+<SPAN CLASS="MATH">\(\underline{s}_0,\ldots,\underline{s}_{N-1}\)</SPAN> from <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>, we can construct an
+<I>orthonormal</I> set <SPAN CLASS="MATH">\(\underline{\tilde{s}}_0,\ldots,\underline{\tilde{s}}_{N-1}\)</SPAN> which are <A HREF="https://mathworld.wolfram.com/LinearCombination.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearCombination.html')">linear
+combinations</A> of the original set and which span the same space.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>We prove the theorem by constructing the desired orthonormal
+set <SPAN CLASS="MATH">\({\underline{\tilde{s}}_k}\)</SPAN> sequentially from the original set <SPAN CLASS="MATH">\({\underline{s}_k}\)</SPAN>.
+This procedure is known as <I>Gram-Schmidt orthogonalization</I>.
+
+<P>
+First, note that <SPAN CLASS="MATH">\(\underline{s}_k\ne \underline{0}\)</SPAN> for all <SPAN CLASS="MATH">\(k\)</SPAN>, since <SPAN CLASS="MATH">\(\underline{0}\)</SPAN> is
+linearly dependent on every vector.  Therefore, <SPAN CLASS="MATH">\(||\,\underline{s}_k\,|| \ne
+0\)</SPAN>.
+
+<P>
+
+<UL>
+<LI>Set <SPAN CLASS="MATH">\(\underline{\tilde{s}}_0 \isdef \frac{\underline{s}_0}{\left\|\,\underline{s}_0\,\right\|}\)</SPAN>.
+</LI>
+<LI>Define <SPAN CLASS="MATH">\(\underline{x}_1\)</SPAN> as <SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN> minus the projection of 
+<SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN> onto <SPAN CLASS="MATH">\(\underline{\tilde{s}}_0\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\underline{x}_1 \isdef \underline{s}_1 - {\bf P}_{\underline{\tilde{s}}_0}(\underline{s}_1)
+	= \underline{s}_1 - \ip{\underline{s}_1,\underline{\tilde{s}}_0}\underline{\tilde{s}}_0\]</DIV><P></P>
+The vector <SPAN CLASS="MATH">\(\underline{x}_1\)</SPAN> is orthogonal to <SPAN CLASS="MATH">\(\underline{\tilde{s}}_0\)</SPAN> by construction.  (We
+subtracted out the part of <SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN> that wasn't orthogonal to
+<SPAN CLASS="MATH">\(\underline{\tilde{s}}_0\)</SPAN>.)  Also, since <SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN> and <SPAN CLASS="MATH">\(\underline{s}_0\)</SPAN> are linearly independent,
+we have <SPAN CLASS="MATH">\(||\,\underline{x}_1\,|| \ne 0\)</SPAN>.
+
+<P>
+</LI>
+<LI>Set <SPAN CLASS="MATH">\(\underline{\tilde{s}}_1 \isdef \frac{\underline{x}_1}{\left\|\,\underline{x}_1\,\right\|}\)</SPAN> (<I>i.e.</I>, normalize the result
+	of the preceding step).
+</LI>
+<LI>Define <SPAN CLASS="MATH">\(\underline{x}_2\)</SPAN> as <SPAN CLASS="MATH">\(\underline{s}_2\)</SPAN> minus the projection of 
+	<SPAN CLASS="MATH">\(\underline{s}_2\)</SPAN> onto <SPAN CLASS="MATH">\(\underline{\tilde{s}}_0\)</SPAN> and <SPAN CLASS="MATH">\(\underline{\tilde{s}}_1\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\underline{x}_2 \;\isdef\; \underline{s}_2 - {\bf P}_{\underline{\tilde{s}}_0}(\underline{s}_2) - {\bf P}_{\underline{\tilde{s}}_1}(\underline{s}_2)
+	\;=\; \underline{s}_2 - \ip{\underline{s}_2,\underline{\tilde{s}}_0}\underline{\tilde{s}}_0 - \ip{\underline{s}_2,\underline{\tilde{s}}_1}\underline{\tilde{s}}_1\]</DIV><P></P>
+</LI>
+<LI>Normalize: <SPAN CLASS="MATH">\(\underline{\tilde{s}}_2 \isdef \frac{\underline{x}_2}{\left\|\,\underline{x}_2\,\right\|}\)</SPAN>.
+</LI>
+<LI>Continue this process until <SPAN CLASS="MATH">\(\underline{\tilde{s}}_{N-1}\)</SPAN> has been defined.
+
+<P>
+</LI>
+</UL>
+
+<P>
+The Gram-Schmidt orthogonalization procedure will construct an
+orthonormal basis from any set of <SPAN CLASS="MATH">\(N\)</SPAN> linearly independent vectors.
+Obviously, by skipping the normalization step, we could also form
+simply an orthogonal basis.  The key ingredient of this procedure is
+that each new <A HREF="https://mathworld.wolfram.com/Basis.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Basis.html')">basis vector</A> is obtained by subtracting out the
+projection of the next linearly independent vector onto the vectors
+accepted so far into the set.  We may say that each new linearly
+independent vector <SPAN CLASS="MATH">\(\underline{s}_k\)</SPAN> is projected onto the <I>subspace</I>
+spanned by the vectors <SPAN CLASS="MATH">\({\underline{\tilde{s}}_0,\ldots,\underline{\tilde{s}}_{k-1}}\)</SPAN>, and any nonzero
+projection in that subspace is subtracted out of <SPAN CLASS="MATH">\(\underline{s}_k\)</SPAN> to make the
+new vector orthogonal to the entire subspace.  In other words, we
+retain only that portion of each new vector <SPAN CLASS="MATH">\(\underline{s}_k\)</SPAN> which ``points
+along'' a new dimension.  The first direction is arbitrary and is
+determined by whatever vector we choose first (<SPAN CLASS="MATH">\(\underline{s}_0\)</SPAN> here).  The
+next vector is <A HREF="https://scienceworld.wolfram.com/physics/Force.html" onMouseover="return escape('A &lt;i&gt;force&lt;/i&gt; is required to change the &lt;i&gt;momentum&lt;/i&gt; of an object.  In the absence of external forces, momentum is conserved.  For a mass m in flight, the momentum is m v, where v denotes the velocity of the mass.  Newton\&#39;s second law, F = m a, says that force equals mass times acceleration, i.e., force equals the time derivative of momentum. &nbsp;&#8212;&nbsp; Click for https://scienceworld.wolfram.com/physics/Force.html')">forced</A> to be orthogonal to the first.  The second is
+forced to be orthogonal to the first two (and thus to the 2D subspace
+spanned by them), and so on.
+
+<P>
+This chapter can be considered an introduction to some 
+important concepts of <I>linear <A HREF="https://www.khanacademy.org/math/algebra2" onMouseover="return escape('Click for https://www.khanacademy.org/math/algebra2')">algebra</A></I><A NAME="11975"></A>.  The student is invited to
+pursue further reading in any textbook on <A HREF="https://mathworld.wolfram.com/LinearAlgebra.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearAlgebra.html')">linear algebra</A>, such as
+[<A
+ HREF="Bibliography.html#Noble">49</A>].<A NAME="tex2html66"
+  HREF="footnode.html#foot10789"><SUP>5.13</SUP></A>
+<P>
+Matlab/Octave examples related to this chapter appear in
+Appendix <A HREF="Matlab_Octave_Examples.html#app:matlabapp">I</A>.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1915"
+  HREF="Signal_Projection_Problems.html" 
+ onMouseover="return escape('Signal Projection Problems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1907"
+  HREF="Signal_Vector_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal/Vector Reconstruction from Projections')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1911"
+  HREF="Signal_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal Reconstruction from Projections')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1913"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

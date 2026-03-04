@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Hann-Windowed Complex Sinusoid</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Hann-Windowed Complex Sinusoid">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Use_Blackman_Window.html">
+<LINK REL="up" HREF="Spectrum_Analysis_Sinusoid_Windowing.html">
+<LINK REL="next" HREF="Hann_Window_Spectrum_Analysis.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2999"
+  HREF="Hann_Window_Spectrum_Analysis.html" 
+ onMouseover="return escape('Hann Window Spectrum Analysis Results')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2991"
+  HREF="Applying_Blackman_Window.html" 
+ onMouseover="return escape('Applying the Blackman Window')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2995"
+  HREF="Spectrum_Analysis_Sinusoid_Windowing.html" 
+ onMouseover="return escape('Spectrum Analysis of a Sinusoid')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2997"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00915000000000000000">
+Hann-Windowed Complex Sinusoid</A>
+</H3>
+
+<P>
+In this example, we'll perform <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A> on a <I>complex</I>
+<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> having only a single positive frequency.  We'll use the
+<I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html')">Hann window</A></I><A NAME="20464"></A> (also known as the <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html')">Hanning window</A></I><A NAME="20466"></A>)
+which does not have as much <A HREF="https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html" onMouseover="return escape('A &lt;i&gt;side lobe&lt;/i&gt; in the Fourier transform of a window function, such as the Chebyshev window, is any local maximum in the transform magnitude outside of the main lobe (response about dc). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html')">sidelobe</A> suppression as the <A HREF="https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289')">Blackman
+window</A>, but its <A HREF="https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html" onMouseover="return escape('The &lt;i&gt;main lobe&lt;/i&gt; in the Fourier transform of a window function, such as the Chebyshev window, is the central local maximum in the transform magnitude (response about dc).  Outside of the main lobe are usually &lt;i&gt;side lobes&lt;/i&gt; (ripples in the magnitude spectrum). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html')">main lobe</A> is narrower.  Its sidelobes ``roll off''
+very quickly versus frequency.  Compare with the <A HREF="https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289')">Blackman</A> window
+results to see if you can see these differences.  
+
+<P>
+The <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> script for synthesizing and plotting the Hann-windowed
+<A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A> is given below:
+
+<BLOCKQUOTE></BLOCKQUOTE><PRE>
+% Analysis parameters:
+M = 31;         % Window length 
+N = 64;         % <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> length (<A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero padding</A> factor near 2)
+
+% <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">Signal</A> parameters:
+wxT = 2*pi/4;   % Sinusoid frequency (rad/sample)
+A = 1;          % Sinusoid amplitude
+phix = 0;       % Sinusoid phase
+
+% Compute the signal x:
+n = [0:N-1];    % time indices for sinusoid and FFT
+x = A * exp(j*wxT*n+phix); % complex sine [1,j,-1,-j...]
+
+% Compute Hann window:
+nm = [0:M-1];   % time indices for window computation
+% Hann window = "raised cosine", normalization (1/M)
+% chosen to give spectral peak magnitude at 1/2:
+w = (1/M) * (cos((pi/M)*(nm-(M-1)/2))).^2;  
+
+wzp = [w,zeros(1,N-M)]; % <A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero-pad</A> out to the length of x
+xw = x .* wzp;          % apply the window w to signal x
+
+figure(1);
+subplot(1,1,1);
+
+% Display real part of windowed signal and Hann window
+plot(n,wzp,'-k'); hold on; plot(n,real(xw),'*k'); hold off;
+title(['Hann Window and Windowed, Zero-Padded, ',...
+       'Sinusoid (Real Part)']); 
+xlabel('Time (samples)'); ylabel('Amplitude');
+</PRE><BLOCKQUOTE></BLOCKQUOTE> The resulting plot of the Hann window and its use 
+on <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoidal</A> data are shown in Fig.<A HREF="Hann_Windowed_Complex_Sinusoid.html#fig:hanning">8.7</A>.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:hanning"></A></P><IMG
+ WIDTH="770" HEIGHT="618" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img109.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img109.png 1x,https://ccrma.stanford.edu/~jos/mdft/img109_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img109_3x.png 3x"
+ ALT="\includegraphics[width=\twidth]{eps/hanning}">
+	<IMG
+ WIDTH="785" HEIGHT="78" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img108.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img108.png 1x,https://ccrma.stanford.edu/~jos/mdft/img108_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img108_3x.png 3x"
+ ALT="% latex2html id marker 36811
+$\textstyle \parbox{\twidth }{\caption{\protect\small A length 31 Hann window
+(\lq\lq raised cosine'') overlaid with the real part of the Hann-windowed
+complex sinusoid. Zero-padding is also shown. The sampled sinusoid
+is plotted using \lq *' with no connecting interpolation lines. You must
+now imagine the continuous real sinusoid (windowed) threading through
+the asterisks.}}$">
+</DIV>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html3000"
+  HREF="Hann_Window_Spectrum_Analysis.html">Hann Window Spectrum Analysis Results</A>
+<LI><A NAME="tex2html3001"
+  HREF="Spectral_Phase.html">Spectral Phase</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2999"
+  HREF="Hann_Window_Spectrum_Analysis.html" 
+ onMouseover="return escape('Hann Window Spectrum Analysis Results')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2991"
+  HREF="Applying_Blackman_Window.html" 
+ onMouseover="return escape('Applying the Blackman Window')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2995"
+  HREF="Spectrum_Analysis_Sinusoid_Windowing.html" 
+ onMouseover="return escape('Spectrum Analysis of a Sinusoid')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2997"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

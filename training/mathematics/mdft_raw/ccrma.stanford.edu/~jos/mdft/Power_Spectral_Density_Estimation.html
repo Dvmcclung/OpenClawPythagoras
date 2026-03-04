@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Power Spectral Density</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Power Spectral Density">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Coherence_Function.html">
+<LINK REL="previous" HREF="Correlation_Analysis.html">
+<LINK REL="up" HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html">
+<LINK REL="next" HREF="Coherence_Function.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3182"
+  HREF="Coherence_Function.html" 
+ onMouseover="return escape('Coherence Function')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3172"
+  HREF="FIR_System_Identification.html" 
+ onMouseover="return escape('FIR System Identification')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3178"
+  HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" 
+ onMouseover="return escape('DFT Applications')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3180"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00950000000000000000"></A><A NAME="sec:welch"></A><A NAME="21492"></A>
+<A NAME="21493"></A>  
+<A NAME="21494"></A>
+<BR>
+<A HREF="https://ccrma.stanford.edu/~jos/sasp/Sample_Power_Spectral_Density.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Sample_Power_Spectral_Density.html')">Power Spectral Density</A> Estimation
+</H2>
+
+<P>
+<A HREF="https://ccrma.stanford.edu/~jos/sasp/Welch_s_Method.html" onMouseover="return escape('Welch\&#39;s method for estimating &lt;i&gt;power spectral densities&lt;/i&gt; may be defined as the average of &lt;i&gt;periodograms&lt;/i&gt; of successive signal blocks over time. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Welch_s_Method.html')">Welch's method</A> [<A
+ HREF="Bibliography.html#Welch67">88</A>] (or the <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Periodogram.html" onMouseover="return escape('A &lt;i&gt;periodogram&lt;/i&gt; may be defined as the squared-magnitude of a Discrete Fourier Transform (DFT) divided by the DFT length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Periodogram.html')">periodogram</A> method</I>
+[<A
+ HREF="Bibliography.html#DSPC">21</A>]) for estimating power spectral densities (<A HREF="https://ccrma.stanford.edu/~jos/sasp/Sample_Power_Spectral_Density.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Sample_Power_Spectral_Density.html')">PSD</A>) is carried
+out by dividing the time <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> into successive blocks, and
+<I>averaging squared-magnitude <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFTs</A> of the signal blocks</I>.  Let
+<SPAN CLASS="MATH">\(x_m(n)=x(n+mN)\)</SPAN>, <SPAN CLASS="MATH">\(n=0,1,\dots,N-1\)</SPAN>, denote the <SPAN CLASS="MATH">\(m\)</SPAN>th block of the
+signal <SPAN CLASS="MATH">\(x\in\mathbb{C}^{MN}\)</SPAN>, with <SPAN CLASS="MATH">\(M\)</SPAN> denoting the number of blocks.
+Then the Welch PSD estimate is given by
+<A NAME="eq:avgdef"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}{\hat R}_x(\omega_k) = \frac{1}{M}\sum_{m=0}^{M-1}\left|DFT_k(x_m)\right|^2 \isdef 
+\left{\left|X_m(\omega_k)\right|^2\right}_m
+\end{equation}</DIV><P></P>
+where ``<SPAN CLASS="MATH">\({\cdot}_m\)</SPAN>'' denotes
+<I>time averaging</I> across blocks (or ``frames'') of data indexed by <SPAN CLASS="MATH">\(m\)</SPAN>.
+The function
+<A NAME="tex2html128"
+  HREF="http://www.mathworks.com/access/helpdesk/help/toolbox/signal/pwelch.shtml"><TT>pwelch</TT></A>
+implements Welch's method in 
+Octave (<A HREF="http://octave.sourceforge.net/" onMouseover="return escape('Click for http://octave.sourceforge.net/')">Octave-Forge</A> collection) and <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> (Signal Processing Toolbox).
+
+<P>
+Recall that <SPAN CLASS="MATH">\(\left|X_m\right|^2\;\leftrightarrow\;x\star x\)</SPAN> which is
+<I>circular</I> (cyclic) <A HREF="Autocorrelation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Autocorrelation.html')">autocorrelation</A>.  To obtain an <I>acyclic</I>
+autocorrelation instead, we may use <I><A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero padding</A></I> in the time
+domain, as described in &#167;<A HREF="Unbiased_Cross_Correlation.html#sec:unbiasedcrosscorr">8.4.2</A>. 
+That is, we can replace <SPAN CLASS="MATH">\(x_m\)</SPAN> above by <SPAN CLASS="MATH">\(\oper{CausalZeroPad}_{2N-1}(x_m) =
+[x_m,0,\ldots,0]\)</SPAN>.<A NAME="tex2html126"
+  HREF="footnode.html#foot21217"><SUP>8.13</SUP></A>Although this fixes the ``wrap-around problem'', the estimator is
+still <I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Bias_Parabolic_Peak_Interpolation.html#16800" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Bias_Parabolic_Peak_Interpolation.html#16800')">biased</A></I> because its expected value is the true
+autocorrelation <SPAN CLASS="MATH">\(r_x(l)\)</SPAN> weighted by <SPAN CLASS="MATH">\(N-|l|\)</SPAN>.  This bias is equivalent
+to multiplying the <A HREF="Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Correlation.html')">correlation</A> in the ``lag domain'' by a
+<I>triangular window</I> (also called a ``<A HREF="https://ccrma.stanford.edu/~jos/sasp/Bartlett_Triangular_Window.html#10345" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Bartlett_Triangular_Window.html#10345')">Bartlett window</A>''). The bias
+can be removed by simply dividing it out, as in Eq.(<A HREF="Autocorrelation.html#eq:xcor">8.2</A>), but it is
+common to retain the Bartlett weighting since it merely corresponds to
+<I>smoothing</I> the power <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> (or <A HREF="Cross_Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Cross_Correlation.html')">cross-spectrum</A>) with a
+<SPAN CLASS="MATH">\(\mbox{sinc}^2\)</SPAN> kernel;<A NAME="tex2html127"
+  HREF="footnode.html#foot21331"><SUP>8.14</SUP></A>it also down-weights the less reliable large-lag
+estimates, weighting each lag by the number of lagged products that
+were summed.
+
+<P>
+Since <SPAN CLASS="MATH">\(|X_m(\omega_k)|^2=N\cdot\oper{DFT}_k({\hat r}_{x_m})\)</SPAN>, and since the DFT
+is a <I><A HREF="https://mathworld.wolfram.com/LinearOperator.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearOperator.html')">linear operator</A></I> (&#167;<A HREF="Linearity.html#sec:linearity">7.4.1</A>), averaging
+magnitude-squared DFTs <SPAN CLASS="MATH">\(|X_m(\omega_k)|^2\)</SPAN> is <I>equivalent</I>, in
+principle, to estimating block autocorrelations <SPAN CLASS="MATH">\({\hat r}_{x_m}\)</SPAN>, averaging
+them, and taking a DFT of the average.  However, this would normally
+be slower.  
+
+<P>
+We return to power spectral density estimation in Book IV [<A
+ HREF="Bibliography.html#SASP">73</A>]
+of the music signal processing series.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3182"
+  HREF="Coherence_Function.html" 
+ onMouseover="return escape('Coherence Function')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3172"
+  HREF="FIR_System_Identification.html" 
+ onMouseover="return escape('FIR System Identification')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3178"
+  HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" 
+ onMouseover="return escape('DFT Applications')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3180"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

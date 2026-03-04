@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Binary Integer Fixed-Point Numbers</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Binary Integer Fixed-Point Numbers">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Fractional_Binary_Fixed_Point_Numbers.html">
+<LINK REL="previous" HREF="Pulse_Code_Modulation_PCM.html">
+<LINK REL="up" HREF="Linear_Number_Systems.html">
+<LINK REL="next" HREF="One_s_Complement_Fixed_Point_Format.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4059"
+  HREF="One_s_Complement_Fixed_Point_Format.html" 
+ onMouseover="return escape('One\'s Complement Fixed-Point Format')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4049"
+  HREF="Pulse_Code_Modulation_PCM.html" 
+ onMouseover="return escape('Pulse Code Modulation (PCM)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4055"
+  HREF="Linear_Number_Systems.html" 
+ onMouseover="return escape('Linear Number Systems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4057"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001612000000000000000">
+Binary Integer Fixed-Point Numbers</A>
+</H3>
+
+<P>
+Most computer languages nowadays only offer two kinds of numbers,
+<I>floating-point</I> and <I>integer fixed-point</I>.  
+On present-day computers, all numbers are encoded using <I>binary
+digits</I> (called ``bits'')<A NAME="26633"></A> which
+are either 1 or 0.<A NAME="tex2html186"
+  HREF="footnode.html#foot26605"><SUP>G.1</SUP></A> In C, C++, and Java, floating-point variables
+are declared as <TT>float</TT> (32 bits) or <TT>double</TT> (64 bits), while
+integer fixed-point variables are declared as <TT>short int</TT>
+(typically 16 bits and never less), <TT>long int</TT> (typically 32 bits
+and never less), or simply <TT>int</TT> (typically the same as a <TT>long int</TT>, but sometimes between short and long). For an 8-bit
+integer, one can use the <TT>char</TT> data type (8 bits).
+
+<P>
+Since C was designed to accommodate a wide range of hardware,
+including old mini-computers, some latitude was historically allowed
+in the choice of these bit-lengths.  The <TT>sizeof</TT> operator is
+officially the ``right way'' for a C program to determine the number
+of bytes in various data types at run-time, <I>e.g.</I>, <TT>sizeof(long)</TT>.
+(The word <TT>int</TT> can be omitted after <TT>short</TT> or <TT>long</TT>.)
+Nowadays, however, <TT>short</TT>s are always 16 bits (at least on all
+the major platforms), <TT>int</TT>s are 32 bits, and <TT>long</TT>s are
+typically 32 bits on 32-bit computers and 64 bits on 64-bit computers
+(although some C/C++ <A HREF="http://en.wikipedia.org/wiki/Compiler" onMouseover="return escape('The compiler transforms human-readable source code into machine-readable code. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Compiler')">compilers</A> use <TT>long long int</TT> to declare
+64-bit ints). Table <A HREF="Binary_Integer_Fixed_Point_Numbers.html#table:byteSizes">G.1</A> gives the lengths currently used by <A HREF="http://www.gnu.org/" onMouseover="return escape('\&#39;GNU\&#39;s Not Unix\&#39; (GNU) is the collection of free, open-source software that started the free, open-source software movement.  Started by Richard Stallman as a collection of the main system tools in UNIX written in C, it has grown to become a primary component of Unix-compatible operating systems such as the Linux distributions. &nbsp;&#8212;&nbsp; Click for http://www.gnu.org/')">GNU</A>
+C/C++ compilers (usually called ``<TT>gcc</TT>'' or ``<TT>cc</TT>'') on
+64-bit processors.<A NAME="tex2html187"
+  HREF="footnode.html#foot26431"><SUP>G.2</SUP></A>
+<P>
+
+	<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="26667"></A>
+<TABLE>
+<CAPTION><STRONG>Table:</STRONG>
+Byte sizes of GNU C/C++ data types for 64-bit 
+	machines.</CAPTION>
+<TR><TD>	<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="CENTER"><B>Type</B></TD>
+<TD ALIGN="CENTER"><B>Bytes</B></TD>
+<TD ALIGN="LEFT"><B>Notes</B></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>char </TT></TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>short </TT></TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>int </TT></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>long </TT></TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">(4 bytes on 32-bit machines)</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>long long </TT></TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">(may become 16 bytes)</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>type * </TT></TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">(any pointer)</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>float </TT></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>double </TT></TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>long double </TT></TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">(may become 10 bytes)</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><TT>size_t </TT></TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">(type of sizeof())</TD>
+</TR>
+<TR><TD ALIGN="CENTER">T* - T*</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="LEFT">(pointer arithmetic)</TD>
+</TR>
+</TABLE>
+</DIV>
+	
+	<A NAME="table:byteSizes"></A> </TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Java, which is designed to be platform independent, defines a <TT>long int</TT> as <I>equivalent in precision to</I> 64 bits, an <TT>int</TT>
+as 32 bits, a <TT>short int</TT> as 16 bits, and additionally a <TT>byte
+int</TT> as an 8-bit int.  Similarly, the ``<A HREF="http://sound.media.mit.edu/mpeg4" onMouseover="return escape('Click for http://sound.media.mit.edu/mpeg4')">Structured Audio Orchestra
+Language</A>''
+(<A NAME="tex2html189"
+  HREF="http://sound.media.mit.edu/mpeg4">SAOL</A>)
+(pronounced ``sail'')--the sound-synthesis component of the new
+<A HREF="http://www.mpeg.org/" onMouseover="return escape('Click for http://www.mpeg.org/')">MPEG</A>-4 audio compression standard--requires only that the underlying number
+system be at least as accurate as 32-bit <TT>float</TT>s.  All <TT>int</TT>s
+discussed thus far are <I>signed</I> integer formats.  C and C++ also
+support <I>unsigned</I> versions of all <TT>int</TT> types, and they range
+from <SPAN CLASS="MATH">\(0\)</SPAN> to <SPAN CLASS="MATH">\(2^N-1\)</SPAN> instead of <SPAN CLASS="MATH">\(-2^{N-1}\)</SPAN> to <SPAN CLASS="MATH">\(2^{N-1}-1\)</SPAN>, where <SPAN CLASS="MATH">\(N\)</SPAN>
+is the number of bits.  Finally, an <TT>unsigned char</TT> is often used for
+integers that only range between 0 and 255.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html4060"
+  HREF="One_s_Complement_Fixed_Point_Format.html">One's Complement Fixed-Point Format</A>
+<LI><A NAME="tex2html4061"
+  HREF="Two_s_Complement_Fixed_Point_Format.html">Two's Complement Fixed-Point Format</A>
+<LI><A NAME="tex2html4062"
+  HREF="Two_s_Complement_Integer_Fixed_Point_Numbers.html">Two's-Complement, Integer Fixed-Point Numbers</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4059"
+  HREF="One_s_Complement_Fixed_Point_Format.html" 
+ onMouseover="return escape('One\'s Complement Fixed-Point Format')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4049"
+  HREF="Pulse_Code_Modulation_PCM.html" 
+ onMouseover="return escape('Pulse Code Modulation (PCM)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4055"
+  HREF="Linear_Number_Systems.html" 
+ onMouseover="return escape('Linear Number Systems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4057"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

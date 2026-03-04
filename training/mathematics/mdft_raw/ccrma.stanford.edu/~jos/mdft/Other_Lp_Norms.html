@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Other Lp Norms</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Other Lp Norms">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Norm_Properties.html">
+<LINK REL="previous" HREF="Signal_Metrics.html">
+<LINK REL="up" HREF="Signal_Metrics.html">
+<LINK REL="next" HREF="Norm_Properties.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1655"
+  HREF="Norm_Properties.html" 
+ onMouseover="return escape('Norm Properties')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1645"
+  HREF="Example_I_I.html" 
+ onMouseover="return escape('Example:')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1651"
+  HREF="Signal_Metrics.html" 
+ onMouseover="return escape('Signal Metrics')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1653"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00681000000000000000"></A><A NAME="sec:lpnorms"></A><A NAME="11012"></A>
+<BR>
+Other <A HREF="http://search.freefind.com/find.html?id=3891388&pageid=r&mode=ALL&query=Lp+Norm" onMouseover="return escape('Click for http://search.freefind.com/find.html?id=3891388&pageid=r&mode=ALL&query=Lp+Norm')">Lp Norms</A>
+</H3>
+
+<P>
+Since our main <A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norm</A> is the square root of a sum of squares,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\|x\| \isdef \sqrt{{\cal E}_x} = \sqrt{\sum_{n=0}^{N-1}\left|x_n\right|^2} \qquad \mbox{(norm of $x$)},\]</DIV><P></P>
+we are using what is called an <I><SPAN CLASS="MATH">\(\ensuremath{L_2}\)</SPAN> norm</I> and we may write
+<SPAN CLASS="MATH">\(\|x\|_2\)</SPAN> to emphasize this fact.
+
+<P>
+We could equally well have chosen a <I>normalized <SPAN CLASS="MATH">\(\ensuremath{L_2}\)</SPAN> norm</I>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\|x\|_{\tilde{2}} \isdef \sqrt{{\cal P}_x} = \sqrt{\frac{1}{N}\sum_{n=0}^{N-1}
+\left|x_n\right|^2} \qquad \mbox{(normalized $\ensuremath{L_2}$\  norm of $x$)}\]</DIV><P></P>
+which is simply the ``RMS level'' of <SPAN CLASS="MATH">\(x\)</SPAN> (``Root Mean Square'').
+
+<P>
+More generally, the (unnormalized) <I><SPAN CLASS="MATH">\(\ensuremath{L_p}\)</SPAN> norm</I> of <SPAN CLASS="MATH">\(x \in \mathbb{C}^N\)</SPAN> is defined as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\|x\|_p \isdef \left(\sum_{n=0}^{N-1}\left|x_n\right|^p\right)^{1/p}.\]</DIV><P></P>
+(The normalized case would include <SPAN CLASS="MATH">\(1/N\)</SPAN> in front of the summation.)
+The most interesting <SPAN CLASS="MATH">\(\ensuremath{L_p}\)</SPAN> norms are
+
+<UL>
+<LI><SPAN CLASS="MATH">\(p=1\)</SPAN>: The <SPAN CLASS="MATH">\(\ensuremath{L_1}\)</SPAN>, ``absolute value,'' or ``city block'' norm.
+</LI>
+<LI><SPAN CLASS="MATH">\(p=2\)</SPAN>: The <SPAN CLASS="MATH">\(\ensuremath{L_2}\)</SPAN>, ``Euclidean,'' ``root energy,'' or ``<A HREF="https://mathworld.wolfram.com/LeastSquaresFitting.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LeastSquaresFitting.html')">least squares</A>'' norm.
+</LI>
+<LI><SPAN CLASS="MATH">\(p=\infty\)</SPAN>: The <SPAN CLASS="MATH">\(\ensuremath{L_\infty}\)</SPAN>, ``Chebyshev,'' ``supremum,'' ``minimax,'' 
+	or ``uniform'' norm.
+</LI>
+</UL>
+Note that the case <SPAN CLASS="MATH">\(p=\infty\)</SPAN> is a limiting case which becomes
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\|x\|_\infty = \max_{0\leq n &lt; N} \left|x_n\right|.\]</DIV><P></P>
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1655"
+  HREF="Norm_Properties.html" 
+ onMouseover="return escape('Norm Properties')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1645"
+  HREF="Example_I_I.html" 
+ onMouseover="return escape('Example:')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1651"
+  HREF="Signal_Metrics.html" 
+ onMouseover="return escape('Signal Metrics')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1653"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

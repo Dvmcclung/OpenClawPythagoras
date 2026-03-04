@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Why Sinusoids are Important</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Why Sinusoids are Important">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="In_Phase_Quadrature_Sinusoidal.html">
+<LINK REL="previous" HREF="Example_Sinusoids.html">
+<LINK REL="up" HREF="Sinusoids.html">
+<LINK REL="next" HREF="In_Phase_Quadrature_Sinusoidal.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1114"
+  HREF="In_Phase_Quadrature_Sinusoidal.html" 
+ onMouseover="return escape('In-Phase &amp; Quadrature Sinusoidal Components')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1104"
+  HREF="Example_Sinusoids.html" 
+ onMouseover="return escape('Example Sinusoids')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1110"
+  HREF="Sinusoids.html" 
+ onMouseover="return escape('Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1112"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00512000000000000000"></A><A NAME="sec:sineimp"></A><A NAME="7694"></A>
+<BR>
+Why <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">Sinusoids</A> are Important
+</H3>
+
+<P>
+<A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">Sinusoids</A> arise naturally in a variety of ways:
+
+<P>
+One reason for the importance of sinusoids is that they are
+<I>fundamental in <A HREF="https://scienceworld.wolfram.com/physics/" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/')">physics</A></I>.  Many physical systems that <I>resonate</I> or
+<I>oscillate</I> produce quasi-<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoidal</A> motion.  See <I><A HREF="http://www.physics.uoguelph.ca/tutorials/shm/Q.shm.html" onMouseover="return escape('Click for http://www.physics.uoguelph.ca/tutorials/shm/Q.shm.html')">simple harmonic
+motion</A></I> in any freshman physics text for an introduction to this
+topic.  The canonical example is the <A HREF="http://en.wikipedia.org/wiki/Harmonic_oscillator#Spring-mass_system" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Harmonic_oscillator#Spring-mass_system')">mass-spring</A> <A HREF="http://ccrma.stanford.edu/~jos/filters/Mass_Spring_Oscillator_Analysis.html" onMouseover="return escape('When displaced from its equilibrium state, a harmonic oscillator experiences a restoring force according to Hooke\&#39;s law. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Mass_Spring_Oscillator_Analysis.html')">oscillator</A>.<A NAME="tex2html31"
+  HREF="footnode.html#foot7657"><SUP>4.1</SUP></A>
+<P>
+Another reason sinusoids are important is that they are
+<I><A HREF="https://mathworld.wolfram.com/Eigenfunction.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Eigenfunction.html')">eigenfunctions</A> of <A HREF="https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html" onMouseover="return escape('The topic of &lt;i&gt;linear systems theory&lt;/i&gt; is primarily about &lt;i&gt;linear, time-invariant (LTI) filters&lt;/i&gt;.   A &lt;i&gt;linear&lt;/i&gt; filter is characterized by the property that its output-signal amplitude is linearly proportional to its input-signal amplitude.  A &lt;i&gt;time-invariant&lt;/i&gt; filter, or \&#39;constant-coefficient\&#39; filter, performs the same filtering operation at all times.  Only LTI filters can be characeterized by their &lt;i&gt;impulse response&lt;/i&gt;, or their &lt;i&gt;frequency response&lt;/i&gt;, or their &lt;i&gt;poles and zeros&lt;/i&gt; plus a gain, or the like.  Also, only LTI filters have the &lt;i&gt;superposition property&lt;/i&gt; for audio signals, in which the filtering of an audio mix can be obtained alternatively by filtering each channel separately and adding the filtered channels together.  Equivalently, only LTI filters exhibit no &lt;i&gt;intermodulation distortion&lt;/i&gt; for audio signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html')">linear systems</A></I> (which we'll say more about in
+&#167;<A HREF="Sinusoids_Same_Frequency.html#sec:samefreq">4.1.4</A>).  This means that they are important in the analysis
+of <I><A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filters</A></I> such as reverberators, <A HREF="https://github.com/bdejong/musicdsp/blob/master/source/Filters/197-rbj-audio-eq-cookbook.rst" onMouseover="return escape('An &lt;i&gt;audio equalizer&lt;/i&gt; is a filter used to adjust the spectrum of an audio signal, usually in some number of frequency bands.  High quality audio equalizers provide one or more bands of adjustment per critical band of human hearing. &nbsp;&#8212;&nbsp; Click for https://github.com/bdejong/musicdsp/blob/master/source/Filters/197-rbj-audio-eq-cookbook.rst')">equalizers</A>, certain (but not
+all) ``audio effects'', etc.
+
+<P>
+Perhaps most importantly, from the point of view of computer music
+research, is that the human <I>ear</I> is a kind of <I><A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>
+analyzer</I>.  That is, the <A HREF="http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm" onMouseover="return escape('The &lt;i&gt;cochlea&lt;/i&gt; is the spiral shaped primary organ of the inner ear. &nbsp;&#8212;&nbsp; Click for http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm')">cochlea</A> of the <A HREF="http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm" onMouseover="return escape('The &lt;i&gt;inner ear&lt;/i&gt; is the portion of the auditory system responsible for transmitting sound information to the nervous sytem. &nbsp;&#8212;&nbsp; Click for http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm')">inner ear</A> physically splits
+sound into its (quasi) sinusoidal components.  This is accomplished by
+the <I><A HREF="http://www.blackwellpublishing.com/matthews/ear.html" onMouseover="return escape('Click for http://www.blackwellpublishing.com/matthews/ear.html')">basilar membrane</A></I> in the inner ear: a sound <A HREF="https://en.wikipedia.org/wiki/Wave" onMouseover="return escape('In physics, a wave is an oscillation that propagates through a medium (space-time, gas, fluid, or solid) &nbsp;&#8212;&nbsp; Click for https://en.wikipedia.org/wiki/Wave')">wave</A> injected at
+the <I><A HREF="http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm" onMouseover="return escape('The &lt;i&gt;oval window&lt;/i&gt; is the portion of the cochlea driven by the third ossicle of the middle ear. &nbsp;&#8212;&nbsp; Click for http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm')">oval window</A></I> (which is connected via the bones of the <A HREF="http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm" onMouseover="return escape('The &lt;i&gt;middle ear&lt;/i&gt; is the portion of the auditory system that transmits sound from the auditory canal to the cochlea. &nbsp;&#8212;&nbsp; Click for http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm')">middle
+ear</A> to the <I><A HREF="http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm" onMouseover="return escape('The &lt;i&gt;ear drum&lt;/i&gt; is the membrane at the beginning of the middle ear that vibrates in response to sound from the auditory canal. &nbsp;&#8212;&nbsp; Click for http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm')">ear drum</A></I>), travels along the <A HREF="http://en.wikipedia.org/wiki/Basilar_membrane" onMouseover="return escape('The &lt;i&gt;basilar membrane&lt;/i&gt; is the organ running the length of the cochlea that separates the cochlear duct from the scala timpani. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Basilar_membrane')">basilar membrane</A> inside
+the coiled cochlea.  The membrane starts out thick and stiff, and
+gradually becomes thinner and more compliant toward its apex (the
+<I>helicotrema</I>).  A stiff membrane has a high resonance frequency
+while a thin, compliant membrane has a low resonance frequency
+(assuming comparable <A HREF="http://hyperphysics.phy-astr.gsu.edu/hbase/mass.html#mas" onMouseover="return escape('Click for http://hyperphysics.phy-astr.gsu.edu/hbase/mass.html#mas')">mass</A> per unit length, or at least less of a
+difference in mass than in compliance).  Thus, as the sound wave
+travels, each frequency in the sound resonates at a particular
+<I>place</I> along the basilar membrane.  The highest audible frequencies
+resonate right at the entrance, while the lowest frequencies travel
+the farthest and resonate near the helicotrema.  The membrane
+resonance effectively ``shorts out'' the <A HREF="Signal_Metrics.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Signal_Metrics.html')">signal energy</A> at the resonant
+frequency, and it travels no further.  Along the basilar membrane
+there are <I><A HREF="http://www.blackwellpublishing.com/matthews/haircell.html" onMouseover="return escape('Click for http://www.blackwellpublishing.com/matthews/haircell.html')">hair cells</A></I> which ``feel'' the resonant <A HREF="http://ccrma.stanford.edu/realsimple/lab_inst/Background.html" onMouseover="return escape('If the mass of a harmonic oscillator is excited, the system responds by vibrating back and forth.  Whenever the mass is at its rest position, the system contains only kinetic energy.  Conversely, whenever the mass velocity is zero, the system contains only potential energy. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/realsimple/lab_inst/Background.html')">vibration</A> and
+transmit an increased <A HREF="https://ccrma.stanford.edu/~jos/filters/FIR_Digital_Filters.html" onMouseover="return escape('In digital signal processing, &lt;i&gt;FIR&lt;/i&gt; is an acronym for &lt;i&gt;Finite Impulse Response&lt;/i&gt; &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/FIR_Digital_Filters.html')">firing</A> rate along the <A HREF="http://www.google.com/search?q=auditory" onMouseover="return escape('&lt;i&gt;Audition&lt;/i&gt; is the act of listening. &nbsp;&#8212;&nbsp; Click for http://www.google.com/search?q=auditory')">auditory</A> nerve to the
+brain.  Thus, the ear is very literally a Fourier analyzer for sound,
+albeit <A HREF="http://en.wikipedia.org/wiki/Nonlinear" onMouseover="return escape('Any function that is not linear is nonlinear.  There are no general methods for solving nonlinear equations or nonlinear differential equations. This is why it is usually easier, although generally less accurate, to approximate a nonlinear function by a linear function if possible. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Nonlinear')">nonlinear</A> and using ``analysis'' parameters that are difficult
+to match exactly.  Nevertheless, by looking at <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectra</A> (which display
+the amount of each sinusoidal frequency present in a sound), we are
+looking at a representation much more like what the brain receives
+when we hear.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1114"
+  HREF="In_Phase_Quadrature_Sinusoidal.html" 
+ onMouseover="return escape('In-Phase &amp; Quadrature Sinusoidal Components')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1104"
+  HREF="Example_Sinusoids.html" 
+ onMouseover="return escape('Example Sinusoids')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1110"
+  HREF="Sinusoids.html" 
+ onMouseover="return escape('Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1112"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

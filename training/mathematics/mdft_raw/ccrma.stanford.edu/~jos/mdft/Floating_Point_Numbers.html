@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Floating-Point Numbers</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Floating-Point Numbers">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Logarithmic_Fixed_Point_Numbers.html">
+<LINK REL="previous" HREF="Logarithmic_Number_Systems_Audio.html">
+<LINK REL="up" HREF="Logarithmic_Number_Systems_Audio.html">
+<LINK REL="next" HREF="Logarithmic_Fixed_Point_Numbers.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4157"
+  HREF="Logarithmic_Fixed_Point_Numbers.html" 
+ onMouseover="return escape('Logarithmic Fixed-Point Numbers')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4147"
+  HREF="Logarithmic_Number_Systems_Audio.html" 
+ onMouseover="return escape('Logarithmic Number Systems for Audio')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4153"
+  HREF="Logarithmic_Number_Systems_Audio.html" 
+ onMouseover="return escape('Logarithmic Number Systems for Audio')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4155"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001621000000000000000">
+Floating-Point Numbers</A>
+</H3>
+
+<P>
+<A NAME="26743"></A>
+
+<P>
+Floating-point numbers consist of an ``exponent,'' ``significand'', and
+``sign bit''.  For a negative number, we may set the sign bit of the
+floating-point word and negate the number to be encoded, leaving only
+nonnegative numbers to be considered.  Zero is represented by all zeros, so
+now we need only consider positive numbers.  
+
+<P>
+The basic idea of floating point <I>encoding</I> of a binary number is to
+<I>normalize</I> the number by <I>shifting</I> the bits either left or right
+until the shifted result lies between 1/2 and 1.  (A left-shift by one
+place in a binary word corresponds to multiplying by 2, while a right-shift
+one place corresponds to dividing by 2.)  The number of bit-positions
+shifted to normalize the number can be recorded as a signed integer.  The
+negative of this integer (<I>i.e.</I>, the shift required to recover the original
+number) is defined as the <I>exponent</I> of the floating-point encoding.
+The normalized number between 1/2 and 1 is called the <I>significand</I>,
+so called because it holds all the ``significant bits'' of the number.
+
+<P>
+Floating point notation is exactly analogous to ``scientific notation'' for
+decimal numbers, <I>e.g.</I>, <SPAN CLASS="MATH">\(1.2345\times 10^{-9}\)</SPAN>; the number of significant
+digits, 5 in this example, is determined by counting digits in the
+``significand'' <SPAN CLASS="MATH">\(1.2345\)</SPAN>, while the ``order of magnitude'' is determined by
+the power of 10 (-9 in this case).  In floating-point numbers, the
+significand is stored in fractional <A HREF="Two_s_Complement_Fixed_Point_Format.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Two_s_Complement_Fixed_Point_Format.html')">two's-complement</A> binary format, and the
+exponent is stored as a binary integer.  
+
+<P>
+Since the significand lies in the interval <SPAN CLASS="MATH">\([1/2,1)\)</SPAN>,<A NAME="tex2html200"
+  HREF="footnode.html#foot26616"><SUP>G.8</SUP></A>its most significant bit is always a 1, so it is not actually stored in the
+computer word, giving one more significant bit of precision.
+
+<P>
+Let's now restate the above a little more precisely.  Let <SPAN CLASS="MATH">\(x&gt;0\)</SPAN> denote a
+number to be encoded in floating-point, and let <SPAN CLASS="MATH">\(\tilde{x}= x\cdot 2^{-E}\)</SPAN>
+denote the normalized value obtained by shifting <SPAN CLASS="MATH">\(x\)</SPAN> either <SPAN CLASS="MATH">\(E\)</SPAN> bits to the
+right (if <SPAN CLASS="MATH">\(E&gt;0\)</SPAN>), or <SPAN CLASS="MATH">\(\left|E\right|\)</SPAN> bits to the left (if <SPAN CLASS="MATH">\(E&lt;0\)</SPAN>).  Then we
+have <SPAN CLASS="MATH">\(1/2 \leq \tilde{x}&lt; 1\)</SPAN>, and <SPAN CLASS="MATH">\(x = \tilde{x}\cdot 2^E\)</SPAN>.  The <I>significand</I>
+<SPAN CLASS="MATH">\(M\)</SPAN> of the floating-point representation for <SPAN CLASS="MATH">\(x\)</SPAN> is defined as the binary
+encoding of <SPAN CLASS="MATH">\(\tilde{x}\)</SPAN>.<A NAME="tex2html201"
+  HREF="footnode.html#foot26573"><SUP>G.9</SUP></A> It is
+often the case that <SPAN CLASS="MATH">\(\tilde{x}\)</SPAN> requires more bits than are available for exact
+encoding.  Therefore, the significand is typically <I>rounded</I> (or
+truncated) to the value closest to <SPAN CLASS="MATH">\(\tilde{x}\)</SPAN>.  Given <SPAN CLASS="MATH">\(N_M\)</SPAN> bits for the
+significand, the encoding of <SPAN CLASS="MATH">\(\tilde{x}\)</SPAN> can be computed by multiplying it by
+<SPAN CLASS="MATH">\(2^{N_M}\)</SPAN> (left-shifting it <SPAN CLASS="MATH">\(N_M\)</SPAN> bits), <I>rounding</I> to the nearest
+integer (or <I>truncating</I> toward minus infinity--as implemented by
+the <TT>floor()</TT> function), and encoding the <SPAN CLASS="MATH">\(N_M\)</SPAN>-bit result as a binary
+(signed) integer.
+
+<P>
+As a final practical note, exponents in floating-point formats may have a
+<I><A HREF="https://ccrma.stanford.edu/~jos/sasp/Bias_Parabolic_Peak_Interpolation.html#16800" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Bias_Parabolic_Peak_Interpolation.html#16800')">bias</A></I>.  That is, instead of storing <SPAN CLASS="MATH">\(E\)</SPAN> as a binary integer, you may
+find a binary encoding of <SPAN CLASS="MATH">\(E-B\)</SPAN> where <SPAN CLASS="MATH">\(B\)</SPAN> is the bias.<A NAME="tex2html202"
+  HREF="footnode.html#foot26580"><SUP>G.10</SUP></A>
+<P>
+These days, floating-point formats generally follow the IEEE standards set
+out for them.  A single-precision floating point word is <SPAN CLASS="MATH">\(32\)</SPAN> bits (four
+bytes) long, consisting of <SPAN CLASS="MATH">\(1\)</SPAN> sign bit, <SPAN CLASS="MATH">\(8\)</SPAN> exponent bits, and <SPAN CLASS="MATH">\(23\)</SPAN>
+significand bits, normally laid out as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\mbox{ S EEEEEEEE MMMMMMMMMMMMMMMMMMMMMMM}\]</DIV><P></P>
+where S denotes the sign bit, E an exponent bit, and M a significand bit.
+Note that in this layout, ordinary integer comparison can be used in the
+hardware.
+
+<P>
+A double-precision floating point word is <SPAN CLASS="MATH">\(64\)</SPAN> bits (eight bytes) long,
+consisting of <SPAN CLASS="MATH">\(1\)</SPAN> sign bit, <SPAN CLASS="MATH">\(11\)</SPAN> exponent bits, and <SPAN CLASS="MATH">\(52\)</SPAN> significand bits.
+In the Intel Pentium processor, there is also an <I>extended precision</I>
+format, used for intermediate results, which is <SPAN CLASS="MATH">\(80\)</SPAN> bits (ten bytes)
+containing <SPAN CLASS="MATH">\(1\)</SPAN> sign bit, <SPAN CLASS="MATH">\(15\)</SPAN> exponent bits, and <SPAN CLASS="MATH">\(64\)</SPAN> significand bits.  In
+Intel processors, the exponent bias is <SPAN CLASS="MATH">\(127\)</SPAN> for single-precision
+floating-point, <SPAN CLASS="MATH">\(1023\)</SPAN> for double-precision, and <SPAN CLASS="MATH">\(16383\)</SPAN> for
+extended-precision.  The single and double precision formats have a
+``hidden'' significand bit, while the extended precision format does not.
+Thus, the most significant significand bit is always set in extended
+precision.
+
+<P>
+The <A HREF="http://www.mpeg.org/" onMouseover="return escape('Click for http://www.mpeg.org/')">MPEG</A>-4 audio compression standard (which supports compression using
+music synthesis algorithms) specifies that the numerical calculations in
+any <A HREF="http://sound.media.mit.edu/mpeg4" onMouseover="return escape('Click for http://sound.media.mit.edu/mpeg4')">MPEG-4</A> audio decoder should be at least as accurate as 32-bit
+single-precision floating point.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4157"
+  HREF="Logarithmic_Fixed_Point_Numbers.html" 
+ onMouseover="return escape('Logarithmic Fixed-Point Numbers')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4147"
+  HREF="Logarithmic_Number_Systems_Audio.html" 
+ onMouseover="return escape('Logarithmic Number Systems for Audio')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4153"
+  HREF="Logarithmic_Number_Systems_Audio.html" 
+ onMouseover="return escape('Logarithmic Number Systems for Audio')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4155"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

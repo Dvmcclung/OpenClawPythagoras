@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Pythagorean Theorem in N-Space</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="The Pythagorean Theorem in N-Space">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Projection.html">
+<LINK REL="previous" HREF="Orthogonality.html">
+<LINK REL="up" HREF="Inner_Product.html">
+<LINK REL="next" HREF="Projection.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1805"
+  HREF="Projection.html" 
+ onMouseover="return escape('Projection')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1795"
+  HREF="Orthogonality.html" 
+ onMouseover="return escape('Orthogonality')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1801"
+  HREF="Inner_Product.html" 
+ onMouseover="return escape('The Inner Product')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1803"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00698000000000000000"></A><A NAME="sec:pyth"></A><A NAME="11439"></A>
+<BR>
+The Pythagorean Theorem in N-Space
+</H3>
+
+<P>
+In 2D, the Pythagorean Theorem says that when <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN> are
+<A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A>, as in Fig.<A HREF="Orthogonality.html#fig:ip">5.8</A>, (<I>i.e.</I>, when the vectors <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN>
+intersect at a <I>right angle</I>), then we have
+<A NAME="eq:pyth"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\|x+y\|^2 = \|x\|^2 + \|y\|^2 \qquad \mbox{($x\perp y$)}.
+\end{equation}</DIV><P></P>
+This relationship generalizes to <SPAN CLASS="MATH">\(N\)</SPAN> dimensions, as we can easily show:
+<A NAME="eq:pythpf"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray}\|x+y\|^2 &=& \ip{x+y,x+y} \nonumber \\
+&=& \ip{x,x}+\ip{x,y}+\ip{y,x}+\ip{y,y} \nonumber \\
+&=& \|x\|^2 + \ip{x,y}+\overline{\ip{x,y}} + \|y\|^2 \nonumber \\
+&=& \|x\|^2  + \|y\|^2 + 2\realPart{\ip{x,y}}
+\end{eqnarray}</DIV><P></P>
+If <SPAN CLASS="MATH">\(x\perp y\)</SPAN>, then <SPAN CLASS="MATH">\(\ip{x,y}=0\)</SPAN> and Eq.(<A HREF="Pythagorean_Theorem_N_Space.html#eq:pyth">5.1</A>) holds in <SPAN CLASS="MATH">\(N\)</SPAN>
+dimensions.  
+
+<P>
+Note that the converse is not true in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>.  That is,
+<SPAN CLASS="MATH">\(\|x+y\|^2 = \|x\|^2 + \|y\|^2\)</SPAN> does not imply
+<SPAN CLASS="MATH">\(x\perp y\)</SPAN> in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>.  For a counterexample, consider <SPAN CLASS="MATH">\(x= (j,1)\)</SPAN>, <SPAN CLASS="MATH">\(y=
+(1, -j)\)</SPAN>, in which case 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\|x+y\|^2 = \|1+j,1-j\|^2 = 
+4 = \|x\|^2 + \|y\|^2\]</DIV><P></P>
+while <SPAN CLASS="MATH">\(\ip{x,y} = j\cdot 1 + 1 \cdot\overline{-j} = 2j\)</SPAN>.  
+
+<P>
+For real vectors <SPAN CLASS="MATH">\(x,y\in\mathbb{R}^N\)</SPAN>, the Pythagorean theorem Eq.(<A HREF="Pythagorean_Theorem_N_Space.html#eq:pyth">5.1</A>)
+holds if and only if the vectors are orthogonal.  To see this, note
+that, from Eq.(<A HREF="Pythagorean_Theorem_N_Space.html#eq:pythpf">5.2</A>), when the Pythagorean theorem holds, either
+<SPAN CLASS="MATH">\(x\)</SPAN> or <SPAN CLASS="MATH">\(y\)</SPAN> is zero, or <SPAN CLASS="MATH">\(\ip{x,y}\)</SPAN> is zero or purely imaginary,
+by property 1 of <A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norms</A> (see &#167;<A HREF="Norm_Properties.html#sec:normprop">5.8.2</A>).  If the <A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner product</A>
+cannot be imaginary, it must be zero.
+
+<P>
+Note that we also have an alternate version of the Pythagorean
+theorem:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x\perp y\,\,\Rightarrow\,\,
+\|x-y\|^2 = \|x\|^2 + \|y\|^2\]</DIV><P></P>
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1805"
+  HREF="Projection.html" 
+ onMouseover="return escape('Projection')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1795"
+  HREF="Orthogonality.html" 
+ onMouseover="return escape('Orthogonality')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1801"
+  HREF="Inner_Product.html" 
+ onMouseover="return escape('The Inner Product')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1803"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

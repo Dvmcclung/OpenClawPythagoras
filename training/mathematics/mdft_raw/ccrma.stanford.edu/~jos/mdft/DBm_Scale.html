@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>DBm Scale</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="DBm Scale">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="VU_Meters_DBu_ScaleF_3.html">
+<LINK REL="previous" HREF="Specific_DB_Scales.html">
+<LINK REL="up" HREF="Specific_DB_Scales.html">
+<LINK REL="next" HREF="VU_Meters_DBu_ScaleF_3.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3899"
+  HREF="VU_Meters_DBu_ScaleF_3.html" 
+ onMouseover="return escape('VU Meters and the DBu Scale<SUP>F.4</SUP>')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3889"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3895"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3897"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION001522100000000000000"></A><A NAME="sec:dbmscale"></A><A NAME="25807"></A>
+<BR>
+DBm Scale
+</H4>
+
+<P>
+A common <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">dB</A> scale used in audio recording is the <I>dBm scale</I> in
+which the reference <I>power</I> is taken to be a milliwatt (1 mW)
+dissipated by a 600 <A HREF="https://scienceworld.wolfram.com/physics/Ohm.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Ohm.html')">Ohm</A> resistor.  (See &#167;<A HREF="Voltage_Current_Resistance.html#sec:ee101">F.3</A> for a primer on
+resistors, voltage, current, and power.)  The <A HREF="Signal_Metrics.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Signal_Metrics.html')">signal power</A> is
+typically <I>averaged</I> over some time <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">period</A>.  In audio equipment,
+exponentially weighted averaging is typically carried out using a
+one-<A HREF="https://ccrma.stanford.edu/~jos/filters/Pole_Zero_Analysis_I.html" onMouseover="return escape('In the context of linear time-invariant filter analysis, a zero is a point in the complex s or z plane at which the transfer function goes to zero.  A pole is a point in the s or z plane at which the transfer function goes to infinity.  The s plane is used to analyze analog filters while the z plane is used for digital filters. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Pole_Zero_Analysis_I.html')">pole</A> <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filter</A> having a <A HREF="Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">time-constant</A> near 65.14 <A HREF="https://scienceworld.wolfram.com/physics/Second.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Second.html')">ms</A>, which yields a
+<SPAN CLASS="MATH">\(t_{40}\)</SPAN> (time to reach 99% of the <A HREF="Exponentials.html" onMouseover="return escape('An &lt;i&gt;exponential&lt;/i&gt; is any function of the form &lt;i&gt;Ae&lt;sup&gt;-t/&amp;#964;&lt;/sup&gt;&lt;/i&gt;, where &lt;i&gt;t&lt;/i&gt; is the independent variable (often denoting time in seconds), &lt;i&gt;A&lt;/i&gt; is an arbitrary scale factor, &lt;i&gt;&amp;#964;&lt;/i&gt; is called the &lt;i&gt;time constant&lt;/i&gt;, and &lt;i&gt;e&lt;/i&gt; is Euler\&#39;s number (2.718281828459...). Many systems in nature exhibit exponential decay over time, because an exponential decay is produced whenever the &lt;i&gt;rate&lt;/i&gt; of decay is proportional to how much is left. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponential</A> target value) near 300
+ms [<A
+ HREF="Bibliography.html#Cabrera06">11</A>].
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3899"
+  HREF="VU_Meters_DBu_ScaleF_3.html" 
+ onMouseover="return escape('VU Meters and the DBu Scale<SUP>F.4</SUP>')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3889"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3895"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3897"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

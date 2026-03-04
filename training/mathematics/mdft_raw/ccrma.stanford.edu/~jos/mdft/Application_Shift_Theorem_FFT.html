@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Application of the Shift Theorem to FFT Windows</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Application of the Shift Theorem to FFT Windows">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Zero_Phase_Signals.html">
+<LINK REL="up" HREF="Shift_Theorem.html">
+<LINK REL="next" HREF="Convolution_Theorem.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2700"
+  HREF="Convolution_Theorem.html" 
+ onMouseover="return escape('Convolution Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2692"
+  HREF="Zero_Phase_Signals.html" 
+ onMouseover="return escape('Zero Phase Signals')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2696"
+  HREF="Shift_Theorem.html" 
+ onMouseover="return escape('Shift Theorem')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2698"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00844400000000000000"></A><A NAME="sec:shiftwin"></A><A NAME="18511"></A>
+<BR>
+Application of the <A HREF="Shift_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Shift_Theorem.html')">Shift Theorem</A> to <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> Windows
+</H4>
+
+<P>
+In practical <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A>, we most often use the <I><A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">Fast
+Fourier Transform</A></I><A NAME="tex2html94"
+  HREF="footnode.html#foot18232"><SUP>7.16</SUP></A>  (FFT) together with a
+<I>window function</I> <SPAN CLASS="MATH">\(w(n), n=0,1,2,\ldots,N-1\)</SPAN>.  As discussed
+further in Chapter <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html#chap:dftex">8</A>, windows are normally positive (<SPAN CLASS="MATH">\(w(n)&gt;0\)</SPAN>),
+symmetric about their midpoint, and look pretty much like a ``<A HREF="http://en.wikipedia.org/wiki/Normal_distribution" onMouseover="return escape('The Gaussian probability density function is, in Matlab syntax, exp(-(x-mu)^2/(2*sigma^2))/sqrt(2*pi*sigma^2), where mu is the mean and sigma is the standard deviation. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Normal_distribution')">bell
+curve</A>.''  A window multiplies the <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> <SPAN CLASS="MATH">\(x\)</SPAN> being analyzed to form a
+<I>windowed signal</I> <SPAN CLASS="MATH">\(x_w(n) = w(n)x(n)\)</SPAN>, or <SPAN CLASS="MATH">\(x_w = w\cdot x\)</SPAN>, which
+is then analyzed using an FFT.  The window serves to <I>taper</I> the
+data segment gracefully to zero, thus eliminating spectral <A HREF="http://ccrma.stanford.edu/realsimple/SimpleStrings/Nonlinear_Overdrive.html" onMouseover="return escape('Click for http://ccrma.stanford.edu/realsimple/SimpleStrings/Nonlinear_Overdrive.html')">distortions</A>
+due to suddenly cutting off the signal in time.  Windowing is thus
+appropriate when <SPAN CLASS="MATH">\(x\)</SPAN> is a short section of a longer signal (not a
+<A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">period</A> or whole number of periods from a <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic signal</A>).
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>Real symmetric FFT windows are <I><A HREF="Linear_Phase_Terms.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Linear_Phase_Terms.html')">linear phase</A></I><A NAME="18515"></A>.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>Let <SPAN CLASS="MATH">\(w(n)\)</SPAN> denote the window samples for <SPAN CLASS="MATH">\(n=0,1,2,\ldots,M-1\)</SPAN>.
+Since the window is symmetric, we have <SPAN CLASS="MATH">\(w(n)=w(M-1-n)\)</SPAN> for all <SPAN CLASS="MATH">\(n\)</SPAN>.
+When <SPAN CLASS="MATH">\(M\)</SPAN> is odd, there is a sample at the midpoint at time
+<SPAN CLASS="MATH">\(n=(M-1)/2\)</SPAN>.  The midpoint can be translated to the time origin to
+create an even signal.  As established on page <A HREF="Symmetry.html#thm:realeven"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="https://ccrma.stanford.edu/~jos/icons/crossref.png"></A>,
+the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> of a real and even signal is real and even.  By the shift
+theorem, the DFT of the original symmetric window is a real, even
+<A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> multiplied by a <I><A HREF="Linear_Phase_Terms.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Linear_Phase_Terms.html')">linear phase term</A></I>, yielding a <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>
+having a phase that is linear in frequency with possible
+discontinuities of <SPAN CLASS="MATH">\(\pm\pi\)</SPAN> radians. Thus, all odd-length real
+symmetric signals are ``linear phase'', including FFT windows.
+
+<P>
+When <SPAN CLASS="MATH">\(M\)</SPAN> is even, the window midpoint at time <SPAN CLASS="MATH">\(n=(M-1)/2\)</SPAN> lands
+half-way between samples, so we cannot simply translate the window to
+zero-centered form.  However, we can still factor the window <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The spectrum of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>
+<SPAN CLASS="MATH">\(W(\omega_k)\)</SPAN> into the product of a linear phase term
+<SPAN CLASS="MATH">\(\exp[-\omega_k(M-1)/2]\)</SPAN> and a real spectrum (verify this as an
+exercise), which satisfies the definition of a linear phase signal.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2700"
+  HREF="Convolution_Theorem.html" 
+ onMouseover="return escape('Convolution Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2692"
+  HREF="Zero_Phase_Signals.html" 
+ onMouseover="return escape('Zero Phase Signals')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2696"
+  HREF="Shift_Theorem.html" 
+ onMouseover="return escape('Shift Theorem')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2698"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

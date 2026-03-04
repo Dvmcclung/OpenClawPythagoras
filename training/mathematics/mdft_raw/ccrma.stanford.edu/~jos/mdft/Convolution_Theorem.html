@@ -1,0 +1,371 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Convolution Theorem</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Convolution Theorem">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Dual_Convolution_Theorem.html">
+<LINK REL="previous" HREF="Shift_Theorem.html">
+<LINK REL="up" HREF="Fourier_Theorems.html">
+<LINK REL="next" HREF="Dual_Convolution_Theorem.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2712"
+  HREF="Dual_Convolution_Theorem.html" 
+ onMouseover="return escape('Dual of the Convolution Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2702"
+  HREF="Application_Shift_Theorem_FFT.html" 
+ onMouseover="return escape('Application of the Shift Theorem to FFT Windows')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2708"
+  HREF="Fourier_Theorems.html" 
+ onMouseover="return escape('Fourier Theorems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2710"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00845000000000000000"></A><A NAME="sec:convthm"></A><A NAME="18520"></A>
+<A NAME="18521"></A>
+<BR>
+<A HREF="https://ccrma.stanford.edu/~jos/sasp/Convolution_Theorem_DTFT.html#7473" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Convolution_Theorem_DTFT.html#7473')">Convolution Theorem</A>
+</H3>
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>For any <SPAN CLASS="MATH">\(x,y\in\mathbb{C}^N\)</SPAN>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{x\circledast y \;\longleftrightarrow\;X\cdot Y.}\]</DIV><P></P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\oper{DFT}_k(x\circledast y) &\isdef& \sum_{n=0}^{N-1}(x\circledast y)_n e^{-j2\pi nk/N} \\
+	&\isdef& \sum_{n=0}^{N-1}\sum_{m=0}^{N-1}x(m) y(n-m) e^{-j2\pi nk/N} \\
+	&=& \sum_{m=0}^{N-1}x(m) \sum_{n=0}^{N-1}\underbrace{y(n-m) e^{-j2\pi nk/N}}_{e^{-j2\pi mk/N}Y(k)} \\
+	&=& \left(\sum_{m=0}^{N-1}x(m) e^{-j2\pi mk/N}\right)Y(k)\quad\mbox{(by the Shift Theorem)}\\
+	&\isdef& X(k)Y(k)\end{eqnarray*}</DIV><P></P>
+This is perhaps the most important single <A HREF="Fourier_Theorems.html" onMouseover="return escape('The Fourier theorems establish important, elementary time-frequency relationships.  The theorems are largely the same whether stated for the case of the Fourier Transform (FT), Discrete Fourier Transform (DFT), Discrete Time Fourier Transform (DTFT), or Fourier Series (FS). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html')">Fourier theorem</A> of all.  It
+is the basis of a large number of <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> applications.  Since an FFT
+provides a <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">fast Fourier transform</A>, it also provides <I>fast
+<A HREF="Convolution.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Convolution.html')">convolution</A></I><A NAME="18544"></A>, thanks to the convolution theorem.  It turns out that
+using an FFT to perform convolution is really more efficient in
+practice only for reasonably long convolutions, such as <SPAN CLASS="MATH">\(N&gt;100\)</SPAN>.  For
+much longer convolutions, the savings become enormous compared with
+``direct'' convolution.  This happens because direct convolution
+requires on the order of <SPAN CLASS="MATH">\(N^2\)</SPAN> operations (multiplications and
+additions), while FFT-based convolution requires on the order of
+<SPAN CLASS="MATH">\(N\lg(N)\)</SPAN> operations, where <SPAN CLASS="MATH">\(\lg(N)\)</SPAN> denotes the logarithm-base-2 of
+<SPAN CLASS="MATH">\(N\)</SPAN> (see &#167;<A HREF="Radix_2_FFT.html#sec:fftrtwo">A.1.2</A> for an explanation).
+
+<P>
+The simple <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">matlab</A> example in Fig.<A HREF="Convolution_Theorem.html#code:tfft">7.13</A> illustrates how much faster
+convolution can be performed using an FFT.<A NAME="tex2html95"
+  HREF="footnode.html#foot18235"><SUP>7.17</SUP></A>  We see that
+for a length <SPAN CLASS="MATH">\(N=1024\)</SPAN> convolution, the <TT>fft</TT> function is
+approximately 300 times faster in Octave, and 30 times faster in
+Matlab.  (The <TT>conv</TT> routine is much faster in Matlab, even
+though it is a built-in function in both cases.)
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="code:tfft"></A><A NAME="18243"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 7.13:</STRONG>
+Matlab/Octave program for comparing the 
+speed of direct convolution with that of FFT convolution.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<HR></DIV>
+		&nbsp;
+<BR>
+
+<PRE>
+N = 1024;        % FFT much faster at this length
+t = 0:N-1;       % [0,1,2,...,N-1]
+h = exp(-t);     % <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filter</A> <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse</A> reponse
+H = fft(h);      % filter <A HREF="https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html" onMouseover="return escape('The &lt;i&gt;frequency response&lt;/i&gt; is defined for LTI filters as the Fourier transform of the filter output signal divided by the Fourier transform of the filter input signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html')">frequency response</A>
+x = ones(1,N);   % input = <A HREF="https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html" onMouseover="return escape('&lt;i&gt;dc&lt;/i&gt; stands for &lt;i&gt;direct current&lt;i&gt; in electrical engineering and signal processing (as opposed to \&#39;alternating current\&#39;).  The mean (average value) of a signal may be called its dc component.  Similarly, frequency zero is called the dc frequency, because a sinusoid with zero frequency is a constant signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html')">dc</A> (any <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> will do)
+Nrep = 100;      % number of trials to average
+t0 = clock;      % latch the current time
+for i=1:Nrep, y = conv(x,h); end      % Direct convolution
+t1 = etime(clock,t0)*1000; % elapsed time in msec
+t0 = clock; 
+for i=1:Nrep, y = ifft(fft(x) .* H); end % FFT convolution
+t2 = etime(clock,t0)*1000;
+disp(sprintf([...
+    'Average direct-convolution time = %0.2f msec\n',...
+    'Average FFT-convolution time = %0.2f msec\n',...
+    'Ratio = %0.2f (Direct/FFT)'],...
+    t1/Nrep,t2/Nrep,t1/t2));
+
+% =================== EXAMPLE RESULTS ===================
+
+Octave:
+Average direct-convolution time = 69.49 msec
+Average FFT-convolution time = 0.23 msec
+Ratio = 296.40 (Direct/FFT)
+
+Matlab:
+Average direct-convolution time = 15.73 msec
+Average FFT-convolution time = 0.50 msec
+Ratio = 31.46 (Direct/FFT)
+</PRE>
+<DIV ALIGN="CENTER">
+<HR></DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+A similar program produced the results for different FFT lengths shown
+in Table <A HREF="Convolution_Theorem.html#table:ffttable">7.1</A>.<A NAME="tex2html97"
+  HREF="footnode.html#foot18237"><SUP>7.18</SUP></A>  In this software environment, the <TT>fft</TT> function
+is faster starting with length <SPAN CLASS="MATH">\(2^6=64\)</SPAN>, and it is never significantly
+slower at short lengths, where ``calling overhead'' dominates.
+
+<P>
+
+	<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="19339"></A>
+<TABLE>
+<CAPTION><STRONG>Table:</STRONG>
+Direct versus FFT convolution times in <A HREF="https://scienceworld.wolfram.com/physics/Second.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Second.html')">milliseconds</A>
+  (convolution length = <SPAN CLASS="MATH">\(2^M\)</SPAN>) using Matlab 5.2 on an 800 MHz Athlon Windows PC.</CAPTION>
+<TR><TD>	<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="RIGHT"><B>M</B></TD>
+<TD ALIGN="RIGHT"><B>Direct</B></TD>
+<TD ALIGN="RIGHT"><B>FFT</B></TD>
+<TD ALIGN="RIGHT"><B>Ratio</B></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">1</TD>
+<TD ALIGN="RIGHT">0.07</TD>
+<TD ALIGN="RIGHT">0.08</TD>
+<TD ALIGN="RIGHT">0.91</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">0.08</TD>
+<TD ALIGN="RIGHT">0.08</TD>
+<TD ALIGN="RIGHT">0.92</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">3</TD>
+<TD ALIGN="RIGHT">0.08</TD>
+<TD ALIGN="RIGHT">0.08</TD>
+<TD ALIGN="RIGHT">0.94</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">4</TD>
+<TD ALIGN="RIGHT">0.09</TD>
+<TD ALIGN="RIGHT">0.10</TD>
+<TD ALIGN="RIGHT">0.97</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">5</TD>
+<TD ALIGN="RIGHT">0.12</TD>
+<TD ALIGN="RIGHT">0.12</TD>
+<TD ALIGN="RIGHT">0.96</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">6</TD>
+<TD ALIGN="RIGHT">0.18</TD>
+<TD ALIGN="RIGHT">0.12</TD>
+<TD ALIGN="RIGHT">1.44</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">7</TD>
+<TD ALIGN="RIGHT">0.39</TD>
+<TD ALIGN="RIGHT">0.15</TD>
+<TD ALIGN="RIGHT">2.67</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">8</TD>
+<TD ALIGN="RIGHT">1.10</TD>
+<TD ALIGN="RIGHT">0.21</TD>
+<TD ALIGN="RIGHT">5.10</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">9</TD>
+<TD ALIGN="RIGHT">3.83</TD>
+<TD ALIGN="RIGHT">0.31</TD>
+<TD ALIGN="RIGHT">12.26</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">10</TD>
+<TD ALIGN="RIGHT">15.80</TD>
+<TD ALIGN="RIGHT">0.47</TD>
+<TD ALIGN="RIGHT">33.72</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">11</TD>
+<TD ALIGN="RIGHT">50.39</TD>
+<TD ALIGN="RIGHT">1.09</TD>
+<TD ALIGN="RIGHT">46.07</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">12</TD>
+<TD ALIGN="RIGHT">177.75</TD>
+<TD ALIGN="RIGHT">2.53</TD>
+<TD ALIGN="RIGHT">70.22</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">13</TD>
+<TD ALIGN="RIGHT">709.75</TD>
+<TD ALIGN="RIGHT">5.62</TD>
+<TD ALIGN="RIGHT">126.18</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">14</TD>
+<TD ALIGN="RIGHT">4510.25</TD>
+<TD ALIGN="RIGHT">17.50</TD>
+<TD ALIGN="RIGHT">257.73</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">15</TD>
+<TD ALIGN="RIGHT">19050.00</TD>
+<TD ALIGN="RIGHT">72.50</TD>
+<TD ALIGN="RIGHT">262.76</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">16</TD>
+<TD ALIGN="RIGHT">316375.00</TD>
+<TD ALIGN="RIGHT">440.50</TD>
+<TD ALIGN="RIGHT">718.22</TD>
+</TR>
+</TABLE>
+</DIV>
+	
+	<A NAME="table:ffttable"></A> </TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+
+<P>
+A table similar to Table <A HREF="Convolution_Theorem.html#table:ffttable">7.1</A> in Strum and Kirk
+[<A
+ HREF="Bibliography.html#StrumAndKirk">82</A>, p.&nbsp;521], based on the number of real
+multiplies, finds that the <TT>fft</TT> is faster starting at length <SPAN CLASS="MATH">\(2^7=128\)</SPAN>,
+and that direct convolution is significantly faster for very short
+convolutions (<I>e.g.</I>, 16 operations for a direct length-4 convolution,
+versus 176 for the <TT>fft</TT> function).
+
+<P>
+See Appendix <A HREF="Fast_Fourier_Transform_FFT.html#app:fft">A</A> for further discussion of FFT algorithms and their applications.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2712"
+  HREF="Dual_Convolution_Theorem.html" 
+ onMouseover="return escape('Dual of the Convolution Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2702"
+  HREF="Application_Shift_Theorem_FFT.html" 
+ onMouseover="return escape('Application of the Shift Theorem to FFT Windows')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2708"
+  HREF="Fourier_Theorems.html" 
+ onMouseover="return escape('Fourier Theorems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2710"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

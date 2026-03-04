@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Number Theoretic Transform</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Number Theoretic Transform">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Discrete_Cosine_Transform_DCT.html">
+<LINK REL="up" HREF="Related_Transforms.html">
+<LINK REL="next" HREF="FFT_Software.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3385"
+  HREF="FFT_Software.html" 
+ onMouseover="return escape('FFT Software')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3377"
+  HREF="Discrete_Cosine_Transform_DCT.html" 
+ onMouseover="return escape('The Discrete Cosine Transform (DCT)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3381"
+  HREF="Related_Transforms.html" 
+ onMouseover="return escape('Related Transforms')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3383"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001062000000000000000"></A><A NAME="sec:ntt"></A><A NAME="22376"></A>
+<A NAME="22377"></A>
+<BR>
+<A HREF="http://www.apfloat.org/ntt.html" onMouseover="return escape('The number theory transform is analogous to the discrete Fourier transform (DFT) in that it has a similar convolution theorem &nbsp;&#8212;&nbsp; Click for http://www.apfloat.org/ntt.html')">Number Theoretic Transform</A>
+</H3>
+
+<P>
+The <I>number theoretic transform</I> is based on generalizing the
+<SPAN CLASS="MATH">\(N\)</SPAN>th <A HREF="https://mathworld.wolfram.com/PrimitiveRootofUnity.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/PrimitiveRootofUnity.html')">primitive root of unity</A> (see &#167;<A HREF="Roots_Unity.html#sec:rootsofunity">3.12</A>) to a
+``quotient ring'' instead of the usual field of <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A>.  Let
+<SPAN CLASS="MATH">\(W_N\)</SPAN> denote a primitive <SPAN CLASS="MATH">\(N\)</SPAN>th <A HREF="Roots_Unity.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Roots_Unity.html')">root of unity</A>.  We have been using <SPAN CLASS="MATH">\(W_N
+= \exp(-j2\pi/N)\)</SPAN> in the field of complex numbers, and it of course
+satisfies <SPAN CLASS="MATH">\(W_N^N=1\)</SPAN>, making it a root of unity; it also has the
+property that <SPAN CLASS="MATH">\(W_N^k\)</SPAN> visits all of the ``<A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> frequency points'' on
+the unit circle in the <SPAN CLASS="MATH">\(z\)</SPAN> plane, as <SPAN CLASS="MATH">\(k\)</SPAN> goes from <SPAN CLASS="MATH">\(0\)</SPAN> to <SPAN CLASS="MATH">\(N-1\)</SPAN>.
+
+<P>
+In a <A HREF="http://www.apfloat.org/ntt.html" onMouseover="return escape('The number theory transform is analogous to the discrete Fourier transform (DFT) in that it has a similar convolution theorem &nbsp;&#8212;&nbsp; Click for http://www.apfloat.org/ntt.html')">number theory transform</A>, <SPAN CLASS="MATH">\(W_N\)</SPAN> is an <I>integer</I> which
+satisfies
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[W_N^N = 1\left(\mbox{mod}\;p\right)\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(p\)</SPAN> is a prime integer.  From number theory, for each <A HREF="https://mathworld.wolfram.com/PrimeNumber.html" onMouseover="return escape('A &lt;i&gt;prime number&lt;/i&gt; is an integer divisible only by 1 and itself.  The first few are 2,3,5,7,11,13,17,... . &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/PrimeNumber.html')">prime
+number</A> <SPAN CLASS="MATH">\(p\)</SPAN> there exists at least one primitive root <SPAN CLASS="MATH">\(r\)</SPAN> such that
+<SPAN CLASS="MATH">\(r^n\)</SPAN> (modulo <SPAN CLASS="MATH">\(p\)</SPAN>) visits all of the numbers <SPAN CLASS="MATH">\(1\)</SPAN> through <SPAN CLASS="MATH">\(p-1\)</SPAN>
+<I>in some order</I>, as <SPAN CLASS="MATH">\(n\)</SPAN> goes from <SPAN CLASS="MATH">\(1\)</SPAN> to <SPAN CLASS="MATH">\(p-1\)</SPAN>.  Since
+<SPAN CLASS="MATH">\(m^{p-1}=1\left(\mbox{mod}\;p\right)\)</SPAN> for all integers <SPAN CLASS="MATH">\(m\)</SPAN> (another result from number
+theory), <SPAN CLASS="MATH">\(r\)</SPAN> is also an <SPAN CLASS="MATH">\(N\)</SPAN>th root of unity, where <SPAN CLASS="MATH">\(N=p-1\)</SPAN> is the
+transform size.  (More generally, <SPAN CLASS="MATH">\(N\)</SPAN> can be any integer divisor <SPAN CLASS="MATH">\(L\)</SPAN>
+of <SPAN CLASS="MATH">\(p-1\)</SPAN>, in which case we use <SPAN CLASS="MATH">\(W_N=r^L\)</SPAN> as the generator of the
+numbers participating in the transform.)
+
+<P>
+When the number of elements in the transform is composite, a ``fast
+number theoretic transform'' may be constructed in the same manner as
+a <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">fast Fourier transform</A> is constructed from the DFT, or as the
+prime factor algorithm (or Winograd transform) is constructed for
+products of small mutually prime factors [<A
+ HREF="Bibliography.html#McClellanAndRader79">45</A>].
+
+<P>
+Unlike the DFT, the number theoretic transform does not transform to a
+meaningful ``<A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domain</A>''.  However, it has analogous theorems,
+such as the <A HREF="Convolution_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Convolution_Theorem.html')">convolution theorem</A>, enabling it to be used for fast
+<A HREF="Convolution.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Convolution.html')">convolutions</A> and <A HREF="Correlation.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Correlation.html')">correlations</A> like the various <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> algorithms.
+
+<P>
+An interesting feature of the number theory transform is that all
+computations are <I>exact</I> (integer multiplication and addition
+modulo a prime integer).  There is no round-off error.  This feature
+has been used to do fast convolutions to multiply extremely large
+numbers, such as are needed when computing <SPAN CLASS="MATH">\(\pi\)</SPAN> to millions of digits
+of precision.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3385"
+  HREF="FFT_Software.html" 
+ onMouseover="return escape('FFT Software')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3377"
+  HREF="Discrete_Cosine_Transform_DCT.html" 
+ onMouseover="return escape('The Discrete Cosine Transform (DCT)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3381"
+  HREF="Related_Transforms.html" 
+ onMouseover="return escape('Related Transforms')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3383"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

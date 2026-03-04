@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Relation of the DFT to Fourier Series</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Relation of the DFT to Fourier Series">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Fourier_Series_FS_Relation.html">
+<LINK REL="up" HREF="Fourier_Series_FS_Relation.html">
+<LINK REL="next" HREF="Selected_Continuous_Time_Fourier_Theorems.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3482"
+  HREF="Selected_Continuous_Time_Fourier_Theorems.html" 
+ onMouseover="return escape('Continuous Fourier Theorems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3474"
+  HREF="Fourier_Series_FS_Relation.html" 
+ onMouseover="return escape('Fourier Series (FS)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3478"
+  HREF="Fourier_Series_FS_Relation.html" 
+ onMouseover="return escape('Fourier Series (FS)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3480"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001131000000000000000">
+Relation of the DFT to Fourier Series</A>
+</H3>
+
+<P>
+We now show that the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> of a sampled <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> <SPAN CLASS="MATH">\(x(n)\)</SPAN> (of length <SPAN CLASS="MATH">\(N\)</SPAN>),
+is proportional to the
+<I><A HREF="Fourier_Series_FS_Relation.html" onMouseover="return escape('A Fourier Series (FS) expansion is the appropriate Fourier transform for &lt;i&gt;periodic&lt;/i&gt; signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Series_FS_Relation.html')">Fourier series</A> coefficients</I> of the continuous 
+<A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic signal</A> obtained by
+repeating and interpolating <SPAN CLASS="MATH">\(x\)</SPAN>.  More precisely, the DFT of the <SPAN CLASS="MATH">\(N\)</SPAN>
+samples comprising one <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">period</A> equals <SPAN CLASS="MATH">\(N\)</SPAN> times the Fourier series
+coefficients.  To avoid <A HREF="Alias_Operator.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Alias_Operator.html')">aliasing</A> upon <A HREF="Sampling_Theory.html" onMouseover="return escape('Sampling is the process of converting a continuous-time signal into a discrete-time signal. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling</A>, the continuous-time
+signal must be bandlimited to less than half the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling
+rate</A> (see Appendix <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html#app:sampling">D</A>); this implies that at most <SPAN CLASS="MATH">\(N\)</SPAN>
+complex <A HREF="https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics" onMouseover="return escape('Every periodic signal has a &lt;i&gt;fundamental frequency&lt;/i&gt; given by the &lt;i&gt;inverse&lt;/i&gt; of the period.  If the period is in units of seconds, then the fundamental frequency is in units of Hertz (cycles per second).  According to Fourier theory, every periodic signal can be expressed as a sum of sinusoids at frequencies given by integer multiples of the fundamental frequency.  For integers greater than 1, these frequencies are called &lt;i&gt;harmonic frequencies&lt;/i&gt;, and the sinusoids at harmonic frequencies are typically called &lt;i&gt;harmonics&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics')">harmonic</A> components can be nonzero in the original
+continuous-time signal.
+
+<P>
+If <SPAN CLASS="MATH">\(x(t)\)</SPAN> is bandlimited to <SPAN CLASS="MATH">\(\omega T\in(-\pi,\pi)\)</SPAN>, it can be sampled
+at intervals of <SPAN CLASS="MATH">\(T\)</SPAN> seconds without aliasing (see
+&#167;<A HREF="Aliasing_Sampled_Signals.html#sec:aliasing">D.2</A>).  One way to sample a signal inside an integral
+expression such as
+Eq.(<A HREF="Fourier_Series_FS_Relation.html#eq:fs">B.5</A>) is to multiply it by a continuous-time <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse</A> train</I><A NAME="23266"></A>
+<A NAME="eq:deltatraindef"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\Psi_T(t) \isdef T\sum_{n=-\infty}^\infty \delta(t-nT)
+\end{equation}</DIV><P></P>
+where <SPAN CLASS="MATH">\(\delta(t)\)</SPAN> is the continuous-time <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse signal</A> 
+defined in Eq.(<A HREF="Continuous_Time_Impulse.html#eq:deltafn">B.3</A>).
+
+<P>
+We wish to find the continuous-time Fourier series of the
+<I>sampled</I> <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic</A> signal <SPAN CLASS="MATH">\(x(nT)\)</SPAN>.  Thus, we replace <SPAN CLASS="MATH">\(x(t)\)</SPAN> in
+Eq.(<A HREF="Fourier_Series_FS_Relation.html#eq:fs">B.5</A>) by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x_s(t) \isdef x(t)\cdot \Psi_T(t).\]</DIV><P></P>
+By the <A HREF="Continuous_Time_Impulse.html" onMouseover="return escape('The integral of a continuous signal times an impulse signal equals the signal value at the time of the impulse. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Continuous_Time_Impulse.html')">sifting property</A> of delta functions (Eq.(<A HREF="Continuous_Time_Impulse.html#eq:sift">B.4</A>)), the
+Fourier series of <SPAN CLASS="MATH">\(x_s\)</SPAN> is<A NAME="tex2html160"
+  HREF="footnode.html#foot23248"><SUP>B.3</SUP></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}X_s(\omega_k) = \frac{1}{P} \int_0^P x_s(t) e^{-j\omega_k t} dt
+ &=& \frac{1}{P} \sum_{n=0}^{\lceil P/T\rceil-1} x(nT) e^{-j\omega_k nT} T.\end{eqnarray*}</DIV><P></P>
+If the <A HREF="Sampling_Theorem.html" onMouseover="return escape('The sampling interval (or sampling period) of a discrete-time signal is defined as the reciprocal of the sampling rate.  Since the sampling rate is normally in units of samples per second (Hz), the sampling interval is normally in units of seconds.  See also: sampling rate, sampling theorem &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">sampling interval</A> <SPAN CLASS="MATH">\(T\)</SPAN> is chosen so that it divides the signal
+period <SPAN CLASS="MATH">\(P\)</SPAN>, then the number of samples under the integral is an integer
+<SPAN CLASS="MATH">\(N\isdef P/T\)</SPAN>, and we obtain
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}X_s(\omega_k) 
+	&=& \frac{T}{P} \sum_{n=0}^{N-1} x(nT) e^{-j\omega_k nT}\\
+	&\isdef& \frac{1}{N}\oper{DFT}_{N,k}(x_p), 
+	\quad k=0,\pm 1, \pm 2, \dots\end{eqnarray*}</DIV><P></P>
+where <SPAN CLASS="MATH">\(x_p\isdef [x(0),x(T),\dots,x((N-1)T)]\)</SPAN>.  Thus,
+<SPAN CLASS="MATH">\(X_s(\omega_k)=X(\omega_k)\)</SPAN> for all <SPAN CLASS="MATH">\(k\)</SPAN> at which the bandlimited
+periodic signal <SPAN CLASS="MATH">\(x(t)\)</SPAN> has a nonzero <A HREF="http://en.wikipedia.org/wiki/Harmonic" onMouseover="return escape('For a tone which posesses a perfectly harmonic overtone series, the nth harmonic is generally defined to oscillate at nf&lt;sub&gt;0&lt;/sub&gt;Hz, where f&lt;sub&gt;0&lt;/sub&gt; is the fundamental frequency. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Harmonic')">harmonic</A>.  When <SPAN CLASS="MATH">\(N\)</SPAN> is odd,
+<SPAN CLASS="MATH">\(X(\omega_k)\)</SPAN> can be nonzero for <SPAN CLASS="MATH">\(k\in[-(N-1)/2,(N-1)/2]\)</SPAN>, while for
+<SPAN CLASS="MATH">\(N\)</SPAN> even, the maximum nonzero <A HREF="https://scienceworld.wolfram.com/physics/HarmonicNumber.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/HarmonicNumber.html')">harmonic-number</A> range is
+<SPAN CLASS="MATH">\(k\in[-N/2+1,N/2-1]\)</SPAN>.
+
+<P>
+In summary,
+ <BLOCKQUOTE>
+<IMG
+ WIDTH="679" HEIGHT="77" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img122.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img122.png 1x,https://ccrma.stanford.edu/~jos/mdft/img122_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img122_3x.png 3x"
+ ALT="$\textstyle \parbox{0.8\textwidth}{% WHY IS THIS NEEDED???
+\emph{the Fourier series coefficients of a periodic, bandlimited
+signal $x$\ are given by the DFT of one period of the samples of $x$,
+divided by $N$, where $N$\ is the DFT length, and $N$\ is also
+the number of samples in each period of $x$.}}$">
+</BLOCKQUOTE>
+
+<P>
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3482"
+  HREF="Selected_Continuous_Time_Fourier_Theorems.html" 
+ onMouseover="return escape('Continuous Fourier Theorems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3474"
+  HREF="Fourier_Series_FS_Relation.html" 
+ onMouseover="return escape('Fourier Series (FS)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3478"
+  HREF="Fourier_Series_FS_Relation.html" 
+ onMouseover="return escape('Fourier Series (FS)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3480"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

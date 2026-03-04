@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Geometric Signal Theory</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Geometric Signal Theory">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="DFT_Derived.html">
+<LINK REL="previous" HREF="Sinusoids_Exponentials.html">
+<LINK REL="up" HREF="mdft.html">
+<LINK REL="next" HREF="DFT.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1461"
+  HREF="DFT.html" 
+ onMouseover="return escape('The DFT')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1451"
+  HREF="Sinusoid_Problems.html" 
+ onMouseover="return escape('Sinusoid Problems')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1459"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00600000000000000000"></A><A NAME="chap:proj"></A><A NAME="10792"></A>
+<BR>
+Geometric Signal Theory
+</H1>
+
+<P>
+This chapter provides an introduction to the elements of geometric
+<A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> theory, including <A HREF="Linear_Vector_Space.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Linear_Vector_Space.html')">vector spaces</A>, <A HREF="http://en.wikipedia.org/wiki/Norm_(mathematics)" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Norm_(mathematics)')">norms</A>, <A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner products</A>,
+<A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonality</A>, projection of one signal onto another, and elementary
+vector space operations.  First, however, we will ``get our bearings''
+with respect to the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1462"
+  HREF="DFT.html">The DFT</A>
+<LI><A NAME="tex2html1463"
+  HREF="Signals_Vectors.html">Signals as Vectors</A>
+<UL>
+<LI><A NAME="tex2html1464"
+  HREF="Example_Vector_View.html">An Example Vector View: <SPAN CLASS="MATH">\(N=2\)</SPAN></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1465"
+  HREF="Vector_Addition.html">Vector Addition</A>
+<LI><A NAME="tex2html1466"
+  HREF="Vector_Subtraction.html">Vector Subtraction</A>
+<LI><A NAME="tex2html1467"
+  HREF="Scalar_Multiplication.html">Scalar Multiplication</A>
+<LI><A NAME="tex2html1468"
+  HREF="Linear_Combination_Vectors.html">Linear Combination of Vectors</A>
+<LI><A NAME="tex2html1469"
+  HREF="Linear_Vector_Space.html">Linear Vector Space</A>
+<LI><A NAME="tex2html1470"
+  HREF="Signal_Metrics.html">Signal Metrics</A>
+<UL>
+<LI><A NAME="tex2html1471"
+  HREF="Example.html">Example:</A>
+<LI><A NAME="tex2html1472"
+  HREF="Example_I.html">Example:</A>
+<LI><A NAME="tex2html1473"
+  HREF="Example_I_I.html">Example:</A>
+<LI><A NAME="tex2html1474"
+  HREF="Other_Lp_Norms.html">Other Lp Norms</A>
+<LI><A NAME="tex2html1475"
+  HREF="Norm_Properties.html">Norm Properties</A>
+<LI><A NAME="tex2html1476"
+  HREF="Summary_Related_Mathematical_Topics.html">Summary and Related Mathematical Topics</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1477"
+  HREF="Inner_Product.html">The Inner Product</A>
+<UL>
+<LI><A NAME="tex2html1478"
+  HREF="Example_I_I_I.html">Example:</A>
+<LI><A NAME="tex2html1479"
+  HREF="Linearity_Inner_Product.html">Linearity of the Inner Product</A>
+<LI><A NAME="tex2html1480"
+  HREF="Norm_Induced_Inner_Product.html">Norm Induced by the Inner Product</A>
+<LI><A NAME="tex2html1481"
+  HREF="Cauchy_Schwarz_Inequality.html">Cauchy-Schwarz Inequality</A>
+<LI><A NAME="tex2html1482"
+  HREF="Triangle_Inequality.html">Triangle Inequality</A>
+<LI><A NAME="tex2html1483"
+  HREF="Triangle_Difference_Inequality.html">Triangle Difference Inequality</A>
+<LI><A NAME="tex2html1484"
+  HREF="Vector_Cosine.html">Vector Cosine</A>
+<LI><A NAME="tex2html1485"
+  HREF="Orthogonality.html">Orthogonality</A>
+<LI><A NAME="tex2html1486"
+  HREF="Pythagorean_Theorem_N_Space.html">The Pythagorean Theorem in N-Space</A>
+<LI><A NAME="tex2html1487"
+  HREF="Projection.html">Projection</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1488"
+  HREF="Signal_Reconstruction_Projections.html">Signal Reconstruction from Projections</A>
+<UL>
+<LI><A NAME="tex2html1489"
+  HREF="Changing_Coordinates.html">Changing Coordinates</A>
+<UL>
+<LI><A NAME="tex2html1490"
+  HREF="Example_Changing_Coordinates_2D.html">An Example of Changing Coordinates in 2D</A>
+</UL>
+<LI><A NAME="tex2html1491"
+  HREF="Projection_onto_Linearly_Dependent.html">Projection onto Linearly Dependent Vectors</A>
+<LI><A NAME="tex2html1492"
+  HREF="Projection_onto_Non_Orthogonal_Vectors.html">Projection onto Non-Orthogonal Vectors</A>
+<LI><A NAME="tex2html1493"
+  HREF="General_Conditions.html">General Conditions</A>
+<LI><A NAME="tex2html1494"
+  HREF="Signal_Vector_Reconstruction_Projections.html">Signal/Vector Reconstruction from Projections</A>
+<LI><A NAME="tex2html1495"
+  HREF="Gram_Schmidt_Orthogonalization.html">Gram-Schmidt Orthogonalization</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1496"
+  HREF="Signal_Projection_Problems.html">Signal Projection Problems</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1461"
+  HREF="DFT.html" 
+ onMouseover="return escape('The DFT')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1451"
+  HREF="Sinusoid_Problems.html" 
+ onMouseover="return escape('Sinusoid Problems')">Prev</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1459"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

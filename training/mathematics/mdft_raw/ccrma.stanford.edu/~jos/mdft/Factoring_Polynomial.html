@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Factoring a Polynomial</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Factoring a Polynomial">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Quadratic_Formula.html">
+<LINK REL="previous" HREF="Complex_Numbers.html">
+<LINK REL="up" HREF="Complex_Numbers.html">
+<LINK REL="next" HREF="Quadratic_Formula.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html682"
+  HREF="Quadratic_Formula.html" 
+ onMouseover="return escape('The Quadratic Formula')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html672"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html678"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html680"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00310000000000000000"></A><A NAME="sec:factoring"></A><A NAME="5752"></A>
+<A NAME="5753"></A>
+<BR>
+Factoring a Polynomial
+</H2>
+
+<P>
+Remember ``<A HREF="https://www.ece.rice.edu/dsp/software/fvhdp.shtml" onMouseover="return escape('Click for https://www.ece.rice.edu/dsp/software/fvhdp.shtml')">factoring polynomials</A>''?  Consider the second-order polynomial
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[p(x) = x^2-5x+6.\]</DIV><P></P>
+It is second-order because the highest power of <SPAN CLASS="MATH">\(x\)</SPAN> is <SPAN CLASS="MATH">\(2\)</SPAN> (only
+non-negative integer powers of <SPAN CLASS="MATH">\(x\)</SPAN> are allowed in this context).  The
+polynomial is also 
+<A NAME="5754"></A><I>monic</I> 
+because its leading coefficient, the
+coefficient of <SPAN CLASS="MATH">\(x^2\)</SPAN>, is <SPAN CLASS="MATH">\(1\)</SPAN>.  By the fundamental theorem of <A HREF="https://www.khanacademy.org/math/algebra2" onMouseover="return escape('Click for https://www.khanacademy.org/math/algebra2')">algebra</A>
+(discussed further in &#167;<A HREF="Fundamental_Theorem_Algebra.html#sec:fta">2.4</A>), there are exactly two 
+<A NAME="5755"></A><I>roots</I> 
+(or 
+<A NAME="5756"></A><I>zeros</I>) of any 
+second order polynomial.  These roots may be real or complex (to be defined).
+For now, let's assume they are both real and denote them by 
+<SPAN CLASS="MATH">\(r_1\)</SPAN> and <SPAN CLASS="MATH">\(r_2\)</SPAN>.  Then we have
+<SPAN CLASS="MATH">\(p(r_1)=0\)</SPAN> and <SPAN CLASS="MATH">\(p(r_2)=0\)</SPAN>, and we can write
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[p(x) = (x-r_1)(x-r_2).\]</DIV><P></P>
+This is the <I>factored form</I><A NAME="5757"></A> of the monic polynomial <SPAN CLASS="MATH">\(p(x)\)</SPAN>.
+(For a non-monic polynomial, we may simply divide all coefficients
+by the first to make it monic, and this doesn't affect the zeros.)
+Multiplying out the symbolic factored form gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[p(x) = (x-r_1)(x-r_2) = x^2 - (r_1 + r_2)x + r_1 r_2.\]</DIV><P></P>
+Comparing with the original polynomial, we find we must have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}r_1+r_2 &=& 5 \\
+r_1 r_2 &=& 6.\end{eqnarray*}</DIV><P></P>
+This is a system of two equations in two unknowns.  Unfortunately, it is a
+<A NAME="5761"></A><I><A HREF="http://en.wikipedia.org/wiki/Nonlinear" onMouseover="return escape('Any function that is not linear is nonlinear.  There are no general methods for solving nonlinear equations or nonlinear differential equations. This is why it is usually easier, although generally less accurate, to approximate a nonlinear function by a linear function if possible. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Nonlinear')">nonlinear</A></I> system of two equations in two
+unknowns.<A NAME="tex2html11"
+  HREF="footnode.html#foot5715"><SUP>2.1</SUP></A> Nevertheless, because it is so small,
+the equations are easily solved.  In beginning algebra, we did them by
+hand.  However, nowadays we can use a software tool such as <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> or
+Octave to solve very large systems of linear equations.
+
+<P>
+The factored form of this simple example is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[p(x) = x^2-5x+6 = (x-r_1)(x-r_2) = (x-2)(x-3).\]</DIV><P></P>
+Note that polynomial factorization rewrites a monic <SPAN CLASS="MATH">\(n\)</SPAN>th-order
+polynomial as the product of <SPAN CLASS="MATH">\(n\)</SPAN> <I>first-order</I> monic polynomials,
+each of which contributes one zero (root) to the product.  This
+factoring business is often used when working with <I><A HREF="https://ccrma.stanford.edu/~jos/filters/" onMouseover="return escape('A &lt;i&gt;digital filter&lt;/i&gt; can be visualized as a \&#39;black box\&#39; that accepts a sequence of numbers and emits a new sequence of numbers. In digital audio signal processing applications, such number sequences usually represent sounds. For example, digital filters are used to implement graphic equalizers and other digital audio effects. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/')">digital
+filters</A></I> [<A
+ HREF="Bibliography.html#JOSFP">71</A>].
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html682"
+  HREF="Quadratic_Formula.html" 
+ onMouseover="return escape('The Quadratic Formula')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html672"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html678"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html680"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

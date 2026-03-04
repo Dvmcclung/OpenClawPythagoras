@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Related Transforms</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Related Transforms">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="FFT_Software.html">
+<LINK REL="previous" HREF="Fast_Transforms_Audio_DSP.html">
+<LINK REL="up" HREF="Fast_Fourier_Transform_FFT.html">
+<LINK REL="next" HREF="Discrete_Cosine_Transform_DCT.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3361"
+  HREF="Discrete_Cosine_Transform_DCT.html" 
+ onMouseover="return escape('The Discrete Cosine Transform (DCT)')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3351"
+  HREF="Fast_Transforms_Audio_DSP.html" 
+ onMouseover="return escape('Fast Transforms in Audio DSP')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3357"
+  HREF="Fast_Fourier_Transform_FFT.html" 
+ onMouseover="return escape('Fast Fourier Transforms (FFT)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3359"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001060000000000000000">
+Related Transforms</A>
+</H2>
+
+<P>
+ 
+<P>
+There are alternatives to the <A HREF="http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm')">Cooley-Tukey FFT</A> which can serve the
+same or related purposes and which can have advantages in certain
+situations [<A
+ HREF="Bibliography.html#BurrusAndParks85">10</A>].  Examples include the fast
+<A HREF="http://en.wikipedia.org/wiki/Discrete_cosine_transform" onMouseover="return escape('The Discrete Cosine Transform (DCT) computes a discrete-frequency spectrum from a discrete-time signal of finite length in a manner similar to the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Discrete_cosine_transform')">discrete cosine transform</A> (<A HREF="http://en.wikipedia.org/wiki/Discrete_cosine_transform" onMouseover="return escape('The Discrete Cosine Transform (DCT) computes a discrete-frequency spectrum from a discrete-time signal of finite length in a manner similar to the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Discrete_cosine_transform')">DCT</A>) [<A
+ HREF="Bibliography.html#BosiAndGoldberg03">5</A>], discrete
+Hartley transform [<A
+ HREF="Bibliography.html#DuhamelAndVetterli87">22</A>], and <A HREF="http://www.apfloat.org/ntt.html" onMouseover="return escape('The number theory transform is analogous to the discrete Fourier transform (DFT) in that it has a similar convolution theorem &nbsp;&#8212;&nbsp; Click for http://www.apfloat.org/ntt.html')">number theoretic
+transform</A> [<A
+ HREF="Bibliography.html#AgarwalAndBurrus77">2</A>]. 
+
+<P>
+The DCT, used extensively in image coding, is described in &#167;<A HREF="Discrete_Cosine_Transform_DCT.html#sec:dct">A.6.1</A>
+below.  The Hartley transform, optimized for processing real <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signals</A>,
+does not appear to have any advantages over a ``pruned real-only <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A>''
+[<A
+ HREF="Bibliography.html#SorensonEtAl87">77</A>].  The number theoretic transform has special
+applicability for large-scale, high-precision calculations (&#167;<A HREF="Number_Theoretic_Transform.html#sec:ntt">A.6.2</A>
+below).
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html3362"
+  HREF="Discrete_Cosine_Transform_DCT.html">The Discrete
+Cosine Transform (DCT)</A>
+<LI><A NAME="tex2html3363"
+  HREF="Number_Theoretic_Transform.html">Number Theoretic Transform</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3361"
+  HREF="Discrete_Cosine_Transform_DCT.html" 
+ onMouseover="return escape('The Discrete Cosine Transform (DCT)')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3351"
+  HREF="Fast_Transforms_Audio_DSP.html" 
+ onMouseover="return escape('Fast Transforms in Audio DSP')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3357"
+  HREF="Fast_Fourier_Transform_FFT.html" 
+ onMouseover="return escape('Fast Fourier Transforms (FFT)')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3359"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

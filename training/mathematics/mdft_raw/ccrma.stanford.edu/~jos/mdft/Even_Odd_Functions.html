@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Even and Odd Functions</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Even and Odd Functions">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Fourier_Theorems.html">
+<LINK REL="previous" HREF="Signal_Operators.html">
+<LINK REL="up" HREF="Fourier_Theorems_DFT.html">
+<LINK REL="next" HREF="Fourier_Theorems.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2569"
+  HREF="Fourier_Theorems.html" 
+ onMouseover="return escape('Fourier Theorems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2559"
+  HREF="Alias_Operator.html" 
+ onMouseover="return escape('Alias Operator')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2565"
+  HREF="Fourier_Theorems_DFT.html" 
+ onMouseover="return escape('Fourier Theorems for the DFT')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2567"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00830000000000000000"></A><A NAME="sec:evenodd"></A><A NAME="16712"></A>
+<A NAME="16713"></A>
+<BR>
+Even and <A HREF="http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html" onMouseover="return escape('Click for http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html')">Odd Functions</A>
+</H2>
+
+<P>
+Some of the <A HREF="Fourier_Theorems.html" onMouseover="return escape('The Fourier theorems establish important, elementary time-frequency relationships.  The theorems are largely the same whether stated for the case of the Fourier Transform (FT), Discrete Fourier Transform (DFT), Discrete Time Fourier Transform (DTFT), or Fourier Series (FS). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Theorems.html')">Fourier theorems</A> can be succinctly expressed in terms of even
+and odd symmetries.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>A function <SPAN CLASS="MATH">\(f(n)\)</SPAN> is said to be <I>even</I><A NAME="16717"></A> if <SPAN CLASS="MATH">\(f(-n)=f(n)\)</SPAN>.  
+
+<P>
+An <A HREF="http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html" onMouseover="return escape('Click for http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html')">even function</A> is also <I>symmetric</I><A NAME="16719"></A>, but the
+term symmetric applies also to functions symmetric about a point other
+than <SPAN CLASS="MATH">\(0\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>A function <SPAN CLASS="MATH">\(f(n)\)</SPAN> is said to be <I>odd</I> if <SPAN CLASS="MATH">\(f(-n)=-f(n)\)</SPAN>.  
+
+<P>
+An <A HREF="http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html" onMouseover="return escape('Click for http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html')">odd function</A> is also called <I>antisymmetric</I><A NAME="16723"></A>.
+
+<P>
+Note that every finite odd function <SPAN CLASS="MATH">\(f(n)\)</SPAN> must satisfy
+<SPAN CLASS="MATH">\(f(0)=0\)</SPAN>.<A NAME="tex2html90"
+  HREF="footnode.html#foot16224"><SUP>7.12</SUP></A> Moreover, for any <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN> with
+<SPAN CLASS="MATH">\(N\)</SPAN> even, we also have <SPAN CLASS="MATH">\(x(N/2)=0\)</SPAN> since
+<SPAN CLASS="MATH">\(x(N/2)=-x(-N/2)=-x(-N/2+N)=-x(N/2)\)</SPAN>; that is, <SPAN CLASS="MATH">\(N/2\)</SPAN> and <SPAN CLASS="MATH">\(-N/2\)</SPAN> index
+the same point when <SPAN CLASS="MATH">\(N\)</SPAN> is even (since all indexing in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> is modulo <SPAN CLASS="MATH">\(N\)</SPAN>).
+
+<P>
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>Every function <SPAN CLASS="MATH">\(f(n)\)</SPAN> can be 
+uniquely
+decomposed into a sum of its even part
+<SPAN CLASS="MATH">\(f_e(n)\)</SPAN> and odd part <SPAN CLASS="MATH">\(f_o(n)\)</SPAN>, where
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}f_e(n) &\isdef& \frac{f(n) + f(-n)}{2} \\
+f_o(n) &\isdef& \frac{f(n) - f(-n)}{2}.\end{eqnarray*}</DIV><P></P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>In the above definitions, <SPAN CLASS="MATH">\(f_e\)</SPAN> is even and <SPAN CLASS="MATH">\(f_o\)</SPAN> is odd by construction.
+Summing, we have
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[f_e(n) + f_o(n) = \frac{f(n) + f(-n)}{2} + \frac{f(n) - f(-n)}{2} = f(n).\]</DIV><P></P>
+To show uniqueness, let <SPAN CLASS="MATH">\(f(n) = f'_e(n) + f'_o(n)\)</SPAN> denote some other
+even-odd decomposition. Then <SPAN CLASS="MATH">\(f(n)+f(-n) = 2f_e(n) = 2f'_e(n)
+\,\,\Rightarrow\,\,f_e(n)=f'_e(n)\)</SPAN>, and <SPAN CLASS="MATH">\(f(n)-f(-n) = 2f_o(n) = 2f'_o(n)
+\,\,\Rightarrow\,\,f_o(n)=f'_o(n)\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>The product of <A HREF="http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html" onMouseover="return escape('Click for http://archives.math.utk.edu/visual.calculus/0/functions.14/index.html')">even functions</A> is even, the product of odd functions
+is even, and the product of an even times an odd function is odd.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>Readily shown. 
+<P>
+Since even times even is even, odd times odd is even, and even times odd is
+odd, we can think of even as <SPAN CLASS="MATH">\((+)\)</SPAN> and odd as <SPAN CLASS="MATH">\((-)\)</SPAN>: 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}(+)\cdot(+) &=& (+)\\
+(-)\cdot(-) &=& (+)\\
+(+)\cdot(-) &=& (-)\\
+(-)\cdot(+) &=& (-)\end{eqnarray*}</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+<BR><B>Example: </B><SPAN CLASS="MATH">\(\cos(\omega_k n)\)</SPAN>, <SPAN CLASS="MATH">\(n\in\mathbb{Z}\)</SPAN>, is an
+ <I>even</I> <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> since
+<SPAN CLASS="MATH">\(\cos(-\theta)=\cos(\theta)\)</SPAN>.
+
+<P>
+<BR>
+<BR><B>Example: </B><SPAN CLASS="MATH">\(\sin(\omega_k n)\)</SPAN> is an <I>odd</I> signal since <SPAN CLASS="MATH">\(\sin(-\theta)=-\sin(\theta)\)</SPAN>.
+
+<P>
+<BR>
+<BR><B>Example: </B><SPAN CLASS="MATH">\(\cos(\omega_k n)\cdot\sin(\omega_l n)\)</SPAN> is an <I>odd</I> signal (even times odd).
+
+<P>
+<BR>
+<BR><B>Example: </B><SPAN CLASS="MATH">\(\sin(\omega_k n)\cdot\sin(\omega_l n)\)</SPAN> is an <I>even</I> signal (odd times odd).
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>The sum of all the samples of an odd signal <SPAN CLASS="MATH">\(x_o\)</SPAN> in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> is zero.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>This is readily shown by writing the sum as <SPAN CLASS="MATH">\(x_o(0) + [x_o(1) + x_o(-1)]
++ \cdots + x(N/2)\)</SPAN>, where the last term only occurs when <SPAN CLASS="MATH">\(N\)</SPAN> is even.  Each
+term so written is zero for an odd signal <SPAN CLASS="MATH">\(x_o\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Example: </B>For all <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoidal</A> frequencies <SPAN CLASS="MATH">\(\omega_k=2\pi k/N\)</SPAN>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\sum_{n=0}^{N-1}\sin(\omega_k n) \cos(\omega_k n) = 0, \; k=0,1,2,\ldots,N-1.\]</DIV><P></P>
+More generally,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\sum_{n=0}^{N-1}x_e(n) x_o(n) = 0,\]</DIV><P></P>
+for <I>any</I> even signal <SPAN CLASS="MATH">\(x_e\)</SPAN> and odd signal <SPAN CLASS="MATH">\(x_o\)</SPAN> in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>.  In
+terms of <A HREF="Inner_Product.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Inner_Product.html')">inner products</A> (&#167;<A HREF="Inner_Product.html#sec:ip">5.9</A>), we may say that the even part
+of every real signal is <A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A> to its odd part:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\ip{x_e,x_o} = 0\]</DIV><P></P>
+
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2569"
+  HREF="Fourier_Theorems.html" 
+ onMouseover="return escape('Fourier Theorems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2559"
+  HREF="Alias_Operator.html" 
+ onMouseover="return escape('Alias Operator')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2565"
+  HREF="Fourier_Theorems_DFT.html" 
+ onMouseover="return escape('Fourier Theorems for the DFT')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2567"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

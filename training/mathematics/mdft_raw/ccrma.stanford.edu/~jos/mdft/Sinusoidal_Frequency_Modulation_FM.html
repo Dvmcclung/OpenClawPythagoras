@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sinusoidal Frequency Modulation (FM)</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Sinusoidal Frequency Modulation (FM)">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Analytic_Signals_Hilbert_Transform.html">
+<LINK REL="previous" HREF="Sinusoidal_Amplitude_Modulation_AM.html">
+<LINK REL="up" HREF="Complex_Sinusoids.html">
+<LINK REL="next" HREF="Bessel_Functions.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1309"
+  HREF="Bessel_Functions.html" 
+ onMouseover="return escape('Bessel Functions')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1299"
+  HREF="Example_AM_Spectra.html" 
+ onMouseover="return escape('Example AM Spectra')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1305"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1307"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00536000000000000000"></A><A NAME="sec:sinfm"></A><A NAME="8950"></A>
+<BR>
+<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">Sinusoidal</A> Frequency <A HREF="https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24349" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24349')">Modulation</A> (FM)
+</H3>
+
+<P>
+<I>Frequency Modulation (FM)</I><A NAME="8951"></A> is well known as
+the broadcast <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> format for FM radio.  It is also the basis of the
+first commercially successful method for <A HREF="https://ccrma.stanford.edu/~jos/kna/kna.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/kna/kna.html')">digital sound synthesis</A>.
+Invented by John Chowning [<A
+ HREF="Bibliography.html#ChowningFM">15</A>], it was the method used in
+the the highly successful Yamaha <A HREF="http://www.vintagesynth.com/index2.html" onMouseover="return escape('Click for http://www.vintagesynth.com/index2.html')">DX-7</A> synthesizer, and later the
+Yamaha OPL chip series, which was used in all ``SoundBlaster
+compatible'' multimedia sound cards for many years.  At the time of
+this writing, descendants of the OPL chips remain the dominant
+synthesis technology for ``ring tones'' in cellular telephones.
+
+<P>
+A general formula for frequency modulation of one <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> by another
+can be written as
+<A NAME="eq:fmdef"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}x(t) = A_c\cos[\omega_c t + \phi_c + A_m\sin(\omega_m t + \phi_m)],
+\end{equation}</DIV><P></P>
+where the parameters <SPAN CLASS="MATH">\((A_c,\omega_c,\phi_c)\)</SPAN> describe the
+<I>carrier <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A></I>, while the parameters 
+<SPAN CLASS="MATH">\((A_m,\omega_m,\phi_m)\)</SPAN> specify the
+<I>modulator</I> sinusoid.  Note that, strictly speaking,
+it is not the frequency of the carrier that is modulated sinusoidally,
+but rather the <I>instantaneous phase</I> of the carrier.  Therefore,
+<I>phase modulation</I><A NAME="8956"></A> would be a better term (which is in fact used).
+Potential confusion aside, any modulation of phase implies a
+modulation of frequency, and vice versa, since the instantaneous
+frequency is always defined as the time-derivative of the
+instantaneous phase.  In this book, only phase modulation will be
+considered, and we will call it FM, following common
+practice.<A NAME="tex2html43"
+  HREF="footnode.html#foot8858"><SUP>4.9</SUP></A>
+<P>
+Figure <A HREF="Sinusoidal_Frequency_Modulation_FM.html#fig:fmug">4.14</A> shows a unit generator patch diagram [<A
+ HREF="Bibliography.html#Mathews69">44</A>]
+for brass-like FM synthesis.  For brass-like sounds, the modulation
+amount increases with the amplitude of the signal.  In the patch, note
+that the <A HREF="https://en.wikipedia.org/wiki/Envelope_(waves)" onMouseover="return escape('Click for https://en.wikipedia.org/wiki/Envelope_(waves)')">amplitude envelope</A> for the carrier <A HREF="http://ccrma.stanford.edu/~jos/filters/Mass_Spring_Oscillator_Analysis.html" onMouseover="return escape('When displaced from its equilibrium state, a harmonic oscillator experiences a restoring force according to Hooke\&#39;s law. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Mass_Spring_Oscillator_Analysis.html')">oscillator</A> is scaled and
+also used to control amplitude of the modulating oscillator.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:fmug"></A></P>	<IMG
+ WIDTH="218" HEIGHT="302" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img33.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img33.png 1x,https://ccrma.stanford.edu/~jos/mdft/img33_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img33_3x.png 3x"
+ ALT="\includegraphics{eps/fmug}"> <DIV ALIGN="CENTER">        <IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img32.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img32.png 1x,https://ccrma.stanford.edu/~jos/mdft/img32_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img32_3x.png 3x"
+ ALT="% latex2html id marker 35825
+$\textstyle \parbox{\twidth }{\caption{\protect\small Unit generator diagram for simple FM brass synthesis.}}$"></DIV>
+</DIV>
+
+<P>
+It is well known that sinusoidal frequency-modulation of a sinusoid
+creates sinusoidal components that are uniformly spaced in frequency
+by multiples of the modulation frequency, with amplitudes given by the
+<I><A HREF="Bessel_Functions.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Bessel_Functions.html')">Bessel functions</A></I> of the first kind [<A
+ HREF="Bibliography.html#ChowningFM">15</A>].  
+As a special case, frequency-modulation of a sinusoid by itself
+generates a <A HREF="https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics" onMouseover="return escape('Every periodic signal has a &lt;i&gt;fundamental frequency&lt;/i&gt; given by the &lt;i&gt;inverse&lt;/i&gt; of the period.  If the period is in units of seconds, then the fundamental frequency is in units of Hertz (cycles per second).  According to Fourier theory, every periodic signal can be expressed as a sum of sinusoids at frequencies given by integer multiples of the fundamental frequency.  For integers greater than 1, these frequencies are called &lt;i&gt;harmonic frequencies&lt;/i&gt;, and the sinusoids at harmonic frequencies are typically called &lt;i&gt;harmonics&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://www.physicsclassroom.com/class/sound/Lesson-4/Fundamental-Frequency-and-Harmonics')">harmonic</A> <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> in which the <SPAN CLASS="MATH">\(k\)</SPAN>th <A HREF="http://en.wikipedia.org/wiki/Harmonic" onMouseover="return escape('For a tone which posesses a perfectly harmonic overtone series, the nth harmonic is generally defined to oscillate at nf&lt;sub&gt;0&lt;/sub&gt;Hz, where f&lt;sub&gt;0&lt;/sub&gt; is the fundamental frequency. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Harmonic')">harmonic</A> amplitude is
+proportional to <SPAN CLASS="MATH">\(J_k(\beta)\)</SPAN>, where <SPAN CLASS="MATH">\(k\)</SPAN> is the <I>order</I> of the
+Bessel function and <SPAN CLASS="MATH">\(\beta\)</SPAN> is the <I>FM index</I>.  We will derive
+this in the next section.<A NAME="tex2html44"
+  HREF="footnode.html#foot8577"><SUP>4.10</SUP></A>
+<P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1310"
+  HREF="Bessel_Functions.html">Bessel Functions</A>
+<LI><A NAME="tex2html1311"
+  HREF="FM_Spectra.html">FM Spectra</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1309"
+  HREF="Bessel_Functions.html" 
+ onMouseover="return escape('Bessel Functions')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1299"
+  HREF="Example_AM_Spectra.html" 
+ onMouseover="return escape('Example AM Spectra')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1305"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1307"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

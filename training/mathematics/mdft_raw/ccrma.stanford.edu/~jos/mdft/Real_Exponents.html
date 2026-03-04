@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Real Exponents</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Real Exponents">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="First_Look_Taylor_Series.html">
+<LINK REL="previous" HREF="Rational_Exponents.html">
+<LINK REL="up" HREF="Proof_Euler_s_Identity.html">
+<LINK REL="next" HREF="First_Look_Taylor_Series.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html924"
+  HREF="First_Look_Taylor_Series.html" 
+ onMouseover="return escape('A First Look at Taylor Series')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html914"
+  HREF="Rational_Exponents.html" 
+ onMouseover="return escape('Rational Exponents')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html920"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html922"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00470000000000000000">
+Real Exponents</A>
+</H2>
+
+<P>
+The closest we can actually get to most <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real numbers</A> is to compute a
+<I>rational number</I> that is as close as we need.  It can be shown that
+rational numbers are <I>dense</I> in the real numbers; that is,
+between every two real numbers there is a rational number, and between
+every two rational numbers is a real number.<A NAME="tex2html19"
+  HREF="footnode.html#foot6451"><SUP>3.1</SUP></A>An <I>irrational</I><A NAME="6777"></A> number can be defined as any real
+number having a non-repeating <A HREF="https://mathworld.wolfram.com/DecimalExpansion.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/DecimalExpansion.html')">decimal expansion</A>.  For example,
+<SPAN CLASS="MATH">\(\sqrt{2}\)</SPAN> is an irrational real number whose <A HREF="https://mathworld.wolfram.com/DecimalExpansion.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/DecimalExpansion.html')">decimal expansion</A> starts
+out as<A NAME="tex2html20"
+  HREF="footnode.html#foot6757"><SUP>3.2</SUP></A><P></P>
+<DIV CLASS="MATHDISPLAY">\[\sqrt{2} = 
+1.414213562373095048801688724209698078569671875376948073176679\dots\]</DIV><P></P>Every truncated, rounded, or repeating expansion is a
+<I>rational</I> number.  That is, it can be rewritten as an integer
+divided by another integer.  For example,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[1.414 = \frac{1414}{1000}\]</DIV><P></P>
+and, using <SPAN CLASS="MATH">\(\overline{\mbox{overbar}}\)</SPAN> to denote the repeating part of a
+decimal expansion, a repeating example is as follows:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}x &=& 0.\overline{123} \\[5pt]
+\quad\Rightarrow\quad 1000x &=& 123.\overline{123} = 123 + x\\[5pt]
+\quad\Rightarrow\quad 999x &=& 123\\[5pt]
+\quad\Rightarrow\quad x &=& \frac{123}{999}\end{eqnarray*}</DIV><P></P>
+Examples of <I>irrational</I> numbers include
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\pi &=& 3.1415926535897932384626433832795028841971693993751058209749\dots\\
+e &=& 2.7182818284590452353602874713526624977572470936999595749669\dots\,.\end{eqnarray*}</DIV><P></P>
+Their decimal expansions do not repeat.
+
+<P>
+Let <SPAN CLASS="MATH">\({\hat x}_n\)</SPAN> denote the <SPAN CLASS="MATH">\(n\)</SPAN>-digit decimal expansion of an arbitrary real
+number <SPAN CLASS="MATH">\(x\)</SPAN>.  Then <SPAN CLASS="MATH">\({\hat x}_n\)</SPAN> is a rational number (some integer over <SPAN CLASS="MATH">\(10^n\)</SPAN>).
+We can say
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\lim_{n\to\infty} {\hat x}_n = x.\]</DIV><P></P>
+That is, the <I>limit</I> of <SPAN CLASS="MATH">\({\hat x}_n\)</SPAN> as <SPAN CLASS="MATH">\(n\)</SPAN> goes to infinity is <SPAN CLASS="MATH">\(x\)</SPAN>.
+
+<P>
+Since <SPAN CLASS="MATH">\(a^{{\hat x}_n}\)</SPAN> is defined for all <SPAN CLASS="MATH">\(n\)</SPAN>, we naturally define <SPAN CLASS="MATH">\(a^x\)</SPAN>
+as the following mathematical limit:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{a^x \isdef \lim_{n\to\infty} a^{{\hat x}_n}}\]</DIV><P></P>
+We have now defined what we mean by <I>real</I> exponents.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html924"
+  HREF="First_Look_Taylor_Series.html" 
+ onMouseover="return escape('A First Look at Taylor Series')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html914"
+  HREF="Rational_Exponents.html" 
+ onMouseover="return escape('Rational Exponents')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html920"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html922"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

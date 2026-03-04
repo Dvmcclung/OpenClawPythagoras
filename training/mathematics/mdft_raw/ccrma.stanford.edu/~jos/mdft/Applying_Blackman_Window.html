@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Applying the Blackman Window</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Applying the Blackman Window">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Use_Blackman_Window.html">
+<LINK REL="up" HREF="Use_Blackman_Window.html">
+<LINK REL="next" HREF="Hann_Windowed_Complex_Sinusoid.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2989"
+  HREF="Hann_Windowed_Complex_Sinusoid.html" 
+ onMouseover="return escape('Hann-Windowed Complex Sinusoid')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2981"
+  HREF="Use_Blackman_Window.html" 
+ onMouseover="return escape('Use of a Blackman Window')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2985"
+  HREF="Use_Blackman_Window.html" 
+ onMouseover="return escape('Use of a Blackman Window')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2987"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00914100000000000000">
+Applying the Blackman Window</A>
+</H4>
+
+<P>
+Now let's apply the <A HREF="https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289')">Blackman window</A> to the sampled <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> and
+look at the effect on the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A>:
+
+<BLOCKQUOTE></BLOCKQUOTE><PRE>
+% Windowed, zero-padded data:
+n = [0:M-1];          % discrete time axis
+f = 0.25 + 0.5/M;     % frequency
+xw = [w .* cos(2*pi*n*f),zeros(1,(zpf-1)*M)]; 
+
+% Smoothed, interpolated <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A>:
+X = <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">fft</A>(xw);                                    
+
+% Plot time data:
+subplot(2,1,1); 
+plot(xw);
+title('Windowed, Zero-Padded, Sampled <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">Sinusoid</A>');
+xlabel('Time (samples)'); 
+ylabel('Amplitude');
+text(-50,1,'a)'); 
+
+% Plot spectral magnitude:
+spec = 10*log10(conj(X).*X);  % Spectral magnitude in <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">dB</A>
+spec = max(spec,-60*ones(1,nfft)); % clip to -60 <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A>
+subplot(2,1,2);
+plot(fninf,fftshift(spec),'-'); 
+axis([-0.5,0.5,-60,40]); 
+title('Smoothed, Interpolated, Spectral Magnitude (<A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A>)'); 
+xlabel('Normalized Frequency (cycles per sample))'); 
+ylabel('Magnitude (dB)'); grid;
+text(-.6,40,'b)');
+</PRE><BLOCKQUOTE></BLOCKQUOTE> Figure <A HREF="Applying_Blackman_Window.html#fig:xw">8.6</A> plots the zero-padded, <A HREF="https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Three_Term_Blackman_Harris_Window.html#10289')">Blackman</A>-windowed sinusoid, 
+along with its <A HREF="Discrete_Fourier_Transform_DFT.html" onMouseover="return escape('The &lt;i&gt;magnitude spectrum&lt;/i&gt; of a signal is given by the magnitude (complex modulus) of its Fourier transform. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Fourier_Transform_DFT.html')">magnitude spectrum</A> on a <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB scale</A>.  Note that the first
+<A HREF="https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html" onMouseover="return escape('A &lt;i&gt;side lobe&lt;/i&gt; in the Fourier transform of a window function, such as the Chebyshev window, is any local maximum in the transform magnitude outside of the main lobe (response about dc). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Rectangular_Window_Side_Lobes.html')">sidelobe</A> (near <SPAN CLASS="MATH">\(-40\)</SPAN> dB) is nearly 60 dB below the spectral peak (near
+<SPAN CLASS="MATH">\(+20\)</SPAN> dB).  This is why the Blackman window is considered adequate for
+many audio applications.  From the <I>dual</I> of the convolution
+theorem discussed in &#167;<A HREF="Dual_Convolution_Theorem.html#sec:convthmdual">7.4.6</A>, we know that
+<I>windowing in the time domain</I> corresponds to <I>smoothing in
+the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domain</A></I>.  Specifically, the complex <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> with
+magnitude displayed in Fig.<A HREF="FFT_Zero_Padded_Sinusoid.html#fig:example3">8.4</A>b (p.&nbsp;<A HREF="FFT_Zero_Padded_Sinusoid.html#fig:example3"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="https://ccrma.stanford.edu/~jos/icons/crossref.png"></A>)
+has been <I>convolved</I> with the Blackman window transform (dB
+magnitude shown in Fig.<A HREF="Use_Blackman_Window.html#fig:blackman">8.5</A>c).  Thus, the Blackman window
+<A HREF="Fourier_Transform_FT_Inverse.html" onMouseover="return escape('The Fourier Transform (FT) gives the (complex) spectrum of a continuous-time signal of any length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html')">Fourier transform</A> has been applied as a
+<I>smoothing kernel</I> to the Fourier transform of the rectangularly
+windowed sinusoid to produce the smoothed result in Fig.<A HREF="Applying_Blackman_Window.html#fig:xw">8.6</A>b.  This
+topic is pursued in detail at the outset of Book IV in the music
+<A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> processing series [<A
+ HREF="Bibliography.html#SASP">73</A>].
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:xw"></A></P><IMG
+ WIDTH="774" HEIGHT="612" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img107.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img107.png 1x,https://ccrma.stanford.edu/~jos/mdft/img107_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img107_3x.png 3x"
+ ALT="\includegraphics[width=\twidth]{eps/xw}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img106.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img106.png 1x,https://ccrma.stanford.edu/~jos/mdft/img106_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img106_3x.png 3x"
+ ALT="% latex2html id marker 36795
+$\textstyle \parbox{\twidth }{\caption{\protect\small Effect of the Blackman window on the
+sinusoidal data.}}$">
+</DIV>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2989"
+  HREF="Hann_Windowed_Complex_Sinusoid.html" 
+ onMouseover="return escape('Hann-Windowed Complex Sinusoid')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2981"
+  HREF="Use_Blackman_Window.html" 
+ onMouseover="return escape('Use of a Blackman Window')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2985"
+  HREF="Use_Blackman_Window.html" 
+ onMouseover="return escape('Use of a Blackman Window')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2987"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

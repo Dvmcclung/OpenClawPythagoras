@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fourier Theorems</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Fourier Theorems">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="DFT_Theorems_Problems.html">
+<LINK REL="previous" HREF="Even_Odd_Functions.html">
+<LINK REL="up" HREF="Fourier_Theorems_DFT.html">
+<LINK REL="next" HREF="Linearity.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2581"
+  HREF="Linearity.html" 
+ onMouseover="return escape('Linearity')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2571"
+  HREF="Even_Odd_Functions.html" 
+ onMouseover="return escape('Even and Odd Functions')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2577"
+  HREF="Fourier_Theorems_DFT.html" 
+ onMouseover="return escape('Fourier Theorems for the DFT')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2579"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00840000000000000000"></A><A NAME="sec:thms-dft"></A><A NAME="18251"></A>
+<A NAME="18252"></A>
+<A NAME="18253"></A>
+<BR>
+Fourier Theorems
+</H2>
+
+<P>
+In this section the main Fourier theorems are stated and proved.  It
+is no small matter how simple these theorems are in the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> case
+relative to the other three cases (<A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">DTFT</A>, <A HREF="Fourier_Transform_FT_Inverse.html" onMouseover="return escape('The Fourier Transform (FT) gives the (complex) spectrum of a continuous-time signal of any length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html')">Fourier transform</A>, and
+<A HREF="Fourier_Series_FS_Relation.html" onMouseover="return escape('A Fourier Series (FS) expansion is the appropriate Fourier transform for &lt;i&gt;periodic&lt;/i&gt; signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Series_FS_Relation.html')">Fourier series</A>, as defined in Appendix <A HREF="Fourier_Transforms_Continuous_Discrete_Time_Frequency.html#app:fourcases">B</A>).  When infinite
+summations or integrals are involved, the conditions for the existence
+of the Fourier transform can be quite difficult to characterize
+mathematically.  Mathematicians have expended a considerable effort on
+such questions.  By focusing primarily on the DFT case, we are able to
+study the essential concepts conveyed by the Fourier theorems without
+getting involved with mathematical difficulties.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html2582"
+  HREF="Linearity.html">Linearity</A>
+<LI><A NAME="tex2html2583"
+  HREF="Conjugation_Reversal.html">Conjugation and Reversal</A>
+<LI><A NAME="tex2html2584"
+  HREF="Symmetry.html">Symmetry</A>
+<LI><A NAME="tex2html2585"
+  HREF="Shift_Theorem.html">Shift Theorem</A>
+<UL>
+<LI><A NAME="tex2html2586"
+  HREF="Linear_Phase_Terms.html">Linear Phase Terms</A>
+<LI><A NAME="tex2html2587"
+  HREF="Linear_Phase_Signals.html">Linear Phase Signals</A>
+<LI><A NAME="tex2html2588"
+  HREF="Zero_Phase_Signals.html">Zero Phase Signals</A>
+<LI><A NAME="tex2html2589"
+  HREF="Application_Shift_Theorem_FFT.html">Application of the Shift Theorem to FFT Windows</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2590"
+  HREF="Convolution_Theorem.html">Convolution Theorem</A>
+<LI><A NAME="tex2html2591"
+  HREF="Dual_Convolution_Theorem.html">Dual of the Convolution Theorem</A>
+<LI><A NAME="tex2html2592"
+  HREF="Correlation_Theorem.html">Correlation Theorem</A>
+<LI><A NAME="tex2html2593"
+  HREF="Power_Theorem.html">Power Theorem</A>
+<UL>
+<LI><A NAME="tex2html2594"
+  HREF="Normalized_DFT_Power_Theorem.html">Normalized DFT Power Theorem</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2595"
+  HREF="Rayleigh_Energy_Theorem_Parseval_s.html">Rayleigh Energy Theorem (Parseval's Theorem)</A>
+<LI><A NAME="tex2html2596"
+  HREF="Stretch_Theorem_Repeat_Theorem.html">Stretch Theorem (Repeat Theorem)</A>
+<LI><A NAME="tex2html2597"
+  HREF="Downsampling_Theorem_Aliasing_Theorem.html">Downsampling Theorem (Aliasing Theorem)</A>
+<UL>
+<LI><A NAME="tex2html2598"
+  HREF="Illustration_Downsampling_Aliasing_Theorem_Matlab.html">Illustration of the Downsampling/Aliasing Theorem in Matlab</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2599"
+  HREF="Zero_Padding_Theorem_Spectral.html">Zero Padding Theorem (Spectral Interpolation)</A>
+<LI><A NAME="tex2html2600"
+  HREF="Periodic_Interpolation_Spectral_Zero.html">Interpolation Theorems</A>
+<UL>
+<LI><A NAME="tex2html2601"
+  HREF="Relation_Stretch_Theorem.html">Relation to Stretch Theorem</A>
+<LI><A NAME="tex2html2602"
+  HREF="Bandlimited_Interpolation_Time_Limited_Signals.html">Bandlimited Interpolation of Time-Limited Signals</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2581"
+  HREF="Linearity.html" 
+ onMouseover="return escape('Linearity')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2571"
+  HREF="Even_Odd_Functions.html" 
+ onMouseover="return escape('Even and Odd Functions')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2577"
+  HREF="Fourier_Theorems_DFT.html" 
+ onMouseover="return escape('Fourier Theorems for the DFT')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2579"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>General Conditions</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="General Conditions">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Signal_Vector_Reconstruction_Projections.html">
+<LINK REL="previous" HREF="Projection_onto_Non_Orthogonal_Vectors.html">
+<LINK REL="up" HREF="Signal_Reconstruction_Projections.html">
+<LINK REL="next" HREF="Signal_Vector_Reconstruction_Projections.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1893"
+  HREF="Signal_Vector_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal/Vector Reconstruction from Projections')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1883"
+  HREF="Projection_onto_Non_Orthogonal_Vectors.html" 
+ onMouseover="return escape('Projection onto Non-Orthogonal Vectors')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1889"
+  HREF="Signal_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal Reconstruction from Projections')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1891"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION006104000000000000000">
+General Conditions</A>
+</H3>
+
+<P>
+This section summarizes and extends the above derivations in a more
+formal manner (following portions of chapter 4 of <SPAN CLASS="MATH">\(\cite{Noble}\)</SPAN>).  In
+particular, we establish that the sum of projections of <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN>
+onto <SPAN CLASS="MATH">\(N\)</SPAN> vectors <SPAN CLASS="MATH">\(\underline{s}_k\in\mathbb{C}^N\)</SPAN> will give back the original vector
+<SPAN CLASS="MATH">\(x\)</SPAN> whenever the set <SPAN CLASS="MATH">\({\underline{s}_k}_0^{N-1}\)</SPAN> is an <I><A HREF="Orthogonality.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality.html')">orthogonal</A>
+basis</I> for <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>A set of vectors is said to form a <I><A HREF="Linear_Vector_Space.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Linear_Vector_Space.html')">vector space</A></I> if, given
+any two members <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN> from the set, the vectors
+<SPAN CLASS="MATH">\(x+y\)</SPAN> and <SPAN CLASS="MATH">\(cx\)</SPAN> are also in the set, where <SPAN CLASS="MATH">\(c\in\mathbb{C}\)</SPAN> is any
+<A HREF="http://en.wikipedia.org/wiki/Scalar" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Scalar')">scalar</A>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>The set of all <SPAN CLASS="MATH">\(N\)</SPAN>-dimensional complex vectors is denoted
+<SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>.  That is, <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> consists of all vectors <SPAN CLASS="MATH">\(\underline{x}=
+(x_0,\ldots,x_{N-1})\)</SPAN> defined as a list of <SPAN CLASS="MATH">\(N\)</SPAN> <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A>
+<SPAN CLASS="MATH">\(x_i\in\mathbb{C}\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B><SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> is a <I>vector space</I> under elementwise addition and
+multiplication by complex scalars. 
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>This is a special case of the following more general theorem.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>Let <SPAN CLASS="MATH">\(M\le N\)</SPAN> be an integer greater than 0. Then the set of all
+<A HREF="https://mathworld.wolfram.com/LinearCombination.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearCombination.html')">linear combinations</A> of <SPAN CLASS="MATH">\(M\)</SPAN> vectors from <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> forms a vector space
+under elementwise addition and multiplication by complex scalars.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>Let the original set of <SPAN CLASS="MATH">\(M\)</SPAN> vectors be denoted <SPAN CLASS="MATH">\(\underline{s}_0,\ldots,\underline{s}_{M-1}\)</SPAN>.
+Form
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x_0 = \alpha_0 \underline{s}_0 + \cdots + \alpha_{M-1}\underline{s}_{M-1}\]</DIV><P></P>
+as a particular linear combination of <SPAN CLASS="MATH">\({\underline{s}_i}_{i=0}^{M-1}\)</SPAN>.  Then
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[cx_0 = c\alpha_0 \underline{s}_0 + \cdots + c\alpha_{M-1}\underline{s}_{M-1}\]</DIV><P></P>
+is also a linear combination of <SPAN CLASS="MATH">\({\underline{s}_i}_{i=0}^{M-1}\)</SPAN>, since
+complex numbers are closed under multiplication 
+(<SPAN CLASS="MATH">\(c\alpha_i\in\mathbb{C}\)</SPAN> for each <SPAN CLASS="MATH">\(i\)</SPAN>).
+Now, given any second linear combination of <SPAN CLASS="MATH">\({\underline{s}_i}_{i=0}^{M-1}\)</SPAN>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x_1 = \beta_0 \underline{s}_0 + \cdots + \beta_{M-1}\underline{s}_{M-1},\]</DIV><P></P>
+the sum is 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}x_0 + x_1 &=& (\alpha_0 \underline{s}_0 + \cdots \alpha_{M-1}\underline{s}_{M-1}) 
+		   + ( \beta_0 \underline{s}_0 + \cdots \beta_{M-1}\underline{s}_{M-1}) \\
+&=& (\alpha_0 + \beta_0) \underline{s}_0 + \cdots + (\alpha_{M-1} + \beta_{M-1})\underline{s}_{M-1}\end{eqnarray*}</DIV><P></P>
+which is yet another linear combination of the original vectors (since
+complex numbers are closed under addition).  Since we have shown that
+<A HREF="Scalar_Multiplication.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Scalar_Multiplication.html')">scalar multiples</A> and vector sums of linear combinations of the original
+<SPAN CLASS="MATH">\(M\)</SPAN> vectors from <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> are also linear combinations of those same
+original <SPAN CLASS="MATH">\(M\)</SPAN> vectors from <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>, we have that the defining properties
+of a vector space are satisfied.
+<SPAN CLASS="MATH">\(\Box\)</SPAN>
+
+<P>
+Note that the closure of <A HREF="Vector_Addition.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Vector_Addition.html')">vector addition</A> and <A HREF="Scalar_Multiplication.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Scalar_Multiplication.html')">scalar multiplication</A> are
+``inherited'' from the closure of complex numbers under addition and
+multiplication.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Corollary: </B>The set of all linear combinations of <SPAN CLASS="MATH">\(M\)</SPAN> <I>real</I> vectors
+<SPAN CLASS="MATH">\(x\in\mathbb{R}^N\)</SPAN>, using real scalars <SPAN CLASS="MATH">\(\alpha_i\in\mathbb{R}\)</SPAN>, form a
+vector space.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>The set of all linear combinations of a set of <SPAN CLASS="MATH">\(M\)</SPAN>
+<I>complex</I> vectors from <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>, using complex scalars, is called a
+<I>complex vector space</I><A NAME="11700"></A> of dimension <SPAN CLASS="MATH">\(M\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>The set of all linear combinations of a set of <SPAN CLASS="MATH">\(M\)</SPAN> <I>real</I> vectors
+from <SPAN CLASS="MATH">\(\mathbb{R}^N\)</SPAN>, using real scalars, is called a <I>real vector
+space</I><A NAME="11705"></A> of dimension <SPAN CLASS="MATH">\(M\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>If a vector space consists of the set of all linear
+combinations of a finite set of vectors <SPAN CLASS="MATH">\(\underline{s}_0,\ldots,\underline{s}_{M-1}\)</SPAN>, then
+those vectors are said to <I>span</I> the space.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Example: </B>The <I>coordinate vectors</I> in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> span <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> since every vector
+<SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN> can be expressed as a linear combination of the coordinate vectors
+as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x= x_0 \underline{e}_0 + x_1 \underline{e}_1 + \cdots + x_{N-1}\underline{e}_{N-1}\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(x_i\in\mathbb{C}\)</SPAN>, and 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\underline{e}_0 &=& (1,0,0,\ldots,0),\\
+\underline{e}_1 &=& (0,1,0,\ldots,0),\\
+\underline{e}_2 &=& (0,0,1,0,\ldots,0)\hbox{, and so on up to }\\
+\underline{e}_{N-1} &=& (0,\ldots,0,1).\end{eqnarray*}</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>The vector space spanned by a set of <SPAN CLASS="MATH">\(M&lt;N\)</SPAN> vectors from <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> 
+is called an <SPAN CLASS="MATH">\(M\)</SPAN>-dimensional <I>subspace</I><A NAME="11730"></A> of <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>A vector <SPAN CLASS="MATH">\(\underline{s}\in\mathbb{C}^N\)</SPAN> is said to be <I>linearly dependent</I><A NAME="11737"></A> on
+a set of <SPAN CLASS="MATH">\(M\le N\)</SPAN> vectors <SPAN CLASS="MATH">\(\underline{s}_i\in\mathbb{C}^N\)</SPAN>, <SPAN CLASS="MATH">\(i=0,\ldots,M-1\)</SPAN>, if <SPAN CLASS="MATH">\(\underline{s}\)</SPAN>
+can be expressed as a linear combination of those <SPAN CLASS="MATH">\(M\)</SPAN> vectors. 
+
+<P>
+Thus, <SPAN CLASS="MATH">\(\underline{s}\)</SPAN> is linearly dependent on <SPAN CLASS="MATH">\({\underline{s}_i}_{i=0}^{M-1}\)</SPAN> if there
+exist scalars <SPAN CLASS="MATH">\({\alpha_i}_{i=0}^{M-1}\)</SPAN> such that <SPAN CLASS="MATH">\(\underline{s}= \alpha_0\underline{s}_0 +
+\alpha_1\underline{s}_1 + \cdots + \alpha_{M-1}\underline{s}_{M-1}\)</SPAN>.  Note that the zero vector
+is linearly dependent on every collection of vectors.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>(i) If <SPAN CLASS="MATH">\(\underline{s}_0,\ldots,\underline{s}_{M-1}\)</SPAN> span a vector space, and if one of them,
+say <SPAN CLASS="MATH">\(\underline{s}_m\)</SPAN>, is linearly dependent on the others, then the same vector
+space is spanned by the set obtained by omitting <SPAN CLASS="MATH">\(\underline{s}_m\)</SPAN> from the
+original set.  (ii) If <SPAN CLASS="MATH">\(\underline{s}_0,\ldots,\underline{s}_{M-1}\)</SPAN> span a vector space,
+we can always select from these a <A HREF="https://mathworld.wolfram.com/LinearlyIndependent.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearlyIndependent.html')">linearly independent</A> set that spans
+the same space.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>Any <SPAN CLASS="MATH">\(x\)</SPAN> in the space can be represented as a linear combination of the
+vectors <SPAN CLASS="MATH">\(\underline{s}_0,\ldots,\underline{s}_{M-1}\)</SPAN>.  By expressing <SPAN CLASS="MATH">\(\underline{s}_m\)</SPAN> as a linear
+combination of the other vectors in the set, the linear combination
+for <SPAN CLASS="MATH">\(x\)</SPAN> becomes a linear combination of vectors other than <SPAN CLASS="MATH">\(\underline{s}_m\)</SPAN>.
+Thus, <SPAN CLASS="MATH">\(\underline{s}_m\)</SPAN> can be eliminated from the set, proving (i).  To prove
+(ii), we can define a procedure for forming the required subset of the
+original vectors: First, assign <SPAN CLASS="MATH">\(\underline{s}_0\)</SPAN> to the set.  Next, check to
+see if <SPAN CLASS="MATH">\(\underline{s}_0\)</SPAN> and <SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN> are linearly dependent.  If so (<I>i.e.</I>,
+<SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN> is a scalar times <SPAN CLASS="MATH">\(\underline{s}_0\)</SPAN>), then discard <SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN>; otherwise
+assign it also to the new set.  Next, check to see if <SPAN CLASS="MATH">\(\underline{s}_2\)</SPAN> is
+linearly dependent on the vectors in the new set.  If it is (<I>i.e.</I>,
+<SPAN CLASS="MATH">\(\underline{s}_2\)</SPAN> is some linear combination of <SPAN CLASS="MATH">\(\underline{s}_0\)</SPAN> and <SPAN CLASS="MATH">\(\underline{s}_1\)</SPAN>) then
+discard it; otherwise assign it also to the new set.  When this
+procedure terminates after processing <SPAN CLASS="MATH">\(\underline{s}_{M-1}\)</SPAN>, the new set will
+contain only linearly independent vectors which span the original
+space.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>A set of linearly independent vectors which spans a vector space
+is called a <I>basis</I> for that vector space.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>The set of coordinate vectors in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> 
+is called the <I>natural basis</I> for <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>, where the <SPAN CLASS="MATH">\(n\)</SPAN>th <A HREF="https://mathworld.wolfram.com/Basis.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Basis.html')">basis vector</A>
+is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\underline{e}_n = [\;0\;\;\cdots\;\;0\;\underbrace{1}_{\mbox{$n$th}}\;\;0\;\;\cdots\;\;0].\]</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>The linear combination expressing a vector in terms of basis vectors
+for a vector space is <I>unique</I>.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>Suppose a vector <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN> can be expressed in two different ways as
+a linear combination of basis vectors <SPAN CLASS="MATH">\(\underline{s}_0,\ldots,\underline{s}_{N-1}\)</SPAN>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}x&=& \alpha_0 \underline{s}_0 + \cdots \alpha_{N-1}\underline{s}_{N-1} \\
+    &=& \beta_0 \underline{s}_0 + \cdots \beta_{N-1}\underline{s}_{N-1}\end{eqnarray*}</DIV><P></P>
+where <SPAN CLASS="MATH">\(\alpha_i\neq\beta_i\)</SPAN> for at least one value of <SPAN CLASS="MATH">\(i\in[0,N-1]\)</SPAN>.
+Subtracting the two representations gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\underline{0}= (\alpha_0 - \beta_0)\underline{s}_0 + \cdots + 
+	(\alpha_{N-1} - \beta_{N-1})\underline{s}_{N-1}.\]</DIV><P></P>
+Since the vectors are linearly independent, it is not possible to cancel
+the nonzero vector <SPAN CLASS="MATH">\((\alpha_i-\beta_i)\underline{s}_i\)</SPAN> using some linear combination
+of the other vectors in the sum.  Hence, <SPAN CLASS="MATH">\(\alpha_i=\beta_i\)</SPAN> for all
+<SPAN CLASS="MATH">\(i=0,1,2,\ldots,N-1\)</SPAN>.
+
+<P>
+Note that while the linear combination relative to a particular basis is
+unique, the choice of basis vectors is not.  For example, given any basis
+set in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>, a new basis can be formed by <I>rotating</I> all vectors in
+<SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> by the same angle.  In this way, an infinite number of basis sets can
+be generated.  
+
+<P>
+As we will soon show, the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> can be viewed as a <I>change of
+coordinates</I> from coordinates relative to the <I>natural basis</I> in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>,
+<SPAN CLASS="MATH">\({\underline{e}_n}_{n=0}^{N-1}\)</SPAN>, to coordinates relative to the <I><A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoidal</A>
+basis</I> for <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>, <SPAN CLASS="MATH">\({\underline{s}_k}_{k=0}^{N-1}\)</SPAN>, where <SPAN CLASS="MATH">\(\underline{s}_k(n)=
+e^{j\omega_k t_n}\)</SPAN>.  The sinusoidal basis set for <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> consists of length
+<SPAN CLASS="MATH">\(N\)</SPAN> sampled complex <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoids</A> at frequencies <SPAN CLASS="MATH">\(\omega_k=2\pi k f_s/N,
+k=0,1,2,\ldots,N-1\)</SPAN>.  Any scaling of these vectors in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> by complex
+scale factors could also be chosen as the sinusoidal basis (<I>i.e.</I>, any
+nonzero amplitude and any phase will do).  However, for simplicity, we will
+only use unit-amplitude, <A HREF="https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html')">zero-phase</A> <A HREF="Complex_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Sinusoids.html')">complex sinusoids</A> as the Fourier
+``<A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency-domain</A>'' basis set.  To summarize this paragraph, the
+time-domain samples of a <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> are its coordinates relative to the natural
+basis for <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>, while its spectral coefficients are the coordinates of the
+signal relative to the sinusoidal basis for <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN>.
+
+<P>
+
+<P>
+<BR>
+<BR><B>Theorem: </B>Any two bases of a vector space contain the same number of vectors.
+
+<P>
+
+<P>
+<BR>
+<BR><I>Proof: </I>Left as an exercise (or see [<A
+ HREF="Bibliography.html#Noble">49</A>]).
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition: </B>The number of vectors in a basis for a particular space is called
+the <I>dimension</I> of the space.  If the dimension is <SPAN CLASS="MATH">\(N\)</SPAN>, the space is
+said to be an <I><SPAN CLASS="MATH">\(N\)</SPAN> dimensional space</I>, or <I><SPAN CLASS="MATH">\(N\)</SPAN>-space</I>.
+
+<P>
+In this book, we will only consider finite-dimensional vector spaces
+in any detail.  However, the <A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">discrete-time Fourier transform</A> (<A HREF="Discrete_Time_Fourier_Transform.html" onMouseover="return escape('The Discrete Time Fourier Transform (DTFT) is the appropriate Fourier transform for discrete-time signals of arbitrary length.  It can be obtained as the limit of a Discrete Fourier Transform (DFT) as its length goes to infinity. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Time_Fourier_Transform.html')">DTFT</A>)
+and <A HREF="Fourier_Transform_FT_Inverse.html" onMouseover="return escape('The Fourier Transform (FT) gives the (complex) spectrum of a continuous-time signal of any length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html')">Fourier transform</A> (FT) both require infinite-dimensional basis
+sets, because there is an infinite number of points in both the time
+and frequency domains.  (See Appendix <A HREF="Fourier_Transforms_Continuous_Discrete_Time_Frequency.html#app:fourcases">B</A> for details regarding
+the FT and DTFT.)
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1893"
+  HREF="Signal_Vector_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal/Vector Reconstruction from Projections')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1883"
+  HREF="Projection_onto_Non_Orthogonal_Vectors.html" 
+ onMouseover="return escape('Projection onto Non-Orthogonal Vectors')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1889"
+  HREF="Signal_Reconstruction_Projections.html" 
+ onMouseover="return escape('Signal Reconstruction from Projections')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1891"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

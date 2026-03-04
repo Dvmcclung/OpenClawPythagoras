@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>DB Full Scale (dBFS) for Spectrum Display</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="DB Full Scale (dBFS) for Spectrum Display">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="DBA_A_Weighted_DB.html">
+<LINK REL="up" HREF="Specific_DB_Scales.html">
+<LINK REL="next" HREF="Dynamic_Range.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3957"
+  HREF="Dynamic_Range.html" 
+ onMouseover="return escape('Dynamic Range')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3949"
+  HREF="DBA_A_Weighted_DB.html" 
+ onMouseover="return escape('DBA (A-Weighted DB)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3953"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3955"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION001522600000000000000"></A><A NAME="sec:dbdpy"></A><A NAME="25863"></A>
+<BR>
+<A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">DB</A> Full Scale (dBFS) for <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">Spectrum</A> Display
+</H4>
+
+<P>
+As mentioned at the start of this section, in practical <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A>
+processing, it is common to choose the <I>maximum
+signal magnitude</I> as the reference amplitude.  That is, we normalize the
+signal so that the maximum amplitude is defined as 1, or 0 <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A>.  This
+convention is also used by ``sound level <A HREF="https://scienceworld.wolfram.com/physics/Meter.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Meter.html')">meters</A>'' in audio recording.  When
+displaying <I><A HREF="Discrete_Fourier_Transform_DFT.html" onMouseover="return escape('The &lt;i&gt;magnitude spectrum&lt;/i&gt; of a signal is given by the magnitude (complex modulus) of its Fourier transform. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Discrete_Fourier_Transform_DFT.html')">magnitude spectra</A></I>, the highest spectral peak is often normalized
+to 0 <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A>.  We can then easily read off lower peaks as so many dB below the
+highest peak.
+
+<P>
+Figure <A HREF="DB_Full_Scale_dBFS.html#fig:freqdpy">F.1</A>b shows a plot of the <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">Fast Fourier Transform</A> (<A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A>) of
+ten <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periods</A> of a ``<A HREF="https://ccrma.stanford.edu/~jos/sasp/Kaiser_Window.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Kaiser_Window.html')">Kaiser-windowed</A>'' <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> at <SPAN CLASS="MATH">\(440\)</SPAN> Hz.  (FFT
+windows are introduced in &#167;<A HREF="Use_Blackman_Window.html#sec:blackman">8.1.4</A>. 
+The window is used to
+taper a finite-duration section of the signal.)  Note that the peak dB
+magnitude has been normalized to zero, and that the plot has been
+clipped at -100 dB.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:freqdpy"></A></P><IMG
+ WIDTH="474" HEIGHT="384" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img128.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img128.png 1x,https://ccrma.stanford.edu/~jos/mdft/img128_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img128_3x.png 3x"
+ ALT="\includegraphics[width=0.7\twidth]{eps/freqdpy}">
+	<IMG
+ WIDTH="785" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img127.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img127.png 1x,https://ccrma.stanford.edu/~jos/mdft/img127_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img127_3x.png 3x"
+ ALT="% latex2html id marker 37337
+$\textstyle \parbox{\twidth }{\caption{\protect\small Windowed sinusoid (top) and
+its FFT magnitude (bottom).}}$">
+</DIV>
+
+<P>
+Below is the <A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> code for producing Fig.<A HREF="DB_Full_Scale_dBFS.html#fig:freqdpy">F.1</A>.  Note that it
+contains several elements (windows, <A HREF="Zero_Padding.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Zero_Padding.html')">zero padding</A>, spectral interpolation)
+that we will not cover until later.  They are included here as ``forward
+references'' in order to keep the example realistic and practical, and to
+give you an idea of ``how far we have to go'' before we know how to do
+practical <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum analysis</A>.  Otherwise, the example just illustrates
+plotting <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectra</A> on an arbitrary <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB scale</A> between convenient limits.
+
+<BLOCKQUOTE></BLOCKQUOTE><PRE>
+% Practical display of the fft of a synthesized <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoid</A>
+
+fs = 44100;             % <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">Sampling rate</A>
+f = 440;                % <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">Sinusoidal</A> frequency = A-440
+nper = 10;              % Number of periods to synthesize
+dur = nper/f;           % Duration in seconds
+T = 1/fs;               % <A HREF="Sampling_Theorem.html" onMouseover="return escape('The sampling interval (or sampling period) of a discrete-time signal is defined as the reciprocal of the sampling rate.  Since the sampling rate is normally in units of samples per second (Hz), the sampling interval is normally in units of seconds.  See also: sampling rate, sampling theorem &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html')">Sampling period</A>
+t = 0:T:dur;            % Discrete-time axis in seconds
+L = length(t)           % Number of samples to synthesize
+ZP = 5;                 % Zero padding factor 
+N = 2^(nextpow2(L*ZP))  % FFT size (power of 2)
+
+x = cos(2*pi*f*t);      % A sinusoid at A-440 ("row vector")
+w = kaiser(L,8);        % An "FFT window"
+xw = x .* w';           % Need to transpose w to get a row 
+sound(xw,fs);           % Might as well listen to it
+xzp = [xw,zeros(1,N-L)];% Zero-padded FFT input buffer
+X = fft(xzp);           % Interpolated <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> of xw
+
+Xmag = abs(X);          % Spectral magnitude
+Xdb = 20*log10(Xmag);   % Spectral magnitude in dB
+
+XdbMax = max(Xdb);      % Peak dB magnitude
+Xdbn = Xdb - XdbMax;    % Normalize to 0dB peak
+
+dBmin = -100;           % Don't show anything lower than this
+Xdbp = max(Xdbn,dBmin); % Normalized, clipped, dB mag spec
+fmaxp = 2*f;            % Upper frequency limit of plot, Hz
+kmaxp = fmaxp*N/fs;     % Upper frequency limit of plot, bins
+fp = fs*[0:kmaxp]/N;    % Frequency axis in Hz
+
+% Ok, plot it already!
+
+subplot(2,1,1);
+plot(1000*t,xw);
+xlabel('Time (<A HREF="https://scienceworld.wolfram.com/physics/Second.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Second.html')">ms</A>)');
+ylabel('Amplitude');
+title(sprintf(['a) %d Periods of a %3.0f Hz Sinusoid, ',
+               'Kaiser Windowed'],nper,f)R);
+
+subplot(2,1,2);
+plot(fp,Xdbp(1:kmaxp+1)); grid;
+% Plot a dashed line where the peak should be:
+  hold on; plot([440 440],[dBmin,0],'--'); hold off;
+xlabel('Frequency (Hz)');
+ylabel('Magnitude (dB)');
+title(sprintf(['b) Interpolated FFT of %d Periods of ',...
+        '%3.0f Hz Sinusoid'],nper,f));
+</PRE><BLOCKQUOTE></BLOCKQUOTE> 
+<P>
+The following more compact Matlab produces essentially the same plot, but
+without the nice physical units on the horizontal axes: 
+
+<PRE>
+x = cos([0:2*pi/20:10*2*pi]); % 10 periods, 20 samples/cycle
+L = length(x);
+xw = x' .* kaiser(L,8);
+N = 2^nextpow2(L*5);
+X = fft([xw',zeros(1,N-L)]);
+
+subplot(2,1,1); plot(xw);
+xlabel('Time (samples)'); ylabel('Amplitude');
+title('a) 10 Periods of a Kaiser-Windowed Sinusoid');
+
+subplot(2,1,2); kmaxp = 2*10*5; Xl = 20*log10(abs(X(1:kmaxp+1)));
+plot([10*5+1,10*5+1],[-100,0],[0:kmaxp],max(Xl-max(Xl),-100)); grid;
+xlabel('Frequency (Bins)'); ylabel('Magnitude (dB)');
+title('b) Interpolated FFT of 10 Periods of Sinusoid');
+</PRE>
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3957"
+  HREF="Dynamic_Range.html" 
+ onMouseover="return escape('Dynamic Range')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3949"
+  HREF="DBA_A_Weighted_DB.html" 
+ onMouseover="return escape('DBA (A-Weighted DB)')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3953"
+  HREF="Specific_DB_Scales.html" 
+ onMouseover="return escape('Specific DB Scales')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3955"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

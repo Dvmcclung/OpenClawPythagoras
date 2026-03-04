@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sinusoidal Amplitude Modulation (AM)</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Sinusoidal Amplitude Modulation (AM)">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Sinusoidal_Frequency_Modulation_FM.html">
+<LINK REL="previous" HREF="Plotting_Complex_Sinusoids_versus.html">
+<LINK REL="up" HREF="Complex_Sinusoids.html">
+<LINK REL="next" HREF="Example_AM_Spectra.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1286"
+  HREF="Example_AM_Spectra.html" 
+ onMouseover="return escape('Example AM Spectra')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1276"
+  HREF="Plotting_Complex_Sinusoids_versus.html" 
+ onMouseover="return escape('Plotting Complex Sinusoids versus Frequency')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1282"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1284"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00535000000000000000"></A><A NAME="sec:sinam"></A><A NAME="8877"></A>
+<BR>
+<A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">Sinusoidal</A> Amplitude <A HREF="https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24349" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Modulation_Complex_Sinusoid.html#24349')">Modulation</A> (AM)
+</H3>
+
+<P>
+It is instructive to study the <I>modulation</I> of one <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoid</A> by
+another.  In this section, we will look at sinusoidal <I>Amplitude
+Modulation (AM)</I>.  The general AM formula is given by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x_\alpha(t) = [1+\alpha \cdot a_m(t)]\cdot A_c\sin(\omega_c t + \phi_c),\]</DIV><P></P>
+where <SPAN CLASS="MATH">\((A_c,\omega_c,\phi_c)\)</SPAN> are parameters of the sinusoidal
+<I>carrier <A HREF="https://en.wikipedia.org/wiki/Wave" onMouseover="return escape('In physics, a wave is an oscillation that propagates through a medium (space-time, gas, fluid, or solid) &nbsp;&#8212;&nbsp; Click for https://en.wikipedia.org/wiki/Wave')">wave</A></I><A NAME="8879"></A>, <SPAN CLASS="MATH">\(\alpha\in[0,1]\)</SPAN> is called the
+<I>modulation index</I><A NAME="8881"></A> (or <I>AM index</I><A NAME="8883"></A>),
+and <SPAN CLASS="MATH">\(a_m(t)\in[-1,1]\)</SPAN> is the <I>amplitude modulation <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A></I>.  In
+AM radio broadcasts, <SPAN CLASS="MATH">\(a_m(t)\)</SPAN> is the audio signal being transmitted
+(usually bandlimited to less than 10 kHz), and <SPAN CLASS="MATH">\(\omega_c\)</SPAN> is the channel
+<A HREF="http://en.wikipedia.org/wiki/Bandpass" onMouseover="return escape('The midpoint of the passband. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Bandpass')">center frequency</A>, (the ``<I>carrier frequency</I><A NAME="8885"></A>''), that one dials up on a radio receiver.<A NAME="tex2html42"
+  HREF="footnode.html#foot8852"><SUP>4.8</SUP></A>The modulated signal <SPAN CLASS="MATH">\(x_\alpha(t)\)</SPAN> can be written as the sum of the 
+unmodulated carrier wave plus the product of the carrier wave and the
+modulating wave:
+<A NAME="eq:sinam"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}x_\alpha(t) = x_0(t) + \alpha \cdot a_m(t) \cdot A_c\sin(\omega_c t + \phi_c)
+\end{equation}</DIV><P></P>
+In the case of <I>sinusoidal</I> AM, we have
+<A NAME="eq:sinamsin"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}a_m(t) = \sin(\omega_m t + \phi_m).
+\end{equation}</DIV><P></P>
+<A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">Periodic</A> amplitude modulation of this nature is often called the
+<I>tremolo effect</I><A NAME="8893"></A> when <SPAN CLASS="MATH">\(\omega_m&lt;20\pi\)</SPAN> or so (<SPAN CLASS="MATH">\(&lt;10\)</SPAN> Hz).
+
+<P>
+Let's analyze the second term of Eq.(<A HREF="Sinusoidal_Amplitude_Modulation_AM.html#eq:sinam">4.1</A>) for the case of sinusoidal
+AM with <SPAN CLASS="MATH">\(\alpha=1\)</SPAN> and <SPAN CLASS="MATH">\(\phi_m=\phi_c=0\)</SPAN>:
+<A NAME="eq:xmmod"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}x_m(t) \isdef \sin(\omega_m t)\sin(\omega_c t)
+\end{equation}</DIV><P></P>
+An example waveform is shown in Fig.<A HREF="Sinusoidal_Amplitude_Modulation_AM.html#fig:sineamtd">4.11</A> for <SPAN CLASS="MATH">\(f_c=100\)</SPAN> Hz and
+<SPAN CLASS="MATH">\(f_m=10\)</SPAN> Hz.  Such a signal may be produced on an analog synthesizer
+by feeding two differently tuned <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoids</A> to a <I>ring modulator</I><A NAME="8899"></A>,
+which is simply a ``four-quadrant multiplier'' for analog signals.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:sineamtd"></A></P><IMG
+ WIDTH="433" HEIGHT="307" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img27.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img27.png 1x,https://ccrma.stanford.edu/~jos/mdft/img27_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img27_3x.png 3x"
+ ALT="\includegraphics[width=3.5in]{eps/sineamtd}">
+	<IMG
+ WIDTH="785" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img26.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img26.png 1x,https://ccrma.stanford.edu/~jos/mdft/img26_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img26_3x.png 3x"
+ ALT="% latex2html id marker 35795
+$\textstyle \parbox{\twidth }{\caption{\protect\small Sinusoidal amplitude modulation as in Eq.\,(\ref{eq:xmmod})---time
+waveform.}}$">
+</DIV>
+
+<P>
+When <SPAN CLASS="MATH">\(\omega_m\)</SPAN> is small (say less than <SPAN CLASS="MATH">\(20\pi\)</SPAN> radians per second, or
+10 Hz), the signal <SPAN CLASS="MATH">\(x_m(t)\)</SPAN> is heard as a ``beating <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sine wave</A>'' with
+<SPAN CLASS="MATH">\(\omega_m/\pi=2f_m\)</SPAN> beats per second.<A NAME="8909"></A> The beat rate is
+twice the modulation frequency because both the positive and negative
+peaks of the modulating sinusoid cause an ``amplitude swell'' in
+<SPAN CLASS="MATH">\(x_m(t)\)</SPAN>.  (One <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">period</A> of modulation--<SPAN CLASS="MATH">\(1/f_m\)</SPAN> seconds--is shown in
+Fig.<A HREF="Sinusoidal_Amplitude_Modulation_AM.html#fig:sineamtd">4.11</A>.)  The sign inversion during the negative peaks is not
+normally audible.
+
+<P>
+Recall the trigonometric identity for a sum of angles:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\cos(A+B) = \cos(A)\cos(B) - \sin(A)\sin(B)\]</DIV><P></P>
+Subtracting this from <SPAN CLASS="MATH">\(\cos(A-B) = \cos(A)\cos(B) + \sin(A)\sin(B)\)</SPAN>
+leads to the identity
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\sin(A)\sin(B) = \frac{\cos(A-B) - \cos(A+B)}{2}.\]</DIV><P></P>
+Setting <SPAN CLASS="MATH">\(A=\omega_m t\)</SPAN> and <SPAN CLASS="MATH">\(B=\omega_c t\)</SPAN> gives us an alternate form
+for our ``ring-modulator output signal'':
+<A NAME="eq:xmsum"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}x_m(t) \isdef \sin(\omega_m t)\sin(\omega_c t)
+ = \frac{\cos[(\omega_m-\omega_c)t] - \cos[(\omega_m+\omega_c)t]}{2}
+\end{equation}</DIV><P></P>
+These two sinusoidal components at the <I>sum and difference
+frequencies</I><A NAME="8914"></A> of the modulator and carrier are called
+<I>side bands</I><A NAME="8915"></A>
+of the carrier wave at frequency <SPAN CLASS="MATH">\(\omega_c\)</SPAN> (since typically
+<SPAN CLASS="MATH">\(\omega_c\gg\omega_m&gt;0\)</SPAN>).
+
+<P>
+Equation (<A HREF="Sinusoidal_Amplitude_Modulation_AM.html#eq:xmmod">4.3</A>) expresses <SPAN CLASS="MATH">\(x_m(t)\)</SPAN> as a ``beating sinusoid'', while
+Eq.(<A HREF="Sinusoidal_Amplitude_Modulation_AM.html#eq:xmsum">4.4</A>) expresses it as two <I>unmodulated</I> sinusoids at
+frequencies <SPAN CLASS="MATH">\(\omega_c\pm\omega_m\)</SPAN>.  Which case do we hear?
+
+<P>
+It turns out we hear <SPAN CLASS="MATH">\(x_m(t)\)</SPAN> as two separate tones (Eq.(<A HREF="Sinusoidal_Amplitude_Modulation_AM.html#eq:xmsum">4.4</A>))
+whenever the side bands are <I>resolved</I><A NAME="8919"></A><A NAME="8920"></A> by the ear.  As
+mentioned in &#167;<A HREF="Why_Sinusoids_Important.html#sec:sineimp">4.1.2</A>,
+the ear performs a ``short time <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">Fourier analysis</A>'' of incoming sound
+(the <A HREF="http://www.blackwellpublishing.com/matthews/ear.html" onMouseover="return escape('Click for http://www.blackwellpublishing.com/matthews/ear.html')">basilar membrane</A> in the <A HREF="http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm" onMouseover="return escape('The &lt;i&gt;cochlea&lt;/i&gt; is the spiral shaped primary organ of the inner ear. &nbsp;&#8212;&nbsp; Click for http://www.iurc.montp.inserm.fr/cric/audition/english/ear/fear.htm')">cochlea</A> acts as a mechanical
+<A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filter</A> bank).  The
+<I>resolution</I> of this <A HREF="http://en.wikipedia.org/wiki/Filter_bank" onMouseover="return escape('A set of filters that decompose a signal into a set of components &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Filter_bank')">filterbank</A>--its ability to discern two
+separate spectral peaks for two sinusoids closely spaced in
+frequency--is determined by the
+<I><A HREF="https://ccrma.stanford.edu/~jos/bbt/Bark_Frequency_Scale.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/bbt/Bark_Frequency_Scale.html')">critical bandwidth</A> of <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/hearing.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/hearing.html')">hearing</A></I><A NAME="8923"></A>
+[<A
+ HREF="Bibliography.html#Moore97">47</A>,<A
+ HREF="Bibliography.html#StevensAndDavis38">79</A>,<A
+ HREF="Bibliography.html#ZwickerAndFastl99">90</A>].  A critical
+<A HREF="http://en.wikipedia.org/wiki/Bandpass" onMouseover="return escape('The size of the passband, typically expressed in Hz. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Bandpass')">bandwidth</A> is roughly 15-20% of the band's center-frequency, over most
+of the audio range [<A
+ HREF="Bibliography.html#SmithAndAbel99">74</A>].  Thus, the side bands in
+sinusoidal AM are heard as separate tones when they are both in the
+audio range and separated by at least one critical bandwidth.  When
+they are well inside the same <A HREF="https://ccrma.stanford.edu/~jos/bbt/Bark_Frequency_Scale.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/bbt/Bark_Frequency_Scale.html')">critical band</A>, ``beating'' is heard.  In
+between these extremes, near separation by a critical-band, the
+sensation is often described as ``roughness'' [<A
+ HREF="Bibliography.html#Hartmann97">30</A>].
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1287"
+  HREF="Example_AM_Spectra.html">Example AM Spectra</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1286"
+  HREF="Example_AM_Spectra.html" 
+ onMouseover="return escape('Example AM Spectra')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1276"
+  HREF="Plotting_Complex_Sinusoids_versus.html" 
+ onMouseover="return escape('Plotting Complex Sinusoids versus Frequency')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1282"
+  HREF="Complex_Sinusoids.html" 
+ onMouseover="return escape('Complex Sinusoids')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1284"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

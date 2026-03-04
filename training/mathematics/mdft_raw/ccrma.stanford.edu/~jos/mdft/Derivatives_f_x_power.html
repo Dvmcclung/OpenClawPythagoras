@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Derivatives of f(x) = a to the power x</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Derivatives of f(x) = a to the power x">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Back_e.html">
+<LINK REL="previous" HREF="Imaginary_Exponents.html">
+<LINK REL="up" HREF="Proof_Euler_s_Identity.html">
+<LINK REL="next" HREF="Back_e.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html960"
+  HREF="Back_e.html" 
+ onMouseover="return escape('Back to e')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html950"
+  HREF="Imaginary_Exponents.html" 
+ onMouseover="return escape('Imaginary Exponents')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html956"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html958"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION004100000000000000000">
+Derivatives of f(x) = a to the power x</A>
+</H2>
+
+<P>
+Let's apply the definition of differentiation and see what happens:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}f^\prime(x_0) &\isdef& \lim_{\delta\to0} \frac{f(x_0+\delta)-f(x_0)}{\delta} \\
+	&\isdef& \lim_{\delta\to0} \frac{a^{x_0+\delta}-a^{x_0}}{\delta} 
+	= \lim_{\delta\to0} a^{x_0}\frac{a^\delta-1}{\delta} 
+	= a^{x_0}\lim_{\delta\to0} \frac{a^\delta-1}{\delta}.\end{eqnarray*}</DIV><P></P>
+Since the limit of <SPAN CLASS="MATH">\((a^\delta-1)/\delta\)</SPAN> as <SPAN CLASS="MATH">\(\delta\to 0\)</SPAN> is less than
+1 for <SPAN CLASS="MATH">\(a=2\)</SPAN> and greater than <SPAN CLASS="MATH">\(1\)</SPAN> for <SPAN CLASS="MATH">\(a=3\)</SPAN> (as one can show via direct
+calculations), and since <SPAN CLASS="MATH">\((a^\delta-1)/\delta\)</SPAN> is a continuous
+function of <SPAN CLASS="MATH">\(a\)</SPAN> for <SPAN CLASS="MATH">\(\delta&gt;0\)</SPAN>, it follows that there exists a
+positive <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real number</A> we'll call <SPAN CLASS="MATH">\(e\)</SPAN> such that for <SPAN CLASS="MATH">\(a=e\)</SPAN> we get
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\lim_{\delta\to 0} \frac{e^\delta-1}{\delta} \isdef 1 .\]</DIV><P></P>
+For <SPAN CLASS="MATH">\(a=e\)</SPAN>, we thus have <SPAN CLASS="MATH">\(\left(a^x\right)^\prime =
+(e^x)^\prime = e^x\)</SPAN>.
+
+<P>
+So far we have proved that the derivative of <SPAN CLASS="MATH">\(e^x\)</SPAN> is <SPAN CLASS="MATH">\(e^x\)</SPAN>.
+What about <SPAN CLASS="MATH">\(a^x\)</SPAN> for other values of <SPAN CLASS="MATH">\(a\)</SPAN>?  The trick is to write it as 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[a^x = e^{\ln\left(a^x\right)}=e^{x\ln(a)}\]</DIV><P></P>
+and use the <A HREF="https://mathworld.wolfram.com/ChainRule.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/ChainRule.html')">chain rule</A>,<A NAME="tex2html22"
+  HREF="footnode.html#foot6722"><SUP>3.3</SUP></A>  where <SPAN CLASS="MATH">\(\ln(a)\isdef\log_e(a)\)</SPAN> denotes
+the log-base-<SPAN CLASS="MATH">\(e\)</SPAN> of <SPAN CLASS="MATH">\(a\)</SPAN>.<A NAME="tex2html23"
+  HREF="footnode.html#foot6723"><SUP>3.4</SUP></A>  Formally, the chain rule tells us how to
+differentiate a function of a function as follows:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\frac{d}{dx} f(g(x)) = f^\prime(g(x)) g^\prime(x)\]</DIV><P></P>
+Evaluated at a particular point <SPAN CLASS="MATH">\(x_0\)</SPAN>, we obtain
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\frac{d}{dx} f(g(x))|_{x=x_0} = f^\prime(g(x_0)) g^\prime(x_0).\]</DIV><P></P>
+In this case, <SPAN CLASS="MATH">\(g(x)=x\ln(a)\)</SPAN> so that <SPAN CLASS="MATH">\(g^\prime(x) = \ln(a)\)</SPAN>,
+and <SPAN CLASS="MATH">\(f(y)=e^y\)</SPAN> which is its own derivative.  The end result is then
+<SPAN CLASS="MATH">\(\left(a^x\right)^\prime = \left(e^{x\ln a}\right)^\prime 
+= e^{x\ln(a)}\ln(a) = a^x \ln(a)\)</SPAN>, <I>i.e.</I>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{\frac{d}{dx} a^x = a^x \ln(a).}\]</DIV><P></P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html960"
+  HREF="Back_e.html" 
+ onMouseover="return escape('Back to e')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html950"
+  HREF="Imaginary_Exponents.html" 
+ onMouseover="return escape('Imaginary Exponents')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html956"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html958"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

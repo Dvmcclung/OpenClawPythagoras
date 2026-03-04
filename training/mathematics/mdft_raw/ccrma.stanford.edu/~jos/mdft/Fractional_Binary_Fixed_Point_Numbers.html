@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fractional Binary Fixed-Point Numbers</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Fractional Binary Fixed-Point Numbers">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="How_Many_Bits_Enough.html">
+<LINK REL="previous" HREF="Binary_Integer_Fixed_Point_Numbers.html">
+<LINK REL="up" HREF="Linear_Number_Systems.html">
+<LINK REL="next" HREF="How_Many_Bits_Enough.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4108"
+  HREF="How_Many_Bits_Enough.html" 
+ onMouseover="return escape('How Many Bits are Enough for Digital Audio?')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4098"
+  HREF="Two_s_Complement_Integer_Fixed_Point_Numbers.html" 
+ onMouseover="return escape('Two\'s-Complement, Integer Fixed-Point Numbers')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4104"
+  HREF="Linear_Number_Systems.html" 
+ onMouseover="return escape('Linear Number Systems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4106"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001613000000000000000">
+Fractional Binary Fixed-Point Numbers</A>
+</H3>
+
+<P>
+<A NAME="26710"></A>
+
+<P>
+In ``DSP chips'' (microprocessors explicitly designed for <A HREF="https://ccrma.stanford.edu/~jos/filters/Book_Series_Overview.html" onMouseover="return escape('The subject of &lt;i&gt;Digital Signal Processing&lt;/i&gt; (DSP) is concerned with the computational processing of digital signals.  An example digital signal is music from a compact disk (CD).  An example DSP task is modifying the tone of a digital audio stream, such as boosting its bass or treble.  Another DSP example is compressing digital audio into MP3 format, or decoding an MP3 stream. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Book_Series_Overview.html')">digital signal
+processing</A> applications), the most commonly used <A HREF="Binary_Integer_Fixed_Point_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Binary_Integer_Fixed_Point_Numbers.html')">fixed-point</A> format is
+<I>fractional <A HREF="Binary_Integer_Fixed_Point_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Binary_Integer_Fixed_Point_Numbers.html')">fixed point</A></I>, also in <A HREF="Two_s_Complement_Fixed_Point_Format.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Two_s_Complement_Fixed_Point_Format.html')">two's complement</A>.
+
+<P>
+Quite simply, fractional fixed-point numbers are obtained
+from integer fixed-point numbers by dividing them by <SPAN CLASS="MATH">\(2^{N-1}\)</SPAN>.
+Thus, the only difference is a scaling of the assigned numbers.
+In the <SPAN CLASS="MATH">\(N=3\)</SPAN> case, we have the correspondences shown in Table <A HREF="Fractional_Binary_Fixed_Point_Numbers.html#table:fracfp">G.5</A>.
+
+<P>
+
+	<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="26718"></A>
+<TABLE>
+<CAPTION><STRONG>Table:</STRONG>
+Three-bit fractional fixed-point numbers.</CAPTION>
+<TR><TD>	<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="CENTER">Binary</TD>
+<TD ALIGN="CENTER">Decimal</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">000</TD>
+<TD ALIGN="CENTER">0</TD>
+<TD ALIGN="CENTER">(0/4)</TD>
+</TR>
+<TR><TD ALIGN="CENTER">001</TD>
+<TD ALIGN="CENTER">0.25</TD>
+<TD ALIGN="CENTER">(1/4)</TD>
+</TR>
+<TR><TD ALIGN="CENTER">010</TD>
+<TD ALIGN="CENTER">0.5</TD>
+<TD ALIGN="CENTER">(2/4)</TD>
+</TR>
+<TR><TD ALIGN="CENTER">011</TD>
+<TD ALIGN="CENTER">0.75</TD>
+<TD ALIGN="CENTER">(3/4)</TD>
+</TR>
+<TR><TD ALIGN="CENTER">100</TD>
+<TD ALIGN="CENTER">-1</TD>
+<TD ALIGN="CENTER">(-4/4)</TD>
+</TR>
+<TR><TD ALIGN="CENTER">101</TD>
+<TD ALIGN="CENTER">-0.75</TD>
+<TD ALIGN="CENTER">(-3/4)</TD>
+</TR>
+<TR><TD ALIGN="CENTER">110</TD>
+<TD ALIGN="CENTER">-0.5</TD>
+<TD ALIGN="CENTER">(-2/4)</TD>
+</TR>
+<TR><TD ALIGN="CENTER">111</TD>
+<TD ALIGN="CENTER">-0.25</TD>
+<TD ALIGN="CENTER">(-1/4)</TD>
+</TR>
+</TABLE>
+</DIV>
+	
+	<A NAME="table:fracfp"></A> </TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4108"
+  HREF="How_Many_Bits_Enough.html" 
+ onMouseover="return escape('How Many Bits are Enough for Digital Audio?')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4098"
+  HREF="Two_s_Complement_Integer_Fixed_Point_Numbers.html" 
+ onMouseover="return escape('Two\'s-Complement, Integer Fixed-Point Numbers')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4104"
+  HREF="Linear_Number_Systems.html" 
+ onMouseover="return escape('Linear Number Systems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4106"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

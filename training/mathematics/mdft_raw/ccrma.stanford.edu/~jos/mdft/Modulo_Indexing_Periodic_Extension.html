@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Modulo Indexing, Periodic Extension</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Modulo Indexing, Periodic Extension">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="Notation_Terminology.html">
+<LINK REL="up" HREF="DFT_Inverse_Restated.html">
+<LINK REL="next" HREF="Signal_Operators.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2230"
+  HREF="Signal_Operators.html" 
+ onMouseover="return escape('Signal Operators')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2222"
+  HREF="Notation_Terminology.html" 
+ onMouseover="return escape('Notation and Terminology')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2226"
+  HREF="DFT_Inverse_Restated.html" 
+ onMouseover="return escape('The DFT and its Inverse Restated')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2228"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00812000000000000000"></A><A NAME="sec:modulo"></A><A NAME="15610"></A>
+<A NAME="15611"></A>
+<BR>
+Modulo Indexing, <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">Periodic</A> Extension
+</H3>
+
+<P>
+The <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Discrete Fourier Transform (DFT) computes a discrete-frequency spectrum from a discrete-time signal of finite length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">DFT</A> <A HREF="Sinusoids.html" onMouseover="return escape('A &lt;i&gt;sinusoid&lt;/i&gt; is any function of the form &lt;i&gt;A&lt;/i&gt; sin(&lt;i&gt;&amp;#969; t+&amp;#966;&lt;/i&gt;), where &lt;i&gt;t&lt;/i&gt; is the independent variable, and &lt;i&gt;A, &amp;#969;, &amp;#966;&lt;/i&gt; are fixed parameters of the sinusoid called the amplitude, (radian) frequency, and phase, respectively.  Sinusoidal motion is produced by any \&#39;pure\&#39; vibration, such as that of an ideal &lt;i&gt;tuning fork&lt;/i&gt; or &lt;i&gt;mass-spring&lt;/i&gt; system. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids.html')">sinusoids</A> <SPAN CLASS="MATH">\(s_k(n) \isdef e^{j\omega_k n}\)</SPAN> are all <I>periodic</I><A NAME="15613"></A>
+having <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periods</A> which divide <SPAN CLASS="MATH">\(N\)</SPAN>.  That is, <SPAN CLASS="MATH">\(s_k(n+mN)=s_k(n)\)</SPAN> for any
+integer <SPAN CLASS="MATH">\(m\)</SPAN>.  Since a length <SPAN CLASS="MATH">\(N\)</SPAN> <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> <SPAN CLASS="MATH">\(x\)</SPAN> can be expressed as a <A HREF="https://mathworld.wolfram.com/LinearCombination.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LinearCombination.html')">linear
+combination</A> of the <A HREF="Orthogonality_DFT_Sinusoids.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Orthogonality_DFT_Sinusoids.html')">DFT sinusoids</A> in the time domain,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x(n) = \frac{1}{N}\sum_k X(k) s_k(n),\]</DIV><P></P>
+it follows that the ``automatic'' definition of <SPAN CLASS="MATH">\(x(n)\)</SPAN> beyond the
+range <SPAN CLASS="MATH">\([0,N-1]\)</SPAN> is <I>periodic extension</I>, <I>i.e.</I>, <SPAN CLASS="MATH">\(x(n+mN)\isdef
+x(n)\)</SPAN> for every integer <SPAN CLASS="MATH">\(m\)</SPAN>.
+
+<P>
+Moreover, the DFT also repeats naturally every <SPAN CLASS="MATH">\(N\)</SPAN> samples, since
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[X(k+mN) \isdef \ip{x,s_{k+mN}} = \ip{x,s_k} = X(k)\]</DIV><P></P>
+because <SPAN CLASS="MATH">\(s_{k+mN}(n) = e^{j2\pi n(k+mN)/N} = e^{j2\pi nk/N}e^{j2\pi n m} =
+s_k(n)\)</SPAN>.  (The DFT <A HREF="Sinusoids_Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Sinusoids_Exponentials.html')">sinusoids</A> behave identically as functions of <SPAN CLASS="MATH">\(n\)</SPAN> and
+<SPAN CLASS="MATH">\(k\)</SPAN>.)  Accordingly, for purposes of DFT studies, we may define <I>all</I>
+signals in <SPAN CLASS="MATH">\(\mathbb{C}^N\)</SPAN> as being single periods from an infinitely long <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic
+signal</A> with period <SPAN CLASS="MATH">\(N\)</SPAN> samples:
+
+<P>
+
+<P>
+<BR>
+<BR><B>Definition (Periodic Extension): </B> For any signal <SPAN CLASS="MATH">\(x\in\mathbb{C}^N\)</SPAN>, we define
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x(n+mN)\isdef x(n)\]</DIV><P></P>
+for every integer <SPAN CLASS="MATH">\(m\)</SPAN>.
+
+<P>
+As a result of this convention, all indexing of signals and
+<A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectra</A><A NAME="tex2html78"
+  HREF="footnode.html#foot15561"><SUP>7.2</SUP></A> can be interpreted <I>modulo</I><A NAME="15620"></A> <SPAN CLASS="MATH">\(N\)</SPAN>, and we may write
+<SPAN CLASS="MATH">\(x(n\left(\mbox{mod}\;N\right))\)</SPAN> to emphasize this.  Formally, ``<SPAN CLASS="MATH">\(n\left(\mbox{mod}\;N\right)\)</SPAN>'' is defined as
+<SPAN CLASS="MATH">\(n-mN\)</SPAN> with <SPAN CLASS="MATH">\(m\)</SPAN> chosen to give <SPAN CLASS="MATH">\(n-mN\)</SPAN> in the range <SPAN CLASS="MATH">\([0,N-1]\)</SPAN>.
+
+<P>
+As an example, when indexing a <A HREF="https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html" onMouseover="return escape('Spectrum analysis of sound is analogous to decomposing white light into its component colors by means of a prism &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> <SPAN CLASS="MATH">\(X\)</SPAN>, we have that <SPAN CLASS="MATH">\(X(N)=X(0)\)</SPAN>
+which can be interpreted physically as saying that the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling rate</A>
+is the same frequency as <A HREF="https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html" onMouseover="return escape('&lt;i&gt;dc&lt;/i&gt; stands for &lt;i&gt;direct current&lt;i&gt; in electrical engineering and signal processing (as opposed to \&#39;alternating current\&#39;).  The mean (average value) of a signal may be called its dc component.  Similarly, frequency zero is called the dc frequency, because a sinusoid with zero frequency is a constant signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html')">dc</A> for discrete time signals.  Periodic
+extension in the time domain implies that the signal input to the DFT
+is mathematically treated as being <I>samples of one period of a
+periodic signal</I>, with the period being exactly <SPAN CLASS="MATH">\(NT\)</SPAN> seconds (<SPAN CLASS="MATH">\(N\)</SPAN>
+samples).  The corresponding assumption in the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domain</A> is
+that the <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The &lt;i&gt;spectrum&lt;/i&gt; of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> is <I>exactly zero between frequency samples
+<SPAN CLASS="MATH">\(\omega_k\)</SPAN></I>.  It is also possible to adopt the point of view that the
+time-domain signal <SPAN CLASS="MATH">\(x(n)\)</SPAN> consists of <SPAN CLASS="MATH">\(N\)</SPAN> samples preceded and
+followed by <I>zeros</I>.  In that case, the <A HREF="Example_Applications_DFT.html" onMouseover="return escape('The spectrum of a signal gives the distribution of signal energy as a function of frequency. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Example_Applications_DFT.html')">spectrum</A> would be
+<I>nonzero</I> between spectral samples <SPAN CLASS="MATH">\(\omega_k\)</SPAN>, and the spectrum
+between samples would be reconstructed by means of <I><A HREF="https://ccrma.stanford.edu/~jos/resample/" onMouseover="return escape('Bandlimited interpolation is the ideal type of interpolation for properly sampled signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/resample/')">bandlimited
+interpolation</A></I> [<A
+ HREF="Bibliography.html#SmithAndGossett84">75</A>].
+
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2230"
+  HREF="Signal_Operators.html" 
+ onMouseover="return escape('Signal Operators')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2222"
+  HREF="Notation_Terminology.html" 
+ onMouseover="return escape('Notation and Terminology')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2226"
+  HREF="DFT_Inverse_Restated.html" 
+ onMouseover="return escape('The DFT and its Inverse Restated')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2228"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

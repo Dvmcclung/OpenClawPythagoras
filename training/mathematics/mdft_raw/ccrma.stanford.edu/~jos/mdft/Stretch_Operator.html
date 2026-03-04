@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Stretch Operator</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Stretch Operator">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Zero_Padding.html">
+<LINK REL="previous" HREF="Correlation.html">
+<LINK REL="up" HREF="Signal_Operators.html">
+<LINK REL="next" HREF="Zero_Padding.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2451"
+  HREF="Zero_Padding.html" 
+ onMouseover="return escape('Zero Padding')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2441"
+  HREF="Correlation.html" 
+ onMouseover="return escape('Correlation')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2447"
+  HREF="Signal_Operators.html" 
+ onMouseover="return escape('Signal Operators')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2449"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00826000000000000000"></A><A NAME="sec:stretchop"></A><A NAME="16490"></A>
+<A NAME="16491"></A>
+<BR>
+Stretch Operator
+</H3>
+
+<P>
+Unlike all previous operators, the <SPAN CLASS="MATH">\(\oper{Stretch}_L()\)</SPAN> operator maps
+a length <SPAN CLASS="MATH">\(N\)</SPAN> <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> to a length <SPAN CLASS="MATH">\(M\isdeftext LN\)</SPAN> signal, where <SPAN CLASS="MATH">\(L\)</SPAN> and <SPAN CLASS="MATH">\(N\)</SPAN> are integers.
+We use ``<SPAN CLASS="MATH">\(m\)</SPAN>'' instead of ``<SPAN CLASS="MATH">\(n\)</SPAN>'' as the time index to underscore this fact.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:stretch"></A></P><IMG
+ WIDTH="511" HEIGHT="413" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img83.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img83.png 1x,https://ccrma.stanford.edu/~jos/mdft/img83_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img83_3x.png 3x"
+ ALT="\includegraphics[width=4in]{eps/stretch}">
+	<IMG
+ WIDTH="785" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img82.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img82.png 1x,https://ccrma.stanford.edu/~jos/mdft/img82_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img82_3x.png 3x"
+ ALT="% latex2html id marker 36344
+$\textstyle \parbox{\twidth }{\caption{\protect\small Illustration of $\protect\oper{Stretch}_3(x)$.}}$">
+</DIV>
+
+<P>
+A <I>stretch by factor <SPAN CLASS="MATH">\(L\)</SPAN></I><A NAME="16502"></A> is defined by
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\oper{Stretch}_{L,m}(x) \isdef
+	 \left{\begin{array}{ll}
+	x(m/L), & m/L\mbox{ an integer} \\[5pt]
+	0, & m/L\mbox{ non-integer.} \\
+	\end{array}
+	\right.\]</DIV><P></P>
+Thus, to stretch a signal by the factor <SPAN CLASS="MATH">\(L\)</SPAN>, insert <SPAN CLASS="MATH">\(L-1\)</SPAN> zeros between each
+pair of samples.  An example of a stretch by factor three is shown in Fig.<A HREF="Stretch_Operator.html#fig:stretch">7.6</A>.
+The example is
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\oper{Stretch}_3([4,1,2]) = [4,0,0,1,0,0,2,0,0].\]</DIV><P></P>
+
+<P>
+The stretch operator is used to describe and analyze <I><A HREF="Downsampling_Operator.html" onMouseover="return escape('To &lt;i&gt;downsample&lt;/i&gt; a signal by the factor &lt;i&gt;N&lt;/i&gt; means to form a new signal consisting of every &lt;i&gt;N&lt;/i&gt;th sample of the original signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Downsampling_Operator.html')">upsampling</A></I>,
+that is, increasing the <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html" onMouseover="return escape('The sampling rate of a discrete-time signal is defined as the number of samples per second.  Its units are thus in Hertz (Hz).  Shannon\&#39;s Sampling Theorem states that the original continuous-time signal can be recovered exactly from the samples if and only if the sampling rate is higher than twice the highest frequency present in the original signal.  Any higher frequencies will alias to frequencies below half the sampling rate. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling rate</A> by an integer factor.
+A stretch by <SPAN CLASS="MATH">\(K\)</SPAN> followed by lowpass <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filtering</A> to the frequency band
+<SPAN CLASS="MATH">\(\omega\in(-\pi/K,\pi/K)\)</SPAN> implements <I>ideal <A HREF="https://ccrma.stanford.edu/~jos/resample/" onMouseover="return escape('Bandlimited interpolation is the ideal type of interpolation for properly sampled signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/resample/')">bandlimited interpolation</A></I>
+(introduced in Appendix <A HREF="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html#app:sampling">D</A>).
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2451"
+  HREF="Zero_Padding.html" 
+ onMouseover="return escape('Zero Padding')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2441"
+  HREF="Correlation.html" 
+ onMouseover="return escape('Correlation')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2447"
+  HREF="Signal_Operators.html" 
+ onMouseover="return escape('Signal Operators')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2449"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

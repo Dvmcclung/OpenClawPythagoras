@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Taylor Series with Remainder</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Taylor Series with Remainder">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Formal_Statement_Taylor_s_Theorem.html">
+<LINK REL="previous" HREF="Informal_Derivation_Taylor_Series.html">
+<LINK REL="up" HREF="Taylor_Series_Expansions.html">
+<LINK REL="next" HREF="Formal_Statement_Taylor_s_Theorem.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3727"
+  HREF="Formal_Statement_Taylor_s_Theorem.html" 
+ onMouseover="return escape('Formal Statement of Taylor\'s Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3717"
+  HREF="Informal_Derivation_Taylor_Series.html" 
+ onMouseover="return escape('Informal Derivation of Taylor Series')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3723"
+  HREF="Taylor_Series_Expansions.html" 
+ onMouseover="return escape('Taylor Series Expansions')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3725"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001420000000000000000"></A><A NAME="sec:tsrem"></A><A NAME="24931"></A>
+<BR>
+<A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">Taylor Series</A> with Remainder
+</H2>
+
+<P>
+We repeat the derivation of the preceding section, but this time we 
+treat the error term more carefully.
+
+<P>
+Again we want to approximate <SPAN CLASS="MATH">\(f(x)\)</SPAN> with an <SPAN CLASS="MATH">\(n\)</SPAN>th-order <I>polynomial</I>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[f(x) = f_0 + f_1 x + f_2 x^2 + \cdots + f_n x^n + R_{n+1}(x)\]</DIV><P></P>
+<SPAN CLASS="MATH">\(R_{n+1}(x)\)</SPAN> is the ``remainder term'' which we will no longer assume is
+zero.
+
+<P>
+Our problem is to find <SPAN CLASS="MATH">\({f_i}_{i=0}^{n}\)</SPAN> so as to minimize
+<SPAN CLASS="MATH">\(R_{n+1}(x)\)</SPAN> over some interval <SPAN CLASS="MATH">\(I\)</SPAN> containing <SPAN CLASS="MATH">\(x\)</SPAN>.  There are many
+``optimality criteria'' we could choose.  The one that falls out
+naturally here is called <I><A HREF="https://scienceworld.wolfram.com/physics/Pascal.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Pascal.html')">Pad</A>&#233; approximation</I><A NAME="24933"></A>.  Pad&#233;
+approximation sets the error value and its first <SPAN CLASS="MATH">\(n\)</SPAN> derivatives to
+zero at a single chosen point, which we take to be <SPAN CLASS="MATH">\(x=0\)</SPAN>.  Since all
+<SPAN CLASS="MATH">\(n+1\)</SPAN> ``degrees of freedom'' in the polynomial coefficients <SPAN CLASS="MATH">\(f_i\)</SPAN> are
+used to set derivatives to zero at one point, the approximation is
+termed <I>maximally flat</I><A NAME="24935"></A> at that point.  In other words, as
+<SPAN CLASS="MATH">\(x\to0\)</SPAN>, the <SPAN CLASS="MATH">\(n\)</SPAN>th order <A HREF="https://mathworld.wolfram.com/WeierstrassApproximationTheorem.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/WeierstrassApproximationTheorem.html')">polynomial approximation</A> approaches <SPAN CLASS="MATH">\(f(x)\)</SPAN>
+with an error that is proportional to <SPAN CLASS="MATH">\(|x|^{n+1}\)</SPAN>.
+
+<P>
+Pad&#233; approximation comes up elsewhere in <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> processing.  For
+example, it is the sense in which <A HREF="http://en.wikipedia.org/wiki/Butterworth_filter" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Butterworth_filter')">Butterworth filters</A> are optimal
+[<A
+ HREF="Bibliography.html#ParksAndBurrus">55</A>]. (Their <A HREF="https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html" onMouseover="return escape('The &lt;i&gt;frequency response&lt;/i&gt; is defined for LTI filters as the Fourier transform of the filter output signal divided by the Fourier transform of the filter input signal &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Frequency_Response_I.html')">frequency responses</A> are maximally flat
+in the center of the pass-band.)  Also, <A HREF="https://ccrma.stanford.edu/~jos/pasp/Lagrange_Interpolation.html" onMouseover="return escape('Lagrange interpolation is interpolation based on passing a polynomial through the given sample-points. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/pasp/Lagrange_Interpolation.html')">Lagrange interpolation</A> <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filters</A>
+(which are nonrecursive, while Butterworth filters are recursive) can
+be shown to maximally flat at <A HREF="https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html" onMouseover="return escape('&lt;i&gt;dc&lt;/i&gt; stands for &lt;i&gt;direct current&lt;i&gt; in electrical engineering and signal processing (as opposed to \&#39;alternating current\&#39;).  The mean (average value) of a signal may be called its dc component.  Similarly, frequency zero is called the dc frequency, because a sinusoid with zero frequency is a constant signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Mathematical_Sine_Wave_Analysis.html')">dc</A> in the <A HREF="https://ccrma.stanford.edu/~jos/mdft/" onMouseover="return escape('The Fourier transform of a signal is a frequency-domain function &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/')">frequency domain</A>
+[<A
+ HREF="Bibliography.html#VesaT">85</A>,<A
+ HREF="Bibliography.html#LaaksoB">37</A>].
+
+<P>
+Setting <SPAN CLASS="MATH">\(x=0\)</SPAN> in the above polynomial approximation produces
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[f(0) = f_0 + R_{n+1}(0) = f_0\]</DIV><P></P>
+where we have used the fact that the error is to be exactly zero at
+<SPAN CLASS="MATH">\(x=0\)</SPAN> in Pad&#233; approximation.
+
+<P>
+Differentiating the polynomial approximation and setting <SPAN CLASS="MATH">\(x=0\)</SPAN> gives
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[f^\prime(0) =  f_1 + R^\prime_{n+1}(0) = f_1\]</DIV><P></P>
+where we have used the fact that we also want the <I>slope</I>
+of the error to be exactly zero at <SPAN CLASS="MATH">\(x=0\)</SPAN>.
+
+<P>
+In the same way, we find 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[f^{(k)}(0) = k! \cdot f_k + R^{(k)}_{n+1}(0) = k! \cdot f_k\]</DIV><P></P>
+for <SPAN CLASS="MATH">\(k=2,3,4,\dots,n\)</SPAN>, and the first <SPAN CLASS="MATH">\(n\)</SPAN>
+derivatives of the remainder term are all zero.
+Solving these relations for the desired constants yields
+the <SPAN CLASS="MATH">\(n\)</SPAN>th-order <A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">Taylor series expansion</A> of <SPAN CLASS="MATH">\(f(x)\)</SPAN> about the point
+<SPAN CLASS="MATH">\(x=0\)</SPAN>
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[f(x) = \sum_{k=0}^n \frac{f^{(k)}(0)}{k!} x^k + R_{n+1}(x)\]</DIV><P></P>
+as before, but now we better understand the remainder term.
+
+<P>
+From this derivation, it is clear that the approximation error (remainder
+term) is smallest in the vicinity of <SPAN CLASS="MATH">\(x=0\)</SPAN>.  <I>All degrees of freedom</I>
+in the polynomial coefficients were devoted to minimizing the approximation
+error and its derivatives at <SPAN CLASS="MATH">\(x=0\)</SPAN>.  As you might expect, the approximation
+error generally worsens as <SPAN CLASS="MATH">\(x\)</SPAN> gets farther away from <SPAN CLASS="MATH">\(0\)</SPAN>.
+
+<P>
+To obtain a more <I>uniform</I> approximation over some interval <SPAN CLASS="MATH">\(I\)</SPAN>
+in <SPAN CLASS="MATH">\(x\)</SPAN>, other kinds of error criteria may be employed.  Classically,
+this topic has been called ``economization of series,'' or simply
+polynomial approximation<A NAME="24936"></A> under different error criteria.  In
+<TT><A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A></TT> or
+<TT>Octave</TT>, the function
+<TT>polyfit(x,y,n)</TT> will find the coefficients of a polynomial <SPAN CLASS="MATH">\(p(x)\)</SPAN> of
+degree <TT>n</TT> that fits the data <TT>y</TT> over the points <TT>x</TT> in a
+<A HREF="https://mathworld.wolfram.com/LeastSquaresFitting.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/LeastSquaresFitting.html')">least-squares</A> sense.  That is, it minimizes
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left\|\,R_{n+1}\,\right\|^2 \isdef \sum_{i=1}^{n_x} \left|y(i) - p(x(i))\right|^2\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(n_x \isdef {\tt length(x)}\)</SPAN>.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3727"
+  HREF="Formal_Statement_Taylor_s_Theorem.html" 
+ onMouseover="return escape('Formal Statement of Taylor\'s Theorem')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3717"
+  HREF="Informal_Derivation_Taylor_Series.html" 
+ onMouseover="return escape('Informal Derivation of Taylor Series')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3723"
+  HREF="Taylor_Series_Expansions.html" 
+ onMouseover="return escape('Taylor Series Expansions')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3725"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

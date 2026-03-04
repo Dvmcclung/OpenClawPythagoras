@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Spectrogram Computation</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Spectrogram Computation">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="DFT_I.html">
+<LINK REL="up" HREF="Matlab_Octave_Examples.html">
+<LINK REL="next" HREF="Bibliography.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4486"
+  HREF="Bibliography.html" 
+ onMouseover="return escape('Bibliography')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4478"
+  HREF="DFT_Matrix.html" 
+ onMouseover="return escape('DFT Matrix')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4482"
+  HREF="Matlab_Octave_Examples.html" 
+ onMouseover="return escape('Matlab/Octave Examples')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4484"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001850000000000000000"></A><A NAME="sec:spectrogramml"></A><A NAME="28655"></A>
+<A NAME="28656"></A>
+<BR>
+<A HREF="http://en.wikipedia.org/wiki/Spectrogram" onMouseover="return escape('The &lt;i&gt;spectrogram&lt;/i&gt; is a three-dimensional plot of signal amplitude versus time and frequency.  It is typically computed using the Short Time Fast Fourier Transform (&lt;A HREF=\&#39;https://ccrma.stanford.edu/~jos/sasp/Short_Time_Fourier_Transform.html\&#39;&gt;STFT&lt;/A&gt;). &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Spectrogram')">Spectrogram</A> Computation
+</H2>
+
+<P>
+This section lists the <TT>spectrogram</TT> function called in the
+<A HREF="https://ccrma.stanford.edu/~jos/matlab/" onMouseover="return escape('Matlab is a high-level scripting language for scientific computing &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/matlab/')">Matlab</A> code displayed in Fig.<A HREF="Spectrogram_Speech.html#code:spspecgm">8.11</A>.
+
+<P>
+<PRE>
+function X = spectrogram(x,nfft,fs,window,noverlap,doplot,dbclip);
+
+%SPECTROGRAM Calculate spectrogram from <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A>.
+% B = SPECTROGRAM(A,NFFT,Fs,WINDOW,NOVERLAP) calculates the 
+%     spectrogram for the signal in vector A.  
+%
+% NFFT is the <A HREF="Fast_Fourier_Transform_FFT.html" onMouseover="return escape('Fast Fourier Transforms (FFT) are fast algorithms for computing the Discrete Fourier Transform (DFT) &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fast_Fourier_Transform_FFT.html')">FFT</A> size used for each frame of A.  It should be a
+% power of 2 for fastest computation of the spectrogram.
+%
+% Fs is the <A HREF="Sampling_Theory.html" onMouseover="return escape('Sampling is the process of converting a continuous-time signal into a discrete-time signal. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/mdft/Sampling_Theory.html')">sampling</A> frequency. Since all processing parameters are
+% in units of samples, Fs does not effect the spectrogram itself,
+% but it is used for axis scaling in the plot produced when
+% SPECTROGRAM is called with no output argument (see below).
+%
+% WINDOW is the length M window function applied, IN <A HREF="https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Filters_Preserving_Phase.html')">ZERO-PHASE</A>
+% FORM, to each frame of A.  M cannot exceed NFFT.  For M&lt;NFFT,
+% NFFT-M zeros are inserted in the FFT buffer (for interpolated
+% zero-phase processing).  The window should be supplied in <A HREF="https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html" onMouseover="return escape('A &lt;i&gt;causal filter&lt;/i&gt; is any filter whose impulse response is zero prior to time zero. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html')">CAUSAL</A>
+% FORM.
+%
+% NOVERLAP is the number of samples the sections of A overlap, if
+% nonnegative.  If negative, -NOVERLAP is the "hop size", i.e., the
+% number of samples to advance successive windows.  (The overlap is
+% the window length minus the hop size.)  The hop size is called
+% NHOP below.  NOVERLAP must be less than M.
+%
+% If doplot is nonzero, or if there is no output argument, the 
+% spectrogram is displayed.
+%
+% When the spectrogram is displayed, it is "clipped" dbclip <A HREF="https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/CCRMA/Courses/152/SPL.html')">dB</A>
+% below its maximum magnitude.  The default <A HREF="http://ccrma.stanford.edu/~jos/pasp/Clipping_Nonlinearity.html" onMouseover="return escape('Clipping is a form of distortion that occurs when a signal is amplified beyond the limits of the system representing the signal. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/pasp/Clipping_Nonlinearity.html')">clipping</A> level is 100 
+% <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A> down.
+%
+% Thus, SPECTROGRAM splits the signal into overlapping segments of
+% length M, windows each segment with the length M WINDOW vector, in
+% zero-phase form, and forms the columns of B with their
+% zero-padded, length NFFT discrete <A HREF="Fourier_Transform_FT_Inverse.html" onMouseover="return escape('The Fourier Transform (FT) gives the (complex) spectrum of a continuous-time signal of any length. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Fourier_Transform_FT_Inverse.html')">Fourier transforms</A>.
+%
+% With no output argument B, SPECTROGRAM plots the <A HREF="Decibels.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Decibels.html')">dB</A> magnitude of
+% the spectrogram in the current figure, using
+% IMAGESC(T,F,20*log10(ABS(B))), AXIS XY, COLORMAP(<A HREF="http://www.phys.unsw.edu.au/jw/fluteacoustics.html#airjet" onMouseover="return escape('Flutists produce a jet of air by forcing air out of the mouth through a small opening in the lips. &nbsp;&#8212;&nbsp; Click for http://www.phys.unsw.edu.au/jw/fluteacoustics.html#airjet')">JET</A>) so the low
+% frequency content of the first portion of the signal is displayed
+% in the lower left corner of the axes.
+%
+% Each column of B contains an estimate of the short-term,
+% time-localized frequency content of the signal A.  Time increases
+% linearly across the columns of B, from left to right.  Frequency
+% increases linearly down the rows, starting at 0.
+%
+% If A is a length NX complex signal, B is returned as a complex
+% <A HREF="Matrices.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Matrices.html')">matrix</A> with NFFT rows and
+%      k = floor((NX-NOVERLAP)/(length(WINDOW)-NOVERLAP)) 
+%        = floor((NX-NOVERLAP)/NHOP)
+% columns.  When A is real, only the NFFT/2+1 rows are needed when
+% NFFT even, and the first (NFFT+1)/2 rows are sufficient for
+% inversion when NFFT is odd.
+%
+% See also: Matlab and Octave's SPECGRAM and <A HREF="https://ccrma.stanford.edu/~jos/sasp/Short_Time_Fourier_Transform.html" onMouseover="return escape('The Short Time Fourier Transform (STFT) computes the spectrum (DFT) of successive time frames of a signal. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/sasp/Short_Time_Fourier_Transform.html')">STFT</A> functions.
+
+if nargin&lt;7, dbclip=100; end
+if nargin&lt;6, doplot=0; end
+if nargin&lt;5, noverlap=256; end
+if nargin&lt;4, window=hamming(512); end
+if nargin&lt;3, fs=1; end
+if nargin&lt;2, nfft=2048; end
+
+x = x(:); % make sure it's a column
+
+M = length(window);
+if length(x)&lt;M, x = [x;zeros(M-length(x),1)]; end;
+if (M&lt;2) 
+  % (Matlab's specgram allows window to be a <A HREF="http://en.wikipedia.org/wiki/Scalar" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Scalar')">scalar</A> specifying
+  % the length of a <A HREF="https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/sasp/Hann_Hanning_Raised_Cosine.html')">Hanning window</A>.)
+  error('spectrogram: Expect complete window, not just its length'); 
+end;
+Modd = mod(M,2); % 0 if M even, 1 if odd
+Mo2 = (M-Modd)/2;
+w = window(:); % Make sure it's a column
+zp = zeros(nfft-M,1);
+wzp = [w(Mo2+1:M);zp;w(1:Mo2)];
+
+noverlap = round(noverlap); % in case non-integer
+if noverlap&lt;0
+  nhop = - noverlap;
+  noverlap = M-nhop;
+else
+  nhop = M-noverlap;
+end
+
+nx = length(x);
+nframes = 1+floor((nx-noverlap)/nhop);
+
+X = zeros(nfft,nframes);
+xoff = 0;
+for m=1:nframes-1
+  xframe = x(xoff+1:xoff+M); % extract frame of input data
+  xoff = xoff + nhop;   % advance in-pointer by hop size
+  xzp = [xframe(Mo2+1:M);zp;xframe(1:Mo2)];
+  xw = wzp .* xzp;
+  X(:,m) = fft(xw);
+end
+
+if (nargout==0) | doplot
+  t = (0:nframes-1)*nhop/fs;
+  f = 0.001*(0:nfft-1)*fs/nfft;
+  Xdb = 20*log10(abs(X));
+  Xmax = max(max(Xdb));
+  % Clip lower limit so nulls don't dominate:
+  clipvals = [Xmax-dbclip,Xmax];
+  imagesc(t,f,Xdb,clipvals);
+  % grid;
+  axis('xy');
+  colormap(jet);
+  xlabel('Time (sec)');
+  ylabel('Freq (kHz)');
+end
+</PRE>
+
+<P>
+
+<P>
+
+<P>
+
+<P>
+
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4486"
+  HREF="Bibliography.html" 
+ onMouseover="return escape('Bibliography')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4478"
+  HREF="DFT_Matrix.html" 
+ onMouseover="return escape('DFT Matrix')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4482"
+  HREF="Matlab_Octave_Examples.html" 
+ onMouseover="return escape('Matlab/Octave Examples')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4484"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

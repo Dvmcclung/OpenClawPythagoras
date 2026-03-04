@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Why Exponentials are Important</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Why Exponentials are Important">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Audio_Decay_Time_T60.html">
+<LINK REL="previous" HREF="Exponentials.html">
+<LINK REL="up" HREF="Exponentials.html">
+<LINK REL="next" HREF="Audio_Decay_Time_T60.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1186"
+  HREF="Audio_Decay_Time_T60.html" 
+ onMouseover="return escape('Audio Decay Time (T60)')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1176"
+  HREF="Exponentials.html" 
+ onMouseover="return escape('Exponentials')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1182"
+  HREF="Exponentials.html" 
+ onMouseover="return escape('Exponentials')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1184"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00521000000000000000">
+Why Exponentials are Important</A>
+</H3>
+
+<P>
+<A HREF="Exponentials.html" onMouseover="return escape('An &lt;i&gt;exponential&lt;/i&gt; is any function of the form &lt;i&gt;Ae&lt;sup&gt;-t/&amp;#964;&lt;/sup&gt;&lt;/i&gt;, where &lt;i&gt;t&lt;/i&gt; is the independent variable (often denoting time in seconds), &lt;i&gt;A&lt;/i&gt; is an arbitrary scale factor, &lt;i&gt;&amp;#964;&lt;/i&gt; is called the &lt;i&gt;time constant&lt;/i&gt;, and &lt;i&gt;e&lt;/i&gt; is Euler\&#39;s number (2.718281828459...). Many systems in nature exhibit exponential decay over time, because an exponential decay is produced whenever the &lt;i&gt;rate&lt;/i&gt; of decay is proportional to how much is left. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">Exponential</A> <I>decay</I> occurs naturally when a quantity is decaying at a
+rate which is proportional to how much is left.  In nature, all <I>linear
+<A HREF="https://ccrma.stanford.edu/~jos/filters/Two_Pole.html" onMouseover="return escape('A &lt;i&gt;resonator&lt;/i&gt; is a recursive filter that &lt;i&gt;boosts&lt;/i&gt; signal amplitude at a particular frequency.  The simplest resonator is made using a &lt;i&gt;two-pole filter&lt;/i&gt;.  The impulse response of the two-pole resonator is an exponentially decaying sinusoidal oscillation, where the zero-crossing rate is (twice) the &lt;i&gt;resonance frequency&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Two_Pole.html')">resonators</A></I>, such as musical instrument strings and <A HREF="https://ccrma.stanford.edu/~jos/pasp/Single_Reed_Instruments.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/pasp/Single_Reed_Instruments.html')">woodwind</A> bores, exhibit
+<A HREF="http://en.wikipedia.org/wiki/Exponential_decay" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Exponential_decay')">exponential decay</A> in their response to a momentary excitation.  As another
+example, reverberant energy in a room decays exponentially after the direct
+sound stops.  Essentially all <I>undriven oscillations</I> decay
+exponentially (provided they are <A HREF="https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html" onMouseover="return escape('The topic of &lt;i&gt;linear systems theory&lt;/i&gt; is primarily about &lt;i&gt;linear, time-invariant (LTI) filters&lt;/i&gt;.   A &lt;i&gt;linear&lt;/i&gt; filter is characterized by the property that its output-signal amplitude is linearly proportional to its input-signal amplitude.  A &lt;i&gt;time-invariant&lt;/i&gt; filter, or \&#39;constant-coefficient\&#39; filter, performs the same filtering operation at all times.  Only LTI filters can be characeterized by their &lt;i&gt;impulse response&lt;/i&gt;, or their &lt;i&gt;frequency response&lt;/i&gt;, or their &lt;i&gt;poles and zeros&lt;/i&gt; plus a gain, or the like.  Also, only LTI filters have the &lt;i&gt;superposition property&lt;/i&gt; for audio signals, in which the filtering of an audio mix can be obtained alternatively by filtering each channel separately and adding the filtered channels together.  Equivalently, only LTI filters exhibit no &lt;i&gt;intermodulation distortion&lt;/i&gt; for audio signals. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Linear_Time_Invariant_Digital_Filters.html')">linear and time-invariant</A>).  Undriven
+means there is no ongoing source of driving energy.  Examples of undriven
+oscillations include the <A HREF="http://ccrma.stanford.edu/realsimple/lab_inst/Background.html" onMouseover="return escape('If the mass of a harmonic oscillator is excited, the system responds by vibrating back and forth.  Whenever the mass is at its rest position, the system contains only kinetic energy.  Conversely, whenever the mass velocity is zero, the system contains only potential energy. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/realsimple/lab_inst/Background.html')">vibrations</A> of a <A HREF="http://en.wikipedia.org/wiki/Tuning_fork" onMouseover="return escape('Commonly made of steel, a tuning fork is used to produce an accurate reference pitch for tuning musical instruments. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Tuning_fork')">tuning fork</A>, struck or <A HREF="https://ccrma.stanford.edu/~jos/pasp/Ideal_Plucked_String.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/pasp/Ideal_Plucked_String.html')">plucked
+strings</A>, a marimba or xylophone bar, and so on.  Examples of driven
+oscillations include horns, woodwinds, <A HREF="https://ccrma.stanford.edu/~jos/pasp/Digital_Waveguide_Bowed_String.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/pasp/Digital_Waveguide_Bowed_String.html')">bowed strings</A>, and voice.  Driven
+oscillations are typically <A HREF="http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals" onMouseover="return escape('A periodic signal is a signal that forever repeats itself. &nbsp;&#8212;&nbsp; Click for http://en.wikibooks.org/wiki/Signals_and_Systems/Periodic_Signals')">periodic</A> while undriven oscillations normally 
+are not, except in idealized (lossless) cases.
+
+<P>
+<A HREF="Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">Exponential</A> <I>growth</I> occurs when a quantity is increasing at a
+rate proportional to the current amount.  Exponential growth is
+<I>unstable</I> since nothing can grow exponentially forever without
+running into some kind of limit.  Note that a positive <A HREF="Exponentials.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">time constant</A>
+corresponds to <A HREF="http://en.wikipedia.org/wiki/Exponential_decay" onMouseover="return escape('Exponential decay is characterized by a reduction over time that is proportional to the quantity being reduced. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Exponential_decay')">exponential decay</A>, while a negative time constant
+corresponds to exponential growth.  In <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> processing, we almost
+always deal exclusively with exponential decay (positive time
+constants).
+
+<P>
+Exponential growth and decay are illustrated in Fig.<A HREF="Why_Exponentials_Important.html#fig:decaygrowth">4.8</A>.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:decaygrowth"></A></P><IMG
+ WIDTH="598" HEIGHT="295" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img21.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img21.png 1x,https://ccrma.stanford.edu/~jos/mdft/img21_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img21_3x.png 3x"
+ ALT="\includegraphics[width=0.8\twidth]{eps/decaygrowth}">
+	<IMG
+ WIDTH="785" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img20.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img20.png 1x,https://ccrma.stanford.edu/~jos/mdft/img20_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img20_3x.png 3x"
+ ALT="% latex2html id marker 35751
+$\textstyle \parbox{\twidth }{\caption{\protect\small Growing and decaying exponentials.}}$">
+</DIV>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1186"
+  HREF="Audio_Decay_Time_T60.html" 
+ onMouseover="return escape('Audio Decay Time (T60)')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1176"
+  HREF="Exponentials.html" 
+ onMouseover="return escape('Exponentials')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1182"
+  HREF="Exponentials.html" 
+ onMouseover="return escape('Exponentials')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1184"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

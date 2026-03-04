@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Complex Roots</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Complex Roots">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Fundamental_Theorem_Algebra.html">
+<LINK REL="previous" HREF="Quadratic_Formula.html">
+<LINK REL="up" HREF="Complex_Numbers.html">
+<LINK REL="next" HREF="Fundamental_Theorem_Algebra.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html706"
+  HREF="Fundamental_Theorem_Algebra.html" 
+ onMouseover="return escape('Fundamental Theorem of Algebra')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html696"
+  HREF="Quadratic_Formula.html" 
+ onMouseover="return escape('The Quadratic Formula')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html702"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html704"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00330000000000000000"></A><A NAME="sec:complexroots"></A><A NAME="5788"></A>
+<A NAME="5789"></A>
+<A NAME="5790"></A>
+<BR>
+Complex Roots
+</H2>
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<P><A NAME="fig:parabola"></A></P><IMG
+ WIDTH="434" HEIGHT="347" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img2.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img2.png 1x,https://ccrma.stanford.edu/~jos/mdft/img2_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img2_3x.png 3x"
+ ALT="\includegraphics[scale=0.5]{eps/parabola}">
+	<IMG
+ WIDTH="785" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img1.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img1.png 1x,https://ccrma.stanford.edu/~jos/mdft/img1_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img1_3x.png 3x"
+ ALT="% latex2html id marker 35534
+$\textstyle \parbox{\twidth }{\caption{\protect\small An example parabola defined by $p(x) = x^2 + 4$.}}$">
+</DIV>
+
+<P>
+As a simple example, let <SPAN CLASS="MATH">\(a=1\)</SPAN>, <SPAN CLASS="MATH">\(b=0\)</SPAN>, and <SPAN CLASS="MATH">\(c=4\)</SPAN>, <I>i.e.</I>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[p(x) = x^2 + 4.\]</DIV><P></P>
+As shown in Fig.<A HREF="Complex_Roots.html#fig:parabola">2.1</A>, this is a parabola centered at <SPAN CLASS="MATH">\(x=0\)</SPAN> (where
+<SPAN CLASS="MATH">\(p(0)=4\)</SPAN>) and reaching upward to positive infinity, never going below <SPAN CLASS="MATH">\(4\)</SPAN>.
+It has no real zeros.  On the other hand, the <A HREF="Quadratic_Formula.html" onMouseover="return escape('The &lt;i&gt;quadratic formula&lt;/i&gt; gives a closed-form solution for both roots of a second-order polynomial &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Quadratic_Formula.html')">quadratic formula</A> says that the
+``roots'' are given formally by <SPAN CLASS="MATH">\(x=\pm\sqrt{-4} = \pm 2 \sqrt{-1}\)</SPAN>.  The
+square root of any negative number <SPAN CLASS="MATH">\(c&lt;0\)</SPAN> can be expressed as
+<SPAN CLASS="MATH">\(\sqrt{\left|c\right|}\sqrt{-1}\)</SPAN>, so the only new algebraic object is <SPAN CLASS="MATH">\(\sqrt{-1}\)</SPAN>.
+Let's give it a name:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{j \isdef \sqrt{-1}}\]</DIV><P></P>
+Then, formally, the roots of <SPAN CLASS="MATH">\(x^2 + 4\)</SPAN> are <SPAN CLASS="MATH">\(\pm 2j\)</SPAN>, and we can formally
+express the polynomial in terms of its roots as
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[p(x) = (x+2j)(x-2j).\]</DIV><P></P>
+We can think of these as ``imaginary roots'' in the sense that square roots
+of negative numbers don't really exist, or we can extend the concept of
+``roots'' to allow for <I><A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex numbers</A></I><A NAME="5800"></A>, that is, numbers of the form
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[z = x + j y\]</DIV><P></P>
+where <SPAN CLASS="MATH">\(x\)</SPAN> and <SPAN CLASS="MATH">\(y\)</SPAN> are <A HREF="http://mathworld.wolfram.com/RealNumber.html" onMouseover="return escape('The set of real numbers may be expressed informally as the set of all numbers that may be expressed as a decimal number with possibly an infinite number of digits.  More formally, the set of real numbers is the field of rational and irrational numbers. &nbsp;&#8212;&nbsp; Click for http://mathworld.wolfram.com/RealNumber.html')">real numbers</A>, and <SPAN CLASS="MATH">\(j^2\isdef -1\)</SPAN>.
+
+<P>
+It can be checked that all algebraic operations for real
+numbers<A NAME="tex2html12"
+  HREF="footnode.html#foot5537"><SUP>2.2</SUP></A> apply equally well to complex numbers.  Both real numbers
+and complex numbers are examples of a
+mathematical <I>field</I>.<A NAME="tex2html13"
+  HREF="footnode.html#foot5742"><SUP>2.3</SUP></A>  Fields are
+<I>closed</I> with respect to multiplication and addition, and all the rules
+of <A HREF="https://www.khanacademy.org/math/algebra2" onMouseover="return escape('Click for https://www.khanacademy.org/math/algebra2')">algebra</A> we use in manipulating polynomials with real coefficients (and
+roots) carry over unchanged to polynomials with complex coefficients and
+roots.  In fact, the rules of algebra become simpler for complex numbers
+because, as discussed in the next section, we can <I>always</I> <A HREF="https://www.ece.rice.edu/dsp/software/fvhdp.shtml" onMouseover="return escape('Click for https://www.ece.rice.edu/dsp/software/fvhdp.shtml')">factor
+polynomials</A> completely over the field of complex numbers while we cannot do
+this over the reals (as we saw in the example <SPAN CLASS="MATH">\(p(x)=x^2+4\)</SPAN>).
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html706"
+  HREF="Fundamental_Theorem_Algebra.html" 
+ onMouseover="return escape('Fundamental Theorem of Algebra')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html696"
+  HREF="Quadratic_Formula.html" 
+ onMouseover="return escape('The Quadratic Formula')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html702"
+  HREF="Complex_Numbers.html" 
+ onMouseover="return escape('Complex Numbers')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html704"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

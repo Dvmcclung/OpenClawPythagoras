@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Convolution Example 1: Smoothing a Rectangular Pulse</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Convolution Example 1: Smoothing a Rectangular Pulse">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Convolution_Example_2_ADSR.html">
+<LINK REL="previous" HREF="Convolution_Filtering_Operation.html">
+<LINK REL="up" HREF="Convolution.html">
+<LINK REL="next" HREF="Convolution_Example_2_ADSR.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html2369"
+  HREF="Convolution_Example_2_ADSR.html" 
+ onMouseover="return escape('Convolution Example 2: ADSR Envelope')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2359"
+  HREF="Convolution_Filtering_Operation.html" 
+ onMouseover="return escape('Convolution as a Filtering Operation')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2365"
+  HREF="Convolution.html" 
+ onMouseover="return escape('Convolution')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2367"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00824300000000000000"></A><A NAME="sec:smoother"></A><A NAME="16377"></A>
+<A NAME="16378"></A>
+<BR>
+<A HREF="Convolution.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Convolution.html')">Convolution</A> Example 1: Smoothing a Rectangular Pulse
+</H4>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:smoother-x"></A><A NAME="fig:smoother-h"></A><A NAME="fig:smoother-h"></A><A NAME="16389"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+Illustration of the convolution of a rectangular pulse
+<SPAN CLASS="MATH">\(x=[0  ,0  ,0  ,0,1,1,1,1,1,1,0,0,0,0]\)</SPAN> and the <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse response&lt;/i&gt; of a system is its output signal in response to the impulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse response</A>
+of an ``averaging <A HREF="https://ccrma.stanford.edu/~jos/filters/What_Filter.html" onMouseover="return escape('A &lt;i&gt;filter&lt;/i&gt; in the audio signal processing context is any operation that accepts a signal as an input and produces a signal as an output.  Most practical audio filters are &lt;i&gt;linear&lt;/i&gt; and &lt;i&gt;time invariant&lt;/i&gt;, in which case they can be characterized by their &lt;i&gt;impulse response&lt;/i&gt; or their &lt;i&gt;frequency response&lt;/i&gt;. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/What_Filter.html')">filter</A>'' 
+<SPAN CLASS="MATH">\(h=[1/3,1/3,1/3,0,0,0,0,0,0,0,0,0,0,0]\)</SPAN> (<SPAN CLASS="MATH">\(N=14\)</SPAN>).</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><HR>
+  	   <IMG
+ WIDTH="630" HEIGHT="446" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img74.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img74.png 1x,https://ccrma.stanford.edu/~jos/mdft/img74_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img74_3x.png 3x"
+ ALT="\includegraphics{eps/smoother-x}">
+	   </DIV>
+<DIV ALIGN="CENTER">
+<DIV ALIGN="CENTER">
+Filter 
+input <A HREF="http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html" onMouseover="return escape('A signal is typically a real-valued function of time. A discrete-time signal is typically a real-valued function of discrete time, and is therefore a time-ordered sequence of real numbers. &nbsp;&#8212;&nbsp; Click for http://ccrma.stanford.edu/~jos/filters/Definition_Signal.html')">signal</A> <SPAN CLASS="MATH">\(x(n)\)</SPAN>.</DIV></DIV>
+<DIV ALIGN="CENTER"><HR 50%>
+	
+<BR><IMG
+ WIDTH="630" HEIGHT="446" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img75.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img75.png 1x,https://ccrma.stanford.edu/~jos/mdft/img75_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img75_3x.png 3x"
+ ALT="\includegraphics{eps/smoother-h}">
+	   </DIV>
+<DIV ALIGN="CENTER">
+<DIV ALIGN="CENTER">
+Filter <A HREF="https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html" onMouseover="return escape('The &lt;i&gt;impulse&lt;/i&gt; signal is the shortest pulse signal.  For discrete time (digital) systems, the impulse is a 1 followed by zeros.  In continuous time, the impulse is a narrow, unit-area pulse (ideally infinitely narrow).  The impulse is typically denoted by the Greek delta symbol &amp;#948; and is often called the \&#39;Dirac delta function\&#39;, after Paul Dirac who pioneered its use (in addition to being a lead contributor in the development of Quantum Mechanics). &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Impulse_Response_Representation.html')">impulse</A> response <SPAN CLASS="MATH">\(h(n)\)</SPAN>.</DIV></DIV>
+<DIV ALIGN="CENTER"><HR 50%>
+	
+<BR><IMG
+ WIDTH="630" HEIGHT="446" ALIGN="BOTTOM" BORDER="0"
+ SRC="https://ccrma.stanford.edu/~jos/mdft/img76.png" SRCSET="https://ccrma.stanford.edu/~jos/mdft/img76.png 1x,https://ccrma.stanford.edu/~jos/mdft/img76_2x.png 2x,https://ccrma.stanford.edu/~jos/mdft/img76_3x.png 3x"
+ ALT="\includegraphics{eps/smoother-y}">
+	   </DIV>
+<DIV ALIGN="CENTER">
+<DIV ALIGN="CENTER">
+Filter output signal <SPAN CLASS="MATH">\(y(n)\)</SPAN>.</DIV></DIV>
+<DIV ALIGN="CENTER"><HR 50%>
+	</DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<HR>
+
+<P>
+Figure <A HREF="Convolution_Example_1_Smoothing.html#figboth:smoother-x">7.3</A> illustrates convolution of 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[x =      [          0,          0,          0,0,1,1,1,1,1,1,0,0,0,0]\]</DIV><P></P>
+with
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[h = \left[\frac{1}{3},\frac{1}{3},\frac{1}{3},0,0,0,0,0,0,0,0,0,0,0\right]\]</DIV><P></P>
+to get
+<A NAME="eq:smoothresult"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}y = x\circledast h = \left[0,0,0,0,\frac{1}{3},\frac{2}{3},1,1,1,1,\frac{2}{3},\frac{1}{3},0,0\right]
+\end{equation}</DIV><P></P>
+as graphed in Fig.<A HREF="Convolution_Example_1_Smoothing.html#fig:smoother-y">7.3(c)</A>.
+In this case, <SPAN CLASS="MATH">\(h\)</SPAN> can be viewed as a ``moving three-point average''
+filter. Note how the corners of the rectangular pulse are ``smoothed''
+by the three-point filter.  Also note that the pulse is smeared to the
+``right'' (forward in time) because the filter impulse response starts
+at time zero.  Such a filter is said to be <I><A HREF="https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html" onMouseover="return escape('A &lt;i&gt;causal filter&lt;/i&gt; is any filter whose impulse response is zero prior to time zero. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/filters/Causal_Recursive_Filters.html')">causal</A></I><A NAME="16395"></A> (see
+[<A
+ HREF="Bibliography.html#JOSFP">71</A>] for details).  By shifting the impulse response left one
+sample to get 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[h=\left[\frac{1}{3},\frac{1}{3},0,0,0,0,0,0,0,0,0,0,\frac{1}{3}\right]\]</DIV><P></P>
+(in which case <SPAN CLASS="MATH">\(\oper{Flip}(h)=h\)</SPAN>), we obtain a noncausal filter <SPAN CLASS="MATH">\(h\)</SPAN> which is
+symmetric about time zero so that the input signal is smoothed ``in
+place'' with no added delay (imagine Fig.<A HREF="Convolution_Example_1_Smoothing.html#fig:smoother-y">7.3(c)</A> shifted left
+one sample, in which case the input pulse edges align with the
+midpoint of the rise and fall in the output signal).
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html2369"
+  HREF="Convolution_Example_2_ADSR.html" 
+ onMouseover="return escape('Convolution Example 2: ADSR Envelope')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html2359"
+  HREF="Convolution_Filtering_Operation.html" 
+ onMouseover="return escape('Convolution as a Filtering Operation')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html2365"
+  HREF="Convolution.html" 
+ onMouseover="return escape('Convolution')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html2367"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

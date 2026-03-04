@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>When Do We Have to Swap Bytes?G.5</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="When Do We Have to Swap Bytes?G.5">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="previous" HREF="How_Many_Bits_Enough.html">
+<LINK REL="up" HREF="Linear_Number_Systems.html">
+<LINK REL="next" HREF="Logarithmic_Number_Systems_Audio.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html4130"
+  HREF="Logarithmic_Number_Systems_Audio.html" 
+ onMouseover="return escape('Logarithmic Number Systems for Audio')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4122"
+  HREF="How_Many_Bits_Enough.html" 
+ onMouseover="return escape('How Many Bits are Enough for Digital Audio?')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4126"
+  HREF="Linear_Number_Systems.html" 
+ onMouseover="return escape('Linear Number Systems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4128"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001615000000000000000">
+When Do We Have to Swap Bytes?</A><A NAME="tex2html196"
+  HREF="footnode.html#foot26528"><SUP>G.5</SUP></A>
+</H3>
+
+<P>
+<A NAME="26727"></A>
+
+<P>
+When moving a soundfile from a ``PC'' or modern Mac to an old
+``PowerPC Mac'' (Intel or ARM processor to Motorola processor), the
+bytes in each sound sample need to be <I>swapped</I>.  This is because
+Motorola processors are <I>big endian</I> (bytes are numbered from
+most-significant to least-significant in a multi-byte word) while
+Intel processors are <I>little endian</I> (bytes are numbered from
+least-significant to most-significant).<A NAME="tex2html197"
+  HREF="footnode.html#foot26533"><SUP>G.6</SUP></A>  Any Mac program that supports a soundfile format native to PCs
+(such as <TT>.wav</TT> files) will swap the bytes for you.  You only have
+to worry about swapping the bytes yourself when reading <TT>raw
+binary</TT> soundfiles from a foreign computer, or when digging the sound
+samples out of an ``unsupported'' soundfile format yourself.
+
+<P>
+Since soundfiles typically contain 16 bit samples (not for any good
+reason, as we now know), there are only two bytes in each audio
+sample.  Let L denote the least-significant byte, and M the
+most-significant byte.  Then a 16-bit word is most naturally written
+<SPAN CLASS="MATH">\([M,L] = M\cdot 256 + L\)</SPAN>, <I>i.e.</I>, the most-significant byte is most
+naturally written to the left of the least-significant byte, analogous
+to the way we write binary or decimal integers.  This ``most natural''
+ordering is used as the byte-address ordering in big-endian processors:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\mbox{M,L, M,L, M,L, ..., M,L}\qquad\mbox{(Big Endian)}\]</DIV><P></P>
+Little-endian machines, on the other hand, store bytes in the order
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\mbox{L,M, L,M, L,M, ..., L,M}.\qquad\mbox{(Little Endian)}\]</DIV><P></P>
+These orderings are preserved when the sound data are written to a disk file.
+
+<P>
+Since a byte (eight bits) is the smallest addressable unit in modern
+day processor families, we don't have to additionally worry about
+reversing the <I>bits</I> in each byte.  Bits are not given explicit
+``addresses'' in memory.  They are extracted by means other than
+simple addressing (such as masking and shifting operations, table
+look-up, or using specialized processor instructions).
+
+<P>
+Table <A HREF="When_Do_We_Have.html#table:endian">G.6</A> lists current and earlier processors and their
+``endianness'':<A NAME="tex2html198"
+  HREF="footnode.html#foot26542"><SUP>G.7</SUP></A>
+	<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="26736"></A>
+<TABLE>
+<CAPTION><STRONG>Table:</STRONG>
+Byte ordering in various computing platforms.</CAPTION>
+<TR><TD>	<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="LEFT">Processor Family</TD>
+<TD ALIGN="LEFT">Endian</TD>
+</TR>
+<TR><TD ALIGN="LEFT">x86 (Intel Core i&sstarf#star;, Pentium, Celeron)</TD>
+<TD ALIGN="LEFT">Little</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ARM (M1,M2,M3)</TD>
+<TD ALIGN="LEFT">Little</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Alpha (DEC/Compaq)</TD>
+<TD ALIGN="LEFT">Little</TD>
+</TR>
+<TR><TD ALIGN="LEFT">680x0 (Motorola)</TD>
+<TD ALIGN="LEFT">Big</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PowerPC (Motorola &amp; IBM)</TD>
+<TD ALIGN="LEFT">Big</TD>
+</TR>
+<TR><TD ALIGN="LEFT">SPARC (Sun)</TD>
+<TD ALIGN="LEFT">Big</TD>
+</TR>
+<TR><TD ALIGN="LEFT">MIPS (SGI)</TD>
+<TD ALIGN="LEFT">Big</TD>
+</TR>
+</TABLE>
+</DIV>
+	
+	<A NAME="table:endian"></A> </TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+The following <A HREF="https://www.python.org/" onMouseover="return escape('Click for https://www.python.org/')">Python</A> script prints the endianness of the processor you are running on:
+<PRE>
+from sys import byteorder
+print(byteorder)
+</PRE>
+
+<P>
+When compiling C or C++ programs under UNIX/Linux, there may be a macro
+constant called
+<TT><FONT SIZE="-1">BYTE_ORDER</FONT></TT> in the <A HREF="http://en.wikipedia.org/wiki/Header_file" onMouseover="return escape('A header file contains a set of declarations.  The corresponding source code implements the declared behaviors and includes the declarations from the header file. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Header_file')">header</A> file <TT>endian.h</TT> or
+<TT>bytesex.h</TT>. In other cases, there may be macros
+such as
+<FONT SIZE="-1"><TT>__INTEL__</TT>,
+<TT>__LITTLE_ENDIAN__</TT>,
+<TT>__BIG_ENDIAN__</TT>,
+</FONT> or the like, which can be detected
+at <A HREF="http://en.wikipedia.org/wiki/Compiler" onMouseover="return escape('The compiler transforms human-readable source code into machine-readable code. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Compiler')">compile</A> time using <TT>#ifdef</TT>.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html4130"
+  HREF="Logarithmic_Number_Systems_Audio.html" 
+ onMouseover="return escape('Logarithmic Number Systems for Audio')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html4122"
+  HREF="How_Many_Bits_Enough.html" 
+ onMouseover="return escape('How Many Bits are Enough for Digital Audio?')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html4126"
+  HREF="Linear_Number_Systems.html" 
+ onMouseover="return escape('Linear Number Systems')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html4128"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

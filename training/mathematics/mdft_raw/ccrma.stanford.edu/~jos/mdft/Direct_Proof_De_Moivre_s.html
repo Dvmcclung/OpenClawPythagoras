@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Direct Proof of De Moivre's Theorem</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Direct Proof of De Moivre's Theorem">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Euler_Identity_Problems.html">
+<LINK REL="previous" HREF="Roots_Unity.html">
+<LINK REL="up" HREF="Proof_Euler_s_Identity.html">
+<LINK REL="next" HREF="Euler_Identity_Problems.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html1020"
+  HREF="Euler_Identity_Problems.html" 
+ onMouseover="return escape('Euler_Identity Problems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1010"
+  HREF="Roots_Unity.html" 
+ onMouseover="return escape('Roots of Unity')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1016"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1018"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION004150000000000000000"></A><A NAME="sec:demoivrepf"></A><A NAME="6877"></A>
+<BR>
+Direct Proof of <A HREF="De_Moivre_s_Theorem.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/De_Moivre_s_Theorem.html')">De Moivre's Theorem</A>
+</H2>
+
+<P>
+In &#167;<A HREF="De_Moivre_s_Theorem.html#sec:demoivre">2.10</A>, De Moivre's theorem was introduced as a consequence of
+<A HREF="Proof_Euler_s_Identity.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Proof_Euler_s_Identity.html')">Euler's identity</A>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\zbox{\left[\cos(\theta) + j \sin(\theta)\right] ^n =
+\cos(n\theta) + j \sin(n\theta), \qquad\hbox{for all $n\in\mathbb{R}$}}\]</DIV><P></P>
+To provide some further insight into the ``mechanics'' of Euler's
+identity, we'll provide here a direct proof of De Moivre's theorem for
+<I>integer</I> <SPAN CLASS="MATH">\(n\)</SPAN> using <A HREF="http://en.wikipedia.org/wiki/Mathematical_induction" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Mathematical_induction')">mathematical induction</A> and elementary trigonometric
+identities.
+
+<P>
+<BR>
+<BR><I>Proof: </I>
+To establish the ``basis'' of our mathematical <A HREF="https://scienceworld.wolfram.com/physics/Induction.html" onMouseover="return escape('Click for https://scienceworld.wolfram.com/physics/Induction.html')">induction</A> proof, we may
+simply observe that De Moivre's theorem is trivially true for
+<SPAN CLASS="MATH">\(n=1\)</SPAN>. Now assume that De Moivre's theorem is true for some positive
+integer <SPAN CLASS="MATH">\(n\)</SPAN>.  Then we must show that this implies it is also true for
+<SPAN CLASS="MATH">\(n+1\)</SPAN>, <I>i.e.</I>, 
+<A NAME="eq:demoivretoshow"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{equation}\left[\cos(\theta) + j \sin(\theta)\right] ^{n+1} =
+\cos[(n+1)\theta] + j \sin[(n+1)\theta].
+\end{equation}</DIV><P></P>
+Since it is true by hypothesis that 
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left[\cos(\theta) + j \sin(\theta)\right] ^n =
+\cos(n\theta) + j \sin(n\theta),\]</DIV><P></P>
+multiplying both sides by <SPAN CLASS="MATH">\([\cos(\theta) + j \sin(\theta)]\)</SPAN> yields
+<A NAME="eq:demoivrenp1"></A><P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray}\left[\cos(\theta) + j \sin(\theta)\right] ^{n+1} &=&
+\left[\cos(n\theta) + j \sin(n\theta)\right]
+\cdot
+\left[\cos(\theta) + j \sin(\theta)\right]\nonumber \\
+&=& \qquad\!
+\left[\cos(n\theta)\cos(\theta) -\sin(n\theta)\sin(\theta)\right]\nonumber \\
+&&\,+\, j \left[\sin(n\theta)\cos(\theta)+\cos(n\theta)\sin(\theta)\right].
+\end{eqnarray}</DIV><P></P>
+
+<P>
+From <A HREF="https://mathworld.wolfram.com/Trigonometry.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/Trigonometry.html')">trigonometry</A>, we have the following <A HREF="http://www-spof.gsfc.nasa.gov/stargaze/Strig5.htm" onMouseover="return escape('Click for http://www-spof.gsfc.nasa.gov/stargaze/Strig5.htm')">sum-of-angle identities</A>:
+<P></P>
+<DIV CLASS="MATHDISPLAY">\begin{eqnarray*}\sin(\alpha+\beta) &=& \sin(\alpha)\cos(\beta) + \cos(\alpha)\sin(\beta)\\
+\cos(\alpha+\beta) &=& \cos(\alpha)\cos(\beta) - \sin(\alpha)\sin(\beta)\end{eqnarray*}</DIV><P></P>
+These identities can be proved using only arguments from classical
+<A HREF="http://aleph0.clarku.edu/~djoyce/java/elements/elements.html" onMouseover="return escape('Click for http://aleph0.clarku.edu/~djoyce/java/elements/elements.html')">geometry</A>.<A NAME="tex2html28"
+  HREF="footnode.html#foot6760"><SUP>3.8</SUP></A>Applying these to the right-hand side of Eq.(<A HREF="Direct_Proof_De_Moivre_s.html#eq:demoivrenp1">3.3</A>), with
+<SPAN CLASS="MATH">\(\alpha=n\theta\)</SPAN> and <SPAN CLASS="MATH">\(\beta=\theta\)</SPAN>, gives Eq.(<A HREF="Direct_Proof_De_Moivre_s.html#eq:demoivretoshow">3.2</A>), and
+so the induction step is proved.
+<SPAN CLASS="MATH">\(\Box\)</SPAN>
+
+<P>
+De Moivre's theorem establishes that integer powers of <SPAN CLASS="MATH">\([\cos(\theta)
++ j \sin(\theta)]\)</SPAN> lie on a circle of radius 1 (since
+<SPAN CLASS="MATH">\(\cos^2(\phi)+\sin^2(\phi)=1\)</SPAN>, for all <SPAN CLASS="MATH">\(\phi\in[-\pi,\pi]\)</SPAN>).  It
+therefore can be used to determine all <SPAN CLASS="MATH">\(N\)</SPAN> of the <SPAN CLASS="MATH">\(N\)</SPAN>th <A HREF="Roots_Unity.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Roots_Unity.html')">roots of unity</A>
+(see &#167;<A HREF="Roots_Unity.html#sec:rootsofunity">3.12</A> above).
+However, no definition of <SPAN CLASS="MATH">\(e\)</SPAN> emerges readily from De Moivre's
+theorem, nor does it establish a definition for <A HREF="Imaginary_Exponents.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Imaginary_Exponents.html')">imaginary exponents</A>
+(which we defined using <A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">Taylor series expansion</A> in &#167;<A HREF="Imaginary_Exponents.html#sec:imagexp">3.7</A> above).
+
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html1020"
+  HREF="Euler_Identity_Problems.html" 
+ onMouseover="return escape('Euler_Identity Problems')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html1010"
+  HREF="Roots_Unity.html" 
+ onMouseover="return escape('Roots of Unity')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html1016"
+  HREF="Proof_Euler_s_Identity.html" 
+ onMouseover="return escape('Proof of Euler\'s Identity')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html1018"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>

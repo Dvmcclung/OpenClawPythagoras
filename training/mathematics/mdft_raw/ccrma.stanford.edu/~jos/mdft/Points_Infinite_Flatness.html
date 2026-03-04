@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2019 (1.2)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Points of Infinite Flatness</TITLE>
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="description" CONTENT="Points of Infinite Flatness">
+<META NAME="keywords" CONTENT="mdft">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<script>
+MathJax = {
+  loader: {load: ['[tex]/textmacros']},
+  tex: {
+    packages: {'[+]': ['textmacros']},
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: false,
+    processEnvironments: true,
+    tags: 'ams',
+    macros: {
+      approxs: '\\,\\;\\approx\\;\\,',
+      eqs: '\\;=\\;',
+      eqsp: '\\;=\\;',
+      eqss: '\\,\\;=\\;\\,',
+      isdef: '\\triangleq',
+      isdefs: '\\;\\triangleq\\;',
+      isdefss: '\\,\\;\\triangleq\\;\\,',
+      isdeftext: '\\triangleq',
+      emph: ['\\textit{#1}', 1],
+      ensuremath: ['#1', 1],
+      imagPart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagPartSq: ['\\text{im}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      imagpart: ['\\text{im}\\left\\lbrace #1 \\right\\rbrace', 1],
+      index: ['', 1],
+      ip: ['\\left\\langle #1 \\right\\rangle', 1],
+      oper: ['\\text{#1}', 1],
+      realPart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      realPartSq: ['\\text{re}^2\\left\\lbrace #1 \\right\\rbrace', 1],
+      realpart: ['\\text{re}\\left\\lbrace #1 \\right\\rbrace', 1],
+      sc: ['\\text{#1}', 1],
+      zbox: ['\\boxed{#1}', 1]
+    }
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<LINK REL="STYLESHEET" HREF="https://ccrma.stanford.edu/~jos/jos.css">
+
+<LINK REL="next" HREF="Differentiability_Audio_Signals.html">
+<LINK REL="previous" HREF="Weierstrass_Approximation_Theorem.html">
+<LINK REL="up" HREF="Taylor_Series_Expansions.html">
+<LINK REL="next" HREF="Differentiability_Audio_Signals.html">
+<!-- COURSE-HEAD -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<STRONG>
+<A NAME="tex2html3763"
+  HREF="Differentiability_Audio_Signals.html" 
+ onMouseover="return escape('Differentiability of Audio Signals')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3753"
+  HREF="Weierstrass_Approximation_Theorem.html" 
+ onMouseover="return escape('Weierstrass Approximation Theorem')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3759"
+  HREF="Taylor_Series_Expansions.html" 
+ onMouseover="return escape('Taylor Series Expansions')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3761"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<HR>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001450000000000000000">
+Points of Infinite Flatness</A>
+</H2>
+
+<P>
+Consider the inverted <A HREF="http://en.wikipedia.org/wiki/Normal_distribution" onMouseover="return escape('The Gaussian probability density function is, in Matlab syntax, exp(-(x-mu)^2/(2*sigma^2))/sqrt(2*pi*sigma^2), where mu is the mean and sigma is the standard deviation. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Normal_distribution')">Gaussian</A> pulse,<A NAME="tex2html168"
+  HREF="footnode.html#foot24837"><SUP>E.1</SUP></A><P></P>
+<DIV CLASS="MATHDISPLAY">\[f(x) \isdef e^{-1/x^2},\]</DIV><P></P>
+<I>i.e.</I>, <SPAN CLASS="MATH">\(f(1/x)\)</SPAN> is the well known Gaussian ``<A HREF="http://en.wikipedia.org/wiki/Normal_distribution" onMouseover="return escape('The Gaussian probability density function is, in Matlab syntax, exp(-(x-mu)^2/(2*sigma^2))/sqrt(2*pi*sigma^2), where mu is the mean and sigma is the standard deviation. &nbsp;&#8212;&nbsp; Click for http://en.wikipedia.org/wiki/Normal_distribution')">bell curve</A>'' <SPAN CLASS="MATH">\(e^{-x^2}\)</SPAN>.
+Clearly, derivatives of all orders exist for all <SPAN CLASS="MATH">\(x\)</SPAN>.  However, it is
+readily verified that <I>all</I> derivatives at <SPAN CLASS="MATH">\(x=0\)</SPAN> are zero.  (It
+is easier to verify that all derivatives of the bell curve are zero at
+<SPAN CLASS="MATH">\(x=\infty\)</SPAN>.)  Therefore, every <A HREF="https://ccrma.stanford.edu/~jos/filters/Filter_Order.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/filters/Filter_Order.html')">finite-order</A> Maclaurin <A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">series expansion</A>
+of <SPAN CLASS="MATH">\(f(x)\)</SPAN> is the zero function, and the <A HREF="https://mathworld.wolfram.com/WeierstrassApproximationTheorem.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/WeierstrassApproximationTheorem.html')">Weierstrass approximation
+theorem</A> cannot be fulfilled by this series.
+
+<P>
+As mentioned in &#167;<A HREF="Taylor_Series_Remainder.html#sec:tsrem">E.2</A>, a measure of ``flatness'' is the number
+of leading zero terms in a function's Taylor expansion (not counting
+the first (constant) term).  Thus, by this measure, the bell curve is
+``infinitely flat'' at infinity, or, equivalently, <SPAN CLASS="MATH">\(f(x)\)</SPAN> is
+infinitely flat at <SPAN CLASS="MATH">\(x=0\)</SPAN>.
+
+<P>
+Another property of <SPAN CLASS="MATH">\(f(x) \isdef e^{-\frac{1}{x^2}}\)</SPAN> is that it has an
+infinite number of ``zeros'' at <SPAN CLASS="MATH">\(x=0\)</SPAN>.  The fact that a function
+<SPAN CLASS="MATH">\(g(x)\)</SPAN> has an infinite number of zeros at <SPAN CLASS="MATH">\(x=x_0\)</SPAN> can be verified by
+showing
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\lim_{x\to x_0} \frac{1}{(x-x_0)^k} g(x) = 0\]</DIV><P></P>
+for all <SPAN CLASS="MATH">\(k=1,2,\dots\,\)</SPAN>.  For <SPAN CLASS="MATH">\(f(x)\)</SPAN>, the existence of an infinite
+number of zeros at <SPAN CLASS="MATH">\(x=0\)</SPAN> is easily shown by looking at the zeros of
+<SPAN CLASS="MATH">\(f(1/x)\)</SPAN> at <SPAN CLASS="MATH">\(x=\infty\)</SPAN>, <I>i.e.</I>,
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\lim_{x\to\infty} x^k f(1/x) = \lim_{x\to\infty} x^k e^{-x^2} = 0\]</DIV><P></P>
+for any integer <SPAN CLASS="MATH">\(k\)</SPAN>.  Thus, the faster-than-<A HREF="http://en.wikipedia.org/wiki/Exponential_decay" onMouseover="return escape('Click for http://en.wikipedia.org/wiki/Exponential_decay')">exponential decay</A> of a
+Gaussian bell curve cannot be outpaced by the factor <SPAN CLASS="MATH">\(x^k\)</SPAN>, for any
+finite <SPAN CLASS="MATH">\(k\)</SPAN>.  In other words, <A HREF="Exponentials.html" onMouseover="return escape('An &lt;i&gt;exponential&lt;/i&gt; is any function of the form &lt;i&gt;Ae&lt;sup&gt;-t/&amp;#964;&lt;/sup&gt;&lt;/i&gt;, where &lt;i&gt;t&lt;/i&gt; is the independent variable (often denoting time in seconds), &lt;i&gt;A&lt;/i&gt; is an arbitrary scale factor, &lt;i&gt;&amp;#964;&lt;/i&gt; is called the &lt;i&gt;time constant&lt;/i&gt;, and &lt;i&gt;e&lt;/i&gt; is Euler\&#39;s number (2.718281828459...). Many systems in nature exhibit exponential decay over time, because an exponential decay is produced whenever the &lt;i&gt;rate&lt;/i&gt; of decay is proportional to how much is left. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponential</A> growth or decay is faster
+than polynomial growth or decay.  (As mentioned in &#167;<A HREF="e_j_theta.html#sec:eseries">3.10</A>,
+the <A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">Taylor series expansion</A> of the <A HREF="Exponentials.html" onMouseover="return escape('An &lt;i&gt;exponential&lt;/i&gt; is any function of the form &lt;i&gt;Ae&lt;sup&gt;-t/&amp;#964;&lt;/sup&gt;&lt;/i&gt;, where &lt;i&gt;t&lt;/i&gt; is the independent variable (often denoting time in seconds), &lt;i&gt;A&lt;/i&gt; is an arbitrary scale factor, &lt;i&gt;&amp;#964;&lt;/i&gt; is called the &lt;i&gt;time constant&lt;/i&gt;, and &lt;i&gt;e&lt;/i&gt; is Euler\&#39;s number (2.718281828459...). Many systems in nature exhibit exponential decay over time, because an exponential decay is produced whenever the &lt;i&gt;rate&lt;/i&gt; of decay is proportional to how much is left. &nbsp;&#8212;&nbsp; Click for https://ccrma.stanford.edu/~jos/mdft/Exponentials.html')">exponential function</A> <SPAN CLASS="MATH">\(e^x\)</SPAN> is <SPAN CLASS="MATH">\(1 +
+x + x^2/2 + x^3/3!  + \dots\)</SPAN>--an ``infinite-order'' polynomial.)
+
+<P>
+The reciprocal of a function containing an infinite-order zero at
+<SPAN CLASS="MATH">\(x=x_0\)</SPAN> has what is called an <I>essential singularity</I><A NAME="24956"></A> at <SPAN CLASS="MATH">\(x=x_0\)</SPAN>
+[<A
+ HREF="Bibliography.html#Churchill">16</A>, p.&nbsp;157], also called a 
+<A NAME="24957"></A><I>non-removable
+singularity</I><A NAME="24959"></A>.  Thus, <SPAN CLASS="MATH">\(1/f(x) = e^{\frac{1}{x^2}}\)</SPAN> has an essential
+singularity at <SPAN CLASS="MATH">\(x=0\)</SPAN>, and <SPAN CLASS="MATH">\(e^{x^2}\)</SPAN> has one at <SPAN CLASS="MATH">\(x=\infty\)</SPAN>.  
+
+<P>
+An amazing result from the theory of <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex variables</A>
+[<A
+ HREF="Bibliography.html#Churchill">16</A>, p.&nbsp;270]
+is that near an essential singular point <SPAN CLASS="MATH">\(z_0\in\mathbb{C}\)</SPAN> (<I>i.e.</I>, <SPAN CLASS="MATH">\(z_0\)</SPAN> may be
+a <A HREF="Complex_Numbers.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/Complex_Numbers.html')">complex number</A>), the inequality
+<P></P>
+<DIV CLASS="MATHDISPLAY">\[\left|f(z)-c\right|&lt;\epsilon\]</DIV><P></P>
+is satisfied at some point <SPAN CLASS="MATH">\(z\neq z_0\)</SPAN> in <I>every</I> neighborhood of
+<SPAN CLASS="MATH">\(z_0\)</SPAN>, however small!  In other words, the function comes arbitrarily
+close to every possible value in any neighborhood about an essential
+singular point.  This result, too, is due to Weierstrass
+[<A
+ HREF="Bibliography.html#Churchill">16</A>].
+<P>
+In summary, a <A HREF="First_Look_Taylor_Series.html" onMouseover="return escape('Click for https://ccrma.stanford.edu/~jos/mdft/First_Look_Taylor_Series.html')">Taylor series</A> expansion about the point <SPAN CLASS="MATH">\(x=x_0\)</SPAN> will
+always yield a constant approximation when the function being
+approximated is infinitely flat at <SPAN CLASS="MATH">\(x_0\)</SPAN>.  For this reason, <A HREF="https://mathworld.wolfram.com/WeierstrassApproximationTheorem.html" onMouseover="return escape('Click for https://mathworld.wolfram.com/WeierstrassApproximationTheorem.html')">polynomial
+approximations</A> are often applied over a restricted range of <SPAN CLASS="MATH">\(x\)</SPAN>, with
+constraints added to provide transitions from one interval to the
+next.  This leads to the general subject of <I>splines</I>
+[<A
+ HREF="Bibliography.html#Unser99">84</A>].  In particular, <I>cubic spline</I><A NAME="24963"></A> approximations 
+are composed of successive segments which are each third-order polynomials.  In each segment,
+four degrees of freedom are available (the four polynomial
+coefficients).  Two of these are usually devoted to matching the
+amplitude and slope of the polynomial to one side, while the other two
+are used to maximize some measure of fit across the segment.  The
+points at which adjacent polynomial segments connect are called
+``knots'', and finding optimal knot locations is usually a relatively
+expensive, iterative computation.
+
+<P>
+<HR>
+<!--Navigation Panel--><STRONG>
+<A NAME="tex2html3763"
+  HREF="Differentiability_Audio_Signals.html" 
+ onMouseover="return escape('Differentiability of Audio Signals')">Next</A> &nbsp;|&nbsp;
+<A NAME="tex2html3753"
+  HREF="Weierstrass_Approximation_Theorem.html" 
+ onMouseover="return escape('Weierstrass Approximation Theorem')">Prev</A> &nbsp;|&nbsp;
+<A NAME="tex2html3759"
+  HREF="Taylor_Series_Expansions.html" 
+ onMouseover="return escape('Taylor Series Expansions')">Up</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/mdft.html" 
+ onMouseover="return escape('Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Top</A> 
+		&nbsp;|&nbsp;
+ <A NAME="tex2html3761"
+   
+ HREF="Index_this_Document.html"
+
+ onMouseover="return escape('Index: Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications -- Second Edition')">Index</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/GlobalJOSIndex.html"
+ onMouseover="return escape('Index of terms in JOS Website')">JOS Index</A> &nbsp;|&nbsp;
+ <A HREF="https://ccrma.stanford.edu/~jos/pubs.html"
+ onMouseover="return escape('JOS Online Publications')">JOS Pubs</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/%7Ejos"
+ onMouseover="return escape('JOS Home Page')">JOS Home</A> &nbsp;|&nbsp;
+<A HREF="https://ccrma.stanford.edu/~jos/index.html#searchform"
+          onMouseover="return escape('Search JOS Website')">Search</A>
+</STRONG>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<HR><A HREF="mdft-citation.html">[How to cite this work]</A>&nbsp;&nbsp;<A HREF="mdft-hardcopy.html">[Order a printed hardcopy]</A>&nbsp;&nbsp;<A HREF="mailto:jos@ccrma.stanford.edu?subject=Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition&body=[Please%20paste%20the%20page%20URL%20here%20and%20then%20comment.]">[Comment on this page via email]</A><BR><HR><H5>``<A HREF="https://ccrma.stanford.edu/%7Ejos/mdft/">Mathematics of the Discrete Fourier Transform (DFT), with Audio Applications --- Second Edition</A>'',
+ by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A>,
+ <A href="http://www.w3k.org/books/">W3K Publishing</A>, 2007, <A HREF="https://mathworld.wolfram.com/ISBN.html" onMouseover="return escape('International Standard Book Number &nbsp;&#8212;&nbsp; Click for https://mathworld.wolfram.com/ISBN.html')">ISBN</A> 978-0-9745607-4-8<BR>
+Copyright &#169; <I>2026-01-14</I> by <A href="https://ccrma.stanford.edu/%7Ejos/"> Julius O. Smith III</A><BR>
+<A href="https://ccrma.stanford.edu/">
+	Center for Computer Research in Music and Acoustics (CCRMA),</A>
+&nbsp;
+<A href="http://www.stanford.edu/"> Stanford University</A><BR>
+<A HREF="https://ccrma.stanford.edu/">
+	<IMG ALIGN="MIDDLE" SRC="https://ccrma.stanford.edu/%7Ejos/icons/CCRMALogoSmall.gif" alt="CCRMA">
+</A>
+</H5>
+
+<script language="JavaScript" type="text/javascript" src="https://ccrma.stanford.edu/~jos/wz_tooltip.js"></script>
+</ADDRESS>
+<!-- COURSE-INJECT -->
+<script src="https://ccrma.stanford.edu/~jos/mdft/course-inject.js"></script>
+</BODY>
+</HTML>
