@@ -946,3 +946,38 @@ print(f"XGB CV MAE: {np.mean(cv_maes):.2f} ± {np.std(cv_maes):.2f}")
 *End of PREDICTIVE_ANALYTICS_KB.md*
 *Source: Compiled from DataCamp, machinelearningplus.com, Trinetix demand forecasting guide,*
 *Hyndman & Athanasopoulos "Forecasting: Principles and Practice", and industry practice.*
+
+---
+
+## UPDATE: 2026-03-04 — Forecasting Methods & Supply Chain Intelligence
+
+### Ensemble Forecasting as Standard Practice (2026)
+
+Best-in-class demand forecasting has moved firmly to **ensemble methods** — single models are no longer competitive for supply chain use cases.
+
+**Recommended ensemble pattern:**
+- ARIMA (captures autocorrelation, trend, seasonality)
+- XGBoost (nonlinear feature interactions, promotions, external regressors)
+- Exponential smoothing (robust baseline, handles level shifts)
+- Weighted combination outperforms any single model in backtesting
+
+**Temporal Fusion Transformer (TFT):**
+- Emerging as the high-performance architecture for multi-horizon supply chain forecasting
+- Handles: internal sales history, economic indicators, weather data, social media sentiment indices
+- Architecture: attention-based, explicitly models known future inputs (promotions, holidays) vs. unknown
+- Implementation: `pytorch-forecasting` library
+
+**AI frameworks for external shock handling (2026):**
+- Static models fail on demand spikes from viral trends, geopolitical disruptions, tariff changes
+- Deep learning architectures with unstructured data ingestion (news feeds, port congestion data) are being deployed at the enterprise level
+- Key shift: moving from **pattern recognition** → **predictive intelligence** that incorporates causal signals
+
+**Tariff uncertainty modeling (current):**
+- PYMNTS (March 2026): 42% of North American firms now use predictive analytics to model tariff exposure and synchronize payables with receivables
+- Monte Carlo simulation is the primary tool for tariff scenario analysis — run N simulations across tariff probability distributions, compute P10/P50/P90 cost outcomes
+
+**Supply chain agility metric:**
+- Forecast accuracy improvement of up to 40% cited when combining multi-source external data with TFT models (meta-intelligence.tech, 2026)
+- Error metric of choice: MAPE for symmetric distributions; sMAPE or WRMSSE for intermittent/lumpy demand
+
+*Sources: datup.ai (2026-02), thinksupplychain.co (2026-02), meta-intelligence.tech (2026-02), pymnts.com (2026-03-03)*

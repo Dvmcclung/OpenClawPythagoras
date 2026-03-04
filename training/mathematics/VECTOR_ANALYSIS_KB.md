@@ -941,3 +941,41 @@ plt.show()
 *Sources: Pinecone HNSW guide, Wikipedia (HNSW, RAG), IBM Think (RAG, Gradient Descent),*
 *AWS (RAG), Medium (@wtaisen HNSW), FAISS documentation, sentence-transformers docs,*
 *Malkov & Yashunin (2018) HNSW paper (arXiv:1603.09320)*
+
+---
+
+## UPDATE: 2026-03-04 — Vector Database Market Shift
+
+### Vectors Are Now a Data Type, Not a Database Category
+
+The key architectural shift in 2026: **vector search has been absorbed into traditional databases**. Standalone vector databases (Pinecone, Weaviate, Milvus, Qdrant) are no longer the default starting point.
+
+**What changed:**
+- PostgreSQL: native support via `pgvector` and `pgvectorscale` extensions
+- MongoDB: Atlas Vector Search integrated natively
+- AWS, Azure, Oracle: all added vector data type support
+- Engineering conversation shifted from "use Pinecone" → "we can build this on PostgreSQL"
+
+**Why this matters for AI-in-the-loop systems:**
+- Reduces infrastructure complexity for teams already on relational DBs
+- Edge and on-premises deployment now feasible without a separate vector DB tier (critical for IoT/manufacturing where data can't go to the cloud)
+- AI agents are generating ~10x more queries than human-driven apps — forcing rethink of throughput architecture
+
+**Semantic cache (emerging pattern):**
+- Traditional cache: stores frequently accessed embeddings
+- Semantic cache: reuses previously retrieved query-answer pairs under *similar* (not identical) query conditions
+- Reduces LLM calls and latency in high-concurrency agentic systems
+
+**Qdrant still relevant for:**
+- High-throughput dedicated vector workloads
+- Advanced filtering + vector search combined
+- Teams needing sub-millisecond ANN at scale without relational overhead
+
+**Modern RAG stack (2026):**
+- Embeddings: Qwen3 or OpenAI text-embedding-3-large
+- Storage: Qdrant (scale) or pgvector (simplicity)
+- Retrieval: hybrid dense + sparse (BM25) search
+
+**Supply chain relevance:** Vector similarity search is being applied to supplier document matching, RFQ/PO reconciliation, and parts catalog deduplication where exact-match SQL fails on unstructured text fields.
+
+*Sources: dev.to/actiandev (2026-02), calmops.com (2026-03), pub.towardsai.net (2026-02)*

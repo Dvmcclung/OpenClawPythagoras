@@ -1132,3 +1132,34 @@ print(f"\nActual DPMO: {dpmo:.0f} --> Sigma Level: {sigma:.2f}")
 - Wikipedia. Control chart. https://en.wikipedia.org/wiki/Control_chart
 - SixSigmaStudyGuide. Cp & Cpk. https://sixsigmastudyguide.com/process-capability-cp-cpk/
 - 1Factory. Guide to Process Capability. https://www.1factory.com/quality-academy/guide-process-capability.html
+
+---
+
+## UPDATE: 2026-03-04 — SPC in Asset Health & Predictive Maintenance
+
+### SPC as Predictive Maintenance Engine (2026)
+
+A significant convergence is underway: SPC is being repositioned from a quality-assurance tool to the **mathematical core of predictive maintenance (PdM)** in manufacturing environments.
+
+**Key evolution:**
+- Traditional SPC: operators measure parts at intervals, plot manually
+- Modern SPC (2026): IIoT sensors stream continuous data; control limits are computed dynamically by AI; work orders trigger automatically on special-cause detection
+- Platforms applying this model (e.g., Factory AI / f7i.ai) claim ~70% reduction in unplanned downtime and ~25% reduction in maintenance costs
+
+**Mechanism remains classical:**
+- UCL / LCL still set at ±3σ from historical asset behavior baseline
+- Common cause variation = background noise of normal operation
+- Special cause variation = anomaly indicating developing fault (bearing wear, shaft misalignment, lubrication failure)
+- X-bar and R-charts still dominate; EWMA charts gaining traction for slow-drift detection
+
+**SPC data inputs for asset health:**
+- Vibration (mm/s or g-force)
+- Temperature (bearing, motor)
+- Power draw / current
+- Pressure differentials
+
+**Supply chain relevance:** For DC and manufacturing operations, applying SPC to conveyor systems, HVAC, and material handling equipment enables condition-based maintenance schedules that reduce unplanned shutdowns affecting throughput.
+
+**Recent research note:** ScienceDirect (2026) published work on SPC for real-time monitoring in clinical psychology using Shewhart and EWMA procedures — demonstrating the method's reach beyond manufacturing into any process with sequential measurement data.
+
+*Sources: f7i.ai (2026-02-18), ScienceDirect (2026), iiot-world.com (2026-02)*
