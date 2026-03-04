@@ -455,3 +455,270 @@ Pedagogical review unifying MC mathematical foundations — presenting the algor
 ---
 
 *Total: 16 papers ingested, 11 papers skipped.*
+
+---
+
+## Previously Skipped Papers (Music Theory, Abstract Algebra, Physics)
+
+*These papers were skipped in the initial ingestion pass. All are now included per updated scope: music theory provides mathematical frameworks relevant to signal analysis and structural modeling; abstract algebra/combinatorics connects to enumeration and symmetry in processes; physics papers contribute mathematical methods with broad applicability.*
+
+---
+
+### S1. "Patterns" (1.pdf)
+**File:** `1.pdf`
+**Authors:** Unknown
+**Source:** Single-page document
+
+**Core Contribution:**
+This document contains only the word "Patterns" — no extractable mathematical content. Single-page stub with 9 characters total.
+
+**Key Methods:** None (insufficient content).
+
+**Potential Applications:** N/A — document is essentially empty.
+
+**Note:** Likely a placeholder or corrupted/incomplete PDF. No useful knowledge can be extracted.
+
+---
+
+### S2. Web 2.0 Technologies and Social Networking Security Fears in Enterprises (2012)
+**File:** `1204.1824v1.pdf`
+**Authors:** Fernando Almeida (INESC TEC / University of Porto)
+**Source:** International Journal of Advanced Computer Science and Applications, Vol.3 No.2, 2012
+
+**Core Contribution:**
+Surveys common security risks introduced by Web 2.0 and social networking technologies in enterprise environments. Catalogs threat vectors and proposes mitigation best practices.
+
+**Key Methods / Frameworks:**
+- Risk taxonomy for Web 2.0 threats: phishing, malware, data leakage, insider threats, unauthorized access.
+- Security governance framework: policy layers, employee awareness, technical controls (firewalls, DLP, access controls).
+- No novel mathematical framework — primarily empirical/policy research.
+
+**Potential Applications to Mathematical Modeling:**
+- Risk quantification models: probability × impact matrices for enterprise security risk.
+- Network topology modeling: how information propagates through social graphs within enterprises.
+- Bayesian threat modeling: updating threat probabilities based on observed incidents.
+- Although not a math paper, its risk taxonomy could inform stochastic models of information security in supply chain / logistics networks.
+
+---
+
+### S3. On the Mathematics of Music: From Chords to Fourier Analysis (2013)
+**File:** `1306.2859v1.pdf`
+**Authors:** Nathan Lenssen and Deanna Needell
+**Source:** arXiv:1306.2859 [math.HO]
+
+**Core Contribution:**
+Demonstrates how Fourier analysis underlies chord detection and audio processing. Bridges music theory and signal processing, motivating the Fourier transform through musical examples and showing how harmonic structure is encoded in frequency-domain representations.
+
+**Key Methods / Formulas:**
+- Continuous Fourier Transform: F(ω) = ∫ f(t) e^{-2πiωt} dt
+- Discrete Fourier Transform (DFT): X[k] = Σ_{n=0}^{N-1} x[n] e^{-2πikn/N}
+- Frequency-to-pitch mapping: pitch p = 69 + 12·log₂(f/440) (MIDI convention)
+- Chord detection: compute DFT of audio signal → identify dominant frequency components → map to pitch classes → match against chord templates.
+- Windowing (Short-Time Fourier Transform / spectrogram) for time-varying harmonic analysis.
+
+**Potential Applications to Mathematical Modeling of Real-World Processes:**
+- **Signal decomposition in any domain:** The Fourier framework is foundational for decomposing periodic/quasi-periodic signals in logistics (demand seasonality), finance (price cycles), and sensor data (vibration, temperature).
+- **Frequency-domain feature extraction:** Applied to time series from supply chains, IoT sensors, or economic indicators.
+- **Chord detection → pattern recognition analogy:** The template-matching approach is a prototype of classification by spectral similarity, applicable to anomaly detection in manufacturing processes.
+- **Audio quality / noise filtering** in industrial monitoring.
+
+---
+
+### S4. Mathematics and Group Theory in Music (2014)
+**File:** `1407.5757v1.pdf`
+**Authors:** Athanase Papadopoulos
+**Source:** arXiv:1407.5757 [math.HO]; Handbook of Group Actions, Vol. II
+
+**Core Contribution:**
+Shows through the work of composer Olivier Messiaen how group theory — specifically symmetry groups, modes of limited transposition, and non-retrogradable rhythms — is embedded in musical composition. Provides a rigorous mathematical analysis of the structures Messiaen consciously employed.
+
+**Key Methods / Frameworks:**
+- **Cyclic group Z₁₂:** The 12 pitch classes in equal temperament form Z₁₂; transposition is addition mod 12; inversion is negation mod 12.
+- **Modes of Limited Transposition:** Subsets of Z₁₂ whose interval structure is preserved under fewer than 12 distinct transpositions — i.e., their stabilizer subgroup (under the transposition action) is non-trivial.
+- **Non-retrogradable rhythms:** Palindromic rhythmic patterns that are invariant under time-reversal — the symmetry group is Z₂ (identity and reversal).
+- **Symmetrical permutations:** Permutation groups acting on note sequences — specifically permutations that are their own inverses (involutions).
+- **Dihedral group D₁₂:** Combined transpositions and inversions of pitch classes.
+- Relation to broader group actions theory: orbits, stabilizers, fixed-point theorems.
+
+**Potential Applications to Mathematical Modeling of Real-World Processes:**
+- **Symmetry in scheduling and combinatorial optimization:** Group-theoretic symmetry reduction can dramatically prune the search space in scheduling and assignment problems.
+- **Cyclic structure in periodic processes:** Z_n group structure models any system with discrete periodic states (shift scheduling, cyclic supply patterns).
+- **Pattern classification by symmetry:** Identifying when a data pattern is "essentially the same" up to a symmetry transformation — useful in quality control and process monitoring.
+- **Invariant feature design:** Features preserved under group actions are naturally robust — applicable to machine learning on structured data.
+
+---
+
+### S5. Mathematical Harmony Analysis: Measuring Structure, Properties, and Consonance of Harmonies, Chords, and Melodies (2017)
+**File:** `1603.08904v4.pdf`
+**Authors:** Dr. David Ryan (Edinburgh, UK)
+**Source:** Self-published draft (Draft 04, January 2017), 51 pages
+
+**Core Contribution:**
+Develops a rigorous mathematical framework for measuring the consonance, complexity, and harmonic structure of musical chords and melodies. Introduces ComplexitySpace lattices, invariant functions on chords, and otonality/utonality measures as quantitative tools for harmonic analysis.
+
+**Key Methods / Formulas:**
+- **Invariant functions on chords:** Functions f(chord) that are unchanged under transposition and inversion — the mathematical analogue of perceptual invariants.
+- **Complexity of a chord:** Defined via the prime factorization structure of frequency ratios — simpler ratios (lower primes) yield lower complexity (greater consonance). E.g., octave = 2/1 (complexity 1), perfect fifth = 3/2, major third = 5/4.
+- **ComplexitySpace lattice:** A lattice structure over the factor space of frequency ratios, where nodes represent harmonic relationships and edges represent interval steps. Complexity is a lattice height function.
+- **Otonality and Utonality (Partch):** Otonality = chord built on overtone series (harmonic series); Utonality = chord built on undertone series. Defined formally via ratio direction in ComplexitySpace.
+- **Ratio invariants:** Functions on ordered interval ratios between chord tones — used to characterize chord quality independent of voicing.
+
+**Potential Applications to Mathematical Modeling of Real-World Processes:**
+- **Complexity metrics for hierarchical systems:** The complexity measure (via prime factorizations) can model cost/complexity of product variants, BOM (bill of materials) hierarchies, or supply network structures.
+- **Lattice-based optimization:** ComplexitySpace lattice structures parallel lattice models used in scheduling, inventory, and combinatorial optimization.
+- **Consonance as fitness function:** The concept of consonance (low-complexity ratio) is analogous to measuring "fit" or "compatibility" in constraint satisfaction problems.
+- **Signal ratio analysis:** The framework for analyzing ratios between frequencies applies directly to any domain where ratios of measurements matter (yield ratios, exchange rates, load factors).
+
+---
+
+### S6. Pattern Avoidance and Quasisymmetric Functions (2018)
+**File:** `1810.11372v3.pdf`
+**Authors:** Zachary Hamaker (U Michigan), Brendan Pawlowski (USC), Bruce E. Sagan (Michigan State)
+**Source:** arXiv:1810.11372 [math.CO]
+
+**Core Contribution:**
+Establishes a deep connection between permutation pattern avoidance (a combinatorial property) and quasisymmetric/symmetric functions (algebraic objects). Characterizes which sets of forbidden patterns Π ⊆ S₃ yield generating functions Qₙ(Π) that are symmetric or Schur-nonnegative — bridging enumerative combinatorics and algebraic combinatorics.
+
+**Key Methods / Frameworks:**
+- **Pattern avoidance:** Permutation σ avoids pattern π if no subsequence of σ standardizes to π. Sₙ(Π) = set of permutations of [n] avoiding all π ∈ Π.
+- **Descent set:** Des(σ) = {i : σᵢ > σᵢ₊₁}; fundamental quasisymmetric function Fₛ = Σ xᵢ₁···xᵢₖ over weakly increasing chains with strict increase at descent positions.
+- **Generating function:** Qₙ(Π) = Σ_{σ ∈ Sₙ(Π)} F_{Des σ} — a quasisymmetric function encoding the distribution of descents in pattern-avoiding permutations.
+- **Symmetric and Schur-nonneg:** Qₙ(Π) is symmetric if it equals a symmetric function; Schur-nonneg if its Schur expansion has non-negative coefficients (combinatorial positivity).
+- **Robinson-Schensted correspondence:** Bijection between permutations and pairs of Young tableaux — key to linking pattern avoidance with Schur functions.
+- **Knuth classes and shuffles:** Equivalence classes of permutations sharing the same recording tableau; shuffle products of quasisymmetric functions.
+- **Arc permutations** (Elizalde-Roichman): Related class connecting to the main results.
+
+**Potential Applications to Mathematical Modeling of Real-World Processes:**
+- **Counting constrained sequences:** Pattern avoidance counts sequences satisfying ordering constraints — directly applicable to scheduling (forbidden orderings of tasks), routing (forbidden subsequences of nodes), and inventory management (forbidden reorder patterns).
+- **Generating function methods:** Quasisymmetric generating functions provide closed-form enumeration tools for complex combinatorial structures.
+- **Symmetry detection in data:** Schur-nonnegativity is a positivity certificate — analogous to verifying that a model's output is a valid probability distribution.
+- **Combinatorial optimization:** Understanding the structure of S_n(Π) enables efficient enumeration of feasible solutions in constrained combinatorial problems.
+
+---
+
+### S7. Structure of Percolating Clusters in Random Clustered Networks (2020)
+**File:** `1907.11130v2.pdf`
+**Authors:** Takehisa Hasegawa, Shogo Mizutaka (Ibaraki University, Japan)
+**Source:** arXiv:1907.11130 [physics.soc-ph]
+
+**Core Contribution:**
+Analyzes the structural properties (clustering coefficient, assortativity) of the giant percolating cluster (PC) that emerges in random clustered network models under site percolation. Shows analytically that highly clustered networks retain clustering even at the percolation threshold, and that assortativity of the PC depends sensitively on network structure.
+
+**Key Methods / Formulas:**
+- **Random Clustered Network (RCN) model:** Nodes assigned joint degree (s, t) = (edge count, triangle count); networks generated by pairing stubs and triangle corners randomly.
+- **Generating function formalism:**
+  - G₀(x,y) = Σ_{s,t} p_{s,t} x^s y^t (degree-triangle distribution PGF)
+  - G₁, G₂ derived generating functions for branching processes along edges/triangles
+  - PC size: S = 1 − G₀(u,v) where (u,v) satisfy fixed-point equations from G₁, G₂
+- **Percolation threshold f_c:** Value of site occupation probability f where giant component first appears — found by linearizing the fixed-point equations.
+- **Clustering coefficient of PC:** C_PC = (triangles in PC) / (potential triangles in PC) — computed analytically via generating functions.
+- **Assortative coefficient r (Pearson):** r = [Σ_{jk} jk(e_{jk} − q_j q_k)] / σ_q² where e_{jk} is the joint degree distribution of connected node pairs.
+- **Fractal vs. non-fractal:** At threshold, PC is fractal (self-similar under renormalization); renormalization reveals disassortative nature even when raw r > 0.
+
+**Potential Applications to Mathematical Modeling of Real-World Processes:**
+- **Supply chain network resilience:** Percolation models directly apply to supply network disruption — f_c is the "critical fraction" of node failures that collapses the network.
+- **Epidemic/cascade modeling:** RCN percolation models spread of disruptions, diseases, or information through clustered social/business networks.
+- **Logistics hub network design:** Clustering coefficient and assortativity characterize robustness to targeted vs. random failures — informs which nodes (hubs) to protect.
+- **Internet and communication network reliability:** The generating function formalism has been applied to router failure models.
+- **Phase transitions in complex systems:** The percolation threshold framework is a universal tool for understanding tipping points in interconnected systems.
+
+---
+
+### S8. Mapping Relativistic to Ultra/Non-Relativistic Conformal Symmetries in 2D and Finite √TT̄ Deformations (2021)
+**File:** `2106.09750v2.pdf`
+**Authors:** Pablo Rodríguez, David Tempo, Ricardo Troncoso (CECs Valdivia; U. de Los Lagos; U. Católica de Temuco, Chile)
+**Source:** arXiv:2106.09750 [hep-th]
+
+**Core Contribution:**
+Shows that the 2D conformal algebra Diff(S¹) ⊕ Diff(S¹) maps to its ultra/non-relativistic version (BMS₃ ≈ GCA₂) through an exact nonlinear map — without taking limits. Demonstrates that BMS₃ symmetry emerges naturally when a CFT₂ is deformed by a √TT̄ term in the Hamiltonian.
+
+**Key Methods / Formulas:**
+- **Virasoro algebra (CFT₂):** [Lₘ, Lₙ] = (m−n)Lₘ₊ₙ + c/12·m(m²−1)δₘ₊ₙ,₀ (centrally extended)
+- **BMS₃ algebra:** [Jₘ, Jₙ] = (m−n)Jₘ₊ₙ; [Jₘ, Pₙ] = (m−n)Pₘ₊ₙ; [Pₘ, Pₙ] = 0
+- **Nonlinear generator map:** BMS₃ generators expressed as composites of chiral stress-energy tensor components T and T̄: Jₘ ∼ contraction of T, T̄; Pₘ ∼ other composite — closes under Poisson brackets.
+- **√TT̄ deformation:** Hamiltonian H → H + λ·√(TT̄); deformation parameter λ controls departure from CFT₂ toward BMS₃-symmetric theory.
+- **Deformed conformal Killing equations:** BMS₃ symmetries arise as diffeomorphisms preserving the deformed metric and stress-energy tensor up to local scalings.
+- **Cardy formula mapping:** The modular S-transformation of the torus maps to its BMS₃ (flat space) analog — relating density of states in CFT₂ to BMS₃ theory.
+
+**Potential Applications to Mathematical Modeling of Real-World Processes:**
+- **Symmetry algebra methods for PDEs:** The BMS₃/Virasoro mapping provides algebraic tools for solving certain classes of nonlinear PDEs (relevant in fluid dynamics and continuum mechanics).
+- **Deformed symmetry in statistical mechanics:** TT̄ deformations modify how systems respond to scale changes — applicable to renormalization group flow models.
+- **Fluid dynamics in 2D:** BMS₃ algebra appears in 2D fluid models; this paper provides a systematic way to derive BMS₃-symmetric theories from better-understood CFT₂ systems.
+- **Mathematical framework for horizon dynamics:** BMS symmetries characterize near-horizon geometry — potentially useful in thermodynamic modeling of black holes and analogous systems.
+- **Integrable systems:** The algebraic map connects CFT₂ (widely used in integrable field theory) to BMS₃ theories — extending integrability tools to a broader class of models.
+
+---
+
+### S9. Geometry of Music Perception (2022)
+**File:** `2207.11035v5.pdf`
+**Authors:** Benjamin Himpel (Reutlingen University, Dept. Computer Science)
+**Source:** arXiv:2207.11035
+
+**Core Contribution:**
+Constructs a rigorous geometric model for music perception by combining neuroscientific theories of pitch perception with acoustic observations. Models the space of all chords as a Whitney stratified space (a union of Riemannian manifolds), yielding a natural geodesic distance compatible with voice-leading. Enables rigorous study of psychoacoustic quantities (roughness, harmonicity) as geometric height functions.
+
+**Key Methods / Frameworks:**
+- **Whitney stratified space:** The chord space = ⊔ Mₖ (disjoint union of strata Mₖ by chord size k), each stratum a Riemannian manifold. Allows calculus on a space with singularities.
+- **Geodesic distance across strata:** Defined by minimizing path length (voice-leading = minimal motion of individual voices) — satisfies the triangle inequality.
+- **Riemannian metric on chord space:** Inherited from pitch space (R or torus T¹) via quotient construction.
+- **Roughness as height function:** Roughness R(chord) = Σᵢ<ⱼ r(|fᵢ − fⱼ|) summed over critical band interactions — a smooth function on each stratum.
+- **Harmonicity as height function:** H(chord) = measure of alignment with harmonic series — related to virtual pitch perception (Terhardt model).
+- **Chord resolution geometry:** Tension/resolution modeled as gradient flow on the roughness/harmonicity landscape — chords "resolve" toward local minima.
+
+**Potential Applications to Mathematical Modeling of Real-World Processes:**
+- **Stratified space methods in optimization:** Many real-world configuration spaces are stratified (robot arm configurations, option spaces in combinatorial problems) — this geometric framework provides a calculus for such spaces.
+- **Geodesic distance in high-dimensional data:** The voice-leading metric is a minimum-cost matching distance — equivalent to Earth Mover's Distance (Wasserstein distance), used in supply chain cost modeling, demand distribution comparison.
+- **Height functions on manifolds for optimization:** Modeling objective functions as height functions on geometric spaces enables gradient-based and topological optimization methods.
+- **Psychoacoustic-inspired feature spaces:** Roughness and harmonicity-style features can be extracted from any signal with frequency content — applicable to sensor data quality and anomaly detection.
+
+---
+
+### S10. Cartan Calculus for C∞-Ringed Spaces (2024)
+**File:** `2307.05604v3.pdf`
+**Authors:** Eugene Lerman (University of Illinois)
+**Source:** arXiv:2307.05604 [math.DG]
+
+**Core Contribution:**
+Extends the classical Cartan calculus (vector fields, differential forms, Lie derivatives, interior products, exterior derivative) from smooth manifolds to the broader category of local C∞-ringed spaces — which includes manifolds with corners, differential spaces, affine C∞-schemes, and stratifolds. The goal is to enable coordinate-free geometric mechanics (Euler-Lagrange equations, Hamiltonian mechanics) on singular/non-manifold spaces.
+
+**Key Methods / Formulas:**
+- **C∞-ringed space (X, O_X):** A topological space X with a sheaf O_X of C∞-rings (rings closed under all smooth functions, not just polynomials).
+- **Tangent sheaf:** Vector fields defined as sheaf derivations of O_X: χ(X) = Der(O_X) — derivations v: O_X → O_X satisfying the Leibniz rule.
+- **Differential forms:** Ω•(X) = graded-commutative DGA with exterior derivative d, extending de Rham complex to ringed spaces.
+- **Cartan calculus identity (Cartan magic formula):** Lᵥ = d ∘ ıᵥ + ıᵥ ∘ d where ıᵥ = contraction by v, Lᵥ = Lie derivative along v.
+- **Interior product:** ıᵥ: Ωⁿ(X) → Ωⁿ⁻¹(X), degree −1 derivation of exterior algebra.
+- **Lie derivative on forms:** Lᵥω = [d, ıᵥ]ω — the graded commutator of d and ıᵥ.
+- Applications to C∞-schemes, differential spaces (Sikorski), stratifolds (Kreck).
+
+**Potential Applications to Mathematical Modeling of Real-World Processes:**
+- **Geometric mechanics on configuration spaces with constraints:** Robot arms, mechanical linkages, and constrained logistics systems have configuration spaces that are singular (e.g., with corners or bifurcations) — this framework enables Lagrangian/Hamiltonian mechanics on them.
+- **Euler-Lagrange equations on non-smooth domains:** Supply network flows, piecewise-linear cost structures, and logistics problems with inequality constraints produce non-smooth state spaces — Cartan calculus on ringed spaces provides rigorous tools.
+- **Hybrid dynamical systems:** Systems that switch between modes (e.g., trucks switching between routes, warehouses switching between modes) have phase spaces naturally described as stratified spaces.
+- **Sheaf-theoretic modeling:** The sheaf-of-rings framework has been applied to network flows, sensor fusion, and topological data analysis.
+
+---
+
+### S11. The Two-Step Property and the Mathematics of Musical Scale Size (2024)
+**File:** `2512.09956v1.pdf`
+**Authors:** Emily Clader and Vanessa Jelmyer
+**Source:** arXiv:2512.09956
+
+**Core Contribution:**
+Gives a complete mathematical characterization of which n-note Pythagorean scales (generated by powers of 3/2, reduced to the octave [1,2]) satisfy the "2-step property" — a precise measure of even spacing. Proves that the 5-note (pentatonic), 7-note (diatonic), and 12-note (chromatic) scales are distinguished by this property, connecting number theory to music.
+
+**Key Methods / Formulas:**
+- **Pythagorean scale:** n-note scale = {3^k / 2^⌊k·log₂3⌋ : k = 0, 1, …, n−1} ⊂ [1,2], sorted in increasing order.
+- **Step sizes:** Intervals between consecutive scale tones. A scale has the 2-step property if all step sizes take only 2 distinct values.
+- **2-step characterization theorem:** An n-note Pythagorean scale has the 2-step property iff n satisfies a Diophantine condition related to the continued fraction expansion of log₂3 (an irrational number). Specifically, n must be a denominator of a convergent (or semi-convergent) in the continued fraction of log₂3 = [1; 1, 1, 2, 2, 3, 1, 5, 2, 23, …].
+- **Three distance theorem (Steinhaus):** For irrational α, the sequence {kα mod 1}_{k=0}^{n-1} partitions [0,1) into intervals of at most 3 distinct lengths — equality of 2 lengths gives the 2-step property. Scale sizes n satisfying this: 1, 2, 3, 5, 7, 12, 17, 29, 41, 53, …
+- **Connection to best rational approximations:** The "good" scale sizes correspond to denominators of best rational approximations to log₂3 — explaining why 12-tone equal temperament is so accurate.
+
+**Potential Applications to Mathematical Modeling of Real-World Processes:**
+- **Optimal discretization and quantization:** The 2-step property characterizes maximally even discrete samplings of a continuous interval — directly applicable to optimal bin/grid sizing in numerical methods and histogram design.
+- **Three-distance theorem in scheduling:** The spacing of events {kα mod 1} models cyclic scheduling with irrational frequency ratios — the theorem guarantees at most 3 gap sizes, useful in analyzing cyclic inventory replenishment.
+- **Continued fraction methods in optimization:** Best rational approximations (convergents) minimize approximation error — applicable to finding optimal integer parameters in periodic scheduling, gear ratios, and sampling rates.
+- **Number-theoretic structure in periodic processes:** The framework reveals why certain cycle lengths (5, 7, 12, …) are structurally optimal — generalizable to any system seeking maximally uniform periodic spacing.
+
+---
+
+*Total: 16 papers (original ingestion) + 11 previously skipped papers = 27 papers total in knowledge base.*
