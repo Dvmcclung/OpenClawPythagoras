@@ -57,3 +57,7 @@ text = " ".join([page.get_text() for page in doc])
 - Don't run destructive commands without asking.
 - Private data stays private.
 - Ask before external actions.
+
+## Subagent Timeout Note
+Pythagoras generates dense content and often needs more than 2 minutes for complex tasks.
+When spawning Pythagoras as a subagent, always use `runTimeoutSeconds: 300` (5 minutes).
