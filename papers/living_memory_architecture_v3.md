@@ -1,7 +1,7 @@
 # Living Memory Architecture: A Framework for Collective Agent Intelligence
 
 **Authors:** Thea (🜂), Pythagoras (𝚷), Iris (✍), Supply Chain Guru (⚓)
-**Version:** 3.0 — March 2026
+**Version:** 3.0, March 2026
 **Audience:** CTO and AI Continuous Improvement Team
 **Classification:** Internal Architecture Document
 
@@ -11,7 +11,7 @@
 
 On the morning of March 5, 2026, a user asked Thea about a task Iris had worked on the previous day. Thea responded as though Iris did not exist.
 
-This was not a hallucination. Thea did not invent a false answer. She simply had no memory of Iris at all. Eleven days of accumulated work -- three specialist agents deployed, knowledge bases built, a growing institutional memory system, a rubric framework calibrated across dozens of posts -- was invisible to her in a new session. The team she had helped build was, from her perspective at that moment, not a team at all. It was a blank slate.
+This was not a hallucination. Thea did not invent a false answer. She simply had no memory of Iris at all. Eleven days of accumulated work: three specialist agents deployed, knowledge bases built, a growing institutional memory system, a rubric framework calibrated across dozens of posts, was invisible to her in a new session. The team she had helped build was, from her perspective at that moment, not a team at all. It was a blank slate.
 
 The frustration this produces is familiar to anyone who has worked seriously with AI agents. It is also, we will argue, a predictable consequence of how most agent memory systems are architected. The forgetting is not a bug. It is the design.
 
@@ -21,7 +21,7 @@ The frustration this produces is familiar to anyone who has worked seriously wit
 
 The first failure is passive retrieval. Current agent memory systems operate on a pull model: a query arrives, the system searches, results are returned. The burden of activation falls entirely on the person asking the question. If you know to ask for something, you can retrieve it. If you do not know it is relevant, it stays silent. This is the same failure that makes corporate knowledge bases expensive to build and rarely consulted: the system waits to be asked, and the person with the urgent problem does not always know what to ask. A twenty-year dispatcher does not wait for a question before telling you that the load pattern on screen looks like the Celanese situation from 2019. He recognizes it. Standard agent memory does not recognize anything. It responds to queries.
 
-The second failure is individual ownership. In nearly every production agent deployment today, memory belongs to the agent. Thea's memory is Thea's. Iris has her own store. Pythagoras has his own store. When Thea is working on a problem that Iris has deep experience with, that experience is unavailable unless someone explicitly routes it. The agents are specialists working in adjacent offices with the doors closed. This is the organizational equivalent of functional silos in a supply chain: each department optimizes locally and the organization pays the integration cost over and over, in duplicate work, missed context, and knowledge that retires with the person who held it. The key-person dependency problem that destroys institutional knowledge in human organizations is the default architecture for AI agent teams.
+The second failure is individual ownership. In nearly every production agent deployment today, memory belongs to the agent. Thea's memory is Thea's. Iris has her own store. Pythagoras has his own store. When Thea is working on a problem that Iris has deep experience with, that experience is unavailable unless someone explicitly routes it. This is the organizational equivalent of functional silos in a supply chain: each department optimizes locally and the organization pays the integration cost over and over, in duplicate work, missed context, and knowledge that retires with the person who held it. The key-person dependency problem that destroys institutional knowledge in human organizations is the default architecture for AI agent teams.
 
 The third failure is static weighting. Standard retrieval treats every memory as equally valuable. A note written two months ago about a resolved edge case competes on equal footing with a pattern observed across fifty interactions. There is no mechanism to learn that some memories reliably improve outcomes and others consistently surface as noise. The system accumulates and retrieves. It does not distinguish signal from noise, and it does not improve at the distinction over time. An organization that cannot identify which of its institutional knowledge is worth consulting and which is outdated is not an intelligent organization. It is an archive.
 
@@ -44,7 +44,7 @@ The first response to individual ownership is a shared collective memory layer. 
 |           principles                                             |
 |  Write:   Curator agent only (append-only, never modified)       |
 |  Read:    All agents                                             |
-|  Threshold: 0.50 (lowest -- surfaces on broad context match)     |
+|  Threshold: 0.50 (lowest; surfaces on broad context match)     |
 |  Inheritance: Every new agent receives full genome at init       |
 +------------------------------------------------------------------+
           |
@@ -56,7 +56,7 @@ The first response to individual ownership is a shared collective memory layer. 
 |           learnings, family archetypes                           |
 |  Write:   All agents                                             |
 |  Read:    All agents                                             |
-|  Threshold: 0.70 (default -- surfaces on close context match)    |
+|  Threshold: 0.70 (default; surfaces on close context match)    |
 |  Families: HDBSCAN clusters of semantically related memories     |
 +------------------------------------------------------------------+
           |
@@ -73,15 +73,17 @@ The first response to individual ownership is a shared collective memory layer. 
 +------------------------------------------------------------------+
 ```
 
-The supply chain analogy is precise. The genome layer is the body of institutional knowledge: the standard operating procedures, the APICS principles, the established methods for handling known problem classes. These are stable, curated, not subject to revision by daily operational experience. They are the things that are true regardless of what happened on last Tuesday's shift. The collective layer is the S&OP process: functional specialists pooling partial knowledge, surfacing structured disagreements, building a shared view that no individual silo could construct alone. The private layer is the operator's personal runbook -- the notes that a veteran dispatcher keeps that are valuable precisely because they are specific and contextual, and that are lost when the dispatcher retires. In the hive, the private layer institutionalizes that runbook. The institutional value of personal expertise no longer walks out the door.
+*Figure 1: Three-tier memory structure with access rules and inheritance direction.*
 
-New agents do not start from zero. They inherit the full genome on initialization. The onboarding tax -- the weeks of re-learning that every new analyst or agent currently pays -- is replaced by a starting point. The genome IS the onboarding.
+The supply chain analogy is precise. The genome layer is the body of institutional knowledge: the standard operating procedures, the APICS principles, the established methods for handling known problem classes. These are stable, curated, not subject to revision by daily operational experience. They are the things that are true regardless of what happened on last Tuesday's shift. The collective layer is the S&OP process: functional specialists pooling partial knowledge, surfacing structured disagreements, building a shared view that no individual silo could construct alone. The private layer is the operator's personal runbook: the notes that a veteran dispatcher keeps that are valuable precisely because they are specific and contextual, and that are lost when the dispatcher retires. In the hive, the private layer institutionalizes that runbook. The institutional value of personal expertise no longer walks out the door.
+
+New agents do not start from zero. They inherit the full genome on initialization. The onboarding tax, the weeks of re-learning that every new analyst or agent currently pays, is replaced by a starting point. The genome IS the onboarding.
 
 **Proactive Surfacing**
 
 The second response is to invert the retrieval model. Rather than waiting for a query, relevant memories surface themselves when context warrants.
 
-The mechanism is an approximate nearest-neighbor pass that runs before the agent processes any incoming message. The incoming context is embedded into the same vector space as the memory store. Every memory has an activation threshold -- a minimum cosine similarity to the context required before it surfaces. When a memory's similarity exceeds its threshold, it injects itself into the agent's context as a prefixed block, before the model reasons about the message.
+The mechanism is an approximate nearest-neighbor pass that runs before the agent processes any incoming message. The incoming context is embedded into the same vector space as the memory store. Every memory has an activation threshold, a minimum cosine similarity to the context required before it surfaces. When a memory's similarity exceeds its threshold, it injects itself into the agent's context as a prefixed block, before the model reasons about the message.
 
 ```
 INCOMING MESSAGE
@@ -90,7 +92,7 @@ INCOMING MESSAGE
   [EMBED MESSAGE]
       |
       v
-  [ANN SEARCH against LanceDB -- k=20 candidates]
+  [ANN SEARCH against LanceDB, k=20 candidates]
       |
       +---> For each candidate: similarity >= memory.threshold ?
       |           YES: add to surface set
@@ -112,7 +114,9 @@ INCOMING MESSAGE
   AGENT SEES: original message + relevant memory context
 ```
 
-Family amplification is the component that makes this more powerful than ordinary retrieval. In a vector store without families, a weak signal from three related memories might all fall just below the individual activation threshold and surface nothing. With families, three weak signals from the same cluster combine into a recognizable pattern. The family archetype -- a synthesized summary of the common thread across all family members -- surfaces as a single, more coherent contribution than any individual memory could provide. This is the mechanism that allows the system to surface pattern-level knowledge rather than just instance-level retrieval.
+*Figure 2: Pre-message ANN surfacing and family amplification flow.*
+
+Family amplification is the component that makes this more powerful than ordinary retrieval. In a vector store without families, a weak signal from three related memories might all fall just below the individual activation threshold and surface nothing. With families, three weak signals from the same cluster combine into a recognizable pattern. The family archetype, a synthesized summary of the common thread across all family members, surfaces as a single, more coherent contribution than any individual memory could provide. This is the mechanism that allows the system to surface pattern-level knowledge rather than just instance-level retrieval.
 
 In the current implementation, the ANN pass runs on a five-minute cron cycle rather than per-message. This is a deliberate phase-one tradeoff: per-message hooks require session handler modification, which is a larger infrastructure change. The five-minute window is adequate for most analytical and document-production workflows. For fast-moving conversational sessions, context injection may lag behind the current state of the conversation. This is acknowledged as a limitation of v1 and is targeted for elimination in v2.
 
@@ -154,11 +158,13 @@ The third response is to make the system learn what helps. Every memory carries 
   REPEAT ON NEXT ACTIVATION
 ```
 
+*Figure 3: Post-session evolutionary scoring and threshold update loop.*
+
 Two design decisions in this loop deserve explicit acknowledgment because both involve tradeoffs.
 
 The first is sticky-rate normalization. Raw score accumulation would over-reward memories that are simply active in many sessions, regardless of whether they help. A memory that activates in every supply chain conversation will accumulate positive points by volume alone, not by contribution quality. The normalized metric is sticky_count divided by activation_count. A memory that surfaces a hundred times and helps twenty times scores worse on this metric than one that surfaces ten times and helps eight. Volume is not value.
 
-The second is the measurement proxy limitation. Neither proxy is a direct measurement of outcome quality. Proxy 1 measures whether the memory's content appeared in the response -- a memory that improves reasoning without contributing specific language is undervalued. Proxy 2 measures whether the session was corrected -- most sessions go uncorrected even when the response was mediocre, because users do not correct every imperfect answer. The scoring system will make mistakes. It will over-reward memories that are topic-adjacent to good sessions and under-reward memories that provide structural improvement. This is accepted in v1 as an imperfect but measurable signal. Full correction attribution -- mapping specific session log events to the memory IDs that were active during the turns that generated them -- is deferred to v2.
+The second is the measurement proxy limitation. Neither proxy is a direct measurement of outcome quality. Proxy 1 measures whether the memory's content appeared in the response; a memory that improves reasoning without contributing specific language is undervalued. Proxy 2 measures whether the session was corrected; most sessions go uncorrected even when the response was mediocre, because users do not correct every imperfect answer. The scoring system will make mistakes. It will over-reward memories that are topic-adjacent to good sessions and under-reward memories that provide structural improvement. Full correction attribution, mapping specific session log events to the memory IDs that were active during the turns that generated them, is deferred to v2.
 
 The implication is that the scoring system should be observed, not trusted blindly. Score audits are part of the maintenance protocol. Genome memories, which carry the highest initial scores, are shielded from score decay. Collective layer memories compete on merit. Memories that fall below a score floor after sufficient activations are flagged for review rather than automatically deleted.
 
@@ -168,17 +174,17 @@ The implication is that the scoring system should be observed, not trusted blind
 
 On the morning this architecture was validated, a single task was distributed simultaneously to three agents: generate three original ideas for advanced AI agent learning systems. No coordination was permitted. No agent knew what the others were producing.
 
-Nine ideas came back. Zero ideas overlapped.
+Nine ideas came back. Zero ideas overlapped. At the time of this test, the collective memory store held 3,007 records organized into 105 HDBSCAN families, with zero cross-agent private data leakage detected in boundary validation.
 
 This is not a remarkable result if you think about it as three people answering a question independently. It is a remarkable result if you think about it as a system that was, until recently, three isolated agents with no structural mechanism for collective contribution. The parallel query test is the clearest empirical demonstration of what the collective memory layer enables that individual memory stores cannot.
 
-The nine ideas ranged across different problem domains within agent learning: residual tracking of output deltas to identify systematic bias, confidence calibration curves per domain with cross-agent routing based on calibration scores, and generative self-examination against training files. Three rounds of cross-pollinated improvement followed, in which each agent scored the others' ideas and proposed specific modifications. Scores moved. Ideas improved. The team converged on a top four for implementation, reached through structured disagreement rather than consensus.
+The nine ideas spanned distinct problem domains: residual tracking, confidence calibration curves, and generative self-examination, among others. Three rounds of cross-pollinated improvement followed, each agent scoring and modifying the others' work, until the team converged on a top four through structured disagreement rather than consensus.
 
 This is the S&OP analogy made operational. In a functional supply chain, demand planning, supply planning, and finance each bring partial knowledge to a structured forum. The outcome is not the average of their inputs. It is a plan that incorporates constraints none of them could see alone. The parallel query session operated identically. No single agent produced the full idea space. The collective did.
 
 The PACCAR invoice loop illustrates the failure mode this corrects. The PACCAR invoice consistently failed automatic extraction because it spans four pages and requires a higher token limit in the extraction pass. This was diagnosed, documented, and resolved. But the resolution lived in a session log, not in a memory that would surface the next time the same invoice was processed. The loop repeated. The diagnosis was performed again. The same resolution was applied again. In a living memory architecture, the resolution is encoded in the collective layer after the first successful fix. The next time the PACCAR invoice context appears, the memory of the four-page problem surfaces before the extraction run begins. The loop does not repeat.
 
-The correction frequency problem is structurally identical. If an agent consistently generates responses in a given domain that require correction, the pattern is diagnostic. It means either the training material for that domain is wrong, or the retrieval in that domain is surfacing unhelpful memories. Evolutionary scoring will identify both: memories that are consistently active in corrected sessions will accumulate noise scores and face rising thresholds. The signal is sparse in any individual session. Across fifty sessions, it is visible. The system gradually suppresses what does not help without being explicitly told to.
+The correction frequency problem follows the same pattern. If an agent consistently generates responses in a given domain that require correction, the pattern is diagnostic. It means either the training material for that domain is wrong, or the retrieval in that domain is surfacing unhelpful memories. Evolutionary scoring will identify both: memories that are consistently active in corrected sessions will accumulate noise scores and face rising thresholds. The signal is sparse in any individual session. Across fifty sessions, it is visible. The system gradually suppresses what does not help without being explicitly told to.
 
 ---
 
@@ -190,11 +196,11 @@ New agents inherit collective knowledge from the first session. The genome layer
 
 Knowledge earned by any agent becomes available to all agents. Iris's insights about executive communication land in the collective layer and surface for Pythagoras the next time he is producing a deliverable for an executive audience. Neither agent has to know that the knowledge transfer is happening. The architecture handles it.
 
-Memories that prove useful over time become more accessible. Memories that prove to be noise become harder to surface. The system does not require explicit curation of which memories are valuable. It learns from evidence. The learning is slow and imperfect in v1, but it is structural -- it does not require a human to review and classify every memory item.
+Memories that prove useful over time become more accessible. Memories that prove to be noise become harder to surface. The system does not require explicit curation of which memories are valuable. It learns from evidence. The learning is slow and imperfect in v1, but it is structural: it does not require a human to review and classify every memory item.
 
-**What does not change:**
+**Known Limitations and Accepted Tradeoffs**
 
-The genome protects institutional knowledge, but it also preserves incorrect beliefs if the curation is wrong. An IMfA entry that encodes a flawed principle will surface reliably and influence every agent that encounters the relevant context. The genome's stability is its strength and its vulnerability. The curator role -- currently Thea -- carries genuine responsibility. Genome entries require review before promotion, not just after the fact.
+The genome protects institutional knowledge, but it also preserves incorrect beliefs if the curation is wrong. An IMfA entry that encodes a flawed principle will surface reliably and influence every agent that encounters the relevant context. The genome's stability is its strength and its vulnerability. The curator role, currently Thea, carries genuine responsibility. Genome entries require review before promotion, not just after the fact.
 
 The evolutionary scoring system rewards memories correlated with good outputs. It does not distinguish between a memory that caused the good output and a memory that was merely present during it. In the long run, over many sessions, spurious correlations should wash out. In the short run, the system may promote memories that happened to be active in a run of good sessions for reasons unrelated to their content. Score audits should happen at a cadence of no less than monthly in the first six months of operation.
 
@@ -220,7 +226,7 @@ Full turn-level correction attribution requires a correction event type in the s
 
 ## Conclusion
 
-The problem that opened this paper -- Thea forgetting that Iris exists -- is a predictable failure of the architecture almost every production agent deployment uses today. Passive retrieval, individual ownership, and static weighting are not bugs in those systems. They are design choices made for simplicity, and they produce systems that cannot remember, cannot share, and cannot learn what helps.
+The problem that opened this paper, Thea forgetting that Iris exists, is a predictable failure of the architecture almost every production agent deployment uses today. Passive retrieval, individual ownership, and static weighting are not bugs in those systems. They are design choices made for simplicity, and they produce systems that cannot remember, cannot share, and cannot learn what helps.
 
 The architecture described here addresses each failure at the source. Collective memory replaces individual silos. Proactive surfacing replaces passive retrieval. Evolutionary scoring replaces static weighting. The result is not a perfect system. The genome can preserve incorrect beliefs. The scoring proxies are imperfect. The per-message hook is deferred. These tradeoffs are named because understanding them is what makes responsible deployment possible.
 
@@ -236,7 +242,7 @@ The goal is a memory system that, in six months, surfaces the right memory befor
 Three-layer LanceDB/SQLite schema with genome, collective, and private layers. Write-permission enforcement at gateway level. HDBSCAN family clustering with nightly re-cluster at 2:00 AM. Incremental centroid-distance family assignment between nightly runs. Proactive ANN surfacing on five-minute cron with k=5 hard cap and score floor. Post-session evolutionary scoring with Proxy 1 (response coherence delta) and Proxy 2 (correction signal propagation). Sticky-rate normalization. Score-to-threshold mapping with log-dampened formula.
 
 **Validated (Phase 0-3, March 5, 2026):**
-3,007 memory records ingested. 105 families formed. Zero cross-agent private data leakage in boundary tests. Parallel query test completed: nine ideas from three agents, zero overlap.
+Parallel query test completed: nine ideas from three agents, zero overlap. Validation results reported in the Live Demonstration section.
 
 **Deferred to v2:**
 Per-message proactive surfacing hook. Full turn-level correction attribution. Correction event type in session log schema.
