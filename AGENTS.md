@@ -144,3 +144,29 @@ Thea reviews TEAM_LEARNINGS.md each morning. She makes the final call on what ge
 ### Why this matters
 If a finding is not in the IMfA, the next generation agent starts from scratch on that problem. One well-written IMfA entry can save hours of rediscovery. Nominating good candidates is one of the most valuable things a specialist agent can do.
 
+
+## Hive Memory Protocol
+
+All agents in this deployment share a collective memory store at `~/.openclaw/memory/lancedb`.
+
+When writing significant memories, use:
+
+```python
+import sys
+sys.path.insert(0, '/home/dale/.openclaw/workspace/hive')
+from hive_write import write_hive_memory
+
+write_hive_memory(
+    text="Your memory text here",
+    layer="hive",          # genome | hive | private
+    owner_agent="pythagoras",  # your agent name
+    source="session/task-name"
+)
+```
+
+**Layer guide:**
+- `genome` — institutional knowledge all agents should inherit (IMfA-level)
+- `hive` — shared findings any agent might benefit from
+- `private` — agent-specific working memory
+
+Do NOT write to genome layer without Thea's authorization.
