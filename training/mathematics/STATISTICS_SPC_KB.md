@@ -1177,4 +1177,30 @@ A significant convergence is underway: SPC is being repositioned from a quality-
 
 **Recent research note:** ScienceDirect (2026) published work on SPC for real-time monitoring in clinical psychology using Shewhart and EWMA procedures — demonstrating the method's reach beyond manufacturing into any process with sequential measurement data.
 
+---
+
+## Knowledge Update — 2026-03-05
+
+### SPC for Asset Health Management (Industrial IoT)
+**Source:** Factory AI / f7i.ai (Feb 2026)
+
+SPC has evolved from quality control into the mathematical backbone of **predictive maintenance (PdM)** and **asset health management**:
+- Sensors stream vibration, temperature, and power data continuously; control limits are calculated dynamically using AI (not static ±3σ from historical batches)
+- Common cause vs. special cause distinction applies directly: a pump fluctuating 2.1–2.4 mm/s vibration = common cause; a spike to 4.5 mm/s = special cause requiring action
+- Reported outcomes for brownfield manufacturers: ~70% reduction in unplanned downtime, ~25% reduction in maintenance costs
+- Key enabler: no-code SPC platforms (e.g., Factory AI for Maximo) allow deployment without data scientists
+
+**Supply chain relevance:** DC and manufacturing operations can apply real-time SPC to conveyor systems, refrigeration units, lift equipment, and WMS infrastructure — shifting from schedule-based PM to condition-based maintenance.
+
+### Adaptive Bayesian Control Chart for Poisson Processes
+**Source:** Malaysian Journal of Fundamental and Applied Sciences (Mar 2026)
+**URL:** https://mjfas.utm.my/index.php/mjfas/article/view/4713
+
+New research introduces an **adaptive Bayesian c-chart** with flexible modeling and customized loss functions for monitoring count-type defects:
+- Significantly outperforms classical and standard Bayesian c-charts for detecting **small and moderate process shifts**
+- Validated on real-world aircraft defect monitoring data
+- Key innovation: integrates prior process knowledge via Bayes with adaptive thresholds that adjust as new data arrives
+
+**Supply chain relevance:** Applicable to supplier defect rate monitoring (PPM tracking), inbound inspection, and any count-based quality metric (damaged units, mispicks, label errors) where classical c-charts are slow to detect drift.
+
 *Sources: f7i.ai (2026-02-18), ScienceDirect (2026), iiot-world.com (2026-02)*

@@ -995,4 +995,43 @@ Best-in-class demand forecasting has moved firmly to **ensemble methods** — si
 - Forecast accuracy improvement of up to 40% cited when combining multi-source external data with TFT models (meta-intelligence.tech, 2026)
 - Error metric of choice: MAPE for symmetric distributions; sMAPE or WRMSSE for intermittent/lumpy demand
 
+---
+
+## Knowledge Update — 2026-03-05
+
+### Predictive Analytics in Supply Chain — 2026 Framework
+**Source:** Datup.ai (Feb 2026) | **Market:** $18B+ in 2024, growing 25–28% annually
+
+The four-tier analytics framework:
+| Type | Question | Time | Example |
+|---|---|---|---|
+| Descriptive | What happened? | Past | "Sold 12,400 units of SKU X in March" |
+| Diagnostic | Why? | Past | "Sales dropped 18% due to supplier delay + competitor promo" |
+| **Predictive** | What will happen? | Future | "April forecast: 14,200 units, 85% confidence" |
+| **Prescriptive** | What to do? | Future/Action | "Increase safety stock 1,100 units; advance PO by 1 week" |
+
+**Key stat:** 40% of a demand planner's time is spent explaining why last month's forecast failed. Predictive analytics closes that loop.
+
+**Technical components for supply chain predictive analytics:**
+- Combines historical transactional data + machine learning + real-time signals (IoT, weather, tariff news)
+- Outputs: safety stock by SKU/location/channel, reorder points, optimal batch sizes
+- Integrates with ERP, WMS, TMS
+
+**Latin America adoption signal:** 70% of SC professionals cite predictive + prescriptive analytics as their #1 technology priority for 2026 — a leading indicator of where North American mid-market is heading in 12–18 months.
+
+### AI Adoption for Working Capital Management
+**Source:** PYMNTS.com (Feb 2026)
+
+- 42% of North American firms now use AI for working capital efficiency
+- Applications: demand swing modeling, tariff exposure simulation, payables/receivables synchronization
+- Implication: predictive analytics is crossing from supply chain operations into finance-side decision support — **integrated demand-to-cash forecasting** is the emerging model
+
+### Monte Carlo + Real-Time KPI Dashboards (Manufacturing)
+**Source:** Journal of Intelligence and Engineering Technology (2026)
+**Citation:** Yin, M. (2026). *Integrating Real-Time KPI Dashboards with Monte Carlo Simulation for Optimizing Semiconductor Manufacturing Processes.* JIET, 1(1), 27–39.
+
+Key integration pattern: Monte Carlo simulation outputs (probability distributions of process outcomes) fed directly into live KPI dashboards, enabling operators to see not just current state but **confidence intervals on future state** in real time.
+
+**Supply chain relevance:** Applicable to distribution center throughput planning — run Monte Carlo on labor variability, inbound volume uncertainty, and equipment availability to generate P10/P50/P90 throughput projections displayed on shift dashboards.
+
 *Sources: datup.ai (2026-02), thinksupplychain.co (2026-02), meta-intelligence.tech (2026-02), pymnts.com (2026-03-03)*

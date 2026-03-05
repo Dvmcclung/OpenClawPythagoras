@@ -978,4 +978,36 @@ The key architectural shift in 2026: **vector search has been absorbed into trad
 
 **Supply chain relevance:** Vector similarity search is being applied to supplier document matching, RFQ/PO reconciliation, and parts catalog deduplication where exact-match SQL fails on unstructured text fields.
 
+---
+
+## Knowledge Update — 2026-03-05
+
+### Real-World Vector Search at Scale: Notion Case Study
+**Source:** Notion Engineering Blog (Feb 2026)
+**URL:** https://www.notion.com/blog/two-years-of-vector-search-at-notion
+
+Notion scaled their vector search infrastructure **10x while reducing costs 90%** over 2 years. Key engineering lessons:
+
+**Architecture:**
+- Dual ingestion: offline (Spark batch + bulk load) + online (Kafka consumer, sub-minute latency)
+- Sharding strategy: workspace ID as partition key, generation-based shard management to avoid expensive resharding operations
+- Moved from storage/compute-coupled "pod" clusters to decoupled architecture
+
+**Cost optimization techniques:**
+- **70% reduction in data volume** via embedding compression and data deduplication
+- Migrated near-real-time embeddings pipeline to **Ray** (distributed Python compute)
+- Hybrid dense + sparse retrieval to reduce index size without sacrificing recall
+
+**Quantitative benchmark context:**
+- pgvector (PostgreSQL extension) benchmarked at competitive QPS vs. Pinecone for 50M vectors (768-dim Cohere embeddings) at 99% recall (JavaCodeGeeks, Mar 2026)
+
+**Supply chain relevance:** These engineering patterns apply to building supplier/product knowledge bases at scale — particularly when embeddings pipelines need to handle continuous catalog updates (new SKUs, pricing changes) with low latency.
+
+### Embedding Models — 2026 State
+**Source:** Openxcell (Feb 2026)
+
+**Cohere embed-v4.0:** Multilingual, multimodal (text + images), enterprise-focused. Converts to semantic search vectors using Base64 input. Key for cross-language supplier databases.
+
+**AWS OpenSearch Serverless:** Now supports seamless hybrid search (vector embeddings + BM25 keyword) in a single query with ANN algorithms (HNSW and IVF) and exact k-NN, with auto-scaling.
+
 *Sources: dev.to/actiandev (2026-02), calmops.com (2026-03), pub.towardsai.net (2026-02)*
