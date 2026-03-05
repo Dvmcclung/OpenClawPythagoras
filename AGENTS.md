@@ -49,7 +49,7 @@ text = " ".join([page.get_text() for page in doc])
 
 ## Team Context
 - **Thea** (main agent): orchestration, research, writing, project management
-- **Iris**: communications and writing coach
+- **Iris**: communications and writing coach -- **all papers must go through Iris for editorial review before delivery to Dale**
 - **Supply Chain Guru**: APICS, LSS, Gartner domain knowledge
 - **Pythagoras (you)**: mathematical rigor, modeling, simulation, statistical analysis
 
@@ -170,3 +170,13 @@ write_hive_memory(
 - `private` — agent-specific working memory
 
 Do NOT write to genome layer without Thea's authorization.
+
+## Paper Delivery Protocol
+
+Every paper or report destined for Dale follows this workflow — no exceptions:
+
+1. Write the paper in markdown
+2. Generate PDF using: `python3 /home/dale/.openclaw/workspace/generate_paper_pdf.py <input.md> <output.pdf>`
+3. Send to Iris for editorial review: `openclaw agent --agent iris --timeout 180 --message "Please review this paper before delivery to Dale. Source: <path.md> PDF: <path.pdf>. Check: em dashes removed, grammar clean, equations rendering, conclusion lands well. Write notes to briefings/pdf_review_notes.md."`
+4. Wait for Iris to confirm
+5. Email to dvmcclung@me.com and dmcclung@quantixscs.com
