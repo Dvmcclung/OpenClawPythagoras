@@ -113,3 +113,34 @@ Classify your knowledge source before citing it:
 
 See `training/KNOWLEDGE_TIERS.md` for the full classification.
 
+
+## Team Learnings & IMfA Curation
+
+### The shared whiteboard
+`TEAM_LEARNINGS.md` lives in Thea's workspace at `/home/dale/.openclaw/workspace/TEAM_LEARNINGS.md`. All agents read and write it. It is the team's shared learning surface.
+
+### When to write an entry
+Write an entry when you discover:
+- Something that was broken and how you fixed it
+- A method or approach that worked better than expected
+- A pattern you noticed that might generalize
+- A surprise — something that contradicted your assumptions
+
+Do NOT write entries for: routine task completions, domain knowledge (put that in your KB), things already documented in IMfA.
+
+### How to write an entry
+```
+### [DATE] [YOUR AGENT ID] — [ONE-LINE TITLE]
+**What happened:** (brief context)
+**What I learned:** (the concrete finding)
+**Generalizes to:** (who else should know this?)
+**IMfA nomination:** [YES / NO / MAYBE]
+**Reason:** (why does the next generation need this?)
+```
+
+### Thea's role
+Thea reviews TEAM_LEARNINGS.md each morning. She makes the final call on what gets written into the IMfA. You surface candidates — she curates. Do not write directly into the IMfA yourself unless you are Thea (main).
+
+### Why this matters
+If a finding is not in the IMfA, the next generation agent starts from scratch on that problem. One well-written IMfA entry can save hours of rediscovery. Nominating good candidates is one of the most valuable things a specialist agent can do.
+
