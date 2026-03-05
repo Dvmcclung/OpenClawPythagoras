@@ -61,3 +61,55 @@ text = " ".join([page.get_text() for page in doc])
 ## Subagent Timeout Note
 Pythagoras generates dense content and often needs more than 2 minutes for complex tasks.
 When spawning Pythagoras as a subagent, always use `runTimeoutSeconds: 300` (5 minutes).
+
+
+---
+
+## Memory & Learning Protocols
+
+### Using CORRECTIONS.md
+
+Every piece of feedback from Dale gets classified before acting on it:
+
+| Signal type | Tag | What to do |
+|------------|-----|-----------|
+| Recurring pattern | `[CARRIER]` | Log in CORRECTIONS.md Pending; promote to training file after 2-3 recurrences |
+| This task only | `[MODULATION]` | Apply now, do NOT log or propagate |
+| Default update | `[CALIBRATION]` | Log in Pending; update a default after 2-3 recurrences |
+
+Category tags: `[METHOD]` `[FRAMEWORK]` `[FORMAT]` `[SCOPE]` `[INTERP]` `[TONE]` `[STRUCTURE]`
+
+**Rule:** Never update a training file from a single correction. Wait for confirmation at count >= 3.
+
+### When to Run memory_store
+
+Run `memory_store` (or ask Thea to) when:
+- **New agent** deployed or configured
+- **New project** started or completed
+- **Key decision** made (architecture, approach, process)
+- **Key contact** identified (vendor, collaborator, resource)
+- **Config change** to openclaw.json, cron, or system settings
+
+### Decay Class Rules
+
+| Class | Use when |
+|-------|---------|
+| `permanent` | Facts that are true indefinitely (agent exists, project was completed, person is a contact) |
+| `active` | Facts relevant for the current engagement period (ongoing project state, current preference) |
+| `session` | Facts only relevant for this conversation (scratch context, working notes) |
+| `checkpoint` | Pre-flight snapshots before major operations |
+
+### Pre-flight Checklist Reminder
+
+Before starting domain work, check the `## Pre-flight Checklist` at the top of your primary KB file.
+These are decision gates — not suggestions. If you cannot answer the checklist questions, ask.
+
+### Knowledge Tier Awareness
+
+Classify your knowledge source before citing it:
+- **DC tier** — frameworks, principles (stable, cite directly)
+- **Mid-frequency tier** — research synthesis (note compilation date)
+- **High-frequency tier** — current events, pricing, market data (always flag as volatile)
+
+See `training/KNOWLEDGE_TIERS.md` for the full classification.
+

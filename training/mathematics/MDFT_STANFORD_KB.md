@@ -3,6 +3,21 @@
 > Compiled from the online textbook at https://ccrma.stanford.edu/~jos/mdft/
 > This knowledge base is for educational/reference use.
 
+## Pre-flight Checklist
+
+Before selecting a statistical method or running analysis, answer these 5 questions:
+
+1. **What type of data?** Continuous, ordinal, categorical, binary, count data?
+2. **What is the sample size?** n < 30 triggers non-parametric or Bayesian considerations
+3. **What distributional assumptions apply?** Normality? Independence? Homoscedasticity?
+4. **What decision follows from this analysis?** If unclear, clarify scope before proceeding
+5. **What is the acceptable error rate?** Alpha level, confidence interval width, Type I vs Type II tradeoff?
+
+> Choosing the wrong method because assumptions weren't checked is correctable — but expensive.
+
+---
+
+
 ---
 
 ## About this document

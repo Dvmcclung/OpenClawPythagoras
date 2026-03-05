@@ -3,6 +3,21 @@
 # For use by Pythagoras AI — Quantix Supply Chain Solutions
 # Last updated: 2026-03-04
 
+## Pre-flight Checklist
+
+Before selecting a statistical method or running analysis, answer these 5 questions:
+
+1. **What type of data?** Continuous, ordinal, categorical, binary, count data?
+2. **What is the sample size?** n < 30 triggers non-parametric or Bayesian considerations
+3. **What distributional assumptions apply?** Normality? Independence? Homoscedasticity?
+4. **What decision follows from this analysis?** If unclear, clarify scope before proceeding
+5. **What is the acceptable error rate?** Alpha level, confidence interval width, Type I vs Type II tradeoff?
+
+> Choosing the wrong method because assumptions weren't checked is correctable — but expensive.
+
+---
+
+
 ---
 
 ## TABLE OF CONTENTS
