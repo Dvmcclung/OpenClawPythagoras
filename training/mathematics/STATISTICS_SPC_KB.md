@@ -1204,3 +1204,33 @@ New research introduces an **adaptive Bayesian c-chart** with flexible modeling 
 **Supply chain relevance:** Applicable to supplier defect rate monitoring (PPM tracking), inbound inspection, and any count-based quality metric (damaged units, mispicks, label errors) where classical c-charts are slow to detect drift.
 
 *Sources: f7i.ai (2026-02-18), ScienceDirect (2026), iiot-world.com (2026-02)*
+
+---
+
+## Knowledge Update — 2026-03-06
+
+### ML-for-SPC: Systematic Review and Challenge-Centric Taxonomy
+**Source:** MDPI Entropy, Vol. 28(2), Article 151 — Published January 29, 2026
+**URL:** https://www.mdpi.com/1099-4300/28/2/151
+
+A comprehensive systematic review of mathematical and algorithmic advances in ML-driven SPC, covering literature through December 2025. Key contribution: a **challenge-centric taxonomy** (rather than a technology-centric view) that classifies ML-SPC methods by the type of data complexity they address:
+
+- **High-dimensional / multivariate data** — principal component-based control charts, deep learning feature extractors replacing T² statistics
+- **Non-stationary processes** — adaptive and online learning methods that update control limits dynamically without full Phase I restarts
+- **Imbalanced fault classes** — oversampling, cost-sensitive learning, and generative models (VAE, GAN) for rare-event detection
+- **Complex correlation structures** — graph neural networks for monitoring processes with latent interaction effects
+
+**Practical implication:** The taxonomy provides a diagnostic framework: identify *which type of data complexity* is present in your process, then select the ML-SPC approach matched to that complexity. Applying a GNN where the problem is simply multivariate Gaussian is overkill and adds fragility.
+
+### Stable Shift Algorithm for Re-establishing SPC Control Limits
+**Source:** BMJ Quality & Safety — Published December 1, 2025
+**URL:** https://qualitysafety.bmj.com/content/early/2025/11/29/bmjqs-2025-019263
+
+New algorithmic approach for identifying when a process has genuinely shifted to a new stable state and it is appropriate to re-baseline control limits:
+- Addresses a common SPC error: **premature declaration of successful improvement** before the process has stabilized
+- Algorithm can be pre-specified at protocol stage, improving comparability across studies and reducing analyst subjectivity
+- Reduces time needed for SPC analysis in improvement initiatives
+
+**Supply chain relevance:** After a Kaizen event or process redesign, the question "when can I reset my control limits?" has been largely judgment-based. This algorithm provides a quantitative gate — reducing the risk of reporting improvement before it has been sustained.
+
+*Sources: MDPI Entropy (2026-01-29), BMJ Quality & Safety (2025-12-01)*

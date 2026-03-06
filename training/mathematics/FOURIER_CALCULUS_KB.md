@@ -888,3 +888,42 @@ print(f"Adam optimum: {x_opt}")
 *Sources: Bookdown (Peng "Time Series Analysis"), numberanalytics.com Fourier guide,*
 *Wikipedia (Gradient Descent, Lagrange Multipliers), IBM Think (Gradient Descent),*
 *scipy documentation, Hestenes & Stiefel (1952) conjugate gradient.*
+
+---
+
+## Knowledge Update — 2026-03-06
+
+### Survey: Advanced Fourier-Type Integral Transforms
+**Source:** scisimple.com summary of "A mathematical survey on Fourier type integral transforms and their offshoots" (Aug 2025)
+**URL:** https://scisimple.com/en/articles/2025-08-26-understanding-fourier-transforms-in-signal-processing--ak4ql4w
+
+Comprehensive taxonomy of transforms beyond the standard FFT:
+
+| Transform | Key Property | Best Use Case |
+|---|---|---|
+| STFT (Windowed Fourier) | Fixed time-frequency resolution | Stationary or near-stationary signals |
+| Wavelet Transform | Adaptive resolution (multiresolution) | Non-stationary signals; transients |
+| Stockwell Transform (S-transform) | Phase-preserving STFT with frequency-dependent window | Power systems, seismic, biomedical |
+| Wavelet Packet Transform | Full decomposition tree (not just low-frequency) | High-frequency fault signatures |
+
+**Resolution tradeoff (Heisenberg-Gabor limit):** No transform escapes the fundamental uncertainty Δt · Δf ≥ 1/(4π). The choice of transform is about *where you allocate* the time-frequency resolution budget, not whether you can exceed it.
+
+### S-Transform for Time-Frequency Analysis in Process Monitoring
+**Source:** MDPI Sensors, Vol. 25(23):7318 — December 2025
+**URL:** https://www.mdpi.com/1424-8220/25/23/7318
+
+The **S-transform** provides adaptive resolution and phase information that STFT lacks:
+- Frequency-dependent Gaussian window: wider window at low frequencies (more time averaging), narrower at high frequencies (better time resolution for fast transients)
+- Demonstrated superior performance for partial discharge (PD) signal analysis in power systems vs. standard STFT
+- Combined approach: wavelet packet + generalized morphological filters → frequency-domain analysis + noise suppression
+
+**Supply chain relevance:** Vibration analysis for predictive maintenance. Equipment faults (bearing wear, imbalance, cavitation) produce characteristic frequency signatures. The S-transform's adaptive resolution is better suited to detecting these than standard FFT when fault frequencies are mixed with low-frequency process noise.
+
+### Computational Fourier Analysis — 2025 State
+**Source:** JAEAS (rjsaonline.org), November 2025
+
+- Real-time Fourier analysis is now computationally feasible at IoT edge hardware scale (FPGA, microcontroller with DSP extensions)
+- Large-signal processing (millions of samples) handled via blocked FFT and streaming computation frameworks
+- Emerging applications: frequency-domain SPC (monitoring spectral shift as a process quality indicator), not just time-domain control charts
+
+*Sources: scisimple.com (2025-08), MDPI Sensors 25(23):7318 (2025-12), rjsaonline.org JAEAS (2025-11)*

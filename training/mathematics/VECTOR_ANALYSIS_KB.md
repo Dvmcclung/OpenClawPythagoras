@@ -1011,3 +1011,55 @@ Notion scaled their vector search infrastructure **10x while reducing costs 90%*
 **AWS OpenSearch Serverless:** Now supports seamless hybrid search (vector embeddings + BM25 keyword) in a single query with ANN algorithms (HNSW and IVF) and exact k-NN, with auto-scaling.
 
 *Sources: dev.to/actiandev (2026-02), calmops.com (2026-03), pub.towardsai.net (2026-02)*
+
+---
+
+## Knowledge Update — 2026-03-06
+
+### ANN Indexing State of Practice — 2026
+**Source:** appwrite.io (Nov 2025), lakefs.io (Jan 2026), analyticsvidhya.com (Jan 2026)
+
+Current standard indexing methods for approximate nearest neighbor (ANN) search in vector databases:
+
+| Method | Full Name | Best For |
+|---|---|---|
+| HNSW | Hierarchical Navigable Small World | High recall, low-latency queries; default for most use cases |
+| IVF | Inverted File Index | Large-scale, memory-constrained deployments |
+| PQ | Product Quantization | Compression of high-dimensional vectors; reduces memory footprint significantly |
+| IVF+PQ | Combined | Very large collections (100M+ vectors) with memory constraints |
+
+**2026 additions:**
+- **Float32 embeddings** in Cassandra via new Storage-Attached Index (SAI) called `VectorMemtableIndex` — brings vector search into wide-column NoSQL at scale
+- pgvector (PostgreSQL) benchmarked competitively vs. Pinecone at 99% recall for 50M vectors (768-dim Cohere embeddings) at similar QPS
+- **Hybrid search** (dense vector ANN + sparse BM25 keyword) now natively supported in AWS OpenSearch Serverless in a single query pass
+
+### Embedding Models — 2026 State
+**Source:** Appwrite (Nov 2025), brollyai.com (Dec 2025)
+
+**Cohere embed-v4.0:**
+- Multilingual + multimodal (text + images in the same embedding space)
+- Enterprise-focused with Base64 input support
+- Key for cross-language supplier/product knowledge bases
+
+**Hybrid retrieval pattern (2026 standard):**
+```
+Query → embed (dense) + tokenize (sparse BM25)
+     → ANN search (HNSW) + keyword inverted index search
+     → RRF fusion (Reciprocal Rank Fusion)
+     → Reranker (cross-encoder)
+     → Top-k results
+```
+This pattern dramatically improves precision in enterprise RAG applications vs. pure vector search.
+
+### Engineering Patterns for Production Vector Pipelines
+**Source:** calmops.com (Mar 2026), pub.towardsai.net (Feb 2026)
+
+Lessons from production-scale vector pipeline deployments:
+- **Decoupled architecture:** Separate embedding computation from vector storage/retrieval; enables independent scaling
+- **70% data volume reduction** achievable via embedding compression + deduplication before indexing
+- **Ray** (distributed Python compute) emerging as standard for near-real-time embedding pipelines handling continuous updates (new SKUs, catalog changes)
+- Migration pattern: monolithic pod clusters → decoupled embedding service + vector store + query service
+
+**Supply chain relevance:** A supplier/product knowledge base with continuous catalog updates (price changes, new SKUs, spec updates) requires a pipeline that can re-embed and re-index incrementally — not full rebuilds. Ray + decoupled architecture is the current production answer.
+
+*Sources: appwrite.io (2025-11), lakefs.io (2026-01), analyticsvidhya.com (2026-01), brollyai.com (2025-12), calmops.com (2026-03)*

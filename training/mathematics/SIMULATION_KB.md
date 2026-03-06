@@ -949,3 +949,38 @@ def tornado_analysis(base_inputs, output_fn, input_names, delta=0.1):
 *End of SIMULATION_KB.md*
 *Sources: IBM Think, AWS, Investopedia, Wikipedia (DES), scipy documentation,*
 *Packham (2015) Wilmott, INFORMS Operations Research, Law & Kelton "Simulation Modeling"*
+
+---
+
+## Knowledge Update — 2026-03-06
+
+### Prediction-Enhanced Monte Carlo (PEMC)
+**Source:** arXiv:2412.11257v2 — Published / updated May 26, 2025
+**URL:** https://arxiv.org/abs/2412.11257
+
+A new ML-augmented framework that treats control variate construction as a **machine learning prediction problem**:
+- Core idea: use cheap, parallelizable simulations as *features* for a learned ML predictor, which outputs **unbiased estimates with reduced variance and runtime**
+- PEMC generalizes classical control variates — where traditional methods require analytically known expected values for the control, PEMC learns the predictor from data
+- Demonstrated on: Asian options, variance swaps (stochastic local vol), swaptions (HJM models), ambulance diversion policy evaluation
+- Bias analysis and variance reduction proofs are provided via learning theory estimates (approximation error + statistical error decomposition)
+
+**Key properties:**
+| Property | Classical CV | PEMC |
+|---|---|---|
+| Control function | Must be analytically tractable | Learned from simulations |
+| Unbiasedness | Yes | Yes (preserved by design) |
+| Variance reduction | Depends on correlation | Quantified by learning theory |
+| Scalability | Limited | Parallelizable |
+
+**Supply chain relevance:** PEMC is applicable wherever you run many MC replications to estimate an expected cost, service level, or lead time distribution. The ML predictor learns from early simulation runs and improves subsequent estimates — useful for demand uncertainty modeling or safety stock optimization when simulation is expensive.
+
+### Multilevel Monte Carlo and Hybrid Sampling — State of Practice
+**Source:** analytica.com (Oct 2025), ScienceDirect (Aug/Jan 2026)
+
+Current best-practice tier for variance reduction in MC:
+1. **Multilevel Monte Carlo (MLMC):** Use a hierarchy of resolution levels; coarse simulations are cheap, fine simulations are few. Computational cost scales as O(ε⁻²) vs. O(ε⁻³) for standard MC at tolerance ε.
+2. **Stratified sampling:** Partition the probability space into strata; sample each stratum proportionally. Eliminates between-stratum variance entirely.
+3. **Control variates:** Classic method — subtract a correlated quantity with known expectation. PEMC extends this to learned predictors.
+4. **Quasi-Monte Carlo (QMC):** Replace pseudo-random sequences with low-discrepancy sequences (Sobol, Halton). Convergence rate O(N⁻¹(log N)^d) vs. O(N⁻½) for standard MC in d dimensions.
+
+*Sources: arXiv:2412.11257 (2025), analytica.com (2025-10), ScienceDirect (2025-08, 2026-01)*

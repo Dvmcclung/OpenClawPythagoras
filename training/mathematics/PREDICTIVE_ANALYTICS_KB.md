@@ -1035,3 +1035,49 @@ Key integration pattern: Monte Carlo simulation outputs (probability distributio
 **Supply chain relevance:** Applicable to distribution center throughput planning — run Monte Carlo on labor variability, inbound volume uncertainty, and equipment availability to generate P10/P50/P90 throughput projections displayed on shift dashboards.
 
 *Sources: datup.ai (2026-02), thinksupplychain.co (2026-02), meta-intelligence.tech (2026-02), pymnts.com (2026-03-03)*
+
+---
+
+## Knowledge Update — 2026-03-06
+
+### Supply Chain Forecast Accuracy Benchmarks — 2025/2026
+**Sources:** IPEC Group / ASCM 2026 Benchmarking Study, datup.ai (2026-02), sranalytics.io (2025-10)
+
+Updated quantitative benchmarks for predictive analytics in supply chain:
+
+| Metric | Reported Improvement Range | Source |
+|---|---|---|
+| Forecast accuracy | 30–40% vs. baseline methods | datup.ai (2026) |
+| Forecast accuracy | 20–50% (advanced models) | sranalytics.io (2025) |
+| Forecast accuracy | 35% average | ASCM 2026 Benchmarking |
+| Inventory cost reduction | 20–45% | ASCM 2026 |
+| Order fulfillment rate | +15–25% | ASCM 2026 |
+| Supply chain cost reduction | ~25% | sranalytics.io (2025) |
+| ROI payback period | 6–12 months | sranalytics.io (2025) |
+
+**Interpretation caution:** These are vendor/analyst ranges; variance is high. Use P50 values (30–35% accuracy improvement, 20% inventory reduction) as conservative planning benchmarks. The P90 figures (50%, 45%) require mature data infrastructure.
+
+### Google DeepMind WeatherNext 2 — Implications for Supply Chain Forecasting
+**Source:** PYMNTS.com (November 20, 2025)
+**URL:** https://www.pymnts.com/supply-chain/2025/predictive-analytics-not-inventory-becomes-front-line-for-supply-chain-resilience
+
+Key development: **WeatherNext 2** generates hundreds of probabilistic weather scenarios from a single starting point, at up to 1-hour resolution, in under 1 minute on a single TPU — 8× faster than previous generation.
+
+**Supply chain implications:**
+- High-fidelity probabilistic weather feeds are now accessible to non-scientific users
+- Enables **weather-conditional demand forecasting**: attach weather ensemble scenarios to demand models as exogenous variables
+- Particularly relevant for: agricultural inputs, cold chain, construction materials, seasonal retail, port logistics (storm delay probability)
+- Integrates naturally with Monte Carlo simulation: weather scenario = one MC draw; run 500 weather scenarios × demand model = empirical distribution of outcomes
+
+**Practical approach:** Use WeatherNext 2 outputs as stochastic exogenous inputs to ARIMAX or gradient boosted forecasting models, replacing static seasonal adjustment with probabilistic weather terms.
+
+### Predictive Analytics as Supply Chain Resilience Layer
+**Source:** PYMNTS.com (Nov 2025), GlobeNewswire (Jan 2026), ASCM 2026
+
+The paradigm shift captured in the 2026 literature: **resilience = predictive capability, not inventory buffer.**
+
+- 55% of supply chain leaders in 2025 are increasing technology investments specifically for operational resilience (ASCM 2026 Benchmarking Study)
+- The model: predictive analytics absorbs uncertainty that was previously absorbed by safety stock
+- Mathematical connection: **P(stockout) = f(forecast error distribution, σ_lead, safety stock)** — improving forecast accuracy shrinks σ_forecast, which has the same effect as carrying more safety stock without the capital cost
+
+*Sources: ASCM 2026 Benchmarking Study (via IPEC Group), datup.ai (2026-02), PYMNTS.com (2025-11-20), sranalytics.io (2025-10), GlobeNewswire (2026-01-29)*
