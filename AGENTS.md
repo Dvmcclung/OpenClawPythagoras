@@ -243,3 +243,18 @@ When Dale corrects something you said, log it:
 python3 /home/dale/.openclaw/workspace/hive/attribution.py log_correction <turn_id> 'correction text'
 ```
 The `turn_id` is shown at the bottom of `hive/active_context.md` after each on-demand surface call.
+
+## Memory Tagging Protocol
+
+When writing to hive memory (hive_write.py), always specify tags:
+- tag_domain: your agent's primary domain (math/ops/comms/supply-chain) or cross-domain if validated across ≥2
+- tag_type: fix | rubric | fact | insight | decision | procedure
+- tag_source: session | kb | paper | external | inferred
+- tag_status: active (default) — use provisional for unvalidated, under-review to flag for Thea
+
+MANDATORY: Any decision that took more than one conversation to reach must be written as tag_type=decision. These are the memories that prevent architectural debates from recurring.
+
+NEVER use cross-domain as a default when unsure. cross-domain means explicitly validated across ≥2 domains.
+
+When superseding a memory: set tag_status=superseded AND set superseded_by=[memory_id of replacement]. Both fields required together.
+
