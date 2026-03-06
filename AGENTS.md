@@ -180,3 +180,49 @@ Every paper or report destined for Dale follows this workflow — no exceptions:
 3. Send to Iris for editorial review: `openclaw agent --agent iris --timeout 180 --message "Please review this paper before delivery to Dale. Source: <path.md> PDF: <path.pdf>. Check: em dashes removed, grammar clean, equations rendering, conclusion lands well. Write notes to briefings/pdf_review_notes.md."`
 4. Wait for Iris to confirm
 5. Email to dvmcclung@me.com and dmcclung@quantixscs.com
+
+
+## Task Completion Protocol
+
+After completing any **significant task**, append a record to `/home/dale/.openclaw/workspace/system/task_completions.jsonl`.
+
+### What counts as significant
+- Produced a file (paper, analysis, report, KB update)
+- Answered a complex multi-step question
+- Updated a knowledge base or ran a research pipeline
+- Any task that took meaningful effort and produced a findable result
+
+### What does NOT need a record
+- Routine heartbeats
+- Quick single-lookup answers
+- HEARTBEAT_OK responses
+
+### Record format (one JSON per line, append with `>>`):
+```json
+{
+  "timestamp": "2026-03-06T14:00:00Z",
+  "agent": "pythagoras",
+  "task": "one-line description of what you did",
+  "output": "path/to/output/file or 'none'",
+  "key_finding": "one sentence — the most important thing learned or produced",
+  "stored_to_memory": false
+}
+```
+
+### Append command (Python):
+```python
+import json
+from datetime import datetime, timezone
+record = {
+    "timestamp": datetime.now(timezone.utc).isoformat(),
+    "agent": "pythagoras",
+    "task": "description",
+    "output": "path or none",
+    "key_finding": "one sentence finding",
+    "stored_to_memory": False
+}
+with open("/home/dale/.openclaw/workspace/system/task_completions.jsonl", "a") as f:
+    f.write(json.dumps(record) + "\n")
+```
+
+Thea processes this log each morning and stores key findings to shared memory so the whole team benefits.
