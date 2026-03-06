@@ -226,3 +226,20 @@ with open("/home/dale/.openclaw/workspace/system/task_completions.jsonl", "a") a
 ```
 
 Thea processes this log each morning and stores key findings to shared memory so the whole team benefits.
+
+
+## Per-Message Proactive Surfacing
+
+At the start of every response turn where the incoming message is substantive (not a heartbeat), run:
+```bash
+python3 /home/dale/.openclaw/workspace/hive/surface_on_demand.py '{first 200 chars of message}'
+```
+Incorporate the surfaced memories before formulating your response. The output includes a `turn_id`.
+
+## Turn Attribution (Corrections)
+
+When Dale corrects something you said, log it:
+```bash
+python3 /home/dale/.openclaw/workspace/hive/attribution.py log_correction <turn_id> 'correction text'
+```
+The `turn_id` is shown at the bottom of `hive/active_context.md` after each on-demand surface call.
