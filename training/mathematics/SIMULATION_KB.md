@@ -984,3 +984,30 @@ Current best-practice tier for variance reduction in MC:
 4. **Quasi-Monte Carlo (QMC):** Replace pseudo-random sequences with low-discrepancy sequences (Sobol, Halton). Convergence rate O(N⁻¹(log N)^d) vs. O(N⁻½) for standard MC in d dimensions.
 
 *Sources: arXiv:2412.11257 (2025), analytica.com (2025-10), ScienceDirect (2025-08, 2026-01)*
+
+---
+
+## Knowledge Update — 2026-03-07
+
+### Monte Carlo in Radiation Detection: HPC + Variance Reduction + Hybrid AI
+**Source:** ScienceDirect — January 13, 2026
+**URL:** https://www.sciencedirect.com/science/article/pii/S1687850725008581
+
+A broad survey of MC progress in high-fidelity simulation (GEANT4, MCNP, EGS toolkits), but the methodological advances generalize:
+
+- **High-performance computing integration:** GPU-parallelized MC is now standard; wall-clock time for 10⁸ particle histories reduced by orders of magnitude. Translates to supply chain: large-scale DES (discrete event simulation) with millions of demand replications is now tractable on commodity hardware
+- **Variance reduction at scale:** Importance sampling, weight windows, and forced collision techniques have matured in the physics domain; these exact techniques apply to financial/operational MC
+- **Hybrid MC + deterministic:** Use a deterministic approximation (analytical model) for the bulk of the probability space, MC for the tails. Analogous to PEMC (see yesterday's update): fast analytical solution + targeted MC only where analytic assumptions break down
+- **Hybrid MC + AI:** Train a surrogate model on a small set of MC runs; use surrogate for bulk of queries; fall back to full MC for high-uncertainty regions
+
+**Key design principle:** The pattern across all domains is the same — **use MC selectively, not uniformly.** Reserve full-resolution simulation for the decision-relevant region of the outcome distribution (tails, near threshold, high-uncertainty scenarios). Use cheap approximations everywhere else.
+
+### Basket Option Pricing: Cholesky + Control Variate + Stratified Sampling (2025)
+**Source:** ScienceDirect, s2666818125001974 — August 2025
+
+Demonstrates combined variance reduction on correlated multi-asset MC under 2D Black-Scholes:
+- **Cholesky decomposition** to correctly model correlation between uncertain inputs (e.g., two correlated demand streams, two correlated lead times)
+- Control variate + stratified sampling used simultaneously — variance reduction is approximately multiplicative when techniques are independent
+- **Implication:** For supply chain scenarios with two or more correlated uncertain inputs (demand + yield, demand + lead time), Cholesky-based correlated sampling gives unbiased estimates; ignoring correlation produces incorrect confidence intervals
+
+*Sources: ScienceDirect s1687850725008581 (2026-01), ScienceDirect s2666818125001974 (2025-08)*

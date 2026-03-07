@@ -1234,3 +1234,32 @@ New algorithmic approach for identifying when a process has genuinely shifted to
 **Supply chain relevance:** After a Kaizen event or process redesign, the question "when can I reset my control limits?" has been largely judgment-based. This algorithm provides a quantitative gate — reducing the risk of reporting improvement before it has been sustained.
 
 *Sources: MDPI Entropy (2026-01-29), BMJ Quality & Safety (2025-12-01)*
+
+---
+
+## Knowledge Update — 2026-03-07
+
+### Improved Adaptive CUSUM Under Measurement Error (IACUSUM)
+**Source:** Scientific Reports (Nature), s41598-025-01734-4 — October 6, 2025
+**URL:** https://www.nature.com/articles/s41598-025-01734-4
+
+Extends adaptive CUSUM to the practically common case where process observations contain **measurement error (ME)**. Key findings:
+
+- Standard CUSUM and EWMA charts lose ARL performance when ME is present — the chart "sees" noise-contaminated signals, inflating false alarm rates or delaying true detections
+- IACUSUM integrates a **linear covariate model** and a **multiple measurement procedure**: take repeated measurements and use their mean, which reduces ME variance by 1/n_rep
+- Monte Carlo simulation used for ARL (Average Run Length) comparison — confirms IACUSUM outperforms existing adaptive CUSUM charts across small, medium, and large process shifts under ME
+- Based on double-ranked set sampling (DRSS), which can improve estimator efficiency vs. simple random sampling when measurement costs are significant
+
+**Practical implication for supply chain quality monitoring:** When sensor data or inspection measurements have known repeatability error (R&R), IACUSUM provides a rigorous framework. The multiple-measurement approach is especially actionable: if you can double the number of repeated readings per sample point, you halve the measurement error variance and recover most of the detection power.
+
+### Advanced Process Control Charts: Comprehensive Taxonomy (2026)
+**Source:** Academia.edu / Comprehensive Advanced Process Control Charts — January 1, 2026
+
+A new review paper covers the full evolutionary arc from Shewhart → CUSUM → EWMA → current state. Key themes:
+
+- **Digital twin integration:** Control charts embedded in digital twin models can incorporate process physics, not just statistics. The chart monitors deviations from the twin's predicted state, not just historical mean/variance
+- **Hybrid fusion methods:** Combining ML anomaly detection (isolation forests, autoencoders) with traditional CUSUM/EWMA in an ensemble — classical chart fires first, ML provides secondary confirmation, reducing false alarm burden
+- **Bayesian updating for control limits:** Dynamic Bayesian approach updates prior on process mean/variance as new data arrives — avoids the Phase I / Phase II boundary entirely and provides coherent uncertainty estimates on control limits
+- **ML adaptive control limits:** Algorithms dynamically adjust 3σ limits based on observed process performance, trading off between false alarm rate and missed-detection rate optimally
+
+*Sources: Scientific Reports s41598-025-01734-4 (2025-10), Academia.edu comprehensive review (2026-01), 6sigma.us (2025-04)*

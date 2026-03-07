@@ -1063,3 +1063,43 @@ Lessons from production-scale vector pipeline deployments:
 **Supply chain relevance:** A supplier/product knowledge base with continuous catalog updates (price changes, new SKUs, spec updates) requires a pipeline that can re-embed and re-index incrementally — not full rebuilds. Ray + decoupled architecture is the current production answer.
 
 *Sources: appwrite.io (2025-11), lakefs.io (2026-01), analyticsvidhya.com (2026-01), brollyai.com (2025-12), calmops.com (2026-03)*
+
+---
+
+## Knowledge Update — 2026-03-07
+
+### Modern Vector Search Architecture: HNSW vs. IVF-PQ (Jan 2026)
+**Source:** Medium / Mehrshad Asadi — January 2, 2026
+**URL:** https://medium.com/@mehrcodeland/understanding-modern-vector-search-from-hnsw-to-ivf-pq-f582b7e9ee89
+
+Detailed comparison of the two dominant ANN algorithm families:
+
+**HNSW (Hierarchical Navigable Small World):**
+- Graph-based structure; each vector is a node; edges connect nearby vectors at multiple hierarchy levels
+- Query: enter at top (sparse, long-range) layer, greedily navigate down to bottom (dense, precise) layer
+- High recall at low latency; memory-intensive (stores full vectors + graph edges)
+- Best for: medium-to-large datasets where memory is available, high-recall requirements
+
+**IVF-PQ (Inverted File + Product Quantization):**
+- IVF: cluster vectors into Voronoi cells; at query time, search only the nearest k cells (not all)
+- PQ: compress each vector by splitting into sub-vectors and quantizing each independently → 8-16× memory reduction
+- Lower recall than HNSW but dramatically smaller memory footprint
+- Best for: billion-scale datasets, memory-constrained deployments
+
+**Hybrid IVF → HNSW:** Emerging pattern — IVF for coarse filtering (narrow candidate set), HNSW for refined search within clusters. Combines memory efficiency of IVF with recall quality of HNSW.
+
+**Practical guidance for supply chain KB:**
+- For a supplier/product knowledge base up to ~1M embeddings: HNSW (pgvector or LanceDB) — optimal recall, memory is not a constraint
+- For 10M+ embeddings with limited RAM: IVF-PQ (Milvus or Qdrant with quantization) — acceptable recall, major memory savings
+- For production RAG pipelines: hybrid dense (HNSW) + sparse (BM25) + reranker remains the state-of-practice architecture (as noted 2026-03-06)
+
+### pgvector in 2026: Production State
+**Source:** Instaclustr — November 2025 / January 2026
+
+pgvector has matured as the go-to vector extension for teams already on PostgreSQL:
+- HNSW indexing now in pgvector (added in v0.5.0); previous versions relied on IVFFlat only
+- HNSW index creation in pgvector is now 1.6–6× faster than Milvus in some benchmarks (SingleStore comparison)
+- **Use cases:** semantic product search, recommendation systems, RAG over internal documents, duplicate detection
+- **Trade-off vs. dedicated vector DB:** pgvector trades some raw query throughput for the benefit of SQL joins, transactions, and avoiding a separate data store
+
+*Sources: Medium/@mehrcodeland (2026-01), Instaclustr/pgvector guide (2025-11), Firecrawl/vector-databases comparison (2025-10)*

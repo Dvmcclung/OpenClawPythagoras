@@ -1081,3 +1081,52 @@ The paradigm shift captured in the 2026 literature: **resilience = predictive ca
 - Mathematical connection: **P(stockout) = f(forecast error distribution, σ_lead, safety stock)** — improving forecast accuracy shrinks σ_forecast, which has the same effect as carrying more safety stock without the capital cost
 
 *Sources: ASCM 2026 Benchmarking Study (via IPEC Group), datup.ai (2026-02), PYMNTS.com (2025-11-20), sranalytics.io (2025-10), GlobeNewswire (2026-01-29)*
+
+---
+
+## Knowledge Update — 2026-03-07
+
+### Predictive Analytics Market Adoption: 2026 Benchmarks
+**Source:** GlobeNewswire (Jan 2026), ASCM 2026 Benchmarking Study, datup.ai (Feb 2026), sranalytics.io (Oct 2025)
+
+Quantified outcomes from deployed predictive analytics in supply chain (2025 literature):
+
+| Metric | Documented improvement range |
+|---|---|
+| Forecast accuracy | 30–50% improvement vs. baseline |
+| Inventory cost reduction | 15–45% |
+| Order fulfillment rate | +15–25% |
+| ROI timeline | 6–12 months |
+
+**Interpretation caution (DC tier note):** These figures come from vendor/consulting reports with selection bias toward successful implementations. They represent attainable outcomes, not median outcomes. Use as aspirational targets with appropriate uncertainty.
+
+**Investment trend:** 55% of supply chain leaders in 2025 are increasing technology investment specifically for resilience — the strategic framing has shifted from "efficiency" to "resilience through prediction." The math behind this: carrying excess inventory is a fixed capital cost; predictive accuracy improvement has a variable cost that scales more favorably at high volume.
+
+### Predictive Analytics as Safety Stock Substitute (Mathematical Formulation)
+**Source:** datup.ai (2026-02), sranalytics.io (2025-10)
+
+The economic argument for predictive analytics investment is rigorously grounded in safety stock theory:
+
+**Standard safety stock formula:**
+```
+SS = z × σ_D × √L
+```
+where z = service level z-score, σ_D = demand std dev, L = lead time (normalized)
+
+**With improved forecasting:**
+```
+SS_improved = z × σ_forecast_error × √L
+```
+If σ_forecast_error = (1 - improvement%) × σ_D, then:
+- 35% forecast improvement → σ_forecast_error = 0.65 × σ_D → SS reduced by 35%
+- This is a linear relationship: **every 1% forecast accuracy improvement ≈ 1% safety stock reduction**
+- The capital cost avoided = (SS reduction) × (unit cost) × (carrying rate)
+
+**ROI formula:**
+```
+ROI = [(SS_old - SS_new) × unit_cost × carry_rate] / analytics_investment_cost
+```
+
+This formulation makes the business case for predictive analytics directly computable and auditable — not a fuzzy "up to 40% improvement" claim.
+
+*Sources: GlobeNewswire (2026-01-29), IPEC Group / ASCM 2026, datup.ai (2026-02), sranalytics.io (2025-10-28)*

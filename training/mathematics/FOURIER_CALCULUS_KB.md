@@ -927,3 +927,30 @@ The **S-transform** provides adaptive resolution and phase information that STFT
 - Emerging applications: frequency-domain SPC (monitoring spectral shift as a process quality indicator), not just time-domain control charts
 
 *Sources: scisimple.com (2025-08), MDPI Sensors 25(23):7318 (2025-12), rjsaonline.org JAEAS (2025-11)*
+
+---
+
+## Knowledge Update — 2026-03-07
+
+### Real-Time Fourier Analysis at IoT Edge Scale (2025)
+**Source:** JAEAS (rjsaonline.org) Vol. 1 No. 4 — November 2025; JAEAS article view/148
+
+Key computational trend: FFT is no longer a batch, offline operation.
+
+- **FPGA and DSP-extended microcontrollers** now execute FFT on streaming sensor data in real time (< 1ms latency for 1024-point FFT)
+- **Blocked FFT and streaming frameworks** enable continuous spectral monitoring of signals longer than available memory
+- **Applications emerging in industrial IoT:** frequency-domain process monitoring, where the shape of the power spectral density (PSD) is the process quality indicator — not time-domain mean/variance
+- Connection to SPC: **spectral SPC** — control charts on FFT power at key frequencies, rather than (or in addition to) time-domain Shewhart/EWMA. A shift in spectral energy at a characteristic frequency (e.g., bearing defect frequency) triggers an alarm before the time-domain signal crosses limits
+
+**Supply chain / maintenance relevance:** Vibration signatures for equipment health monitoring are now feasible on low-cost edge hardware without data offloading. The monitoring loop is: sensor → embedded FFT → spectral SPC → threshold alert → maintenance trigger. No cloud dependency required.
+
+### Fourier Analysis Curriculum Anchor — JHU Engineering
+**Source:** JHU Engineering Programs — January 2026
+
+JHU 625.710 (Fourier Analysis with Applications) covers:
+- Sampling theorem and aliasing — critical for IoT sensor design (ensure sample rate > 2× highest frequency of interest)
+- Convolution theorems — time-domain convolution = frequency-domain multiplication; used for efficient filter design
+- Orthogonal function theory — Fourier series as a special case of orthogonal decomposition; connects to wavelet theory and non-Fourier basis sets (Legendre, Chebyshev polynomials)
+- Spectral analysis — power spectral density estimation, windowing effects (Hann, Hamming windows to reduce spectral leakage)
+
+*Sources: rjsaonline.org JAEAS Vol.1 No.4 (2025-11), JHU EP Online 625.710 (2026-01)*
