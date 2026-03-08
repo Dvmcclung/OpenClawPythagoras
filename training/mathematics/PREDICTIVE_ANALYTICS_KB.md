@@ -1130,3 +1130,44 @@ ROI = [(SS_old - SS_new) × unit_cost × carry_rate] / analytics_investment_cost
 This formulation makes the business case for predictive analytics directly computable and auditable — not a fuzzy "up to 40% improvement" claim.
 
 *Sources: GlobeNewswire (2026-01-29), IPEC Group / ASCM 2026, datup.ai (2026-02), sranalytics.io (2025-10-28)*
+
+---
+
+## Knowledge Update — 2026-03-08
+
+### Ensemble Forecasting in Supply Chain: Quantified Performance (2025-2026)
+**Source:** dropoff.com / Forecasting Best Practices 2026 (citing 2025 study); IPEC Group / ASCM 2026 Benchmarking
+**Published:** March 2026
+
+Concrete benchmarks from production deployments:
+
+- **2025 study of 73 retail implementations:** Ensemble forecasting models reduced forecast error by **23.9%** vs. single-model baselines
+- **ASCM 2026 Benchmarking Study averages across AI-enabled forecasting deployments:**
+  - Forecast accuracy improvement: **35%**
+  - Inventory reduction: **20–45%**
+  - Order fulfillment rate improvement: **15–25%**
+- Gartner (2025): 50% of logistics companies using data analytics to optimize transportation networks
+
+**Key design insight (ensemble construction):** The 23.9% error reduction figure aligns with the well-established ensemble bias-variance tradeoff theory — diverse models that err in different ways combine to cancel out individual model errors. Best practice: include at minimum (1) a statistical baseline (ARIMA/Holt-Winters), (2) an ML model (gradient boosting or LSTM), and (3) a domain-informed model (e.g., product lifecycle phase adjustment). Weighted combination via held-out validation outperforms simple averaging.
+
+### Google DeepMind WeatherNext 2: Supply Chain Disruption Forecasting Step-Change (2025)
+**Source:** PYMNTS.com — November 20, 2025
+**URL:** https://www.pymnts.com/supply-chain/2025/predictive-analytics-not-inventory-becomes-front-line-for-supply-chain-resilience
+
+A significant advance in the data feeds available for supply chain disruption prediction:
+
+- **WeatherNext 2** (Google DeepMind, released November 2025): AI meteorology model generating hundreds of weather outcome scenarios from a single initialization point
+- **Speed:** Forecasts generated 8× faster than prior generation; each forecast takes < 1 minute on a single TPU
+- **Resolution:** Up to 1-hour temporal resolution (vs. 6-hour typical for operational NWP)
+- **Supply chain implication:** High-fidelity probabilistic weather forecasting is now accessible to operations teams, not just energy/scientific users. Enables direct integration with supply chain disruption risk models — attach a probability-weighted weather scenario set to transportation lane risk assessment
+
+**Strategic implication:** Organizations treating predictive analytics as the primary resilience mechanism (vs. holding buffer inventory) are achieving better cost-service tradeoffs. WeatherNext 2 makes weather-driven disruption scenarios tractable for probabilistic network models.
+
+### Predictive Analytics Investment Trends (2026)
+**Source:** GlobeNewswire — January 29, 2026
+
+- 55% of supply chain leaders increasing tech/innovation investments in 2025-2026 for operational resilience
+- Market for predictive analytics and maintenance in supply chain growing through 2031
+- Primary investment areas: demand sensing, supplier risk monitoring, transportation optimization
+
+*Sources: dropoff.com 2026-03-07, IPEC/ASCM 2026-02, PYMNTS 2025-11-20, GlobeNewswire 2026-01-29*

@@ -954,3 +954,50 @@ JHU 625.710 (Fourier Analysis with Applications) covers:
 - Spectral analysis — power spectral density estimation, windowing effects (Hann, Hamming windows to reduce spectral leakage)
 
 *Sources: rjsaonline.org JAEAS Vol.1 No.4 (2025-11), JHU EP Online 625.710 (2026-01)*
+
+---
+
+## Knowledge Update — 2026-03-08
+
+### Fourier Analysis Networks (FAN): Deep Learning Integration (arXiv, December 2025)
+**Source:** arXiv:2512.14873 — December 2025 (39 citations as of Dec 2025)
+**URL:** https://arxiv.org/html/2512.14873
+
+FAN (Fourier Analysis Network) integrates Fourier components directly into neural network activation functions, enabling neural networks to learn periodic and quasi-periodic patterns without preprocessing:
+
+- **Mechanism:** FAN uses a dual-activation layer: Fourier basis functions (sin/cos at learned frequencies) combined with nonlinear activation (GELU or ReLU). Network learns both frequency and amplitude of periodic components end-to-end
+- **CFAN extension (Jeong et al., 2025):** Convolutional Fourier Analysis Network — extends FAN to convolutional architectures for spatial/image data with periodic texture
+- **Performance:** Multiple follow-up studies report consistent improvements in time series tasks with periodic structure (seasonal demand, vibration monitoring, power signals)
+- **39 citations within ~3 months** — indicates rapid adoption in the research community
+
+**Supply chain / predictive maintenance relevance:** For demand time series with strong seasonal patterns (weekly, monthly, annual cycles), FAN-based models can outperform standard LSTM/Transformer because the Fourier basis explicitly parameterizes periodicity rather than learning it implicitly from long sequences.
+
+### Adaptive Fourier Series for Equipment Failure Prediction (Scientific Reports, 2025)
+**Source:** Nature/Scientific Reports s41598-025-24497-4 — November 19, 2025
+**URL:** https://www.nature.com/articles/s41598-025-24497-4
+
+Comparative study of deep learning vs. Fourier series models for predictive maintenance:
+
+- **Finding:** Adaptive Fourier series enhances prediction power of both ARIMA and ANN models for equipment failure prediction
+- **Adaptive Fourier series:** Fit a Fourier series to residuals of a baseline model; adaptive means the number of harmonics and their frequencies are selected by AIC/BIC rather than fixed a priori
+- **Hybrid workflow:**
+  1. ARIMA or exponential smoothing for trend/level
+  2. Fourier series on residuals for cyclical components
+  3. ANN for remaining non-linear residuals
+  Result: each component handles what it's structurally suited for; Fourier handles the periodic, ANN handles the nonlinear aperiodic
+
+**Practical implication:** When equipment failure patterns have cyclical signatures (maintenance intervals, seasonal load variation), adding adaptive Fourier features to a deep learning model is a disciplined improvement — not overfitting, because the frequency selection is penalized.
+
+### Real-Time FFT on Edge Hardware: Spectral SPC (2025-2026 Trend)
+**Source:** MDPI Sensors 25/23/7318 (December 2025); rjsaonline.org JAEAS (November 2025)
+
+Confirmation of the trend identified 2026-03-07 (streaming FFT on embedded hardware) with additional detail:
+
+- **DWT + HHT hybrid:** Discrete Wavelet Transform (DWT) for initial denoising → Hilbert-Huang Transform (HHT) for deep feature extraction in partial discharge signal analysis. DWT removes broadband noise; HHT extracts instantaneous frequency (non-stationary signal, no Fourier stationarity assumption required)
+- **HHT vs. FFT:** HHT is adaptive — it decomposes signals into intrinsic mode functions (IMFs) without a fixed basis. Better for non-stationary processes (machine aging, load transients). FFT assumes stationarity.
+- **When to use which:**
+  - FFT: stationary signals, frequency content stable over time (rotating machinery at steady state, periodic demand signals)
+  - DWT: multi-scale transient detection (shocks, ramps)
+  - HHT: non-stationary, nonlinear signals (degradation curves, wear signals)
+
+*Sources: arXiv:2512.14873 (2025-12), Nature s41598-025-24497-4 (2025-11), MDPI Sensors 25/23/7318 (2025-12), JAEAS Vol.1 No.4 (2025-11)*

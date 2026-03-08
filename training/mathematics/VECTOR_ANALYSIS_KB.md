@@ -1103,3 +1103,45 @@ pgvector has matured as the go-to vector extension for teams already on PostgreS
 - **Trade-off vs. dedicated vector DB:** pgvector trades some raw query throughput for the benefit of SQL joins, transactions, and avoiding a separate data store
 
 *Sources: Medium/@mehrcodeland (2026-01), Instaclustr/pgvector guide (2025-11), Firecrawl/vector-databases comparison (2025-10)*
+
+---
+
+## Knowledge Update — 2026-03-08
+
+### Vector Database Landscape: State of Practice in 2026
+**Source:** Appwrite (2025-11), LakeFS (2026-01), SecondTalent (2026-01), Firecrawl (2025-10)
+
+**Leading platforms in 2026:**
+| Platform | Strength | Best for |
+|----------|---------- |----------|
+| Pinecone | Managed, low-ops | Production RAG, teams avoiding infra management |
+| Weaviate | Hybrid search (vector + BM25) | Semantic + keyword combined search; Go-native, ms-latency |
+| Milvus | Scale, open-source | 10M+ vector deployments, GPU-accelerated indexing |
+| Qdrant | Quantization, memory efficiency | Large datasets with RAM constraints |
+| Chroma | Lightweight, developer-first | Prototyping, embedded applications |
+| pgvector | PostgreSQL integration | Teams on PostgreSQL; avoids separate data store |
+| LanceDB | Embedded, multimodal | Local/edge deployments; OpenClaw's vector store |
+
+**Key 2026 trend: Hybrid search as standard architecture**
+- Hybrid dense (ANN) + sparse (BM25/TF-IDF) + cross-encoder reranker is now the state-of-practice for production RAG
+- Weaviate's hybrid search in production reports single-digit millisecond latency at millions of vectors
+- Embedding models: all-MiniLM-L6-v2 (fast, 384-dim), text-embedding-3-large (quality, 3072-dim, OpenAI), nomic-embed-text (open-weight, strong quality)
+
+**Traditional databases adding vector capability:**
+- PostgreSQL (pgvector): HNSW index since v0.5.0; 1.6–6× faster index creation than some dedicated solutions in benchmarks
+- Elasticsearch: dense vector search integrated; allows hybrid text + semantic queries on existing indices
+
+**Distance metrics (reminders for KB):**
+- **Cosine similarity:** Angle between vectors; ideal for text (magnitude-normalized); range [-1, 1]
+- **L2 (Euclidean):** Absolute distance; preferred for image embeddings where magnitude matters
+- **Dot product:** Unnormalized cosine; faster but sensitive to vector magnitude; use only when embeddings are trained to optimize dot product (e.g., OpenAI ada-002)
+
+### Multimodal Embeddings: Emerging Frontier (2026)
+**Source:** LakeFS / best vector databases — January 2026
+
+Vector stores increasingly handling non-text embeddings in unified indexes:
+- Audio, image, text, video, PDF all representable in shared embedding space using multimodal models (CLIP, ImageBind, Gemini multimodal embeddings)
+- Enables cross-modal similarity search: find images given a text query, find similar documents given an audio clip
+- **Supply chain application:** Product catalog search combining image (product photo) + text (description) + structured attributes (specs) in a unified embedding space — higher-quality similarity than any single modality
+
+*Sources: Appwrite 2025-11-18, LakeFS 2026-01-21, SecondTalent 2026-01-02, Firecrawl 2025-10-09*

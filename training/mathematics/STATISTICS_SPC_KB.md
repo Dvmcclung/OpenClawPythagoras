@@ -1263,3 +1263,34 @@ A new review paper covers the full evolutionary arc from Shewhart → CUSUM → 
 - **ML adaptive control limits:** Algorithms dynamically adjust 3σ limits based on observed process performance, trading off between false alarm rate and missed-detection rate optimally
 
 *Sources: Scientific Reports s41598-025-01734-4 (2025-10), Academia.edu comprehensive review (2026-01), 6sigma.us (2025-04)*
+
+---
+
+## Knowledge Update — 2026-03-08
+
+### SPC Applied to Clinical Psychology: State-of-the-Art Review (2026)
+**Source:** ScienceDirect, S2772408526001109 — February 2026
+**URL:** https://www.sciencedirect.com/science/article/pii/S2772408526001109
+
+A perspective paper introducing SPC (Shewhart and EWMA) to clinical psychology for real-time patient monitoring. Methodologically relevant for any domain where individual-level time series monitoring is needed (vs. population-level batch process):
+
+- **Shewhart charts in clinical context:** Used for detecting sudden regime shifts in patient metrics — maps directly to detecting step-change special causes in process monitoring
+- **EWMA in clinical context:** Preferred when gradual trends or small persistent changes are the relevant signal — consistent with its supply chain use case for detecting slow process drift
+- **Change-detection comparison:** SPC procedures compared against structural break methods (CUSUM, changepoint algorithms); paper finds SPC's interpretability advantage important for practitioner adoption
+- **Key research gap identified:** Most clinical SPC work assumes Phase I (baseline) parameters are known; in practice they are estimated from short individual histories — paralleling the well-known Phase I estimation problem in manufacturing SPC. Small Phase I sample sizes inflate false alarm rates.
+- **Methodological advance:** Proposes **Phase I-robust EWMA limits** using bootstrap-adjusted control limits to compensate for estimation uncertainty — directly applicable to manufacturing contexts where historical data is sparse
+
+**Supply chain / quality implication:** The Phase I estimation problem is underappreciated in practice. When setting up a new control chart with < 30 historical subgroups, bootstrap-adjusted limits should be considered to prevent an elevated false alarm rate in the early monitoring phase.
+
+### Multivariate SPC: Directional Localization via Closed Testing (2025)
+**Source:** ResearchGate, arXiv preprint — June 2025
+
+From a new SPC advances collection, a key theoretical result:
+
+- **Uniform EWMA processes:** New explicit distribution formulas derived; left-tail guarantees provided — important for setting precise α-levels in Phase II monitoring
+- **Directional localization in multivariate SPC:** When a multivariate control chart (T² or MEWMA) signals, determining *which variable(s)* caused the signal is non-trivial. Proposed modular closed-testing framework controls family-wise error rate (FWER) for variable identification after alarm
+- **Practical value:** Removes the need for ad hoc "drill-down" charts; closed testing provides statistically rigorous post-signal diagnosis
+
+**Key takeaway:** When using multivariate SPC (T², MEWMA) in multi-parameter process monitoring, invest in a principled post-signal diagnostics procedure — not just charting each variable individually (which inflates Type I error). Closed testing or Bonferroni-adjusted decomposition are the rigorous options.
+
+*Sources: ScienceDirect S2772408526001109 (2026-02), ResearchGate/arXiv SPC Recent Advances (2025-06)*

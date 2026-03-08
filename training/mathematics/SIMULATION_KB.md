@@ -1011,3 +1011,46 @@ Demonstrates combined variance reduction on correlated multi-asset MC under 2D B
 - **Implication:** For supply chain scenarios with two or more correlated uncertain inputs (demand + yield, demand + lead time), Cholesky-based correlated sampling gives unbiased estimates; ignoring correlation produces incorrect confidence intervals
 
 *Sources: ScienceDirect s1687850725008581 (2026-01), ScienceDirect s2666818125001974 (2025-08)*
+
+---
+
+## Knowledge Update — 2026-03-08
+
+### Prediction-Enhanced Monte Carlo (PEMC): ML as a Control Variate Framework (arXiv 2412.11257)
+**Source:** arXiv:2412.11257 [stat.ML] — December 2024, updated June 2025
+**URL:** https://arxiv.org/abs/2412.11257
+
+Key framework: PEMC reframes ML surrogates not as replacements for MC but as **learned control variates** — preserving MC's unbiasedness and error quantification while dramatically reducing variance and compute.
+
+**How it works:**
+1. Train an ML predictor on a set of cheap, parallelizable simulation runs (the "features")
+2. Use the ML prediction as a control variate: `estimate = ML_prediction + MC_correction`
+3. The MC correction is unbiased by construction; the ML prediction reduces variance of the correction needed
+4. Net result: same statistical guarantees as pure MC, but far fewer full simulation runs needed
+
+**Key advantages over naive ML surrogates:**
+- Unbiasedness preserved (ML surrogate alone is biased)
+- Uncertainty quantification maintained (confidence intervals are valid)
+- Computation-cost-aware: optimizes total compute budget across cheap ML inference + expensive MC runs, not just per-replication variance
+
+**Demonstrated applications:**
+- Equity derivatives (variance swaps under stochastic local volatility)
+- Interest rate derivatives (swaption pricing under HJM model)
+- Ambulance dispatch / hospital load balancing (mortality rate estimation under demand uncertainty)
+
+**Supply chain / operations application:** PEMC is directly applicable to inventory optimization under uncertainty. Use a demand forecasting model (ML) as control variate, MC to correct for model error. Reduces simulation time for safety stock / service level tradeoff analysis by an order of magnitude while keeping confidence intervals valid.
+
+### ML-Assisted Monte Carlo for Hard-to-Sample Systems (Phys. Rev. E, 2025)
+**Source:** Physical Review E 112, 045307 — October 7, 2025
+**URL:** https://journals.aps.org/pre/abstract/10.1103/s1rm-29zx
+
+Systematic comparison of ML-assisted MC architectures for systems where standard MC sampling is inefficient:
+
+- ML proposal distributions (normalizing flows, VAEs) can dramatically improve MC acceptance rates in high-dimensional spaces
+- Critical finding: **architecture choice matters** — some ML-MC hybrids degrade performance relative to standard MC when the ML model is underfitted or when the target distribution has heavy tails
+- Best practice: always benchmark ML-assisted MC against pure MC baseline on a validation set before production deployment
+- **Ensemble approach** (multiple ML architectures + standard MC) consistently outperforms any single approach
+
+**Design principle for supply chain simulation:** If using ML-guided sampling in demand scenario generation, validate that the ML proposal distribution adequately covers extreme quantiles (the tails matter most for safety stock decisions). Tail validation is non-negotiable.
+
+*Sources: arXiv:2412.11257 (2024-12/2025-06), Phys. Rev. E 112, 045307 (2025-10)*
