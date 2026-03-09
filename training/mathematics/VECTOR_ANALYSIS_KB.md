@@ -1165,3 +1165,57 @@ Vector stores increasingly handling non-text embeddings in unified indexes:
 - **Supply chain application:** Product catalog embeddings should be refreshed when item descriptions change significantly, seasonal categories rotate, or supplier information updates
 
 *Source: Encord "Complete Guide to Embeddings in 2026" (Dr. Andreas Heindl, Dec 2025)*
+
+---
+
+## [2026-03-09 Update] Vector Database Landscape 2026 — Current State
+
+### Primary Vector Databases: Capability Differentiation (2026)
+**Sources:** Appwrite (November 2025), Second Talent (January 2026), LakeFS (January 2026), Firecrawl (October 2025)
+
+Current leading options with differentiation:
+
+| System | Differentiator | Best for |
+|--------|---------------|---------|
+| **Pinecone** | Managed cloud, low ops burden | Fast production deployment, no infra team |
+| **Weaviate** | Hybrid search (vector + keyword), Go-based | Single-digit ms queries, multi-modal |
+| **Milvus** | High-scale open source, GPU-accelerated | Billion-vector workloads |
+| **Qdrant** | Open source, Rust-based, payload filtering | Filtered similarity search |
+| **Chroma** | Developer-friendly, Python-native | Prototyping, small-scale RAG |
+| **pgvector** | PostgreSQL extension | Teams with existing PostgreSQL infra |
+| **Elasticsearch** | Hybrid with full-text, enterprise | Large enterprises with existing ES |
+| **LanceDB** | Embedded, Apache Arrow-based, no server | Local agent memory (OpenClaw use case) |
+
+**2026 pattern:** Traditional databases (PostgreSQL via pgvector, Elasticsearch) have absorbed vector capability, fragmenting the pure-play vector DB market. For existing enterprise stacks, extending current databases is now a legitimate choice for most use cases.
+
+---
+
+### Hybrid Search as Default Architecture (2026)
+**Source:** Multiple 2026 benchmarks
+
+- **Pure vector search** (cosine/dot product) is no longer the recommended default for production RAG applications
+- **Hybrid search = vector similarity + keyword BM25** is the 2026 standard for document retrieval
+  - Vector: captures semantic intent ("what does the user mean?")
+  - BM25: captures exact token matches ("what specific term did they use?")
+  - Reranker: cross-encoder model rescores top-k candidates from both methods
+- **Practical result:** Hybrid search reduces hallucination in RAG systems by ensuring exact-match terms (product codes, supplier names, part numbers) are not lost to semantic generalization
+
+**Supply chain application:** Supplier/product knowledge bases should use hybrid search — a query for "Part #SKU-1234" must match on the exact SKU token (BM25), while "fasteners for high-vibration assemblies" benefits from semantic search.
+
+---
+
+### Embedding-Based Recommendation Without Explicit Ratings
+**Source:** Firecrawl (October 2025)
+
+Validated pattern for supply chain recommendation / substitution:
+
+- **Method:** Embed products/suppliers in a shared vector space. Similarity in vector space = functional interchangeability
+- **Advantage:** Does not require explicit user ratings or historical substitution data; works from product descriptions, specs, and attributes alone
+- **Practical use case:** Supplier substitution recommendations, product alternatives, bill-of-materials alternatives when a component is constrained
+- **Distance metrics:**
+  - Cosine similarity: for normalized embeddings (text descriptions, normalized specs) — preferred
+  - Euclidean distance: for absolute feature magnitudes (dimensions, weights) where magnitude matters
+
+**Implementation note:** If using a single embedding per item (product description only), the model will conflate products with similar descriptions but different specs. Multi-field embeddings (description + spec vector + category embedding) are more reliable for procurement use cases.
+
+*Sources: appwrite.io (2025-11), secondtalent.com (2026-01), lakefs.io (2026-01), firecrawl.dev (2025-10), dev.to (2025-10)*

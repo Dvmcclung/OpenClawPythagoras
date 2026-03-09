@@ -1294,3 +1294,46 @@ From a new SPC advances collection, a key theoretical result:
 **Key takeaway:** When using multivariate SPC (T², MEWMA) in multi-parameter process monitoring, invest in a principled post-signal diagnostics procedure — not just charting each variable individually (which inflates Type I error). Closed testing or Bonferroni-adjusted decomposition are the rigorous options.
 
 *Sources: ScienceDirect S2772408526001109 (2026-02), ResearchGate/arXiv SPC Recent Advances (2025-06)*
+
+---
+
+## [2026-03-09 Update] p-Value Control Charts and Nonparametric SPC (arXiv 2601.17319)
+
+### SPC via p-Values: Distribution-Free Charting Framework
+**Source:** Nguyen & Wang, arXiv:2601.17319 (January 2026), La Trobe University / Kyushu University
+
+A theoretically significant advance that unifies p-value merging with classical control chart structure:
+
+**Core idea:** Replace test-statistic-based control charts with p-value charts. When in-control (IC), the p-value sequence (Pₜ) is super-uniform — a requirement that holds in nonparametric and two-phase designs without parametric process modeling.
+
+**Key results:**
+- **Universal ARL lower bounds** derived under super-uniformity alone, with no assumptions on temporal dependence — distribution-free calibration for any p-value chart
+- **EWMA-like p-value charts:** Uses merging functions for dependent p-values to build EWMA-style smoothed charts. At each time t, outputs a valid p-value for "has the process remained IC up to t?" — enabling smoothing without ad hoc control limits
+- **Multivariate localization:** Closed testing framework for identifying which coordinates/directions caused an alarm, with family-wise error rate (FWER) controlled at alarm time — far more rigorous than post-hoc individual variable charting
+- **k-ARL control:** Expected time to the k-th false alarm bounded at kα⁻¹ under conditional super-uniformity
+
+**Why this matters for practice:**
+- Enables genuine nonparametric SPC: no distribution assumption, no Phase I parametric fit required
+- The EWMA p-value chart is a direct, statistically principled replacement for ad hoc EWMA with estimated σ when process distribution is unknown
+- Directional localization is the missing piece in most multivariate SPC deployments — this provides the rigorous version
+
+**Applicability:** Supply chain process KPIs with unknown or mixed distributions (multi-supplier quality, heterogeneous logistics metrics) are strong candidates for p-value charting.
+
+*Source: arXiv:2601.17319v1 (2026-01-24)*
+
+---
+
+## [2026-03-09 Update] SPC for Asset Health and Predictive Maintenance (2026 Industry Pattern)
+
+**Source:** f7i.ai blog (February 2026)
+
+Industry synthesis of SPC application to asset reliability in 2026:
+
+- **SPC as the engine of predictive maintenance:** Control charts applied to equipment sensor streams (vibration, temperature, current draw) to detect early degradation signals before failure
+- **Pattern:** EWMA preferred over Shewhart for asset health — gradual drift (wear curves) is the dominant signal, not step changes
+- **Integration trend:** SPC + IoT sensor streams + digital twins; control limits derived from physics-based baseline models rather than purely historical data
+- **2026 standard:** Industries with continuous measurement (manufacturing, logistics, food production, service ops) treating SPC as core monitoring infrastructure, not a periodic quality audit tool
+
+**Key implication for supply chain:** Supplier quality monitoring and asset health monitoring are converging on the same SPC framework. The math is identical; only the data source changes.
+
+*Source: f7i.ai/blog/statistical-process-control-spc (2026-02)*

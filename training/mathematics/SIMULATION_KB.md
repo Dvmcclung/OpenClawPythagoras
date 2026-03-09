@@ -1070,3 +1070,48 @@ Systematic comparison of ML-assisted MC architectures for systems where standard
 - **Demonstrated at:** 305-generator New England grid with 20,000 MC trajectories, 4,300+ hour windows per trajectory
 
 *Sources: arXiv:2602.12294, arXiv:2603.02404*
+
+---
+
+## [2026-03-09 Update] AI-MC Hybrid Methods and Multilevel Monte Carlo (March 2026)
+
+### Hybrid AI + Monte Carlo for Complex Physical Systems
+**Source:** MDPI Universe 6(3):55 (February 2026)
+
+Computational physics application with strong methodological generalizability:
+
+- **Pattern:** Integrate ML models with physics-based MC simulation to achieve both speed and accuracy
+- **Architecture:** ML model (typically CNN or surrogate neural net) trained on MC simulation outputs → predicts distributions fast → MC used for validation sampling and tail estimation
+- **Speedup:** Orders of magnitude faster than full MC for "typical" scenarios; MC reserved for edge cases and validation
+- **Risk:** ML surrogate accuracy degrades at distribution tails — precisely where MC accuracy matters most. Always validate surrogate coverage of tail events before substituting MC.
+
+**Supply chain simulation implication:** Use ML-surrogate MC hybrid for scenario generation in demand planning (fast, many scenarios) with explicit tail validation (brute-force MC on the top-10% most extreme scenarios). Do not trust the ML surrogate for black swan estimation.
+
+---
+
+### Multilevel Monte Carlo (MLMC) for Bayesian Lasso
+**Source:** De Gruyter, Monte Carlo Methods and Applications (March 2026)
+
+- **Finding:** Bayesian Lasso and standard Lasso converge when sparsity is large and noise is small — practical equivalence in high-SNR regimes
+- **Method:** Multilevel MC using multivalued stochastic differential equations (SDEs) for solving the Bayesian Lasso posterior efficiently
+- **MLMC principle (generalizable):** Estimate expectations using a hierarchy of approximations at increasing accuracy levels; cheaper coarse levels do most of the work; expensive fine levels correct the bias. Total cost ≪ pure fine-level MC.
+- **When to use MLMC:** When you need many MC samples of an expensive-to-compute quantity (PDE solutions, complex demand models, supply network simulations) and accuracy can be hierarchically controlled
+
+**Practical threshold:** MLMC is worth implementing when per-sample cost at the fine level is ≥ 10× the coarse level. Below that, straightforward variance reduction (antithetic variates, Latin hypercube) is simpler and usually sufficient.
+
+---
+
+### Floating-Point Non-Determinism in MC Simulation (2026 Engineering Concern)
+**Source:** Wikipedia / academic literature (February 2026 update)
+
+A practical engineering issue gaining attention in safety-critical MC applications:
+
+- **Problem:** MC results can vary between runs or across hardware (x86 vs. ARM vs. GPU) due to floating-point non-determinism — different rounding in parallel execution, FMA instructions, etc.
+- **Impact in supply chain simulation:** For risk/safety calculations (safety stock, capacity reserve, financial at-risk), unexpected numerical variation in MC outputs is a compliance and audit concern
+- **Mitigation:**
+  1. Fix random seeds + use deterministic BLAS/LAPACK routines
+  2. Document hardware/software environment as part of simulation specification
+  3. Run validation batch on both target platforms before production deployment
+  4. For consensus-critical applications: use double-precision throughout (no mixed precision)
+
+*Sources: MDPI Universe 6(3):55 (2026-02), De Gruyter MCMA (2026-03), Wikipedia Monte Carlo method (2026-02)*

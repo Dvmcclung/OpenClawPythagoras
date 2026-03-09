@@ -1205,3 +1205,53 @@ Open-source Python framework unifying all known rubric-based LLM evaluation tech
 **Practical note:** The psychometric reliability metrics (Cohen's κ) are the mathematical proof that rubric scores are reproducible and valid — not just internally consistent. For presenting rubric systems to stakeholders, κ ≥ 0.61 (substantial agreement) is the defensibility threshold.
 
 *Sources: arXiv:2601.08654, arXiv:2603.00077*
+
+---
+
+## [2026-03-09 Update] Predictive Analytics in Supply Chain — 2026 Benchmarks and Trends
+
+### Quantified Performance Benchmarks (2025-2026 Industry Data)
+**Sources:** IPEC Group / ASCM 2026 Benchmarking Study; sranalytics.io (October 2025); datup.ai (February 2026)
+
+Consolidated benchmark ranges from multiple 2025-2026 industry studies:
+
+| Metric | Improvement range | Notes |
+|--------|-------------------|-------|
+| Forecast accuracy | 20–50% improvement | vs. traditional methods; 35% average |
+| Inventory cost reduction | 15–45% | Wider range reflects implementation maturity |
+| Order fulfillment rate | 15–25% improvement | |
+| ROI timeline | 6–12 months | For well-scoped implementations |
+
+**55% of supply chain leaders** (ASCM 2026) increased investment in technology/innovation for operational resilience in 2025.
+
+**Critical caveat:** These benchmarks are marketing-adjacent. The 35–50% accuracy improvement figures typically compare advanced ML against naive forecasting baselines, not against properly tuned ARIMA or exponential smoothing. For realistic expectations, compare against the current deployed method specifically.
+
+---
+
+### Google DeepMind WeatherNext 2 — High-Fidelity Weather Forecasting for Supply Chain
+**Source:** PYMNTS.com (November 2025)
+
+A step-change development with direct supply chain relevance:
+
+- **Capability:** Generates hundreds of possible weather outcomes from a single starting point; forecasts 8× faster than prior models; resolution up to 1-hour intervals
+- **Compute:** Each prediction < 1 minute on a single TPU
+- **Implication:** Weather-correlated demand forecasting (retail, agriculture, energy, logistics) gains a dramatically improved exogenous variable. Weather disruption modeling in supply chains can now be probabilistic (ensemble forecasts) rather than deterministic (single forecast)
+- **Access:** Expected to become available via Google Cloud APIs; watch for 2026 integration with supply chain planning platforms
+
+**Modeling implication:** For products with weather-sensitive demand, incorporating WeatherNext 2 ensemble forecasts as probabilistic exogenous inputs to ARIMA or gradient-boosted models is now practically feasible. The uncertainty in the weather forecast propagates into demand forecast uncertainty bands — improving safety stock calculations.
+
+---
+
+### Predictive Analytics as Operational Resilience Infrastructure (2026 Shift)
+**Source:** Multiple 2025-2026 industry sources (ASCM, Gartner-adjacent)
+
+The fundamental framing shift underway:
+
+- **Old model:** Predictive analytics as a capability layer (optional, applied to specific problems)
+- **New model (2026):** Predictive analytics as front-line resilience infrastructure — replaces inventory buffers as the primary defense against supply chain disruption
+- **Evidence:** Organizations reducing safety stock while maintaining service levels by substituting real-time demand signals + predictive models for static safety stock formulas
+- **Risk note:** This substitution is only sound when model performance is continuously monitored (SPC on forecast errors) and fallback inventory protocols exist for model failures
+
+**Mathematical implication:** Safety stock formula `z × σ_LTD × √(L + R)` gets modified: σ_LTD is now a model-predicted uncertainty (smaller when model is confident) rather than a fixed historical standard deviation. Tighter uncertainty estimates = lower safety stock = cost savings. But model confidence must be calibrated — overconfident models destroy service levels.
+
+*Sources: globenewswire.com (2026-01), ipec-group.com (2026-02), pymnts.com (2025-11), sranalytics.io (2025-10)*

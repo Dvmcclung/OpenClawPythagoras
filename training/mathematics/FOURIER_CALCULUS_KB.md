@@ -1001,3 +1001,62 @@ Confirmation of the trend identified 2026-03-07 (streaming FFT on embedded hardw
   - HHT: non-stationary, nonlinear signals (degradation curves, wear signals)
 
 *Sources: arXiv:2512.14873 (2025-12), Nature s41598-025-24497-4 (2025-11), MDPI Sensors 25/23/7318 (2025-12), JAEAS Vol.1 No.4 (2025-11)*
+
+---
+
+## [2026-03-09 Update] Frequency Transforms in Time Series — Comprehensive Survey (arXiv 2504.07099)
+
+### Beyond the Time Domain: Fourier, Laplace, and Wavelet in Modern Time Series Analysis
+**Source:** Yang et al. (HKU, UCLA, UMD, Aalborg, Westlake, UQ, Microsoft), arXiv:2504.07099v2 (April 2025, updated)
+
+First comprehensive survey specifically covering Fourier, Laplace, and Wavelet transforms in deep-learning-era time series analysis:
+
+**Key findings from the survey:**
+
+- **Frequency-based representations significantly enhance feature separability:** Low-frequency components (trends, seasonals) cleanly isolated from high-frequency details (noise, anomalies) — impossible to do cleanly in time domain alone
+- **Fourier Neural Operators (FNOs):** New class of architectures that learn operators in frequency space. Outperform convolutional approaches on PDE-governed physical systems and show strong performance on long-horizon time series forecasting
+- **Wavelet-based CNNs:** Wavelet decomposition as a preprocessing stage before CNN — captures multi-resolution features simultaneously (trend at coarse scale + transient at fine scale)
+- **Laplace transform in ML:** Re-emerging for systems with exponential decay dynamics (chemical processes, inventory depletion, supply chain response to demand shocks)
+
+**Application domains covered:** Finance, molecular dynamics, weather forecasting (relevant: supply chain demand signals with weather correlation)
+
+**The practical taxonomy from the survey:**
+
+| Transform | Best for | Limitation |
+|-----------|----------|-----------|
+| FFT | Stationary periodic signals | Assumes stationarity |
+| Wavelet (DWT/CWT) | Multi-scale transients, non-stationary | Basis choice is critical |
+| Laplace | Exponential decay / growth dynamics | Less interpretable spectrum |
+| FNO | Learning entire operators on gridded data | Computationally heavier |
+
+**Supply chain implication:** Demand signals often have mixed character (periodic seasonals + non-stationary trend + sporadic spikes). Hybrid frequency-domain preprocessing before ARIMA or ML forecasting models is now well-validated.
+
+*Source: arXiv:2504.07099v2 (2025-04/2025-07 revision); GitHub: curated repository for reproducibility*
+
+---
+
+## [2026-03-09 Update] Fourier Basis Mapping for Time Series Forecasting (arXiv 2507.09445)
+
+**Source:** arXiv:2507.09445v1 (July 2025)
+
+- **Method:** Reinterprets the Fourier transform from a basis-functions perspective: real/imaginary parts of frequency components are cosine/sine basis coefficients
+- **Fourier Basis Mapping (FBM):** Maps time series into Fourier coefficient space, applies a learned linear or nonlinear transformation, then inverts back to time domain
+- **Benefit:** Separates the "what frequencies exist" (Fourier) from "how those frequencies evolve over the forecast horizon" (learned mapping) — cleaner than end-to-end time-domain forecasters
+- **Reported improvement:** Strong results on standard benchmarks (ETT, Weather, Traffic datasets) vs. transformer-based baselines
+
+**Practical note:** FBM is essentially a principled version of seasonal decomposition — instead of estimating a fixed seasonal pattern, it learns the frequency-domain transformation. This is the right approach when seasonal patterns shift over time (e.g., post-COVID demand patterns).
+
+*Source: arXiv:2507.09445v1*
+
+---
+
+## [2026-03-09 Update] Deep Learning + Classical Fourier Hybrid (arXiv 2601.00427)
+
+**Source:** arXiv:2601.00427 (January 2026)
+
+- **Problem:** Multi-frequency inverse source problem (recovering source from far-field measurements) — Helmholtz equation governing wave propagation
+- **Method:** Hybrid framework: classical Fourier method for the well-posed low-frequency components + deep CNN for the ill-posed high-frequency components
+- **Principle that generalizes:** When a problem has components that are well-understood analytically (and where Fourier methods excel) AND components that are data-driven (where ML excels), hybrid architectures outperform either alone
+- **Supply chain analogy:** Use FFT for the deterministic seasonal + trend components of demand; use ML for the residual driven by unstructured external factors. This hybrid is now theoretically validated in hard inverse problems.
+
+*Source: arXiv:2601.00427 (2026-01)*
