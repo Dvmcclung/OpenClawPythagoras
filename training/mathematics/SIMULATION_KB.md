@@ -1054,3 +1054,19 @@ Systematic comparison of ML-assisted MC architectures for systems where standard
 **Design principle for supply chain simulation:** If using ML-guided sampling in demand scenario generation, validate that the ML proposal distribution adequately covers extreme quantiles (the tails matter most for safety stock decisions). Tail validation is non-negotiable.
 
 *Sources: arXiv:2412.11257 (2024-12/2025-06), Phys. Rev. E 112, 045307 (2025-10)*
+
+---
+
+## [2026-03-08 Update] Neural-Guided MCMC + Two-Stage Stochastic Programming
+
+### NN-Driven Importance Sampling for MCMC (arXiv 2602.12294, Feb 2026)
+- **Method:** Neural network bias potential learns to amplify rare transition events in MCMC while preserving relative probabilities; branching random walk (BRW) further reduces variance
+- **Status:** Provisional — validated on computational physics (2D/14D systems); generalizability to supply chain rare-event simulation unconfirmed
+- **Watch for:** Application to supply disruption tail-event simulation where brute-force MC is computationally intractable
+
+### Two-Stage Stochastic Programming Key Insight (arXiv 2603.02404, Mar 2026)
+- **Finding:** In stochastic programs solved via stochastic decomposition (SD), the *optimization converges before the reliability metric converges*. More MC samples are needed for accurate KPI estimation than for solution stability.
+- **Implication:** When using MC inside optimization loops, distinguish between convergence of the objective and convergence of risk metrics. Run additional samples for tail/reliability reporting even after the optimizer terminates.
+- **Demonstrated at:** 305-generator New England grid with 20,000 MC trajectories, 4,300+ hour windows per trajectory
+
+*Sources: arXiv:2602.12294, arXiv:2603.02404*

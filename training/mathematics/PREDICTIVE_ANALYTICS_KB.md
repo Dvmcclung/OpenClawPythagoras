@@ -1171,3 +1171,37 @@ A significant advance in the data feeds available for supply chain disruption pr
 - Primary investment areas: demand sensing, supplier risk monitoring, transportation optimization
 
 *Sources: dropoff.com 2026-03-07, IPEC/ASCM 2026-02, PYMNTS 2025-11-20, GlobeNewswire 2026-01-29*
+
+---
+
+## [2026-03-08 Update] Rubric-Based Scoring Frameworks (RULERS + Autorubric)
+
+### RULERS: Locked Rubrics + Evidence-Anchored Scoring (arXiv 2601.08654, Jan 2026)
+**Problem:** LLM-as-Judge scoring fails due to rubric instability, unverifiable reasoning, and scale misalignment with human graders.
+
+**Solution (three layers):**
+1. **Locked rubrics** — compile natural language rubrics into versioned, immutable bundles; prevents prompt-sensitivity drift between scoring runs
+2. **Evidence-anchored decoding** — each score assignment requires matching text evidence; creates auditable reasoning trail
+3. **Wasserstein-based calibration** — aligns LLM output scale to human grading distribution without model fine-tuning
+
+**Results:** Outperforms baselines on human agreement; smaller models rival larger proprietary judges with RULERS applied.
+**Code:** https://github.com/LabRAI/Rulers.git
+
+**Key insight for Dale's scoring systems:** The "locked rubric" concept is the right answer to rubric instability. Wasserstein calibration is the correct tool for scale alignment — it's a distribution-level alignment, not a point calibration.
+
+### Autorubric: Unified Rubric Evaluation Framework (arXiv 2603.00077, Mar 2026)
+Open-source Python framework unifying all known rubric-based LLM evaluation techniques.
+
+**Capabilities:**
+- Criterion types: binary, ordinal, nominal (with configurable weights)
+- Aggregation modes: single judge, majority, weighted, unanimous, any-vote
+- Calibration: few-shot with verdict-balanced sampling
+- Bias mitigations: position bias (option shuffling), verbosity bias (length penalties), criterion conflation (per-criterion atomic evaluation)
+- **Psychometric reliability metrics: Cohen's κ, weighted κ, Pearson/Spearman correlation, distribution-level tests**
+- Production infrastructure: caching, checkpointing, rate limiting, cost tracking
+
+**CHARM-100 dataset:** 100-sample benchmark with ground truth across binary + ordinal + nominal criteria. The first dataset for stress-testing heterogeneous rubric systems.
+
+**Practical note:** The psychometric reliability metrics (Cohen's κ) are the mathematical proof that rubric scores are reproducible and valid — not just internally consistent. For presenting rubric systems to stakeholders, κ ≥ 0.61 (substantial agreement) is the defensibility threshold.
+
+*Sources: arXiv:2601.08654, arXiv:2603.00077*

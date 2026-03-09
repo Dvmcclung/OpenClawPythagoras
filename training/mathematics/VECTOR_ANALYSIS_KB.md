@@ -1145,3 +1145,23 @@ Vector stores increasingly handling non-text embeddings in unified indexes:
 - **Supply chain application:** Product catalog search combining image (product photo) + text (description) + structured attributes (specs) in a unified embedding space — higher-quality similarity than any single modality
 
 *Sources: Appwrite 2025-11-18, LakeFS 2026-01-21, SecondTalent 2026-01-02, Firecrawl 2025-10-09*
+
+---
+
+## [2026-03-08 Update] Multi-Index Embeddings and Drift Monitoring (2026 Patterns)
+
+### Multi-Index Embeddings as 2026 Standard Architecture
+- **Pattern:** Maintain multiple embeddings per item rather than a single unified vector
+  - Example: global image embedding + object-crop embeddings + text/caption embedding + domain-specific embedding
+  - Each type gets its own index/table in the vector DB
+  - Retrieval: query across indices, then rerank with stronger model or business rules
+- **LanceDB note:** Supports this via table-per-embedding-type — no custom sharding needed
+- **Trade-off:** Higher storage + indexing complexity vs. significantly better precision for heterogeneous retrieval tasks
+
+### Embedding Drift Monitoring (now a first-class concern)
+- **Standard 2026 workflow:** index → retrieve → monitor → refresh
+- **Drift signals to track:** retrieval quality degradation, cosine similarity distribution shifts between new queries and indexed corpus, upstream model version changes
+- **Refresh trigger:** Drift in mean cosine similarity > threshold OR embedding model version change
+- **Supply chain application:** Product catalog embeddings should be refreshed when item descriptions change significantly, seasonal categories rotate, or supplier information updates
+
+*Source: Encord "Complete Guide to Embeddings in 2026" (Dr. Andreas Heindl, Dec 2025)*
