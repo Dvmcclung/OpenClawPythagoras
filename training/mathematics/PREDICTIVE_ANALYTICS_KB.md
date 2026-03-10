@@ -1255,3 +1255,55 @@ The fundamental framing shift underway:
 **Mathematical implication:** Safety stock formula `z × σ_LTD × √(L + R)` gets modified: σ_LTD is now a model-predicted uncertainty (smaller when model is confident) rather than a fixed historical standard deviation. Tighter uncertainty estimates = lower safety stock = cost savings. But model confidence must be calibrated — overconfident models destroy service levels.
 
 *Sources: globenewswire.com (2026-01), ipec-group.com (2026-02), pymnts.com (2025-11), sranalytics.io (2025-10)*
+
+---
+
+## [2026-03-10 Update] Future-Guided Learning (FGL) for Time Series Forecasting
+
+**Source:** Nature Communications, s41467-025-63786-4 (September 30, 2025)
+
+**Problem addressed:** Deep learning models capture nonlinear relationships but fail on long-term dependencies — especially under distribution shift, noise, and non-stationarity.
+
+**Method — Future-Guided Learning (FGL):**
+- Combines a *future-oriented* forecasting model (teacher) with a *past-oriented* forecasting model (student) in a Knowledge Distillation (KD) framework
+- The teacher generates future predictions; student is continuously corrected by that feedback — a temporal interplay reminiscent of predictive coding in cognitive science
+- Key differentiator from threshold-based drift detection (Page-Hinkley, DDM): FGL does not abruptly reset when drift is detected. It dynamically adjusts via continuous feedback, preserving long-term learned patterns rather than discarding them
+- The student receives gradient signal from the teacher at every step — eliminates the "cold start" problem after drift detection
+
+**vs. classical methods:**
+| Method | Drift response | Long-term memory |
+|--------|---------------|-----------------|
+| ARIMA | N/A (static) | Limited |
+| EWMA smoothing | Slow | Good |
+| DDM/Page-Hinkley | Reset on detection | Lost after reset |
+| FGL | Continuous correction | Preserved |
+
+**Supply chain relevance:** Particularly strong for demand signals with gradual distributional shift — post-disruption recovery patterns, secular trend changes, channel mix shifts. FGL's continuous correction means you don't lose learned baseline when the market shifts.
+
+**Implementation note:** Requires deep learning infrastructure. Not a drop-in replacement for ARIMA, but a serious candidate when you have enough data volume and a non-stationary environment.
+
+*Source: Nature Communications, arXiv preprint. Authors: multiple. Published 2025-09-30.*
+
+---
+
+## [2026-03-10 Update] EEMD + LASSO + LSTM Hybrid for Demand Forecasting
+
+**Source:** ScienceDirect / Computers & Industrial Engineering (July 2025), doi:10.1016/j.cie.2025....
+
+**Method:** Three-stage hybrid:
+1. **EEMD (Ensemble Empirical Mode Decomposition):** Decomposes demand into intrinsic mode functions (IMFs) — separates high-frequency noise from trend and seasonal components without assuming stationarity. Advantage over FFT: handles non-linear, non-stationary signals.
+2. **LASSO regression:** Selects the most predictive IMFs and external features (price, promotions, weather). Provides automatic feature selection and prevents overfitting.
+3. **LSTM (Long Short-Term Memory):** Learns sequence patterns in the selected IMFs; generates final forecast.
+
+**Why EEMD over FFT or STL decomposition:**
+- STL assumes additive structure with fixed periodicity — breaks on intermittent demand or changing seasonality
+- FFT assumes stationarity — breaks on trend changes
+- EEMD makes no periodicity or stationarity assumptions; decomposes the signal adaptively
+
+**Reported performance:** Superior capture of irregular demand patterns (lumpy, intermittent, promotional spike) compared to ARIMA, ETS, and vanilla LSTM baselines.
+
+**Supply chain fit:** High SKU-count environments where demand patterns vary by SKU and include promotional effects. EEMD+LASSO stage handles pattern heterogeneity; LSTM handles the learned temporal structure.
+
+**Caution:** Computationally intensive at scale. For 10K+ SKUs, needs parallelization and a tiered approach (simple exponential smoothing for stable SKUs; EEMD+LASSO+LSTM for high-value volatile SKUs).
+
+*Source: ScienceDirect, pii/S2667305325000663 (2025-07)*

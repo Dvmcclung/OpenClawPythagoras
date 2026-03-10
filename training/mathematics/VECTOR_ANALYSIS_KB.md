@@ -1219,3 +1219,41 @@ Validated pattern for supply chain recommendation / substitution:
 **Implementation note:** If using a single embedding per item (product description only), the model will conflate products with similar descriptions but different specs. Multi-field embeddings (description + spec vector + category embedding) are more reliable for procurement use cases.
 
 *Sources: appwrite.io (2025-11), secondtalent.com (2026-01), lakefs.io (2026-01), firecrawl.dev (2025-10), dev.to (2025-10)*
+
+---
+
+## [2026-03-10 Update] Vector Database Performance Benchmarks 2026 (VectorDBBench)
+
+**Source:** Firecrawl.dev comparison guide (updated February 2026), VectorDBBench leaderboard (zilliz.com/vdbbench-leaderboard)
+
+**Key benchmark finding (May 2025 — 50M vectors @ 99% recall):**
+| Database | QPS | Notes |
+|----------|-----|-------|
+| pgvectorscale | 471 | PostgreSQL extension — 11.4× Qdrant |
+| Qdrant | 41 | Previous benchmark leader |
+| Pinecone | ~200 (managed) | Vendor benchmarks, methodology varies |
+
+**What this means:** pgvectorscale (Timescale extension for PostgreSQL) has become a genuine contender at scale, not just a "good enough" option. If you're already on PostgreSQL, there is now a defensible path to production-grade vector search without adding a separate vector database.
+
+**Trade-off framework for database selection (2026):**
+
+| Use case | Recommended |
+|----------|-------------|
+| <1M vectors, existing Postgres stack | pgvector / pgvectorscale |
+| 1M–100M vectors, need filtering + metadata | Qdrant or Weaviate |
+| 100M+ vectors, managed, cost-sensitive | Pinecone or Milvus |
+| RAG application, Python-first, fast prototype | ChromaDB |
+| Maximum performance, latency-critical | Turbopuffer (newest entrant, optimized for cold starts) |
+
+**2026 landscape observations:**
+- The space has bifurcated: managed cloud (Pinecone, Weaviate Cloud) vs. self-hosted high-performance (Qdrant, Milvus)
+- pgvector ecosystem growing fastest in enterprise — no new infra, familiar ops
+- Hybrid search (dense + sparse) now table stakes: all major DBs support BM25 + ANN in a single query
+- Quantization (int8, binary) widely adopted — 4–8× memory reduction with <5% recall loss at scale
+
+**Mathematical note — HNSW vs. IVF-Flat index trade-offs:**
+- HNSW: Higher recall at high QPS, no training step, good for dynamic inserts — preferred for most use cases
+- IVF-Flat: More memory efficient at very large scale (>100M vectors), requires periodic retraining when distribution shifts
+- Binary quantization + HNSW: Emerging best-of-both for >10M vectors — 32× memory reduction with acceptable recall degradation when combined with re-scoring
+
+*Sources: firecrawl.dev (2026-02), VectorDBBench leaderboard (2025-05), appwrite.io (2025-11)*

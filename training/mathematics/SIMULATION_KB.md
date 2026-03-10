@@ -1115,3 +1115,34 @@ A practical engineering issue gaining attention in safety-critical MC applicatio
   4. For consensus-critical applications: use double-precision throughout (no mixed precision)
 
 *Sources: MDPI Universe 6(3):55 (2026-02), De Gruyter MCMA (2026-03), Wikipedia Monte Carlo method (2026-02)*
+
+---
+
+## [2026-03-10 Update] AI + Monte Carlo Hybrid Pattern (Surrogate-Accelerated MC)
+
+**Source:** MDPI Universe 6(3):55 (published 2026-02-27) — radiotherapy dose calculation as a template case
+
+**Core pattern — Surrogate-Accelerated Monte Carlo:**
+- Full MC simulation is the "ground truth" but is computationally prohibitive for real-time or large-ensemble use
+- ML model (neural network or gradient-boosted tree) is trained on pre-computed MC results — becomes a fast surrogate
+- At inference time: run surrogate (milliseconds), not full MC (hours). Periodically validate surrogate against fresh MC runs.
+
+**Generalization to supply chain simulation:**
+| Simulation component | Full MC cost | Surrogate candidate |
+|---------------------|-------------|-------------------|
+| Network optimization under demand uncertainty | O(hours) | Neural net trained on scenario library |
+| Inventory simulation (thousands of SKUs × scenarios) | O(minutes/run) | Gradient-boosted model on key drivers |
+| Lead time distribution sampling | Low cost | Use real MC directly |
+
+**When the pattern is valid:**
+1. MC simulation is too slow for operational cadence (daily replan, real-time decision support)
+2. Input distribution is stable enough that surrogate generalizes (distribution drift → re-train)
+3. You have a sufficient scenario library to train the surrogate (typically 1,000–10,000 MC runs)
+
+**When NOT to use surrogates:**
+- Novel scenarios outside training distribution (black swan events, new supplier configurations) — surrogate will extrapolate wrongly
+- Regulatory contexts requiring auditable, reproducible MC (financial risk capital calculations, safety margins) — run real MC
+
+**Validation discipline:** Track surrogate error vs. MC ground truth on a holdout set. Control chart the error — apply SPC to monitor surrogate degradation over time.
+
+*Source: MDPI Universe 6(3):55 (2026-02-27). Generalizes from radiotherapy to any domain with expensive MC + available training data.*
