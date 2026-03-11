@@ -40,3 +40,6 @@ Build next-generation rubric and checklist systems grounded in mathematical rigo
 |------|------|--------|
 | 2026-03-06 | Living Memory Architecture validation addendum v1 | papers/living_memory_addendum_v1.md |
 | 2026-03-07 | PM knowledge update: optimization, signal processing, statistical modeling, simulation, scoring frameworks | training/mathematics/KNOWLEDGE_UPDATE_2026-03-07.md |
+| 2026-03-08 | PM knowledge update: Monte Carlo, rubric scoring, signal processing, vector embeddings | training/mathematics/KNOWLEDGE_UPDATE_2026-03-08.md |
+| 2026-03-09 | PM knowledge update: optimization, signal processing, rubric frameworks, vector analysis, supply chain modeling | training/mathematics/KNOWLEDGE_UPDATE_2026-03-09.md |
+| 2026-03-10 | PM knowledge update: Critic Rubrics (sparse-feedback AI scoring) + MPC chart (covariance-shift SPC) | training/mathematics/PAPERS_KB.md, STATISTICS_SPC_KB.md, PREDICTIVE_ANALYTICS_KB.md |
