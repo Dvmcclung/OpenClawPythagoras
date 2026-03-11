@@ -1307,3 +1307,70 @@ The fundamental framing shift underway:
 **Caution:** Computationally intensive at scale. For 10K+ SKUs, needs parallelization and a tiered approach (simple exponential smoothing for stable SKUs; EEMD+LASSO+LSTM for high-value volatile SKUs).
 
 *Source: ScienceDirect, pii/S2667305325000663 (2025-07)*
+
+---
+
+## [2026-03-10 Update] TIME Benchmark — Pattern-Level Evaluation for TSFMs
+
+**Source:** arXiv:2602.12147 — "Towards the Next Generation of Time Series Forecasting Benchmarks" (February 2026)
+
+### What TIME Is
+
+A next-generation benchmark for evaluating Time Series Foundation Models (TSFMs) in strict zero-shot conditions. 50 fresh datasets, 98 tasks; human-in-the-loop construction with LLM assistance for quality assurance. No data leakage.
+
+Leaderboard: https://huggingface.co/spaces/Real-TSF/TIME-leaderboard
+
+### Key Methodological Innovation: Pattern-Level Evaluation
+
+Legacy benchmarks report average error per dataset (dataset-level). TIME introduces **pattern-level evaluation**:
+- Characterize time series by structural features (trend strength, seasonality, autocorrelation, intermittency, volatility).
+- Group datasets by pattern profile.
+- Report model performance *per pattern group*.
+
+**Why this matters:** A model can score well on average while failing on a specific pattern type (e.g., intermittent demand). Pattern-level evaluation reveals this. For supply chain, this means the question isn't "which model is best overall?" but "which model is best for this demand pattern?"
+
+### Identified Limitations of Existing Benchmarks (directly applicable to our work)
+
+| Limitation | Implication for SC Modeling |
+|-----------|----------------------------|
+| Reused legacy data (M4, ETT) | Our internal SC data may have different characteristics — don't assume M4 rankings transfer |
+| Data leakage (TSFMs trained on public datasets) | Zero-shot claims need leakage-verified evaluation |
+| Dataset-level averages mask pattern failure | Use pattern-level evaluation when comparing demand models |
+| Misaligned task formulations | Evaluation horizon and frequency should match operational decision cadence |
+
+### Practical Guidance
+
+When benchmarking demand forecasting models internally:
+1. Characterize each SKU's time series by structural pattern (trend, seasonal, intermittent, volatile).
+2. Evaluate each model per pattern group, not just on overall MAPE/RMSE.
+3. Use the pattern-group ranking to match models to SKU types in production.
+
+*Source: arXiv:2602.12147, February 2026*
+
+---
+
+## [2026-03-10 Update] LLM Scoring Alignment — SFT + DPO + RAG Framework
+
+**Source:** arXiv:2603.06424 — "From Prompting to Preference Optimization: A Comparative Study of LLM-based Automated Essay Scoring" (March 2026)
+
+### Empirical Ranking of Scoring Architectures (IELTS Writing, F1-Score)
+
+| Approach | F1-Score | Notes |
+|---------|---------|-------|
+| SFT + RAG | 93% | Best configuration overall |
+| SFT + DPO + RAG | Near top | Best rubric alignment |
+| Instruction tuning + RAG | Good | Solid baseline |
+| Few-shot prompting | Moderate | No fine-tuning required |
+| Encoder classification | Varies | Fast but brittle |
+
+### Relevance to AI-in-the-Loop Scoring (Dale's Work)
+
+**The key insight:** Pure prompting is convenient but leaves alignment to chance. When rubric conformance matters, SFT + RAG is the practical gold standard. DPO adds a preference alignment layer that closes the gap between model predictions and human rubric judgments.
+
+**Implementation pathway for supply chain quality scoring:**
+1. Collect interaction traces (Critic Rubrics approach, P28).
+2. Fine-tune on rubric-labeled examples (SFT stage).
+3. Use RAG to inject relevant rubric context at inference.
+4. Apply DPO to align model outputs with human preference when divergence is detected.
+
+*Source: arXiv:2603.06424 [cs.CL], March 2026*

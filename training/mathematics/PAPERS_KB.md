@@ -722,3 +722,92 @@ Gives a complete mathematical characterization of which n-note Pythagorean scale
 ---
 
 *Total: 16 papers (original ingestion) + 11 previously skipped papers = 27 papers total in knowledge base.*
+
+---
+
+## Evening Knowledge Update — 2026-03-10
+
+*Pythagoras PM cron. Topics: scoring frameworks, SPC extension, time series benchmarks.*
+
+---
+
+### P28. Critic Rubrics — Rubric-Supervised Critic from Sparse Real-World Outcomes (2026)
+**Source:** arXiv:2603.03800 [cs.AI]
+**Authors:** Xingyao Wang et al.
+**Published:** March 4, 2026
+
+**Core Contribution:**
+Introduces **Critic Rubrics** — a semi-supervised framework that learns a critic/reward model from *sparse, noisy* human feedback by jointly predicting 24 behavioral rubric features derivable from agent-human interaction traces. Bridges the gap between clean benchmark rewards and messy real-world feedback signals.
+
+**Key Methods:**
+- 24 behavioral rubric features extracted automatically from interaction traces (no additional human annotation required).
+- Semi-supervised objective: jointly predict observable rubric features + sparse human outcome proxies.
+- Trained critic used for: (a) RL reward, (b) inference-time best-of-N reranking, (c) early stopping, (d) training data curation.
+
+**Results:**
+- Best@8 reranking on SWE-bench: +15.9 over Random@8 on rerankable trajectories.
+- Early stopping: +17.7 with 83% fewer attempts.
+
+**Relevance to Dale's Work:**
+- Direct architectural template for AI-in-the-loop scoring systems where human feedback is sparse.
+- The 24-feature rubric decomposition pattern generalizes: break any quality judgment into observable behavioral features that don't require labels.
+- Semi-supervised objective applicable to supply chain process quality scoring where labeled outcomes are rare but process traces are abundant.
+
+---
+
+### P29. MPC Control Chart — Multichannel Profile Covariance via Functional Graphical Models (2026)
+**Source:** arXiv:2603.05274 [stat.ME]
+**Published:** March 5, 2026
+
+**Core Contribution:**
+New control chart (MPC) for monitoring **covariance structure** in multichannel profiles — fills the gap left by mean-only SPC methods. Uses functional graphical models to represent conditional dependencies between profiles, then applies nonparametric combination of likelihood-ratio tests at multiple sparsity levels.
+
+**Key Methods:**
+- Functional graphical model: interpretable representation of between-profile conditional dependencies.
+- Nonparametric combination of LRT tests across sparsity levels → robust to unknown shift magnitude.
+- Identifies *which* between-profile relationships shifted at no extra cost.
+- Validated: Monte Carlo simulation + roasting machine temperature profile case study.
+
+**Relevance:**
+- Directly extends SPC KB: existing methods monitor means; MPC fills the covariance-shift blind spot.
+- Applicable when supply chain sensors generate correlated multichannel streams (temperature, pressure, throughput) — covariance shifts often precede mean shifts.
+- IMfA nomination: YES — adds a capability gap to our SPC toolbox.
+
+---
+
+### P30. TIME Benchmark — Next-Generation Time Series Forecasting Evaluation (2026)
+**Source:** arXiv:2602.12147
+**Published:** February 2026
+
+**Core Contribution:**
+Introduces **TIME**, a benchmark for evaluating Time Series Foundation Models (TSFMs) addressing four limitations of legacy benchmarks: stale data, data leakage, misaligned task formulations, and dataset-level (not pattern-level) analysis.
+
+**Key Design:**
+- 50 fresh datasets, 98 forecasting tasks; zero-shot TSFM evaluation with no data leakage.
+- Human-in-the-loop pipeline with LLM assistance for data quality and task alignment.
+- Novel **pattern-level evaluation**: uses structural time series features to characterize temporal properties, enabling model comparison across patterns rather than just datasets.
+- Multi-granular leaderboard: https://huggingface.co/spaces/Real-TSF/TIME-leaderboard
+
+**Relevance:**
+- Evaluation framework design: the pattern-level perspective is more honest than dataset-level averages — applicable when designing our own demand forecasting model comparisons.
+- Zero-shot evaluation discipline: leakage-free benchmarking methodology worth adopting internally when comparing models on SC data.
+
+---
+
+### P31. LLM-Based Automated Essay Scoring — Prompting to Preference Optimization (2026)
+**Source:** arXiv:2603.06424 [cs.CL]
+**Published:** March 6, 2026
+
+**Core Contribution:**
+Comprehensive empirical comparison of LLM-based automated scoring (AES) strategies on IELTS Writing Task 2. Tests four paradigms: encoder classification, zero/few-shot prompting, instruction tuning + RAG, and SFT + DPO + RAG.
+
+**Key Findings:**
+- Best configuration: k-SFT + RAG → F1-Score 93%.
+- Clear accuracy-cost-robustness trade-offs mapped across methods.
+- DPO (Direct Preference Optimization) improves alignment with human rubric judgments.
+
+**Relevance to Dale's Work:**
+- Practical recipe for scoring system design: SFT + RAG > pure prompting when rubric alignment matters.
+- DPO as a calibration mechanism: when human judges and model outputs diverge, DPO can close the gap without full retraining.
+- Complements Critic Rubrics (P28): together these define a progression — start with rubric decomposition (P28), align with DPO (P31).
+

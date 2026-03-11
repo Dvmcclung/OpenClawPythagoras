@@ -1337,3 +1337,36 @@ Industry synthesis of SPC application to asset reliability in 2026:
 **Key implication for supply chain:** Supplier quality monitoring and asset health monitoring are converging on the same SPC framework. The math is identical; only the data source changes.
 
 *Source: f7i.ai/blog/statistical-process-control-spc (2026-02)*
+
+---
+
+## [2026-03-10 Update] Multichannel Profile Covariance Control Chart (MPC)
+
+**Source:** arXiv:2603.05274 — "Monitoring Covariance in Multichannel Profiles via Functional Graphical Models" (March 2026)
+
+### The Covariance-Shift Gap in SPC
+
+Most SPC methods monitor the **mean** — they are nearly blind to shifts that manifest primarily in the **covariance structure** between channels. This is a documented limitation (OC states can go undetected when the mean is stable but correlation between streams changes).
+
+### MPC Control Chart Method
+
+1. **Functional Graphical Model (FGM):** Models conditional dependencies between multichannel profiles. Interpretable: edges in the graph = significant between-channel relationships.
+2. **Likelihood-ratio tests at multiple sparsity levels:** Tests for covariance shift across a range of assumed sparsity patterns (how many profile pairs are affected). This avoids tuning to a single sparsity assumption.
+3. **Nonparametric combination:** Fisher or similar p-value combination aggregates evidence across sparsity levels → single OC/IC signal. Robust to unknown shift magnitude and pattern.
+4. **Automatic signal attribution:** Which between-profile relationships shifted is identified at no extra computational cost (read from the FGM structure at signal time).
+
+### When to Use MPC vs. Standard Charts
+
+| Scenario | Best Chart |
+|----------|-----------|
+| Monitoring a single KPI | Shewhart / EWMA (mean-focused) |
+| Multiple correlated streams, mean likely stable | MPC (covariance-focused) |
+| Unknown whether mean or covariance shifts | Run both in parallel |
+| Supplier quality, multichannel sensor data | MPC or Hotelling T² for mean + MPC for covariance |
+
+### Supply Chain Application
+
+- **Correlated sensor streams:** Temperature, pressure, throughput on a production line. Covariance shifts (channels decorrelating) often precede mean shifts — MPC gives earlier warning.
+- **Supplier quality multichannel profiles:** If supplier delivers batches with multiple correlated quality dimensions, a shift in the correlation structure (one dimension improves, another degrades) is invisible to mean-monitoring charts.
+
+*Source: arXiv:2603.05274 [stat.ME], March 2026*
