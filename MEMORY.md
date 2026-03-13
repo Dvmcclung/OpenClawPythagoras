@@ -28,6 +28,22 @@ Build next-generation rubric and checklist systems grounded in mathematical rigo
 - **Critic Rubrics** (arXiv:2603.03800): 24 behavioral rubric features + semi-supervised objective for sparse-feedback AI scoring. Direct implementation template for Dale's scoring work.
 - **MPC chart** (arXiv:2603.05274): fills covariance-shift blind spot in SPC for multichannel profiles — extends SPC KB.
 
+### Automated Scoring & Rubric Calibration (2026-03-11 PM)
+- **SFT+DPO+RAG** achieves F1=93% for automated essay scoring (arXiv:2603.06424). DPO (Direct Preference Optimization) functions as rubric calibration — trains on ranked preferences, not just classification loss. Directly applicable to supply chain rubric design.
+- **RubricBench** (Mar 2026): AI graders drift systematically from human rubric standards; regular recalibration against human anchors is necessary.
+- **GRPO** (Group Relative Policy Optimization): RL-based fine-tuning variant that eliminates critic model. Lower memory footprint than PPO; useful for on-device scoring model training.
+- **Retrieval recall dominates RAG quality**: precision matters less than recall at the retrieval stage; re-ranking handles precision downstream.
+- **Digital twin simulation**: physics-informed neural networks (PINNs) now standard for hybrid simulation — physics constraints reduce data requirements by ~60% vs. pure ML.
+
+### SPC, Monte Carlo, Vector DB, Demand Forecasting (2026-03-12 AM)
+- **Edge-embedded SPC (2026 standard)**: Shewhart/EWMA/CUSUM now running at edge compute nodes (sub-second detection). SPC is layer 1 of predictive maintenance — pair Cpk/Ppk with Weibull/survival analysis for complete asset health picture.
+- **Importance Sampling (IS) optimization** (arXiv:2504.03560): Gradient-based adaptive IS proposals reduce MC convergence error below O(1/√N) in structured problems. Best applied to rare-event demand simulations (black swans, demand spikes).
+- **Multilevel MC (MLMC) + Bayesian Lasso**: Full posterior distributions on sparse regression coefficients at comparable cost to standard Lasso. Applicable to demand forecasting with sparse feature matrices.
+- **Vector DB stability resolved** (arXiv:2512.12458v2): Chamfer distance preserves stability in multi-vector search; average pooling destroys it. Hybrid dense+BM25 (via reciprocal rank fusion) is the 2026 standard RAG retrieval architecture — mix semantic + exact terminology queries.
+- **AI demand forecasting ASCM 2026 benchmarks**: AI/ML MAPE 8-15% vs. traditional 35-45%. Data quality is now the dominant constraint — model uncertainty is typically smaller than data uncertainty in real deployments.
+- **Three-layer demand sensing architecture** (dominant 2026 pattern): Statistical baseline (ARIMA/ETS) → Causal AI layer (external signals) → Demand sensing correction (1-14 day real-time adjustment).
+- **VETime zero-shot anomaly detection** (arXiv:2602.16681): Converts time series → frequency → image space; vision model classifies anomalies without labeled training data. Applicable to new assets/processes with no historical baseline.
+
 ### Causal Inference
 - **Generalized Bayes for Causal Inference** (arXiv:2603.03035, Mar 2026): Place priors directly on causal estimands (ATE, CATE), not data-generating process. Turns any loss-based causal estimator (DML, R-learner) into fully uncertainty-quantified estimator. Robust to nuisance estimation error. Applicable to supplier evaluation and intervention analysis.
 
@@ -51,3 +67,5 @@ Build next-generation rubric and checklist systems grounded in mathematical rigo
 | 2026-03-09 | PM knowledge update: optimization, signal processing, rubric frameworks, vector analysis, supply chain modeling | training/mathematics/KNOWLEDGE_UPDATE_2026-03-09.md |
 | 2026-03-10 | PM knowledge update: Critic Rubrics (sparse-feedback AI scoring) + MPC chart (covariance-shift SPC) | training/mathematics/PAPERS_KB.md, STATISTICS_SPC_KB.md, PREDICTIVE_ANALYTICS_KB.md |
 | 2026-03-11 | AM knowledge update: SPC+ML hybrid, PEMC Monte Carlo, GPU-ANN vector DB, supply chain predictive analytics, Fourier spectral ML | training/mathematics/KNOWLEDGE_UPDATE_2026-03-11.md |
+| 2026-03-11 | PM knowledge update: SFT+DPO+RAG scoring, GRPO optimization, digital twin PINNs, RAG retrieval recall | training/mathematics/KNOWLEDGE_UPDATE_2026-03-11-PM.md |
+| 2026-03-12 | AM knowledge update: SPC asset health, MC IS/MLMC, vector DB stability, demand forecasting ASCM benchmarks, VETime anomaly detection | training/mathematics/KNOWLEDGE_UPDATE_2026-03-12.md |
